@@ -11,3 +11,23 @@
 .covidWarnning:hover{
     cursor: pointer;
 }
+.searchBox{
+    padding-top: 100px;
+    text-align: center;
+    height: 300px;
+}
+.searchBox h2{
+    padding-bottom: 50px;
+    color: #0379C7;
+}
+.form-select{
+    width: 200px;
+}
+.formInput{
+    display: flex;
+    justify-content: right;
+}
+.formBtn{
+    display: flex;
+    justify-content: left;
+}

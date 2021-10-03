@@ -68,7 +68,16 @@ function NavBar() {
         />
       </div>
 
-      <div className="mainLinksDiv"></div>
+      <div className="mainLinksDiv">
+        
+         <div><a href="!#">Doctors</a></div>
+         <div><a href="!#">Locations</a></div>
+         <div><a href="!#">Services</a></div>
+         <btn className="btn btn-outline-primary">Doctor Log in</btn>
+         <btn className="btn btn-primary">Patient Log in</btn>
+
+
+      </div>
 
       <div className="loginLogoutDiv"></div>
     </div>

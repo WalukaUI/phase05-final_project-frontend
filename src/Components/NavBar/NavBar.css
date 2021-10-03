@@ -1,7 +1,7 @@
 .navBarMainDiv {
   width: 100%;
   height: 100px;
-  background-color: aqua;
+  background-color: rgb(226, 240, 240);
   display: flex;
 }
 
@@ -10,15 +10,22 @@
   display: flex;
   padding: 10px;
   width: 25%;
-  background-color: bisque;
 }
 .mainLinksDiv {
   width: 50%;
-  background-color: black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.mainLinksDiv div a{
+  color: #000000;
+  text-decoration: none;
+}
+.mainLinksDiv div a:hover{
+  text-decoration: underline;
 }
 .loginLogoutDiv {
   width: 25%;
-  background-color: brown;
 }
 .menuBtn{
   width: 30%;
@@ -93,7 +100,7 @@
     left:0;
     font-family:inherit;
     color: #222222;
-    background-color:#FFFFFF;
+    background-color: rgb(226, 240, 240);
     border:none;
     position:absolute;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -131,7 +138,7 @@
 {
 
     color:#000000;
-    background-color:#d18080;
+    background-color:#77A6F7
 }
 
 #cssmenu .clm a:hover

@@ -1,0 +1,19 @@
+.navBarMainDiv {
+  width: 100%;
+  height: 100px;
+  background-color: aqua;
+  display: flex;
+}
+
+.logoDiv {
+  width: 25%;
+  background-color: bisque;
+}
+.mainLinksDiv {
+  width: 50%;
+  background-color: black;
+}
+.loginLogoutDiv {
+  width: 25%;
+  background-color: brown;
+}

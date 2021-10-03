@@ -1,9 +1,9 @@
 import React from "react";
-
+import NavBar from "./NavBar/NavBar"
 function MainContainer(){
 return(
     <div>
-        <h1>sdfsfsdf</h1>
+        <NavBar />
     </div>
 )
 }

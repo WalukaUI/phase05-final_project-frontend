@@ -1,0 +1,13 @@
+.covidWarnning{
+    background-color: #D88152;
+    text-align: center;
+    align-items: center;
+}
+.covidWarnning img{
+    width: 1%;
+    height: 50%;
+    margin-left: 10px;
+}
+.covidWarnning:hover{
+    cursor: pointer;
+}

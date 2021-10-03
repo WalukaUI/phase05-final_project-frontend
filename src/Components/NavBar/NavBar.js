@@ -79,7 +79,10 @@ function NavBar() {
 
       </div>
 
-      <div className="loginLogoutDiv"></div>
+      <div className="loginLogoutDiv">
+        <a>You are serching from</a>
+        <div>Search</div>
+      </div>
     </div>
   );
 }

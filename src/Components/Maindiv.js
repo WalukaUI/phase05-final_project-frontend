@@ -1,22 +1,26 @@
 import React from "react";
 import NavBar from "./NavBar/NavBar";
-import background from "./lobby.jpg";
+import img from './lbb.jpg'
 import "./Maindiv.css";
 
 function MainContainer() {
   return (
-    <div>
+    <div className="mainDiv" style={{
+        backgroundImage: img,
+        backgroundSize: "cover"
+        }}>
       <NavBar />
       <div className="covidWarnning">
         <div>
           All Locations are open,{" "}
-          <a>
+          <a href="!#">
             see covid restrictions
-            <img src="../close.png" />
+            <img src="../close.png" alt="close" />
           </a>
         </div>
       </div>
-      <div className="searchBox" style={{ backgroundImage: `url(${background})` }}>
+
+      <div className="searchBox" >
         <h2>The Care you Expected</h2>
         <div>
           <h6>How can we help you today?</h6>
@@ -40,7 +44,7 @@ function MainContainer() {
                     placeholder="Last name"
                   />
                 </div>
-                <div className="col formBtn" >
+                <div className="col formBtn">
                   <button className="btn btn-primary">Search</button>
                 </div>
               </div>
@@ -48,6 +52,14 @@ function MainContainer() {
           </div>
         </div>
       </div>
+
+      
+        <div
+          className="mainLowerSection"
+        >
+
+        </div>
+     
     </div>
   );
 }

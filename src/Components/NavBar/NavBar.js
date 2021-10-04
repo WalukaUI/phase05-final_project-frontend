@@ -73,14 +73,14 @@ function NavBar() {
          <div><a href="!#">Doctors</a></div>
          <div><a href="!#">Locations</a></div>
          <div><a href="!#">Services</a></div>
-         <btn className="btn btn-outline-primary">Doctor Log in</btn>
-         <btn className="btn btn-primary">Patient Log in</btn>
+         <button className="btn btn-outline-primary">Doctor Log in</button>
+         <button className="btn btn-primary">Patient Log in</button>
 
 
       </div>
 
       <div className="loginLogoutDiv">
-        <a>You are serching from</a>
+        <a href="!#">You are serching from</a>
         <div>Search</div>
       </div>
     </div>

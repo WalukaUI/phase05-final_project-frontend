@@ -1,3 +1,4 @@
+
 .covidWarnning{
     background-color: #D88152;
     text-align: center;
@@ -31,3 +32,6 @@
     display: flex;
     justify-content: left;
 }
+/* .mainLowerSection{
+    height: 500px;
+} */

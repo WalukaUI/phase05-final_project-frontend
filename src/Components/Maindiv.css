@@ -1,37 +1,80 @@
+.mainDiv {
+  background-image: url("./lbb.jpg");
+  background-size: cover;
+}
 
-.covidWarnning{
-    background-color: #D88152;
-    text-align: center;
-    align-items: center;
+.covidWarnning {
+  background-color: #d88152;
+  text-align: center;
+  align-items: center;
 }
-.covidWarnning img{
-    width: 1%;
-    height: 50%;
-    margin-left: 10px;
+.covidWarnning img {
+  width: 1%;
+  height: 50%;
+  margin-left: 10px;
 }
-.covidWarnning:hover{
-    cursor: pointer;
+.covidWarnning {
+  flex: 1 1 auto;
+  transition: 0.5s;
+  background-image: linear-gradient(
+    to right,
+    #f6d365 0%,
+    #fda085 51%,
+    #f6d365 100%
+  );
 }
-.searchBox{
-    padding-top: 100px;
-    text-align: center;
-    height: 300px;
+.covidWarnning:hover {
+  cursor: pointer;
+  background-position: right center;
 }
-.searchBox h2{
-    padding-bottom: 50px;
-    color: #0379C7;
+.searchBox {
+  padding-top: 100px;
+  text-align: center;
+  height: 300px;
 }
-.form-select{
-    width: 200px;
+.searchBox h2 {
+  padding-bottom: 50px;
+  color: #0379c7;
 }
-.formInput{
-    display: flex;
-    justify-content: right;
+.form-select {
+  width: 200px;
 }
-.formBtn{
-    display: flex;
-    justify-content: left;
+.formInput {
+  display: flex;
+  justify-content: right;
 }
-/* .mainLowerSection{
-    height: 500px;
-} */
+.formBtn {
+  display: flex;
+  justify-content: left;
+}
+.mainLowerSection {
+  padding: 50px;
+}
+.covidInfo {
+  background-color: #D8E5E9;
+  opacity: 0.7;
+  padding: 20px;
+}
+.infoCards {
+  background-color: #F2F8FA;
+  opacity: 0.8;
+  padding: 0vw;
+  margin: 0vw;
+}
+.info1{
+    padding-bottom: 5px;
+margin-bottom: 0px;
+}
+.info2{
+    padding: 0vw;
+    margin: 0vw;
+}
+.info1:hover{
+    background-color: bisque;
+}
+.info2:hover{
+    background-color: bisque;
+}
+.info3:hover{
+    background-color: bisque;
+}

@@ -1,14 +1,10 @@
 import React from "react";
 import NavBar from "./NavBar/NavBar";
-import img from './lbb.jpg'
 import "./Maindiv.css";
 
 function MainContainer() {
   return (
-    <div className="mainDiv" style={{
-        backgroundImage: img,
-        backgroundSize: "cover"
-        }}>
+    <div className="mainDiv">
       <NavBar />
       <div className="covidWarnning">
         <div>
@@ -20,7 +16,7 @@ function MainContainer() {
         </div>
       </div>
 
-      <div className="searchBox" >
+      <div className="searchBox">
         <h2>The Care you Expected</h2>
         <div>
           <h6>How can we help you today?</h6>
@@ -53,13 +49,36 @@ function MainContainer() {
         </div>
       </div>
 
-      
-        <div
-          className="mainLowerSection"
-        >
-
+      <div className="row mainLowerSection">
+        <div className="col  col-sm-12 col-md-6  covidInfo">
+        <h4>Covid 19</h4>
+          <p>Mercy is offering first and second dose COVID-19 appointments to 
+            anyone age 12 and older in most of the communities we serve. Mercy is also offering third dose 
+            COVID-19 vaccine appointments for moderately to severely immunocompromised individuals, individuals 
+            over the age of 65, individuals 18-64 with chronic conditions and individuals 18-64 who are 
+            considered high risk due to their occupation.
+            <br/>We encourage you to schedule a COVID-19 vaccine appointment at the location nearest you. 
+            Patients ages 12-17 should only schedule appointments at locations providing the Pfizer vaccine 
+            and must have a parent or guardian present to be vaccinated. 
+            <br/>Want to learn more about getting a COVID-19 vaccination? Read our FAQs.</p>
         </div>
-     
+        <div className="col  col-sm-12 col-md-6 infoCards">
+          <div className="info1">
+          <h4>Covid 19</h4>
+
+          </div>
+          <div className="info2">
+          <hr/>
+          <h4>kjsdfksdjfk</h4>
+          <p>djksfsk</p>
+          <hr/>
+          </div>
+          <div className="info3">
+          <h4>kjsdfksdjfk</h4>
+          <p>djksfsk</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

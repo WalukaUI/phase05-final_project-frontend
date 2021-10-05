@@ -1,8 +1,17 @@
 .doctorCrad{
+    opacity: 0.8;
     padding: 10px;
     margin: 10px;
+    color: black;
     background-color: rgb(204, 248, 233);
 }
 .doctorCrad div{
     padding: 10px;
+}
+.cardBtn{
+    background-color: #155B7F;
+    border-radius: 0;
+    color: cornsilk;
+    height: 10vh;
+    margin-top: 20px;
 }

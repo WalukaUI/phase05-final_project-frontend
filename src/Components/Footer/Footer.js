@@ -30,17 +30,17 @@ function Footer() {
         <img
           src="../facebook.svg"
           alt="Logo"
-          style={{ width: "15%", marginLeft: "10px" }}
+          style={{ width: "10%", marginLeft: "15px" }}
         />
         <img
           src="../twitter.svg"
           alt="Logo"
-          style={{ width: "15%", marginLeft: "10px" }}
+          style={{ width: "10%", marginLeft: "15px" }}
         />
         <img
           src="../instagram.svg"
           alt="Logo"
-          style={{ width: "15%", marginLeft: "10px" }}
+          style={{ width: "10%", marginLeft: "15px" }}
         />
       </div>
     </div>

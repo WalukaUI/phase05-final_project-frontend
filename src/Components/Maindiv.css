@@ -2,7 +2,6 @@
   background-image: url("./lbb.jpg");
   background-size: cover;
 }
-
 .covidWarnning {
   background-color: #d88152;
   text-align: center;
@@ -28,7 +27,7 @@
   background-position: right center;
 }
 .searchBox {
-  padding-top: 100px;
+  padding-top: 70px;
   text-align: center;
   height: 300px;
 }

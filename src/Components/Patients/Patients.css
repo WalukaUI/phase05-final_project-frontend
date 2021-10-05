@@ -1,4 +1,20 @@
-.docSearchDiv{
+.patientMainDiv{
+    background-color: cadetblue;
+    opacity: 0.9;
+    margin: 40px;
+}
+.patientInnerDiv{
+    padding:30px;
+}
+.patientSearchForm{
+    align-items: center;
+    
+}
+.patientCardDiv{
+    padding-top: 30px;
+}
+/* ---------------------------- */
+.patientSearchDiv{
     padding: 30px;
     min-height: 500px;
     max-height: 600px;

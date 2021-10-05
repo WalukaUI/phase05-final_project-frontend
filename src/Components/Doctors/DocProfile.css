@@ -6,6 +6,7 @@
     background-color: aqua;
 }
 .profileLinksDiv{
+    border: 1px solid;
     height: 50px;
     background-color: rgb(96, 114, 114);
 }

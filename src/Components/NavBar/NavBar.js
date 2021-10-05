@@ -83,7 +83,8 @@ function NavBar({logout, user}) {
         
          <div><Link to="/doctors">Doctors</Link></div>
          <div><Link to="/locations">Locations</Link></div>
-         <div><Link to="/appointments">Make an Appointment</Link></div>
+         {user.role !== "doctor" ? <><div><Link to="/appointments">Appointments</Link></div> 
+         <div><Link to="/patients">Patients</Link></div></>: "" }
          {user?
          <Link className="btn btn-warning" to="/doctorlogin" onClick={handlelogout}>Log Out</Link>:
          <Link className="btn btn-outline-primary" to="/doctorlogin">Doctor Log in</Link>}

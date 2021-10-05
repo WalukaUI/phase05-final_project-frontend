@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BASE_URL from "../../constraints/URL"
 import "./Doctors.css";
+import Doctor from "./Doctor"
+import LoadingDoctors from "./LoadingDoctors"
 
 function Doctors() {
 const [doctors, setDoctors]=useState(null)
@@ -52,7 +54,9 @@ const [doctors, setDoctors]=useState(null)
              </div>
           </form>
         </div>
-        <div className="col col-sm-12 col-md-9 formInput"></div>
+        <div className="col col-sm-12 col-md-9 formInput">
+            {doctors ? <Doctor/>: <LoadingDoctors />}
+        </div>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ function DoctorProfile() {
   }, [params.id]);
 
   return <>
-      <div className="profile">
+      <div className="profile row">
         <div className="row profileTopDiv">
           <div className="col col-sm-12 col-md-4">
           <img
@@ -50,8 +50,8 @@ function DoctorProfile() {
           <div className="col col-sm-12 col-md-4">Make an Appointment</div>
         </div>
         <h4>Patient Ratings and Comments</h4>
-      <div style={{backgroundColor: "#00586F", height: "100px"}}>Rating</div>
-      <div style={{backgroundColor: "#00586F", height: "100px"}}>Comments</div>
+      <div className="row" style={{backgroundColor: "#00586F", height: "60px"}}>Rating</div>
+      <div className="row" style={{backgroundColor: "#00586F", height: "60px"}}>Comments</div>
       <div className="row profileCommentsDiv">
         <div className="col">L</div>
         <div className="col">she is ggod</div>

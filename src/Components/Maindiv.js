@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -11,12 +11,27 @@ import Footer from "./Footer/Footer";
 import Doctors from "./Doctors/Doctors";
 import Home from "./Home/Home"
 import DoctorLogin from "./Login/DoctorLogin/DoctorLogin"
+import BASE_URL from "../constraints/URL";
+import Locations from "./Locations/Locations";
 
 function MainContainer() {
+  const [user,setUser]=useState(null)
+
+ //LOGOUT
+
+  function logout() {
+    fetch(BASE_URL + `/logout`, {
+      method: "DELETE",
+      credentials: "include",
+    }).then((res) => setUser(null));
+    //setisloggedin(false);
+  }
+
+
   return (
     <Router>
       <div className="mainDiv">
-        <NavBar />
+        <NavBar logout={logout} user={user}/>
         <div className="covidWarnning">
           <div>
             All Locations are open,{" "}
@@ -29,7 +44,10 @@ function MainContainer() {
 
         <Switch>
           <Route path="/doctorlogin" exact>
-            <DoctorLogin />
+            <DoctorLogin setUser={setUser}/>
+          </Route>
+          <Route path="/locations" exact>
+            <Locations />
           </Route>
           <Route path="/doctors" exact>
             <Doctors />

@@ -7,7 +7,7 @@ function CardLoadAnimation() {
       <div className="card is-loading animatedCard">
         <div className="aniCardcontent">
           <div>
-            <image className="loadingImg" />
+            <img className="loadingImg" alt=""/>
           </div>
           <div className="lodetextDiv">
             <h2 className="cardH2">{}</h2>
@@ -18,7 +18,7 @@ function CardLoadAnimation() {
       <div className="card is-loading animatedCard">
         <div className="aniCardcontent">
           <div>
-            <image className="loadingImg" />
+            <img className="loadingImg" alt=""/>
           </div>
           <div className="lodetextDiv">
             <h2 className="cardH2">{}</h2>
@@ -29,7 +29,7 @@ function CardLoadAnimation() {
       <div className="card is-loading animatedCard">
         <div className="aniCardcontent">
           <div>
-            <image className="loadingImg" />
+            <img className="loadingImg" alt="" />
           </div>
           <div className="lodetextDiv">
             <h2 className="cardH2">{}</h2>
@@ -40,7 +40,7 @@ function CardLoadAnimation() {
       <div className="card is-loading animatedCard">
         <div className="aniCardcontent">
           <div>
-            <image className="loadingImg" />
+            <img className="loadingImg" alt=""/>
           </div>
           <div className="lodetextDiv">
             <h2 className="cardH2">{}</h2>

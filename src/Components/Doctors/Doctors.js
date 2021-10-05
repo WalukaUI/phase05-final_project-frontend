@@ -13,11 +13,12 @@ const [doctors, setDoctors]=useState(null)
             headers: { "Content-Type": "application/json" },
             credentials: "include",
           }).then((res) => {
+            console.log(res);
             if (res.ok) {
               res.json().then((data) => {
-                  console.log(data);
                 // setisloggedin(true);
-                return setDoctors(data);
+                setDoctors(data);
+                console.log(data);
               });
             }else{
                 console.log(res);
@@ -25,8 +26,8 @@ const [doctors, setDoctors]=useState(null)
             }
           });
     },[])
-  return (
-    <div>
+ //const showDoc=doctors.map((card,index)=> <Doctor key={index} card={card}/>)
+  return <div>
       <div className="row doctorMainDiv">
         <div className="col col-sm-12 col-md-3 docSearchDiv">
           <form>
@@ -55,10 +56,9 @@ const [doctors, setDoctors]=useState(null)
           </form>
         </div>
         <div className="col col-sm-12 col-md-9 formnput">
-            {doctors ? <Doctor/>: <CardLoadAnimation doctors={doctors}/>}
+            {doctors === null ? <CardLoadAnimation />: doctors.map((card,index)=> <Doctor key={index} card={card}/>)}
         </div>
       </div>
     </div>
-  );
 }
 export default Doctors;

@@ -1,8 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./NavBar.css";
 
-function NavBar() {
+
+function NavBar({logout, user}) {
+
+ const history = useHistory()
+ function handlelogout(e) {
+   e.preventDefault();
+   logout();
+   localStorage.clear();
+   history.push("/login");
+ }
+
   return (
     <div className="navBarMainDiv">
       <div className="logoDiv">
@@ -74,8 +84,10 @@ function NavBar() {
          <div><Link to="/doctors">Doctors</Link></div>
          <div><Link to="/locations">Locations</Link></div>
          <div><Link to="/appointments">Make an Appointment</Link></div>
-         <Link className="btn btn-outline-primary" to="/doctorlogin">Doctor Log in</Link>
-         <Link className="btn btn-primary" to="/patientlogin">Patient Log in</Link>
+         {user?
+         <Link className="btn btn-warning" to="/doctorlogin" onClick={handlelogout}>Log Out</Link>:
+         <Link className="btn btn-outline-primary" to="/doctorlogin">Doctor Log in</Link>}
+         <Link className={user?"changeDisplay":"btn btn-primary"} to="/patientlogin">Patient Log in</Link>
 
       </div>
 

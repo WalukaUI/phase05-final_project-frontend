@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./DocLogin.css";
 import BASE_URL from "../../../constraints/URL";
 
@@ -7,30 +8,40 @@ function DoctorLogin({ setUser }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState(null);
 
+  const history = useHistory();
+  
   function handleSubmit(e) {
+    
     e.preventDefault();
-
+    
     //login
 
-    fetch(BASE_URL + `/doctorlogin`, {
+    fetch(BASE_URL + `/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
       body: JSON.stringify({
-        name: docEmail,
+        email: docEmail,
         password: password,
+        doctor: true
       }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
+           console.log(user);
           // setLogin(!login);
           // setisloggedin(true);
           setUser(user);
+          setDocEmail("")
+          setPassword("")
+          setErrors(null)
+          history.push("/");
         });
       } else {
         res.json().then((err) => {
+           console.log(err);
           // setisloggedin(false);
           setErrors(err.error);
         });

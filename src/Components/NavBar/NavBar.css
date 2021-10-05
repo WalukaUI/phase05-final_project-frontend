@@ -30,7 +30,9 @@
 .menuBtn{
   width: 30%;
 }
-
+.changeDisplay{
+    display: none;
+}
 
 
 /* menubtn */

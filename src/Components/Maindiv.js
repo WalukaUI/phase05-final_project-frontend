@@ -13,6 +13,7 @@ import Home from "./Home/Home"
 import DoctorLogin from "./Login/DoctorLogin/DoctorLogin"
 import BASE_URL from "../constraints/URL";
 import Locations from "./Locations/Locations";
+import DoctorProfile from "./Doctors/DoctorProfile"
 
 function MainContainer() {
   const [user,setUser]=useState(null)
@@ -51,6 +52,9 @@ function MainContainer() {
           </Route>
           <Route path="/doctors" exact>
             <Doctors />
+          </Route>
+          <Route path="/doctors/:id" exact>
+            <DoctorProfile />
           </Route>
           <Route path="/" exact>
             <Home />

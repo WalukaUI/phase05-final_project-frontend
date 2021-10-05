@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Link
+} from "react-router-dom";
 import "./NavBar.css";
 
 function NavBar() {
@@ -70,11 +74,11 @@ function NavBar() {
 
       <div className="mainLinksDiv">
         
-         <div><a href="!#">Doctors</a></div>
-         <div><a href="!#">Locations</a></div>
-         <div><a href="!#">Make an Appointment</a></div>
-         <button className="btn btn-outline-primary">Doctor Log in</button>
-         <button className="btn btn-primary">Patient Log in</button>
+         <div><Link to="/doctors">Doctors</Link></div>
+         <div><Link to="/locations">Locations</Link></div>
+         <div><Link to="/appointments">Make an Appointment</Link></div>
+         <Link className="btn btn-outline-primary" to="/doctorlogin">Doctor Log in</Link>
+         <Link className="btn btn-primary" to="/patientlogin">Patient Log in</Link>
 
 
       </div>

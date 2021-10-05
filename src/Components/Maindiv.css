@@ -38,10 +38,6 @@
 .form-select {
   width: 200px;
 }
-.formInput {
-  display: flex;
-  justify-content: right;
-}
 .formBtn {
   display: flex;
   justify-content: left;
@@ -57,7 +53,6 @@
 }
 .infoCards {
   background-color: #d7dcdf;
-  
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

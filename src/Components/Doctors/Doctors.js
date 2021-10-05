@@ -54,7 +54,7 @@ const [doctors, setDoctors]=useState(null)
              </div>
           </form>
         </div>
-        <div className="col col-sm-12 col-md-9 formInput">
+        <div className="col col-sm-12 col-md-9 formnput">
             {doctors ? <Doctor/>: <LoadingDoctors />}
         </div>
       </div>

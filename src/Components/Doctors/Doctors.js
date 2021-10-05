@@ -13,14 +13,13 @@ function Doctors() {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     }).then((res) => {
-      console.log(res);
       if (res.ok) {
         res.json().then((data) => {
           // setisloggedin(true);
           setDoctors(data);
         });
       } else {
-        console.log(res);
+        //console.log(res);
         //   setLogin(!login)
       }
     });

@@ -1,0 +1,16 @@
+.docSearchDiv{
+    padding: 30px;
+    min-height: 500px;
+    max-height: 600px;
+    background-color: cornsilk;
+    opacity: 0.8;
+    text-align: center;
+}
+.searchBtn{
+    margin: 1vh;
+}
+.serchTearms{
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+}

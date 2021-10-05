@@ -83,8 +83,11 @@ function NavBar({logout, user}) {
         
          <div><Link to="/doctors">Doctors</Link></div>
          <div><Link to="/locations">Locations</Link></div>
-         {user.role !== "doctor" ? <><div><Link to="/appointments">Appointments</Link></div> 
-         <div><Link to="/patients">Patients</Link></div></>: "" }
+          {user?
+                   user.role !== "doctor" ? <><div><Link to="/appointments">Appointments</Link></div> 
+                   <div><Link to="/patients">Patients</Link></div></>: "" 
+          :""}
+
          {user?
          <Link className="btn btn-warning" to="/doctorlogin" onClick={handlelogout}>Log Out</Link>:
          <Link className="btn btn-outline-primary" to="/doctorlogin">Doctor Log in</Link>}
@@ -93,7 +96,7 @@ function NavBar({logout, user}) {
       </div>
 
       <div className="loginLogoutDiv">
-        <h6>You are logged in as {user.username}</h6>
+        <h6>You are logged in as {user ? user.username: ""}</h6>
         <a href="!#">You are serching from</a>
         <div>Search</div>
       </div>

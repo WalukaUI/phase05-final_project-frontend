@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import BASE_URL from "../../constraints/URL";
-import "./Doctors.css";
-import Doctor from "./DoctorCard";
-import CardLoadAnimation from "./DocCardLoading";
+import PatientCard from "./PatientCard"
+import CardLoadAnimation from "../Doctors/DocCardLoading"
+import "./Patients.css";
 
-function Doctors() {
-  const [doctors, setDoctors] = useState(null);
+function Patients() {
+  const [patients, setPatients] = useState(null);
 
   useEffect(() => {
-    fetch(BASE_URL + `/doctors`, {
+    fetch(BASE_URL + `/patients`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          // setisloggedin(true);
-          setDoctors(data);
+          setPatients(data);
         });
       } else {
         //console.log(res);
@@ -27,7 +26,7 @@ function Doctors() {
 
   return (
     <div>
-      <div className="row doctorMainDiv">
+      <div className="row">
         <div className="col col-sm-12 col-md-3 docSearchDiv">
           <form>
             <input
@@ -89,14 +88,16 @@ function Doctors() {
           </form>
         </div>
         <div className="col col-sm-12 col-md-9 formnput">
-          {doctors === null ? (
+          {patients === null ? (
             <CardLoadAnimation />
           ) : (
-            doctors.map((card) => <Doctor key={card.id} card={card} />)
+            patients.map((card) => <PatientCard key={card.id} card={card} />)
           )}
         </div>
       </div>
+      
     </div>
   );
 }
-export default Doctors;
+
+export default Patients;

@@ -10,6 +10,7 @@ import NavBar from "./NavBar/NavBar";
 import Footer from "./Footer/Footer";
 import Doctors from "./Doctors/Doctors";
 import Home from "./Home/Home"
+import DoctorLogin from "./Login/DoctorLogin/DoctorLogin"
 
 function MainContainer() {
   return (
@@ -27,6 +28,9 @@ function MainContainer() {
         </div>
 
         <Switch>
+          <Route path="/doctorlogin" exact>
+            <DoctorLogin />
+          </Route>
           <Route path="/doctors" exact>
             <Doctors />
           </Route>

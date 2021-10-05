@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BASE_URL from "../../constraints/URL"
 import "./Doctors.css";
-import Doctor from "./Doctor"
-import LoadingDoctors from "./LoadingDoctors"
+import Doctor from "./DoctorCard"
+import CardLoadAnimation from "./DocCardLoading"
 
 function Doctors() {
 const [doctors, setDoctors]=useState(null)
@@ -55,7 +55,7 @@ const [doctors, setDoctors]=useState(null)
           </form>
         </div>
         <div className="col col-sm-12 col-md-9 formnput">
-            {doctors ? <Doctor/>: <LoadingDoctors />}
+            {doctors ? <Doctor/>: <CardLoadAnimation doctors={doctors}/>}
         </div>
       </div>
     </div>

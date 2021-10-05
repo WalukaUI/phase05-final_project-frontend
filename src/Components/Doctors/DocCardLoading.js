@@ -1,7 +1,7 @@
 import React from "react";
 import "./Loading.css";
 
-function LoadingDoctors() {
+function CardLoadAnimation() {
   return (
     <div>
       <div className="card is-loading animatedCard">
@@ -51,4 +51,4 @@ function LoadingDoctors() {
     </div>
   );
 }
-export default LoadingDoctors;
+export default CardLoadAnimation;

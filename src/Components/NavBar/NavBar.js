@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 function NavBar() {
@@ -65,11 +62,11 @@ function NavBar() {
           </ul>
         </div>
 
-        <img
+        <Link to="/"><img
           src="../hospital logo.png"
           alt="Logo"
-          style={{ width: "25%", marginLeft: "10px" }}
-        />
+          style={{ width: "70%", marginLeft: "10px" }}
+        /></Link>
       </div>
 
       <div className="mainLinksDiv">
@@ -79,7 +76,6 @@ function NavBar() {
          <div><Link to="/appointments">Make an Appointment</Link></div>
          <Link className="btn btn-outline-primary" to="/doctorlogin">Doctor Log in</Link>
          <Link className="btn btn-primary" to="/patientlogin">Patient Log in</Link>
-
 
       </div>
 

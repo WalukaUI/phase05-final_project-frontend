@@ -1,10 +1,24 @@
+.profile{
+    margin: 30px 60px ;
+    opacity: 0.9;
+}
 .profileTopDiv{
-    height: 200px;
     background-color: aqua;
 }
-.proLinksDiv{
-    height: 200px;
+.profileLinksDiv{
+    height: 50px;
     background-color: rgb(96, 114, 114);
+}
+.profileLinksDiv div{
+    display: flex;
+    background-color: rgb(129, 78, 136);
+    justify-content: center;
+    flex-direction: row;
+    padding-top: 10px;
+}
+.profileLinksDiv a{
+ color: black;
+ text-decoration: underline;
 }
 .profileAboutDiv{
     height: 200px;
@@ -13,4 +27,19 @@
 .profileCommentsDiv{
     height: 200px;
     background-color: rgb(207, 235, 129); 
+}
+.aboutDoctor{
+    margin-top: 30px;
+}
+.appointmentBtnDiv{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.profileBtn{
+    background-color: #155B7F;
+    border-radius: 0;
+    color: cornsilk;
+    height: 10vh;
+    margin-top: 20px;
 }

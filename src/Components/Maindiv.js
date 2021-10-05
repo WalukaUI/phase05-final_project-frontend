@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar/NavBar";
+import Footer from "./Footer/Footer"
 import "./Maindiv.css";
 
 function MainContainer() {
@@ -64,21 +65,23 @@ function MainContainer() {
         </div>
         <div className="col  col-sm-12 col-md-6 infoCards">
           <div className="info1">
-          <h4>Covid 19</h4>
-
+          <h6><img alt="appointment" src="../appointment.png"/>Make an Appointment</h6>
+          <p>Find Doctors Right Here and Make an Appointment </p>
+          <hr/>
           </div>
           <div className="info2">
-          <hr/>
-          <h4>kjsdfksdjfk</h4>
-          <p>djksfsk</p>
+          <h6><img alt="appointment" src="../doctor.png"/>All Doctors</h6>
+          <p>Search for Doctors based on  location,  reviews & more. Find & book an 
+            office visit with a Doctor, or video chat with them from home. In-Person & Online</p>
           <hr/>
           </div>
           <div className="info3">
-          <h4>kjsdfksdjfk</h4>
-          <p>djksfsk</p>
+          <h6><img alt="appointment" src="../appointment.png"/>Learn more about us</h6>
+          <p>Click here to learn more about our hospital</p>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,25 @@
+.footerMainDiv {
+  background-color: #155b7f;
+  height: 250px;
+  display: flex;
+  color: cornsilk;
+  line-height: 0.6;
+}
+.footerMainDiv div {
+  padding-left: 50px;
+  padding-top: 40px;
+}
+.footerMainDiv img {
+  padding-bottom: 20px;
+}
+
+.footerDiv2 H6{
+    padding-bottom: 15px;
+    text-decoration: underline;
+  }
+.footerDiv3 h6{
+    padding-bottom: 15px;
+    text-decoration: underline;
+  }
+
+

@@ -49,32 +49,31 @@
 }
 .mainLowerSection {
   padding: 50px;
+  opacity: 0.8;
 }
 .covidInfo {
-  background-color: #D8E5E9;
+  background-color: #E0EEF3;
   opacity: 0.7;
   padding: 20px;
 }
 .infoCards {
-  background-color: #F2F8FA;
-  opacity: 0.8;
-  padding: 0vw;
-  margin: 0vw;
+  background-color: #d7dcdf;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .info1{
     padding-bottom: 5px;
-margin-bottom: 0px;
+    padding-top: 20px;
 }
-.info2{
-    padding: 0vw;
-    margin: 0vw;
+.infoCards div:hover{
+    background-color: #CCD7DD;
 }
-.info1:hover{
-    background-color: bisque;
+.infoCards img{
+    width: 5%;
+    margin-right: 10px;
 }
-.info2:hover{
-    background-color: bisque;
-}
-.info3:hover{
-    background-color: bisque;
+.infoCards p{
+margin-left: 40px;
 }

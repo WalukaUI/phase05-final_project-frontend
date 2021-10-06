@@ -18,3 +18,9 @@
     margin: 10px;
     padding: 10px;
 }
+.patientDetlsBtn{
+    background-color: #155B7F;
+    border-radius: 0;
+    color: cornsilk;
+    height: 10vh;
+}

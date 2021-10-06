@@ -3,9 +3,15 @@ import "./Appointments.css"
 
 function AppointmentCard({card}){
 
-    return(<div className="appointmentCard">
+    return(<div className=" row appointmentCard">
+        <div className="col col-md-6 col-sm-12">
         <h4>Date: {card.date}</h4>
         <h6>Time: {card.time}</h6>
+        </div>
+        <div className="col col-md-6 col-sm-12">
+        <button className="btn patientDetlsBtn">Patient Details</button>
+        </div>
+
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import React, {useState, useEffect}from "react";
+import { Link } from "react-router-dom";
 import "./Appointments.css";
 import BASE_URL from "../../constraints/URL";
 import AppointmentCard from "./AppointmentCard"
@@ -19,7 +20,7 @@ function Appointments({user}){
         });
       } 
     });
-  }, []);
+  }, [user.role, user.id]);
 
   if (!appointments) return null;
 
@@ -56,7 +57,14 @@ function Appointments({user}){
           </form>
         </div>
         <div className="col col-md-8 col-sm-12 appointmentMainDiv">
-            <div className="appointmentCardHead"><h4>All Appointments</h4></div>
+          
+            <div className="appointmentCardHead">
+            {appointments.length !== 0 ? 
+              <h4>All Appointments</h4>
+            :<div><h4>You do not have any Appointments</h4>
+            <Link to="/doctors/newappointment"><button className="btn cardBtn">Schedule an Appointment</button></Link>
+            </div>}
+            </div>
      
      {appointments.map((card)=><AppointmentCard key={card.id} card={card}/>)}
      </div>

@@ -4,10 +4,11 @@
 }
 .appointmentCardHead{
   background-color: antiquewhite;
-  height: 70px;
+  height: 120px;
   display: flex;
   justify-content: center; 
   align-items: center;
+  text-align: center;
   margin-bottom: 10px;
 }
 .appointmentMainDiv{

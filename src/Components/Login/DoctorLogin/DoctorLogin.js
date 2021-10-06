@@ -25,7 +25,7 @@ function DoctorLogin({ setUser }) {
       body: JSON.stringify({
         email: docEmail,
         password: password,
-        patient: true
+        doctor: true
       }),
     }).then((res) => {
       if (res.ok) {

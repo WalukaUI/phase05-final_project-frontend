@@ -25,12 +25,12 @@ function PatientLogin({ setUser }) {
       body: JSON.stringify({
         email: patientEmail,
         password: password,
-        doctor: true
+        patient: true
       }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-           //console.log(user);
+           console.log(user);
           // setLogin(!login);
           // setisloggedin(true);
           setUser(user);
@@ -41,8 +41,6 @@ function PatientLogin({ setUser }) {
         });
       } else {
         res.json().then((err) => {
-           //console.log(err);
-          // setisloggedin(false);
           setErrors(err.error);
         });
       }

@@ -16,6 +16,7 @@ import Locations from "./Locations/Locations";
 import DoctorProfile from "./Doctors/DoctorProfile";
 import Patients from "./Patients/Patients";
 import PatientLogin from "./Login/PatientLogin/PatientLogin";
+import Appointments from "./Appointments/Appointments";
 
 function MainContainer() {
   const [user,setUser]=useState(null)
@@ -63,8 +64,11 @@ function MainContainer() {
           <Route path="/patients" exact>
             <Patients />
           </Route>
-          <Route path="/appointments" exact>
+          {/* <Route path="/appointments" exact>
             <DoctorProfile />
+          </Route> */}
+          <Route path="/appointments" exact>
+            <Appointments user={user}/>
           </Route>
           <Route path="/" exact>
             <Home />

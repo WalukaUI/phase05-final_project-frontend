@@ -20,33 +20,35 @@ function PatientCard({ card, deletePatient, editPatient }) {
   }
 
   return editPanel ? (
-    <div className="personsCard">
+    <div className="personsCard patientForm">
       <form>
         <div>
-          <label>First Name</label>
+          <p>First Name</p>
           <input name="first_name" />
-          <label>Last Name</label>
+          <p>Last Name</p>
           <input name="last_name" />
+          <p>Clinic</p>
+          <input name="Clinic" />
         </div>
         <div>
           <h6>Contact Details</h6>
-          <label>First Name</label>
+          <p>Email</p>
           <input name="first_name" />
-          <label>Last Name</label>
+          <p>Telephone</p>
           <input name="last_name" />
         </div>
 
         <br />
-        <button className="btn btn-danger" type="submit" onClick={triggerEdit}>
+        <button className="btn btn-success" type="submit" onClick={triggerEdit}>
           Save
         </button>
-      </form>
-      <button
-        className="btn btn-danger"
+        <button
+        className="btn btn-warning"
         onClick={() => setEditPanel(!editPanel)}
       >
         Cancel
       </button>
+      </form>
     </div>
   ) : (
     <div className="personsCard">

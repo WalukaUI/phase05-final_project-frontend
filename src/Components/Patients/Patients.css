@@ -8,10 +8,17 @@
 }
 .patientSearchForm{
     align-items: center;
-    
+    background-color: cornsilk;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.9;
+    margin-bottom: 10px;
 }
 .patientCardDiv{
-    padding-top: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-gap: 1.5em;
 }
 /* ---------------------------- */
 .patientSearchDiv{
@@ -21,12 +28,4 @@
     background-color: cornsilk;
     opacity: 0.8;
     text-align: center;
-}
-.searchBtn{
-    margin: 1vh;
-}
-.serchTearms{
-    display: flex;
-    padding: 5px;
-    justify-content: space-between;
 }

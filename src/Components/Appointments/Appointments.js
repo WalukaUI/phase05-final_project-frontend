@@ -62,7 +62,7 @@ function Appointments({user}){
             {appointments.length !== 0 ? 
               <h4>All Appointments</h4>
             :<div><h4>You do not have any Appointments</h4>
-            <Link to="/doctors/newappointment"><button className="btn cardBtn">Schedule an Appointment</button></Link>
+            <Link to="/newappointment"><button className="btn cardBtn">Schedule an Appointment</button></Link>
             </div>}
             </div>
      

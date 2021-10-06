@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,9 +17,25 @@ import DoctorProfile from "./Doctors/DoctorProfile";
 import Patients from "./Patients/Patients";
 import PatientLogin from "./Login/PatientLogin/PatientLogin";
 import Appointments from "./Appointments/Appointments";
+import NewAppiontment from "./Appointments/NewAppointment"
 
 function MainContainer() {
   const [user,setUser]=useState(null)
+  const [doctors, setDoctors] = useState(null);
+
+  useEffect(() => {
+    fetch(BASE_URL + `/doctors`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setDoctors(data);
+        });
+      }
+    });
+  }, []);
 
  //LOGOUT
 
@@ -56,7 +72,7 @@ function MainContainer() {
             <Locations />
           </Route>
           <Route path="/doctors" exact>
-            <Doctors />
+            <Doctors doctors={doctors}/>
           </Route>
           <Route path="/doctors/:id" exact>
             <DoctorProfile />
@@ -64,9 +80,9 @@ function MainContainer() {
           <Route path="/patients" exact>
             <Patients />
           </Route>
-          {/* <Route path="/appointments" exact>
-            <DoctorProfile />
-          </Route> */}
+          <Route path="/newappointment" exact>
+            <NewAppiontment doctors={doctors} user={user}/>
+          </Route>
           <Route path="/appointments" exact>
             <Appointments user={user}/>
           </Route>

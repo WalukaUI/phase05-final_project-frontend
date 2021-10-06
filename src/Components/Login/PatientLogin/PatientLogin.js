@@ -30,6 +30,7 @@ function PatientLogin({ setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
+          console.log(user);
           setUser(user);
           setPatientEmail("")
           setPassword("")

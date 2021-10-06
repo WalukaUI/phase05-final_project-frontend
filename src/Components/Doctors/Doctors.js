@@ -4,23 +4,7 @@ import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
 
-function Doctors() {
-  const [doctors, setDoctors] = useState(null);
-
-  useEffect(() => {
-    fetch(BASE_URL + `/doctors`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          // setisloggedin(true);
-          setDoctors(data);
-        });
-      }
-    });
-  }, []);
+function Doctors({doctors}) {
 
   return (
     <div>

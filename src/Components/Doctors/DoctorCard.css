@@ -8,10 +8,11 @@
 .doctorCrad div{
     padding: 10px;
 }
-.cardBtn{
+.docCardBtn{
     background-color: #155B7F;
     border-radius: 0;
     color: cornsilk;
     height: 10vh;
     margin-top: 20px;
+    z-index: 1;
 }

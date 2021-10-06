@@ -26,7 +26,7 @@ function Doctor({ card }) {
             <img src="./contact.svg" alt="contact" />
             {card.contact_number}
           </p>
-          <button className="btn cardBtn">Schedule Appointment</button>
+          <Link to="/newappointment"><button className="btn docCardBtn">Schedule Appointment</button></Link>
         </div>
       </div>
       </Link>

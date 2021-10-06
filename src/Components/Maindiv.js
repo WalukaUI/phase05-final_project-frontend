@@ -10,11 +10,12 @@ import NavBar from "./NavBar/NavBar";
 import Footer from "./Footer/Footer";
 import Doctors from "./Doctors/Doctors";
 import Home from "./Home/Home"
-import DoctorLogin from "./Login/DoctorLogin/DoctorLogin"
+import DoctorLogin from "./Login/DoctorLogin/DoctorLogin";
 import BASE_URL from "../constraints/URL";
 import Locations from "./Locations/Locations";
-import DoctorProfile from "./Doctors/DoctorProfile"
-import Patients from "./Patients/Patients"
+import DoctorProfile from "./Doctors/DoctorProfile";
+import Patients from "./Patients/Patients";
+import PatientLogin from "./Login/PatientLogin/PatientLogin";
 
 function MainContainer() {
   const [user,setUser]=useState(null)
@@ -26,7 +27,6 @@ function MainContainer() {
       method: "DELETE",
       credentials: "include",
     }).then((res) => setUser(null));
-    //setisloggedin(false);
   }
 
 
@@ -47,6 +47,9 @@ function MainContainer() {
         <Switch>
           <Route path="/doctorlogin" exact>
             <DoctorLogin setUser={setUser}/>
+          </Route>
+          <Route path="/patientlogin" exact>
+            <PatientLogin setUser={setUser}/>
           </Route>
           <Route path="/locations" exact>
             <Locations />

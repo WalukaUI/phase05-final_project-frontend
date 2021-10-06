@@ -34,7 +34,6 @@ function PatientCard({ card, deletePatient, updatePatient, editBtn, setEditBtn }
     setUpdateData(newData);
   }
 
-  //if (!updateData) return null;
   const editPatient = updateData;
   
 

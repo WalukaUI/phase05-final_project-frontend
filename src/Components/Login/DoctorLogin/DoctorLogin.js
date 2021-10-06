@@ -25,7 +25,7 @@ function DoctorLogin({ setUser }) {
       body: JSON.stringify({
         email: docEmail,
         password: password,
-        doctor: true
+        patient: true
       }),
     }).then((res) => {
       if (res.ok) {
@@ -92,7 +92,6 @@ function DoctorLogin({ setUser }) {
           <button type="submit" className="btn btn-success">
             Login
           </button>
-          <button className="btn btn-warning">Register</button>
         </form>
       </div>
     </div>

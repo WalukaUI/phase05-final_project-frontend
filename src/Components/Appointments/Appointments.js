@@ -8,25 +8,58 @@ function Appointments({user}){
     const [appointments, setAppoinements] = useState(null);
 
   useEffect(() => {
-    fetch( user.role === "patient" ? `${BASE_URL }/patients/4/appointments`: `${BASE_URL }/appointments`, {
+    fetch( user.role === "patient" ? `${BASE_URL }/patients/${user.id}/appointments`: `${BASE_URL }/appointments`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-            console.log(user.role);
-            console.log(user);
-            console.log(data)
            setAppoinements(data)
         });
       } 
     });
   }, []);
+
+  if (!appointments) return null;
+
     return (
-    <div>
-     {user.role === "patient"? <h4>You have {appointments.length} appointments</h4>: <h4>All Appointments</h4>}
+    <div className="row mainAppointmentContainer">
+        <div className="col col-md-4 col-sm-12 docSearchDiv">
+          <form>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Date"
+            />
+            <button className="btn btn-primary searchBtn">Search</button>
+            <div className="serchFilter">
+              <h6>Narrow Your Results</h6>
+              <ul>
+                <li className="serchTearms">
+                  <label>Sort By Appointment Time</label>
+                  <div>
+                    <input type="checkbox" />
+                  </div>
+                </li>
+              </ul>
+              <h6>More</h6>
+              <ul>
+                <li className="serchTearms">
+                  <label>Appointments Count</label>
+                  <div>
+                    <p>{appointments.length}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div className="col col-md-8 col-sm-12 appointmentMainDiv">
+            <div className="appointmentCardHead"><h4>All Appointments</h4></div>
+     
      {appointments.map((card)=><AppointmentCard key={card.id} card={card}/>)}
+     </div>
     </div>
     )
 }

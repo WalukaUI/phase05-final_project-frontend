@@ -5,8 +5,6 @@ function PatientCard({ card, deletePatient, updatePatient, editBtn, setEditBtn }
  const [editPanel, setEditPanel] = useState(false);
  const [updateData, setUpdateData] = useState(null);
 
-
-
   function handleDelete(e) {
     e.preventDefault();
     deletePatient(card.id);

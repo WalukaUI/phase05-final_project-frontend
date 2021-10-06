@@ -7,6 +7,8 @@ import "./Patients.css";
 function Patients() {
   const [patients, setPatients] = useState(null);
 
+  //GET
+
   useEffect(() => {
     fetch(BASE_URL + `/patients`, {
       method: "GET",
@@ -17,12 +19,20 @@ function Patients() {
         res.json().then((data) => {
           setPatients(data);
         });
-      } else {
-        //console.log(res);
-        //   setLogin(!login)
-      }
+      } 
     });
   }, []);
+
+  //DELETE
+
+  function deletePatient(id){
+    fetch(BASE_URL + `/patients/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      const newPatientsList = patients.filter((person) => person.id !== id);
+      setPatients(newPatientsList);
+    }
 
   return (
     <div className="patientMainDiv">
@@ -61,14 +71,11 @@ function Patients() {
           </div>
         </form>
         <div className="patientCardDiv grids">
-          {patients.map((card) => (
-            <PatientCard key={card.id} card={card} />
-          ))}
-          {/* {patients === null ? (
+          {patients === null ? (
           <CardLoadAnimation />
           ) : (
-          patients.map((card) => <PatientCard key={card.id} card={card} />)
-          )} */}
+          patients.map((card) => <PatientCard key={card.id} card={card} deletePatient={deletePatient}/>)
+          )}
         </div>
       </div>
     </div>

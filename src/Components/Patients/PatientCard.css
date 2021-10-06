@@ -5,3 +5,6 @@
     color: rgb(8, 6, 4);
     background-color: lavender;
 }
+.personsCard button{
+    margin: 20px;
+}

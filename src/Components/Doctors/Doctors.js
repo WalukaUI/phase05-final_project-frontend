@@ -18,9 +18,6 @@ function Doctors() {
           // setisloggedin(true);
           setDoctors(data);
         });
-      } else {
-        //console.log(res);
-        //   setLogin(!login)
       }
     });
   }, []);

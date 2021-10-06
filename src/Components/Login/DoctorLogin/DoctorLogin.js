@@ -30,9 +30,6 @@ function DoctorLogin({ setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-           //console.log(user);
-          // setLogin(!login);
-          // setisloggedin(true);
           setUser(user);
           setDocEmail("")
           setPassword("")
@@ -41,8 +38,6 @@ function DoctorLogin({ setUser }) {
         });
       } else {
         res.json().then((err) => {
-           //console.log(err);
-          // setisloggedin(false);
           setErrors(err.error);
         });
       }

@@ -6,6 +6,7 @@ import "./Patients.css";
 
 function Patients() {
   const [patients, setPatients] = useState(null);
+  const [editBtn, setEditBtn] = useState(false)
 
   //GET
 
@@ -33,6 +34,31 @@ function Patients() {
       const newPatientsList = patients.filter((person) => person.id !== id);
       setPatients(newPatientsList);
     }
+
+    //PATCH
+
+    function updatePatient(patientObject, id) {
+        let data = { ...patientObject, "id": id };
+    
+        fetch(BASE_URL + `/patients/${id}`, {
+          method: "PATCH",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((patient) => {
+            const newPatients = patients.filter(
+              (person) => person.id !== id
+            );
+    
+            setPatients([...newPatients, patient]);
+          });
+      }
+
 
   return (
     <div className="patientMainDiv">
@@ -74,7 +100,15 @@ function Patients() {
           {patients === null ? (
           <CardLoadAnimation />
           ) : (
-          patients.map((card) => <PatientCard key={card.id} card={card} deletePatient={deletePatient}/>)
+          patients.map((card) =>  <PatientCard 
+          key={card.id} 
+          card={card} 
+          deletePatient={deletePatient} 
+          updatePatient={updatePatient}
+          editBtn={editBtn}
+          setEditBtn={setEditBtn}
+          />
+          )
           )}
         </div>
       </div>

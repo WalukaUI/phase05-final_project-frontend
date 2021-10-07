@@ -1,22 +1,52 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import BASE_URL from "../../constraints/URL";
 import "./SignUp.css";
 
-function SignUp({ locations }) {
+function SignUp({ locations, setUser }) {
   const [newPatient, setNewPatient] = useState({});
+  const [errors, setErrors] = useState(null);
+
+  const history = useHistory();
 
   function createNewPatient(e) {
     e.preventDefault();
+    fetch(BASE_URL + `/patients`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(newPatient),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          console.log(user);
+          setUser(user);
+          history.push(`/`);
+        });
+      } else {
+        res.json().then((err) => {
+          console.log(err.errors);
+          setErrors(err.errors);
+        });
+      }
+    });
   }
 
   function handleAddPatient(e) {
     e.preventDefault();
-    let newPatientObj = { ...newPatient, [e.target.name]: e.target.value };
+    let newPatientObj = {
+      ...newPatient,
+      [e.target.name]: e.target.value,
+      role: "patient",
+    };
     setNewPatient(newPatientObj);
   }
 
   return (
     <div className="signupContainer">
-        <h4>Create your account</h4>
+      <h4>Create your account</h4>
       <form onSubmit={createNewPatient}>
         <div className="row signupInnerContainer">
           <div className="col col-sm-12 col-md-6 signUpformInnerDiv1">
@@ -58,9 +88,9 @@ function SignUp({ locations }) {
                 aria-label="Default select example"
                 onChange={handleAddPatient}
               >
-                  {locations.map((loc)=><option value={loc.id}>{loc.name}</option>)}
-                
-
+                {locations.map((loc) => (
+                  <option value={loc.id}>{loc.name}</option>
+                ))}
               </select>
             </label>
           </div>
@@ -98,8 +128,8 @@ function SignUp({ locations }) {
               />
             </label>
             <button className=" btn btn-success createPatientBtn" type="submit">
-            Submit
-          </button>
+              Submit
+            </button>
           </div>
         </div>
       </form>

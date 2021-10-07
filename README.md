@@ -1,3 +1,37 @@
+
+😎****MVC****😎
+
+show all doctors, patients , appointments and clinic locations
+
+full CRUD of appointments and patients
+
+Show current COVID status in a page using an open API
+
+🤳****Stretch Features****🤳
+
+display different interfaces to doctor login and patient login
+
+send a confirmation email after creating a account and placing an appointment by a patient
+
+
+🤞 Extra Step
+
+show clinic locations in a google map.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

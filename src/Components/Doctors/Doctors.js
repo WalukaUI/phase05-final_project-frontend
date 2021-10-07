@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import BASE_URL from "../../constraints/URL";
+import React  from "react";
 import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";

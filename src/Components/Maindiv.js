@@ -24,6 +24,30 @@ function MainContainer() {
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
 
+// auto-login
+    
+useEffect(() => {
+      fetch(BASE_URL + `/me`,{mode: 'no-cors'}).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => {
+            setUser(user);
+          });
+        }
+      });
+    }, []);
+
+
+ //LOGOUT
+
+  function logout() {
+    fetch(BASE_URL + `/logout`, {
+      method: "DELETE",
+      credentials: "include",
+    }).then((res) => setUser(null));
+  }
+
+  //GET Doctors
+
   useEffect(() => {
     fetch(BASE_URL + `/doctors`, {
       method: "GET",
@@ -37,16 +61,6 @@ function MainContainer() {
       }
     });
   }, []);
-
- //LOGOUT
-
-  function logout() {
-    fetch(BASE_URL + `/logout`, {
-      method: "DELETE",
-      credentials: "include",
-    }).then((res) => setUser(null));
-  }
-
 
   return (
     <Router>

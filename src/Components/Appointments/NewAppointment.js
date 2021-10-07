@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./NewAppointment.css";
 import BASE_URL from "../../constraints/URL";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function NewAppiontment({ doctors, user , setAppointments, appointments}) {
+function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
   const [newAppointment, setNewAppointment] = useState({});
   const [errors, setErrors] = useState(null);
   const [selecteddate, setSelectedDate]=useState(null)
@@ -24,8 +24,8 @@ function NewAppiontment({ doctors, user , setAppointments, appointments}) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((booking) => {
-        setAppointments([...appointments,booking])
-        history.push("/")
+        setAppoinements([...appointments,booking])
+        history.push(`/patients/${user.id}/appointments`)
         });
       } else {
         res.json().then((err) => {

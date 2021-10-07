@@ -1,4 +1,4 @@
-import React, {useState, useEffect}from "react";
+import React, { useEffect}from "react";
 import { Link } from "react-router-dom";
 import "./Appointments.css";
 import BASE_URL from "../../constraints/URL";
@@ -19,11 +19,17 @@ function Appointments({user, appointments, setAppoinements}){
         });
       } 
     });
-  }, [user.role, user.id]);
+  }, [user.role, user.id, setAppoinements]);
 
   function deleteAppointment(id){
-
+    fetch(BASE_URL + `/appointments/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    const newAppointmentsList = appointments.filter((appointment) => appointment.id !== id);
+    setAppoinements(newAppointmentsList);
   }
+  
 
   if (!appointments) return null;
 

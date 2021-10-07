@@ -20,6 +20,21 @@ function Doctor({ card }) {
     });
   }, []);
 
+  function rating(array){
+    // e.preventDefault()
+    let points=[]
+    if(array !== null){
+      array.forEach(e =>points.push(e.points))
+      let pointSum= points.reduce((a,b)=> a+b,0)
+      let pointaverage=pointSum/points.length
+      return pointaverage
+    }else{
+      return "N/A"
+    }
+  }
+    
+  
+
   return (
     <div>
      
@@ -37,7 +52,7 @@ function Doctor({ card }) {
             {card.first_name} {card.last_name}
           </h5>
           <p>{card.speciality}</p>
-          <p>Ratings: </p>
+          <p>Ratings: {rating(comment)}</p>
         </div>
         <div className="col col-sm-12 col-md-4">
           <p>Location: {card.clinic_location}</p>

@@ -21,6 +21,10 @@ function Appointments({user, appointments, setAppoinements}){
     });
   }, [user.role, user.id]);
 
+  function deleteAppointment(id){
+
+  }
+
   if (!appointments) return null;
 
     return (
@@ -66,7 +70,7 @@ function Appointments({user, appointments, setAppoinements}){
             </div>}
             </div>
      
-     {appointments.map((card)=><AppointmentCard key={card.id} card={card}/>)}
+     {appointments.map((card)=><AppointmentCard key={card.id} card={card} deleteAppointment={deleteAppointment}/>)}
      </div>
     </div>
     )

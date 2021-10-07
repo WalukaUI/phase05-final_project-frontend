@@ -1,7 +1,12 @@
 import React from "react";
 import "./Appointments.css"
 
-function AppointmentCard({card}){
+function AppointmentCard({card, deleteAppointment}){
+
+    function handleDelete(e){
+        e.preventDefault()
+        deleteAppointment(card.id)
+    }
 
     return(<div className=" row appointmentCard">
         <div className="col col-md-6 col-sm-12">
@@ -10,7 +15,7 @@ function AppointmentCard({card}){
         </div>
         <div className="col col-md-6 col-sm-12">
         <button className="btn patientDetlsBtn">Patient Details</button>
-        <button className="btn btn-danger cardDeleteBtn">Delete</button>
+        <button className="btn btn-danger cardDeleteBtn" onClick={handleDelete}>Delete</button>
         </div>
         </div>
     )

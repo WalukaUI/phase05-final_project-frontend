@@ -51,12 +51,24 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
   return (
     <div className="row">
       <div className="col col-sm-12 col-md-6">
+        <div className="serchDoctor">
+        <form>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search Doctors By Name"
+            />
+            <button className="btn btn-primary searchBtn">Search</button>
+          </form>
+        </div>
+
         {doctors.map((doctor) => (
           <div>
             <div>
               <div className="row doctorCrad">
                   <div className="col col-sm-12 col-md-4 docImage">
                     <img
+                      className="doccardImage"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPPYSMvGn6iF_kZQs8YyU1jm4VczEPSx2Lpw&usqp=CAU"
                       alt="doctor"
                     />
@@ -75,7 +87,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
       </div>
       <div className="col col-sm-12 col-md-6">
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="form-group newAppointmentForm">
             <h4>Create a new Appointment</h4>
             <label>Select a Doctor</label>
             <select
@@ -110,10 +122,10 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
                     <option value="1100">11.00 am - 12.00 pm</option>
                     <option value="1300">1.00 pm - 2.00 pm</option>
                   </select>
-          </div>
-            <button type="submit" className="btn btn-primary formSubBtn">
+                  <button type="submit" className="btn btn-primary formSubBtn">
               Submit
             </button>
+          </div>
         </form>
         <div>
             {errors ? <p style={{ color: "red", marginTop: "10px" }}>Please fill all lines of the form</p>:null }

@@ -36,23 +36,16 @@ function Appointments({user, appointments, setAppoinements}){
     return (
     <div className="row mainAppointmentContainer">
         <div className="col col-md-4 col-sm-12 docSearchDiv">
+        <h6>Narrow Your Results</h6>
           <form>
             <input
               type="number"
               className="form-control"
-              placeholder="Date"
+              placeholder="Search By Date"
             />
             <button className="btn btn-primary searchBtn">Search</button>
             <div className="serchFilter">
-              <h6>Narrow Your Results</h6>
-              <ul>
-                <li className="serchTearms">
-                  <label>Sort By Appointment Time</label>
-                  <div>
-                    <input type="checkbox" />
-                  </div>
-                </li>
-              </ul>
+              
               <h6>More</h6>
               <ul>
                 <li className="serchTearms">

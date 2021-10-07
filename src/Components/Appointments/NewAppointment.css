@@ -1,0 +1,15 @@
+.doccardImage{
+    width: 60%;
+}
+.serchDoctor{
+    background-color: bisque;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.newAppointmentForm{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    align-items: center;
+}

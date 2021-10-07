@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import BASE_URL from "../../constraints/URL";
 import "./Locations.css"
 
-function Locations() {
-  const [locations, setLocations] = useState(null);
+function Locations({locations, setLocations}) {
+
 
   useEffect(() => {
     fetch(BASE_URL + "/locations", {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./PatientLogin.css";
 import BASE_URL from "../../../constraints/URL";
 
@@ -97,7 +97,7 @@ function PatientLogin({ setUser }) {
             <br /> First visit
           </h2>
           <h6>Click below button to Register Now</h6>
-          <button className="btn btn-warning">Register</button>
+          <Link to="/signup" className="btn btn-warning">Register</Link>
         </div>
       </div>
     </div>

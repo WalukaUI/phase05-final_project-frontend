@@ -18,11 +18,13 @@ import Patients from "./Patients/Patients";
 import PatientLogin from "./Login/PatientLogin/PatientLogin";
 import Appointments from "./Appointments/Appointments";
 import NewAppiontment from "./Appointments/NewAppointment"
+import SignUp from "./SignUp/SignUp"
 
 function MainContainer() {
   const [user,setUser]=useState(null)
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
+  const [locations, setLocations] = useState(null);
 
 // auto-login
     
@@ -84,7 +86,9 @@ useEffect(() => {
             <PatientLogin setUser={setUser}/>
           </Route>
           <Route path="/locations" exact>
-            <Locations />
+            <Locations 
+            locations={locations} 
+            setLocations={setLocations}/>
           </Route>
           <Route path="/doctors" exact>
             <Doctors doctors={doctors}/>
@@ -95,11 +99,21 @@ useEffect(() => {
           <Route path="/patients" exact>
             <Patients />
           </Route>
+          <Route path="/signup" exact>
+            <SignUp />
+          </Route>
           <Route path="/newappointment" exact>
-            <NewAppiontment doctors={doctors} user={user} setAppoinements={setAppoinements} appointments={appointments}/>
+            <NewAppiontment 
+            doctors={doctors} 
+            user={user} 
+            setAppoinements={setAppoinements} 
+            appointments={appointments}/>
           </Route>
           <Route path="/appointments" exact>
-            <Appointments user={user} setAppoinements={setAppoinements} appointments={appointments}/>
+            <Appointments 
+            user={user} 
+            setAppoinements={setAppoinements} 
+            appointments={appointments}/>
           </Route>
           <Route path="/" exact>
             <Home />

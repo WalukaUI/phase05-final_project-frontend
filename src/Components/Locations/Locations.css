@@ -1,0 +1,13 @@
+.locationDetails{
+    color: rgb(41, 35, 12);
+    display: flex;
+}
+.locationDetails img{
+    width: 100px;
+}
+.div1{
+    background-color: crimson;
+}
+.div2{
+    background-color: darkblue;
+}

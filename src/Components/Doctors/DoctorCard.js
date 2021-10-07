@@ -21,20 +21,26 @@ function Doctor({ card }) {
   }, []);
 
   function rating(array){
-    // e.preventDefault()
     let points=[]
     if(array !== null){
       array.forEach(e =>points.push(e.points))
       let pointSum= points.reduce((a,b)=> a+b,0)
-      let pointaverage=pointSum/points.length
+      let pointaverage=(pointSum/points.length).toFixed(2)
       return pointaverage
     }else{
       return "N/A"
     }
   }
-    
-  
 
+ function ratingStars(rate) {
+    const emoji ="⭐" 
+    let emojis = "";
+    for (let i = 0; i < rate; i ++) {
+      emojis += emoji;
+    }
+    return emojis;
+  }
+  
   return (
     <div>
      
@@ -53,6 +59,7 @@ function Doctor({ card }) {
           </h5>
           <p>{card.speciality}</p>
           <p>Ratings: {rating(comment)}</p>
+          <p>{ratingStars(rating(comment))}</p>
         </div>
         <div className="col col-sm-12 col-md-4">
           <p>Location: {card.clinic_location}</p>

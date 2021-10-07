@@ -2,18 +2,8 @@ import React, { useEffect } from "react";
 import BASE_URL from "../../constraints/URL";
 import "./Locations.css"
 
-function Locations({locations, setLocations}) {
+function Locations({locations}) {
 
-
-  useEffect(() => {
-    fetch(BASE_URL + "/locations", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    })
-      .then((r) => r.json())
-      .then((data) => setLocations(data));
-  }, []);
 
   return (
     <div>

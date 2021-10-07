@@ -9,7 +9,7 @@ import "./Maindiv.css";
 import NavBar from "./NavBar/NavBar";
 import Footer from "./Footer/Footer";
 import Doctors from "./Doctors/Doctors";
-import Home from "./Home/Home"
+import Home from "./Home/Home";
 import DoctorLogin from "./Login/DoctorLogin/DoctorLogin";
 import BASE_URL from "../constraints/URL";
 import Locations from "./Locations/Locations";
@@ -17,29 +17,28 @@ import DoctorProfile from "./Doctors/DoctorProfile";
 import Patients from "./Patients/Patients";
 import PatientLogin from "./Login/PatientLogin/PatientLogin";
 import Appointments from "./Appointments/Appointments";
-import NewAppiontment from "./Appointments/NewAppointment"
-import SignUp from "./SignUp/SignUp"
+import NewAppiontment from "./Appointments/NewAppointment";
+import SignUp from "./SignUp/SignUp";
 
 function MainContainer() {
-  const [user,setUser]=useState(null)
+  const [user, setUser] = useState(null);
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
 
-// auto-login
-    
-useEffect(() => {
-      fetch(BASE_URL + `/me`,{mode: 'no-cors'}).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => {
-            setUser(user);
-          });
-        }
-      });
-    }, []);
+  // auto-login
 
+  useEffect(() => {
+    fetch(BASE_URL + `/me`, { mode: "no-cors" }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => {
+          setUser(user);
+        });
+      }
+    });
+  }, []);
 
- //LOGOUT
+  //LOGOUT
 
   function logout() {
     fetch(BASE_URL + `/logout`, {
@@ -47,6 +46,17 @@ useEffect(() => {
       credentials: "include",
     }).then((res) => setUser(null));
   }
+  //GET Locations
+
+  useEffect(() => {
+    fetch(BASE_URL + "/locations", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+      .then((r) => r.json())
+      .then((data) => setLocations(data));
+  }, []);
 
   //GET Doctors
 
@@ -67,7 +77,7 @@ useEffect(() => {
   return (
     <Router>
       <div className="mainDiv">
-        <NavBar logout={logout} user={user}/>
+        <NavBar logout={logout} user={user} />
         <div className="covidWarnning">
           <div>
             All Locations are open,{" "}
@@ -80,18 +90,16 @@ useEffect(() => {
 
         <Switch>
           <Route path="/doctorlogin" exact>
-            <DoctorLogin setUser={setUser}/>
+            <DoctorLogin setUser={setUser} />
           </Route>
           <Route path="/patientlogin" exact>
-            <PatientLogin setUser={setUser}/>
+            <PatientLogin setUser={setUser} />
           </Route>
           <Route path="/locations" exact>
-            <Locations 
-            locations={locations} 
-            setLocations={setLocations}/>
+            <Locations locations={locations} />
           </Route>
           <Route path="/doctors" exact>
-            <Doctors doctors={doctors}/>
+            <Doctors doctors={doctors} />
           </Route>
           <Route path="/doctors/:id" exact>
             <DoctorProfile />
@@ -100,20 +108,22 @@ useEffect(() => {
             <Patients />
           </Route>
           <Route path="/signup" exact>
-            <SignUp />
+            <SignUp locations={locations}/>
           </Route>
           <Route path="/newappointment" exact>
-            <NewAppiontment 
-            doctors={doctors} 
-            user={user} 
-            setAppoinements={setAppoinements} 
-            appointments={appointments}/>
+            <NewAppiontment
+              doctors={doctors}
+              user={user}
+              setAppoinements={setAppoinements}
+              appointments={appointments}
+            />
           </Route>
           <Route path="/appointments" exact>
-            <Appointments 
-            user={user} 
-            setAppoinements={setAppoinements} 
-            appointments={appointments}/>
+            <Appointments
+              user={user}
+              setAppoinements={setAppoinements}
+              appointments={appointments}
+            />
           </Route>
           <Route path="/" exact>
             <Home />

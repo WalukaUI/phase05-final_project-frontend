@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./SignUp.css";
 
-function SignUp({ location }) {
+function SignUp({ locations }) {
   const [newPatient, setNewPatient] = useState({});
 
   function createNewPatient(e) {
@@ -10,6 +10,8 @@ function SignUp({ location }) {
 
   function handleAddPatient(e) {
     e.preventDefault();
+    let newPatientObj = { ...newPatient, [e.target.name]: e.target.value };
+    setNewPatient(newPatientObj);
   }
 
   return (
@@ -49,24 +51,16 @@ function SignUp({ location }) {
               />
             </label>
             <label>
-              City
+              Location
               <select
                 className="form-select"
-                name="city_id"
+                name="clinic_location"
                 aria-label="Default select example"
                 onChange={handleAddPatient}
               >
-                <option value="1">Curt</option>
-                <option value="2">Leah</option>
-                <option value="3">Vesta</option>
-                <option value="4">NYC</option>
-                <option value="5">Chicago</option>
-                <option value="6">Indiana</option>
-                <option value="7">Chuck</option>
-                <option value="8">Nicolas</option>
-                <option value="9">Trenton</option>
-                <option value="10">Keli</option>
-                <option value="11">Hyman</option>
+                  {locations.map((loc)=><option value={loc.id}>{loc.name}</option>)}
+                
+
               </select>
             </label>
           </div>
@@ -100,7 +94,7 @@ function SignUp({ location }) {
                 autocomplete="on"
                 className="form-control"
                 onChange={handleAddPatient}
-                placeholder="Veryfy your Password"
+                placeholder="Re-enter your Password"
               />
             </label>
             <button className=" btn btn-success createPatientBtn" type="submit">

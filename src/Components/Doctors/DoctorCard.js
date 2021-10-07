@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import BASE_URL from "../../constraints/URL";
 import "./DoctorCard.css";
 
 function Doctor({ card }) {
+  const[comment,setComment]=useState(null)
+
+  useEffect(() => {
+    fetch(BASE_URL + `/doctors/${card.id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setComment(data.comment);
+        });
+      }
+    });
+  }, []);
+
   return (
     <div>
      
@@ -20,7 +37,7 @@ function Doctor({ card }) {
             {card.first_name} {card.last_name}
           </h5>
           <p>{card.speciality}</p>
-          <p>Ratings</p>
+          <p>Ratings: </p>
         </div>
         <div className="col col-sm-12 col-md-4">
           <p>Location: {card.clinic_location}</p>

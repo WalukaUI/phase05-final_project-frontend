@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./DocProfile.css"
 
@@ -36,7 +36,7 @@ function DoctorProfile() {
             </div>
           </div>
           <div className="col col-sm-12 col-md-4 appointmentBtnDiv">
-          <button className="btn profileBtn">Schedule Appointment</button>
+          <Link to="/newappointment"><button className="btn profileBtn">Schedule Appointment</button></Link>
           </div>
         </div>
         <div className="row profileLinksDiv">
@@ -50,8 +50,8 @@ function DoctorProfile() {
           <div className="col col-sm-12 col-md-4">Make an Appointment</div>
         </div>
         <h4>Patient Ratings and Comments</h4>
-      <div className="row" style={{backgroundColor: "#00586F", height: "60px"}}>Rating</div>
-      <div className="row" style={{backgroundColor: "#00586F", height: "60px"}}>Comments</div>
+      <div className="row" style={{backgroundColor: "#D6DFC6", height: "60px"}}>Rating</div>
+      <div className="row" style={{backgroundColor: "#D6DFC6", height: "60px"}}>Comments</div>
       <div className="row profileCommentsDiv">
         <div className="col">L</div>
         <div className="col">she is ggod</div>

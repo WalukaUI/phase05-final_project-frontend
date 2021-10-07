@@ -1,3 +1,29 @@
-.signupContainer{
-    
+.signupContainer {
+  padding-top: 30px;
+  background-color: rgb(154, 206, 206);
+  text-align: center;
+}
+.signupInnerContainer {
+  text-align: left;
+  display: flex;
+  padding: 30px;
+}
+.signUpformInnerDiv1 {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10%;
+}
+.signUpformInnerDiv2 {
+  display: flex;
+  flex-direction: column;
+}
+.signUpformInnerDiv1 input {
+  width: 70%;
+}
+.signUpformInnerDiv2 input {
+  width: 70%;
+}
+.createPatientBtn {
+  margin-top: 20px;
+  width: 20%;
 }

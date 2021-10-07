@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./NewAppointment.css";
 import BASE_URL from "../../constraints/URL";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-function NewAppiontment({ doctors, user }) {
+function NewAppiontment({ doctors, user , setAppointments, appointments}) {
   const [newAppointment, setNewAppointment] = useState({});
   const [errors, setErrors] = useState(null);
+  const [selecteddate, setSelectedDate]=useState(null)
+
+  const history = useHistory();
 
   function handleSubmit(e) {
-    e.preventDefault();
+     e.preventDefault();
     fetch(BASE_URL + `/appointments`, {
       method: "POST",
       headers: {
@@ -18,7 +23,10 @@ function NewAppiontment({ doctors, user }) {
       body: JSON.stringify(newAppointment),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((user) => {});
+        res.json().then((booking) => {
+        setAppointments([...appointments,booking])
+        history.push("/")
+        });
       } else {
         res.json().then((err) => {
           setErrors(err.error);
@@ -29,8 +37,12 @@ function NewAppiontment({ doctors, user }) {
 
   function handleNewAppointment(e) {
     e.preventDefault();
-    let newBooking = { ...newAppointment, [e.target.name]: e.target.value };
-    let newAppointmentData={...newBooking, "patient_id": user.id, "status": "open"}
+    let newBooking = { ...newAppointment, 
+        "patient_id": user.id, 
+        "status": "open",
+        "date":selecteddate, 
+        [e.target.name]: e.target.value };
+    
     setNewAppointment(newBooking);
   }
 
@@ -41,10 +53,6 @@ function NewAppiontment({ doctors, user }) {
           <div>
             <div>
               <div className="row doctorCrad">
-                <Link
-                  to={`/doctors/${doctor.id}`}
-                  style={{ textDecoration: "none" }}
-                >
                   <div className="col col-sm-12 col-md-4 docImage">
                     <img
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPPYSMvGn6iF_kZQs8YyU1jm4VczEPSx2Lpw&usqp=CAU"
@@ -58,7 +66,6 @@ function NewAppiontment({ doctors, user }) {
                     <p>{doctor.speciality}</p>
                     <p>Ratings</p>
                   </div>
-                </Link>
               </div>
             </div>
           </div>
@@ -68,22 +75,27 @@ function NewAppiontment({ doctors, user }) {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <h4>Create a new Appointment</h4>
-            <label>Doctor name</label>
-            <input
-              type="text"
-              name="doctor_id"
-              className="form-control"
-              onChange={handleNewAppointment}
-              placeholder="Enter Your First Name"
+            <label>Select a Doctor</label>
+            <select
+                    className="form-select"
+                    name="doctor_id"
+                    aria-label="Default select example"
+                    onChange={handleNewAppointment}
+                  >
+                 {doctors.map((card)=> <option value={card.id} >{card.first_name} {card.last_name}</option>)}
+
+                  </select>
+            <label>Select a Date</label>
+            <div>
+            <DatePicker 
+            name="date"
+            className="form-select"
+            selected={selecteddate} 
+            onChange={(date) => setSelectedDate(date)} 
+            dateFormat="dd/MM/yy"
+            filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
             />
-            <label>Date</label>
-            <input
-              type="text"
-              name="date"
-              className="form-control"
-              onChange={handleNewAppointment}
-              placeholder="Enter Your First Name"
-            />
+            </div>
             <label>Time</label>
                   <select
                     className="form-select"
@@ -100,12 +112,9 @@ function NewAppiontment({ doctors, user }) {
               Please select desired time slot.
             </small>
           </div>
-
-          <Link to="/appointments">
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
-          </Link>
         </form>
         <div>
           {errors

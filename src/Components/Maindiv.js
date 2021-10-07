@@ -21,6 +21,7 @@ import NewAppiontment from "./Appointments/NewAppointment"
 
 function MainContainer() {
   const [user,setUser]=useState(null)
+  const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
 
   useEffect(() => {
@@ -81,10 +82,10 @@ function MainContainer() {
             <Patients />
           </Route>
           <Route path="/newappointment" exact>
-            <NewAppiontment doctors={doctors} user={user}/>
+            <NewAppiontment doctors={doctors} user={user} setAppoinements={setAppoinements} appointments={appointments}/>
           </Route>
           <Route path="/appointments" exact>
-            <Appointments user={user}/>
+            <Appointments user={user} setAppoinements={setAppoinements} appointments={appointments}/>
           </Route>
           <Route path="/" exact>
             <Home />

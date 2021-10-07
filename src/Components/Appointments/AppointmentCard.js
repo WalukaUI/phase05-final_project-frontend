@@ -10,8 +10,8 @@ function AppointmentCard({card}){
         </div>
         <div className="col col-md-6 col-sm-12">
         <button className="btn patientDetlsBtn">Patient Details</button>
+        <button className="btn btn-danger cardDeleteBtn">Delete</button>
         </div>
-
         </div>
     )
 }

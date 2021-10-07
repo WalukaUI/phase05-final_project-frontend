@@ -25,3 +25,11 @@
     color: cornsilk;
     height: 10vh;
 }
+.createAppointmentBtn{
+    background-color: #218838;
+    height: 50px;
+    color: cornsilk;
+}
+.cardDeleteBtn{
+    float: right;
+}

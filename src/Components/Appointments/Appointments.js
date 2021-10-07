@@ -4,9 +4,8 @@ import "./Appointments.css";
 import BASE_URL from "../../constraints/URL";
 import AppointmentCard from "./AppointmentCard"
 
-function Appointments({user}){
+function Appointments({user, appointments, setAppoinements}){
 
-    const [appointments, setAppoinements] = useState(null);
 
   useEffect(() => {
     fetch( user.role === "patient" ? `${BASE_URL }/patients/${user.id}/appointments`: `${BASE_URL }/appointments`, {
@@ -55,6 +54,7 @@ function Appointments({user}){
               </ul>
             </div>
           </form>
+          <Link to="/newappointment"><button className="btn createAppointmentBtn">Schedule an Appointment</button></Link>
         </div>
         <div className="col col-md-8 col-sm-12 appointmentMainDiv">
           
@@ -62,7 +62,7 @@ function Appointments({user}){
             {appointments.length !== 0 ? 
               <h4>All Appointments</h4>
             :<div><h4>You do not have any Appointments</h4>
-            <Link to="/newappointment"><button className="btn cardBtn">Schedule an Appointment</button></Link>
+            <Link to="/newappointment"><button className="btn createAppointmentBtn">Schedule an Appointment</button></Link>
             </div>}
             </div>
      

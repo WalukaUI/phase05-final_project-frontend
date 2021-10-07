@@ -27,7 +27,6 @@
 .locationImage{
     display: flex;
     justify-content: space-evenly
-
 }
 .vl{
     border-left: solid #9e9a9a;

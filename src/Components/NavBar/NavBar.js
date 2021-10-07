@@ -99,7 +99,7 @@ function NavBar({logout, user}) {
       <div className="loginLogoutDiv">
         <h6>{user ? `You are logged in as ${user.username}`: ""}</h6>
         <a href="!#">You are serching from</a>
-        <div>Search</div>
+        <div></div>
       </div>
     </div>
   );

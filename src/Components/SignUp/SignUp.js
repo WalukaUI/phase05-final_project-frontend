@@ -68,6 +68,7 @@ function SignUp({ locations, setUser }) {
                 name="last_name"
                 placeholder="Last Name"
                 onChange={handleAddPatient}
+                required
               />
             </label>
             <label>
@@ -78,6 +79,7 @@ function SignUp({ locations, setUser }) {
                 name="email"
                 placeholder="Name"
                 onChange={handleAddPatient}
+                required
               />
             </label>
             <label>
@@ -136,7 +138,7 @@ function SignUp({ locations, setUser }) {
       <div>
         {errors
           ? errors.map((e) => (
-              <p style={{ color: "red", marginTop: "10px" }}>{e}</p>
+              <p style={{ color: "red", marginBottom: "10px" }}>{e}</p>
             ))
           : null}
       </div>

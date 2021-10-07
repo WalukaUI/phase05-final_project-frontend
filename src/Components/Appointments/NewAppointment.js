@@ -24,12 +24,14 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((booking) => {
+            console.log(booking);
         setAppoinements([...appointments,booking])
         history.push(`/patients/${user.id}/appointments`)
         });
       } else {
         res.json().then((err) => {
-          setErrors(err.error);
+            console.log(err.errors);
+          setErrors(err.errors);
         });
       }
     });
@@ -108,20 +110,18 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
                     <option value="1100">11.00 am - 12.00 pm</option>
                     <option value="1300">1.00 pm - 2.00 pm</option>
                   </select>
-            <small className="form-text text-muted">
-              Please select desired time slot.
-            </small>
           </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary formSubBtn">
               Submit
             </button>
         </form>
         <div>
-          {errors
+            {errors ? <p style={{ color: "red", marginTop: "10px" }}>Please fill all lines of the form</p>:null }
+          {/* {errors 
             ? errors.map((e) => (
                 <p style={{ color: "red", marginTop: "10px" }}>{e}</p>
               ))
-            : null}
+            : null} */}
         </div>
       </div>
     </div>

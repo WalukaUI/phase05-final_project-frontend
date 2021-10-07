@@ -17,28 +17,31 @@ function Locations() {
 
   return (
     <div>
-      <div className="row">
-        <div className="col col-sm-12 col-md-6">
+      <div className="row locationDiv">
+        <div className="col col-sm-12 col-md-6 mapDiv">
           <div>
             <h3>google Map</h3>
           </div>
         </div>
-        <div className="col col-sm-12 col-md-6">
+        <div className="col col-sm-12 col-md-6 locationInnerDiv">
         
           {locations
             ? locations.map((location) => (
                 <div>
                <div className="row locationDetails">
-                  <div  className="col col-sm-6 col-md-6 div1">
+                  <div  className="col col-sm-6 col-md-4 locationImage">
                     <img src="https://icon-library.com/images/image-icon/image-icon-16.jpg" />
+                    <div className="vl"></div>
                   </div>
-                  <div  className="col col-sm-12 col-md-6 div2">
+                  <div  className="col col-sm-12 col-md-4 locationAddress">
                     <h6>{location.name}</h6>
                     <p>{location.address_line_one}</p>
                     <p>{location.address_line_two}</p>
-                    <p>{location.city}</p>
-                    <p>{location.zipcode}</p>
-                    <p>{location.contact_number}</p>
+                    <span>{location.city} ,</span>
+                    <span>{location.zipcode}</span>
+                  </div>
+                  <div  className="col col-sm-12 col-md-4 locationContactDetls">
+                    <p>Tel. : {location.contact_number}</p>
                   </div>
                 </div>
                 </div>

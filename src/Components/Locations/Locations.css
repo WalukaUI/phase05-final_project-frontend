@@ -1,13 +1,35 @@
-.locationDetails{
-    color: rgb(41, 35, 12);
+.locationDiv {
+  background-color: rgb(219, 216, 216);
+}
+.mapDiv {
+  padding-top: 50px;
+  text-align: center;
+}
+.locationDetails {
+  padding: 20px;
+  color: rgb(41, 35, 12);
+  display: flex;
+  background-color: rgb(231, 226, 226);
+  margin: 10px;
+}
+.locationDetails img {
+  width: 60%;
+}
+.locationDetails p {
+  line-height: 0.5;
+}
+.locationDetails h6 {
+  padding-bottom: 5px;
+}
+.locationContactDetls{
+    padding-top: 30px;
+}
+.locationImage{
     display: flex;
+    justify-content: space-evenly
+
 }
-.locationDetails img{
-    width: 100px;
-}
-.div1{
-    background-color: crimson;
-}
-.div2{
-    background-color: darkblue;
+.vl{
+    border-left: solid #9e9a9a;
+    height: 90%;
 }

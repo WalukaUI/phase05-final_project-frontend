@@ -5,13 +5,15 @@ import "./DoctorCard.css";
 function Doctor({ card }) {
   return (
     <div>
-      <Link to={`/doctors/${card.id}`} style={{ textDecoration: 'none' }}>
+     
       <div className="row doctorCrad">
         <div className="col col-sm-12 col-md-4 docImage">
+        <Link to={`/doctors/${card.id}`} style={{ textDecoration: 'none' }}>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPPYSMvGn6iF_kZQs8YyU1jm4VczEPSx2Lpw&usqp=CAU"
             alt="doctor"
           />
+           </Link>
         </div>
         <div className="col col-sm-12 col-md-4">
           <h5>
@@ -29,7 +31,6 @@ function Doctor({ card }) {
           <Link to="/newappointment"><button className="btn docCardBtn">Schedule Appointment</button></Link>
         </div>
       </div>
-      </Link>
     </div>
   );
 }

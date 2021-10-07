@@ -27,8 +27,8 @@ function SignUp({ locations, setUser }) {
         });
       } else {
         res.json().then((err) => {
-          console.log(err.errors);
-          setErrors(err.errors);
+          console.log(err.error);
+          setErrors(err.error);
         });
       }
     });
@@ -133,6 +133,13 @@ function SignUp({ locations, setUser }) {
           </div>
         </div>
       </form>
+      <div>
+        {errors
+          ? errors.map((e) => (
+              <p style={{ color: "red", marginTop: "10px" }}>{e}</p>
+            ))
+          : null}
+      </div>
     </div>
   );
 }

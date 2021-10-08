@@ -12,6 +12,8 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
 
   const history = useHistory();
 
+//POST Appointment------------------------
+
   function handleSubmit(e) {
      e.preventDefault();
     fetch(BASE_URL + `/appointments`, {
@@ -37,6 +39,8 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     });
   }
 
+  //Supportive Functions----------------------
+  
   function handleNewAppointment(e) {
     e.preventDefault();
     let newBooking = { ...newAppointment, 
@@ -47,6 +51,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     
     setNewAppointment(newBooking);
   }
+
 
   return (
     <div className="row">
@@ -63,7 +68,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
         </div>
 
         {doctors.map((doctor) => (
-          <div>
+          <div key={doctor.id}>
             <div>
               <div className="row doctorCrad">
                   <div className="col col-sm-12 col-md-4 docImage">
@@ -78,7 +83,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
                       {doctor.first_name} {doctor.last_name}
                     </h5>
                     <p>{doctor.speciality}</p>
-                    <p>Ratings</p>
+                    <p>{doctor.education}</p>
                   </div>
               </div>
             </div>
@@ -96,7 +101,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
                     aria-label="Default select example"
                     onChange={handleNewAppointment}
                   >
-                 {doctors.map((card)=> <option value={card.id} >{card.first_name} {card.last_name}</option>)}
+                 {doctors.map((card)=> <option value={card.id} key={card.id}>{card.first_name} {card.last_name}</option>)}
 
                   </select>
             <label>Select a Date</label>
@@ -117,7 +122,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
                     aria-label="Default select example"
                     onChange={handleNewAppointment}
                   >
-                    <option value="0900" deaault>9.00 am - 10.00 am</option>
+                    <option value="0900">9.00 am - 10.00 am</option>
                     <option value="1000">10.00 am - 11.00 am</option>
                     <option value="1100">11.00 am - 12.00 pm</option>
                     <option value="1300">1.00 pm - 2.00 pm</option>

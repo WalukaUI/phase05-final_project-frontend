@@ -101,7 +101,7 @@ function DoctorProfile() {
 
           {docLocations?.length > 0
             ? docLocations.map((location) => (
-                <div className="row docAddressContactInfo">
+                <div className="row docAddressContactInfo" key={location.id}>
                   <div className="col col-sm-12 col-md-4">
                     <p><b>{location.name}</b></p>
                     <p>{location.address_line_one}</p>
@@ -125,7 +125,7 @@ function DoctorProfile() {
           <hr />
           {docProfile.comment?.length > 0
             ? docProfile.comment.map((card) => (
-                <div>
+                <div key={card.id}>
                   <div>
                     <h6>Rating</h6>
                     <p>{ratingStars(card.points)}</p>

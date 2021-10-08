@@ -14,7 +14,7 @@ function Home() {
                 <div className="col  col-sm-12 col-md-6  covidInfo">
                   <h4>Covid 19</h4>
                   <p>
-                    Mercy is offering first and second dose COVID-19 appointments to
+                    Our Hospital is offering first and second dose COVID-19 appointments to
                     anyone age 12 and older in most of the communities we serve. Mercy
                     is also offering third dose COVID-19 vaccine appointments for
                     moderately to severely immunocompromised individuals, individuals

@@ -19,6 +19,7 @@ import PatientLogin from "./Login/PatientLogin/PatientLogin";
 import Appointments from "./Appointments/Appointments";
 import NewAppiontment from "./Appointments/NewAppointment";
 import SignUp from "./SignUp/SignUp";
+import Profile from "./Profile/Profile"
 
 
 function MainContainer() {
@@ -108,8 +109,11 @@ function MainContainer() {
           <Route path="/patients" exact>
             <Patients />
           </Route>
-          <Route path="/signup" exact>
+          <Route path="/signup" exact> 
             <SignUp locations={locations} setUser={setUser}/>
+          </Route>
+          <Route path="/patient-profile" exact>
+            <Profile />
           </Route>
           <Route path="/newappointment" exact>
             <NewAppiontment

@@ -16,7 +16,7 @@ function AppointmentCard({
   
 
   function  filterDoctorName() {
-    let bb=doctors.filter((doc)=> doc.id == card.doctor_id )
+    let bb=doctors.filter((doc)=> doc.id === card.doctor_id )
      let fname=bb[0].first_name
      let lname=bb[0].last_name
      return fname +" "+ lname

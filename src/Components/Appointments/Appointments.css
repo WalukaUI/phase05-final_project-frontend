@@ -65,13 +65,13 @@
     position: relative;
     width: 50%;
     margin: 0 auto;
-    height: auto;
+    height: 80%;
     background: rgb(226, 219, 219);
     border-radius: 4px;
     padding: 20px;
     border: 1px solid #999;
     overflow: auto;
   }
-.formBtns{
-  margin-top: 10px;
+.formSubBtn{
+  margin-left: 10px;
 }

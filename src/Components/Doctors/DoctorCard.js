@@ -18,7 +18,7 @@ function Doctor({ card }) {
         });
       }
     });
-  }, []);
+  }, [card.id]);
 
   function rating(array){
     let points=[]

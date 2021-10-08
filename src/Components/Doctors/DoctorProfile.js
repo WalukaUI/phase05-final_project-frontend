@@ -5,7 +5,10 @@ import "./DocProfile.css";
 
 function DoctorProfile() {
   const [docProfile, setDocProfile] = useState([]);
+  const [docLocations,setDocLocation]=useState([])
   const params = useParams();
+
+  //-----------------GET Doctor----------------
 
   useEffect(() => {
     fetch(BASE_URL + `/doctors/${params.id}`, {
@@ -16,6 +19,20 @@ function DoctorProfile() {
       .then((r) => r.json())
       .then((data) => setDocProfile(data));
   }, [params.id]);
+
+  //------------------GET Locations-------------
+
+  useEffect(() => {
+    fetch(BASE_URL + `/doctors/${params.id}/locations`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+      .then((r) => r.json())
+      .then((data) => setDocLocation(data));
+  }, [params.id]);
+
+  //---------------Rating calculator------------
 
   function rating(array) {
     let points = [];
@@ -30,6 +47,7 @@ function DoctorProfile() {
     }
   }
 
+  //-------------------emoji--------------------
   function ratingStars(rate) {
     const emoji = "⭐";
     let emojis = "";
@@ -43,7 +61,7 @@ function DoctorProfile() {
     <>
       <div className="profile row">
         <div className="row profileTopDiv">
-          <div className="col col-sm-12 col-md-4">
+          <div className="col col-sm-12 col-md-4 imageContainer">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPPYSMvGn6iF_kZQs8YyU1jm4VczEPSx2Lpw&usqp=CAU"
               alt="doctor"
@@ -57,40 +75,52 @@ function DoctorProfile() {
             <div>
               <h6>Average Ratings: {rating(docProfile.comment)}</h6>
               <p>{ratingStars(rating(docProfile.comment))}</p>
-              <a href="!#">Comments & Ratings</a>
+              <a href="#patientRatings">Comments & Ratings</a>
             </div>
           </div>
           <div className="col col-sm-12 col-md-4 appointmentBtnDiv">
             <Link to="/newappointment">
-              <button className="btn profileBtn">Schedule Appointment</button>
+              <button className="btn profileBtn">Schedule an Appointment</button>
             </Link>
           </div>
         </div>
         <div className="row profileLinksDiv">
-          <div className="col col-sm-12 col-md-4">
-            <a href="!#">About</a>
+          <div className="col col-sm-12 col-md-6">
+            <a href="#about">About</a>
           </div>
-          <div className="col col-sm-12 col-md-4">
-            <a href="!#">Ratings and Comments</a>
-          </div>
-          <div className="col col-sm-12 col-md-4">
-            <a href="!#">Make an Appointment</a>
+          <div className="col col-sm-12 col-md-6">
+            <a href="#patientRatings">Ratings and Comments</a>
           </div>
         </div>
-        <div className="row profileAboutDiv">
-          <div className="col col-sm-12 col-md-4">
-            Location and Contact Information
-          </div>
-          <div className="col col-sm-12 col-md-4">
-            {docProfile.first_name} {docProfile.last_name}, MD
-          </div>
-          <div className="col col-sm-12 col-md-4">Make an Appointment</div>
+        <div className="profileAboutDiv" id="about">
+          <h5>Location and Contact Information</h5>
+          <hr />
+        {docLocations?.length > 0 ? 
+
+        docLocations.map((location)=>
+        <div className="row">
+        <div className="col col-sm-12 col-md-4">
+          <p>{location.name}</p>
+          <p>{location.address_line_one}</p>
+          <p>{location.address_line_two}</p>
+          <p>{location.city}</p>
+          <p>{location.zipcode}</p>
         </div>
-        <h4>Patient Ratings and Comments</h4>
+        <div className="col col-sm-12 col-md-4">
+        <p>{location.contact_number}</p>
+        </div>
+        <div className="col col-sm-12 col-md-4">
+        </div>
+      </div>
+        )
+        :""}
+</div>
         <div
           className="row"
           style={{ backgroundColor: "#D6DFC6" }}
         >
+          <h5 id="patientRatings">Patient Ratings and Comments</h5>
+          <hr />
           {docProfile.comment?.length > 0 ? (
             docProfile.comment.map((card)=>
             <div>

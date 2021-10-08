@@ -6,6 +6,7 @@
 }
 .profileTopDiv{
     background-color: rgb(201, 228, 228);
+    padding-left: 0vw;
 }
 .profileLinksDiv{
     border: 1px solid;
@@ -23,8 +24,10 @@
  color: black;
  text-decoration: underline;
 }
+.imageContainer{
+    padding-left: 0vw;
+}
 .profileAboutDiv{
-    height: 200px;
     background-color: rgb(212, 207, 226);
 }
 .profileCommentsDiv{

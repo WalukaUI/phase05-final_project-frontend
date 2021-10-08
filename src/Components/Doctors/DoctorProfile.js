@@ -49,7 +49,7 @@ function DoctorProfile() {
 
   //-------------------emoji--------------------
   function ratingStars(rate) {
-    const emoji = "⭐";
+    let emoji = "⭐";
     let emojis = "";
     for (let i = 0; i < rate; i++) {
       emojis += emoji;
@@ -117,7 +117,7 @@ function DoctorProfile() {
                   <div className="col col-sm-12 col-md-4"></div>
                 </div>
               ))
-            : ""}
+            : <p>N/A</p>}
         </div>
         <div className="row" style={{ backgroundColor: "#D6DFC6" }}>
           <h5 id="patientRatings">Patient Ratings and Comments</h5>
@@ -135,7 +135,7 @@ function DoctorProfile() {
                   </div>
                 </div>
               ))
-            : ""}
+            : <p>N/A</p>}
         </div>
       </div>
     </>

@@ -6,7 +6,7 @@
 }
 .profileTopDiv{
     background-color: rgb(201, 228, 228);
-    padding-left: 0vw;
+    padding-left: 0vw; 
 }
 .profileLinksDiv{
     border: 1px solid;
@@ -64,4 +64,7 @@
 }
 .telephoneNum p{
 padding-left: 10px;
+}
+#patientRatings{
+    padding-top: 2vh;
 }

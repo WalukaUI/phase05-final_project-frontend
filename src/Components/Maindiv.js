@@ -124,6 +124,7 @@ function MainContainer() {
               user={user}
               setAppoinements={setAppoinements}
               appointments={appointments}
+              doctors={doctors}
             />
           </Route>
           <Route path="/" exact>

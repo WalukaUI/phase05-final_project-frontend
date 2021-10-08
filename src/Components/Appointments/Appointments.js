@@ -4,7 +4,7 @@ import "./Appointments.css";
 import BASE_URL from "../../constraints/URL";
 import AppointmentCard from "./AppointmentCard"
 
-function Appointments({user, appointments, setAppoinements}){
+function Appointments({user, appointments, setAppoinements, doctors}){
 
 
   useEffect(() => {
@@ -69,7 +69,7 @@ function Appointments({user, appointments, setAppoinements}){
             </div>}
             </div>
      
-     {appointments.map((card)=><AppointmentCard key={card.id} card={card} deleteAppointment={deleteAppointment}/>)}
+     {appointments.map((card)=><AppointmentCard key={card.id} card={card} deleteAppointment={deleteAppointment} doctors={doctors}/>)}
      </div>
     </div>
     )

@@ -1,9 +1,8 @@
 .doctorCrad{
     opacity: 0.8;
-    /* padding: 0px 10px 0px 0px; */
     margin: 10px 10px 0px 10px;
     color: black;
-    background-color: rgb(59, 236, 177);
+    background-color: rgb(173, 240, 218);
 }
 .doctorCrad div{
     padding: 10px;
@@ -19,7 +18,6 @@
     border-radius: 0;
     color: cornsilk;
     height: 10vh;
-    margin-top: 5px;
     z-index: 1;
 }
 .doctorMoreDetails{
@@ -27,12 +25,16 @@
     flex-direction: column;
 }
 .commentRow{
-    padding-top: 5px;
-    background-color: blueviolet;
+    background-color: rgb(202, 245, 231);
     margin: 0px 10px 10px 10px;
     display: flex;
     align-items: center;
 }
 .commentRow p{
     line-height: 0.5;
+}
+.commentRowDiv2{
+    padding-right: 0vw;
+    display: flex;
+    justify-content: right;
 }

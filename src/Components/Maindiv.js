@@ -113,7 +113,7 @@ function MainContainer() {
             <SignUp locations={locations} setUser={setUser}/>
           </Route>
           <Route path="/patient-profile" exact>
-            <Profile />
+            <Profile user={user} appointments={appointments}/>
           </Route>
           <Route path="/newappointment" exact>
             <NewAppiontment

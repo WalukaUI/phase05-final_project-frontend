@@ -100,7 +100,7 @@ function NavBar({logout, user}) {
         <h6>{user ? `You are logged in as ${user.username}`: ""}</h6>
         <a href="!#">You are serching from</a>
         <div>
-          <Link to="/patient-profile"className="btn btn-light">Account Settings</Link>
+        {user ? <Link to="/patient-profile"className="btn btn-light">Account Settings</Link>: ""}
         </div>
       </div>
     </div>

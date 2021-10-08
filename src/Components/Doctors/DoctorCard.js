@@ -79,7 +79,7 @@ function Doctor({ card }) {
         </div>
         <div className="col col-sm-12 col-md-6 commentRowDiv2">
           <Link to="/newappointment">
-            <button className="btn docCardBtn">Schedule Appointment</button>
+            <button className="btn docCardBtn">Schedule an Appointment</button>
           </Link>
         </div>
       </div>

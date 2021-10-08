@@ -26,7 +26,8 @@ function Doctor({ card }) {
       array.forEach(e =>points.push(e.points))
       let pointSum= points.reduce((a,b)=> a+b,0)
       let pointaverage=(pointSum/points.length).toFixed(2)
-      return pointaverage
+      let roundNum=Math.floor(pointaverage)
+      return roundNum
     }else{
       return "N/A"
     }

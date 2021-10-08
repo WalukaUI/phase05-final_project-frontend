@@ -26,7 +26,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
         res.json().then((booking) => {
             console.log(booking);
         setAppoinements([...appointments,booking])
-        history.push(`/patients/${user.id}/appointments`)
+        history.push("/appointments")
         });
       } else {
         res.json().then((err) => {

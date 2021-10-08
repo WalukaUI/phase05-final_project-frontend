@@ -17,6 +17,28 @@ function DoctorProfile() {
       .then((data) => setDocProfile(data));
   }, [params.id]);
 
+  function rating(array){
+    let points=[]
+    if(array?.length > 0){
+      array.forEach(e =>points.push(e.points))
+      let pointSum= points.reduce((a,b)=> a+b,0)
+      let pointaverage=(pointSum/points.length).toFixed(2)
+      let roundNum=Math.floor(pointaverage)
+      return roundNum
+    }else{
+      return "N/A"
+    }
+  }
+
+  function ratingStars(rate) {
+    const emoji ="⭐" 
+    let emojis = "";
+    for (let i = 0; i < rate; i ++) {
+      emojis += emoji;
+    }
+    return emojis;
+  }
+
   return <>
       <div className="profile row">
         <div className="row profileTopDiv">
@@ -30,8 +52,8 @@ function DoctorProfile() {
             <h5>{docProfile.first_name} {docProfile.last_name}</h5>
             <p>Speciality: {docProfile.speciality}</p>
             <div>
-              <h6>Average Ratings</h6>
-               <p>⭐⭐⭐⭐⭐</p>
+              <h6>Average Ratings: {rating(docProfile.comment)}</h6>
+               <p>{ratingStars(rating(docProfile.comment))}</p>
                <a href="!#">Comments & Ratings</a>
             </div>
           </div>

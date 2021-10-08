@@ -1,12 +1,18 @@
 .doctorCrad{
     opacity: 0.8;
-    padding: 10px;
-    margin: 10px;
+    /* padding: 0px 10px 0px 0px; */
+    margin: 10px 10px 0px 10px;
     color: black;
-    background-color: rgb(204, 248, 233);
+    background-color: rgb(59, 236, 177);
 }
 .doctorCrad div{
     padding: 10px;
+}
+.docImagediv{
+    padding: 0px !important;
+}
+.docImage{
+    width: 40%;
 }
 .docCardBtn{
     background-color: #155B7F;
@@ -15,4 +21,18 @@
     height: 10vh;
     margin-top: 5px;
     z-index: 1;
+}
+.doctorMoreDetails{
+    display: flex;
+    flex-direction: column;
+}
+.commentRow{
+    padding-top: 5px;
+    background-color: blueviolet;
+    margin: 0px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+}
+.commentRow p{
+    line-height: 0.5;
 }

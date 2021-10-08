@@ -75,6 +75,7 @@ function DoctorProfile() {
             <div>
               <h6>Average Ratings: {rating(docProfile.comment)}</h6>
               <p>{ratingStars(rating(docProfile.comment))}</p>
+              <p>{docProfile.comment?.length} {docProfile.comment?.length > 1 ? "comments" : "comment"}</p>
               <a href="#patientRatings">Comments & Ratings</a>
             </div>
           </div>
@@ -130,7 +131,7 @@ function DoctorProfile() {
                     <p>{ratingStars(card.points)}</p>
                   </div>
                   <div>
-                    <h6>Comments</h6>
+                    <h6>Comment</h6>
                     <p>{card.comment}</p>
                   </div>
                 </div>

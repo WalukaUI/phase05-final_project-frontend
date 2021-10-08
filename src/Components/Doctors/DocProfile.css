@@ -13,6 +13,12 @@
     height: 50px;
     background-color: rgb(172, 201, 201);
 }
+.profileAboutDiv h5{
+    margin-top: 2vh;
+}
+.docAddressContactInfo{
+ padding-left: 30px;
+}
 .profileLinksDiv div{
     display: flex;
     background-color: rgb(172, 201, 201);
@@ -28,11 +34,14 @@
     padding-left: 0vw;
 }
 .profileAboutDiv{
-    background-color: rgb(212, 207, 226);
+    background-color: #C6DFE0;
+}
+.profileAboutDiv p{
+ line-height: 0.5;
 }
 .profileCommentsDiv{
     height: 200px;
-    background-color: rgb(218, 226, 196); 
+    background-color: #C7E0E1; 
 }
 .aboutDoctor{
     margin-top: 30px;
@@ -49,4 +58,10 @@
     color: cornsilk;
     height: 10vh;
     margin-top: 20px;
+}
+.telephoneNum{
+    display: flex;
+}
+.telephoneNum p{
+padding-left: 10px;
 }

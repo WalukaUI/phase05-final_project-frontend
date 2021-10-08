@@ -5,7 +5,7 @@ import "./DocProfile.css";
 
 function DoctorProfile() {
   const [docProfile, setDocProfile] = useState([]);
-  const [docLocations,setDocLocation]=useState([])
+  const [docLocations, setDocLocation] = useState([]);
   const params = useParams();
 
   //-----------------GET Doctor----------------
@@ -80,7 +80,9 @@ function DoctorProfile() {
           </div>
           <div className="col col-sm-12 col-md-4 appointmentBtnDiv">
             <Link to="/newappointment">
-              <button className="btn profileBtn">Schedule an Appointment</button>
+              <button className="btn profileBtn">
+                Schedule an Appointment
+              </button>
             </Link>
           </div>
         </div>
@@ -92,52 +94,48 @@ function DoctorProfile() {
             <a href="#patientRatings">Ratings and Comments</a>
           </div>
         </div>
-        <div className="profileAboutDiv" id="about">
+        <div className="row profileAboutDiv" id="about">
           <h5>Location and Contact Information</h5>
           <hr />
-        {docLocations?.length > 0 ? 
 
-        docLocations.map((location)=>
-        <div className="row">
-        <div className="col col-sm-12 col-md-4">
-          <p>{location.name}</p>
-          <p>{location.address_line_one}</p>
-          <p>{location.address_line_two}</p>
-          <p>{location.city}</p>
-          <p>{location.zipcode}</p>
+          {docLocations?.length > 0
+            ? docLocations.map((location) => (
+                <div className="row docAddressContactInfo">
+                  <div className="col col-sm-12 col-md-4">
+                    <p><b>{location.name}</b></p>
+                    <p>{location.address_line_one}</p>
+                    <p>{location.address_line_two}</p>
+                    <p>{location.city}</p>
+                    <p>{location.zipcode}</p>
+                  </div>
+                  <div className="col col-sm-12 col-md-4">
+                    <div className="telephoneNum">
+                    <img src="/telephone.svg" alt="call"/><p>{location.contact_number}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="col col-sm-12 col-md-4"></div>
+                </div>
+              ))
+            : ""}
         </div>
-        <div className="col col-sm-12 col-md-4">
-        <p>{location.contact_number}</p>
-        </div>
-        <div className="col col-sm-12 col-md-4">
-        </div>
-      </div>
-        )
-        :""}
-</div>
-        <div
-          className="row"
-          style={{ backgroundColor: "#D6DFC6" }}
-        >
+        <div className="row" style={{ backgroundColor: "#D6DFC6" }}>
           <h5 id="patientRatings">Patient Ratings and Comments</h5>
           <hr />
-          {docProfile.comment?.length > 0 ? (
-            docProfile.comment.map((card)=>
-            <div>
-            <div>
-              <h6>Rating</h6>
-              <p>{ratingStars(card.points)}</p>
-            </div>
-            <div>
-              <h6>Comments</h6>
-              <p>{card.comment}</p>
-            </div>
-          </div>
-            )
-
-          ) : (
-            ""
-          )}
+          {docProfile.comment?.length > 0
+            ? docProfile.comment.map((card) => (
+                <div>
+                  <div>
+                    <h6>Rating</h6>
+                    <p>{ratingStars(card.points)}</p>
+                  </div>
+                  <div>
+                    <h6>Comments</h6>
+                    <p>{card.comment}</p>
+                  </div>
+                </div>
+              ))
+            : ""}
         </div>
       </div>
     </>

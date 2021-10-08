@@ -6,7 +6,7 @@ import AppointmentCard from "./AppointmentCard"
 
 function Appointments({user, appointments, setAppoinements, doctors}){
 
-
+//GET Appointments-------------------------
   useEffect(() => {
     fetch( user.role === "patient" ? `${BASE_URL }/patients/${user.id}/appointments`: `${BASE_URL }/appointments`, {
       method: "GET",
@@ -21,6 +21,8 @@ function Appointments({user, appointments, setAppoinements, doctors}){
     });
   }, [user.role, user.id, setAppoinements]);
 
+  //DELETE Appointment-----------------------
+
   function deleteAppointment(id){
     fetch(BASE_URL + `/appointments/${id}`, {
       method: "DELETE",
@@ -30,7 +32,28 @@ function Appointments({user, appointments, setAppoinements, doctors}){
     setAppoinements(newAppointmentsList);
   }
   
+//PATCH Appointment-------------------------
 
+function editAppointment(data) {
+  fetch(BASE_URL + `/appointments/${data.id}`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((obj) => {
+      const newData = appointments.filter(
+        (app) => app.id !== data.id
+      );
+
+      setAppoinements([...newData, obj]);
+    });
+  
+}
   if (!appointments) return null;
 
     return (
@@ -69,7 +92,13 @@ function Appointments({user, appointments, setAppoinements, doctors}){
             </div>}
             </div>
      
-     {appointments.map((card)=><AppointmentCard key={card.id} card={card} deleteAppointment={deleteAppointment} doctors={doctors}/>)}
+     {appointments.map((card)=><AppointmentCard 
+     key={card.id} 
+     card={card} 
+     deleteAppointment={deleteAppointment} 
+     doctors={doctors}
+     editAppointment={editAppointment}
+     />)}
      </div>
     </div>
     )

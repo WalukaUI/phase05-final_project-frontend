@@ -13,7 +13,7 @@ function AppointmentCard({
   const [updatedAppointment, setUpdatedAppointment] = useState(null);
   const [display, setDisplay] = useState(true);
   const [selecteddate, setSelectedDate] = useState(null);
-  const [docName,setDocname]=useState({})
+  
 
   function  filterDoctorName() {
     let bb=doctors.filter((doc)=> doc.id == card.doctor_id )
@@ -41,8 +41,7 @@ function AppointmentCard({
   function handleEdit(e) {
     e.preventDefault();
     setDisplay(!display);
-    console.log(updatedAppointment);
-    // editAppointment(card);
+    editAppointment(updatedAppointment)
   }
 
   return display ? (

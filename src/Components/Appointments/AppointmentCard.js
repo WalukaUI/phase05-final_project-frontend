@@ -48,28 +48,22 @@ function AppointmentCard({
     <div>
       <div className=" row appointmentCard">
         <div className="col col-md-6 col-sm-12">
-          <h4>Date: {card.date}</h4>
-          <h6>Time: {card.time}</h6>
-          <h6> Doctor Name: {filterDoctorName()}</h6>
+          <p><b>Date:</b> {card.date}</p>
+          <p>Time: {card.time}</p>
+          <p> Doctor Name: {filterDoctorName()}</p>
         </div>
         <div className="col col-md-6 col-sm-12">
           <button
-            className="btn patientDetlsBtn"
+            className="btn chnageAppBtn"
             onClick={handleEditAppointment}
           >
             Change Appointment
           </button>
           <button
-            className="btn btn-danger cardDeleteBtn"
+            className="btn deleteAppBtn"
             onClick={handleDelete}
           >
             Delete
-          </button>
-          <button
-            className="btn btn-danger cardDeleteBtn"
-            onClick={filterDoctorName}
-          >
-            Degdgdg
           </button>
         </div>
       </div>

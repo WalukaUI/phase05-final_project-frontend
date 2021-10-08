@@ -86,7 +86,7 @@ function editAppointment(data) {
           
             <div className="appointmentCardHead">
             {appointments.length !== 0 ? 
-              <h4>All Appointments</h4>
+              <h4>Your All Appointments</h4>
             :<div><h4>You do not have any Appointments</h4>
             <Link to="/newappointment"><button className="btn createAppointmentBtn">Schedule an Appointment</button></Link>
             </div>}

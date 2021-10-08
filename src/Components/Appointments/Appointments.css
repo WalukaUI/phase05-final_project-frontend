@@ -17,13 +17,30 @@
 .appointmentCard{
     background-color: #E2F0F0;
     margin: 10px;
-    padding: 10px;
+    padding: 15px 10px 0px 10px;
+}
+.appointmentCard p{
+line-height: 0.6;
 }
 .patientDetlsBtn{
     background-color: #155B7F;
     border-radius: 0;
     color: cornsilk;
     height: 10vh;
+}
+.chnageAppBtn{
+  background-color: #155B7F;
+  border-radius: 0;
+  color: cornsilk;
+  margin-left: 10px;
+  height: 10vh;
+}
+.deleteAppBtn{
+  background-color: #f7105d;
+  border-radius: 0;
+  color: cornsilk;
+  height: 10vh;
+  margin-left: 10px;
 }
 .createAppointmentBtn{
     background-color: #218838;

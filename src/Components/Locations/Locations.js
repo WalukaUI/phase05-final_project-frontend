@@ -4,6 +4,8 @@ import "./Locations.css"
 function Locations({locations}) {
   const[searchTearm,setSearchTearm]=useState("")
 
+  //supportive functions---------------------
+  
   function activeSearch(e) {
     e.preventDefault()
     setSearchTearm(e.target.value)

@@ -9,6 +9,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
   const [newAppointment, setNewAppointment] = useState({});
   const [errors, setErrors] = useState(null);
   const [selecteddate, setSelectedDate]=useState(null)
+  const[searchTearm,setSearchTearm]=useState("")
 
   const history = useHistory();
 
@@ -52,6 +53,10 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     setNewAppointment(newBooking);
   }
 
+  function activeSearch(e) {
+    e.preventDefault()
+    setSearchTearm(e.target.value)
+  }
 
   return (
     <div className="row">
@@ -61,13 +66,14 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
             <input
               type="text"
               className="form-control"
-              placeholder="Search Doctors By Name"
+              placeholder="Search Doctors By Last Name"
+              onChange={activeSearch}
             />
-            <button className="btn btn-primary searchBtn">Search</button>
           </form>
         </div>
 
-        {doctors.map((doctor) => (
+        {doctors.filter((card)=>card.last_name.toLowerCase().includes(searchTearm.toLowerCase()))
+        .map((doctor) => (
           <div key={doctor.id}>
             <div>
               <div className="row doctorCrad">

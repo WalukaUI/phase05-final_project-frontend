@@ -1,9 +1,18 @@
-import React  from "react";
+import React, { useState }  from "react";
 import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
 
 function Doctors({doctors, user}) {
+  const[searchTearm,setSearchTearm]=useState("")
+  const[dermatalogist,setDermatalogist]=useState(false)
+  const[familyMd, setFamilyMd]=useState(false)
+  const[anesthesiology,setAnesthesiology]=useState(false)
+
+  function activeSearch(e) {
+    e.preventDefault()
+    setSearchTearm(e.target.value)
+  }
 
   return (
     <div>
@@ -12,6 +21,7 @@ function Doctors({doctors, user}) {
           <form>
             <input
               type="text"
+              onChange={activeSearch}
               className="form-control"
               placeholder="Last name"
             />
@@ -37,19 +47,20 @@ function Doctors({doctors, user}) {
                 <li className="serchTearms">
                   <label>Dermatalogist</label>
                   <div>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={()=>setDermatalogist(!dermatalogist)}/>
+
                   </div>
                 </li>
                 <li className="serchTearms">
                   <label>Family Medicine</label>
                   <div>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={()=>setFamilyMd(!familyMd)}/>
                   </div>
                 </li>
                 <li className="serchTearms">
-                  <label>Pediatric</label>
+                  <label>Anesthesiology</label>
                   <div>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={()=>setAnesthesiology(!anesthesiology)}/>
                   </div>
                 </li>
                 <li className="serchTearms">
@@ -72,7 +83,13 @@ function Doctors({doctors, user}) {
           {doctors === null ? (
             <CardLoadAnimation />
           ) : (
-            doctors.map((card) => <Doctor key={card.id} card={card} user={user}/>)
+
+            doctors.filter((card)=>card.last_name.toLowerCase().includes(searchTearm.toLowerCase()))
+            .filter((card)=> familyMd ? card.speciality === "Family medicine":card)
+            .filter((card)=> dermatalogist ? card.speciality === "Dermatology":card)
+            .filter((card)=>anesthesiology ? card.speciality === "Anesthesiology":card)
+            //.filter((card)=>card.isacceptnewpatients === true)
+            .map((card) => <Doctor key={card.id} card={card} user={user}/>)
           )}
         </div>
       </div>

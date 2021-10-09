@@ -181,7 +181,7 @@ function Profile({ user, appointments, locations, setUser }) {
                 Cancel
               </button>
             ) : (
-              ""
+              <Link to="/"><button className="btn profileCancelBtn">Cancel</button></Link>
             )}
           </div>
         </div>

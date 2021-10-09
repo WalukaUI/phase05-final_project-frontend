@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -99,7 +99,9 @@ function MainContainer() {
             <PatientLogin setUser={setUser} />
           </Route>
           <Route path="/locations" exact>
+        
             <Locations locations={locations} />
+      
           </Route>
           <Route path="/doctors" exact>
             <Doctors doctors={doctors} user={user}/>

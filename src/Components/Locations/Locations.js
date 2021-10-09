@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GoogleMap, Marker, withScriptjs, withGoogleMap } from "react-google-maps"
+import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps"
 import "./Locations.css"
 
 function Locations({locations}) {
@@ -7,16 +7,16 @@ function Locations({locations}) {
 
   //GoogleMap--------------------------------
 
-  function maps() {
+  function Maps() {
     return(
       <GoogleMap
-      defaultZoom={8}
-      defaultCenter={{ lat: -34.397, lng: 150.644 }}
+      defaultZoom={10}
+      defaultCenter={{ lng: -90.19383204054196, lat: 38.63217176910362 }} 
     />
     )
   }
 
-  const Mapwrapper = withScriptjs(withGoogleMap(maps));
+  const Mapwrapper = withScriptjs(withGoogleMap(Maps));
 
 
 
@@ -32,7 +32,16 @@ function Locations({locations}) {
         <div className="col col-sm-12 col-md-6 mapDiv">
           <div>
           
-            <Mapwrapper googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}/>
+            <Mapwrapper 
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
+              process.env.REACT_APP_GOOGLE_KEY
+            }`}
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            />
+
+
           </div>
         </div>
         <div className="col col-sm-12 col-md-6 locationInnerDiv">

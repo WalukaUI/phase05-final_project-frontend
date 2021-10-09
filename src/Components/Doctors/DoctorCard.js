@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./DoctorCard.css";
 
-function Doctor({ card }) {
+function Doctor({ user, card }) {
   const [comment, setComment] = useState(null);
 
   useEffect(() => {
@@ -65,7 +65,7 @@ function Doctor({ card }) {
               <img
                 src="./contact.svg"
                 alt="contact"
-                style={{ paddingRight: "10px" }}
+                style={{ paddingRight: "10px", width:"10%" }}
               />
               {card.email}
             </p>
@@ -78,7 +78,7 @@ function Doctor({ card }) {
           <p>{ratingStars(rating(comment))}</p>
         </div>
         <div className="col col-sm-12 col-md-6 commentRowDiv2">
-          <Link to="/newappointment">
+          <Link to={user?"/newappointment":"/patientlogin"}>
             <button className="btn docCardBtn">Schedule an Appointment</button>
           </Link>
         </div>

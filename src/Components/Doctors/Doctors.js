@@ -3,7 +3,7 @@ import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
 
-function Doctors({doctors}) {
+function Doctors({doctors, user}) {
 
   return (
     <div>
@@ -72,7 +72,7 @@ function Doctors({doctors}) {
           {doctors === null ? (
             <CardLoadAnimation />
           ) : (
-            doctors.map((card) => <Doctor key={card.id} card={card} />)
+            doctors.map((card) => <Doctor key={card.id} card={card} user={user}/>)
           )}
         </div>
       </div>

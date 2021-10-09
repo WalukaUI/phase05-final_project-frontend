@@ -1,9 +1,13 @@
 .profileAppointments {
   display: flex;
 }
+.profileEditBtn {
+    background-color: rgb(66, 66, 235);
+    color: rgb(238, 234, 229);
+    height: 8vh;
+}
 /* .editProfileDiv {
 }
-.profileEditBtn {
-}
+
 .profileNewAppointmentBtn {
 } */

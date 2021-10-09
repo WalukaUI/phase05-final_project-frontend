@@ -91,7 +91,7 @@ function SignUp({ locations, setUser }) {
                 onChange={handleAddPatient}
               >
                 {locations.map((loc) => (
-                  <option value={loc.id}>{loc.name}</option>
+                  <option value={loc.id} key={loc.id}>{loc.name}</option>
                 ))}
               </select>
             </label>
@@ -112,7 +112,7 @@ function SignUp({ locations, setUser }) {
               <input
                 type="password"
                 name="password"
-                autocomplete="on"
+                autoComplete="on"
                 className="form-control"
                 onChange={handleAddPatient}
                 placeholder="Password"
@@ -123,7 +123,7 @@ function SignUp({ locations, setUser }) {
               <input
                 type="password"
                 name="password_confirmation"
-                autocomplete="on"
+                autoComplete="on"
                 className="form-control"
                 onChange={handleAddPatient}
                 placeholder="Re-enter your Password"

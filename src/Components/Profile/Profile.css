@@ -7,6 +7,19 @@
     height: 8vh;
     width:150px;
 }
+.profileSaveBtn {
+    background-color: rgb(4, 161, 25);
+    color: rgb(238, 234, 229);
+    height: 8vh;
+    width:150px;
+}
+.profileCancelBtn{
+    margin-top: 20px;
+    background-color: rgb(238, 13, 13);
+    color: rgb(238, 234, 229);
+    height: 8vh;
+    width:150px;  
+}
 /* .editProfileDiv {
 }
 

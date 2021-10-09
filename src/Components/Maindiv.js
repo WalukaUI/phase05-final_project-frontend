@@ -27,6 +27,7 @@ function MainContainer() {
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
+ 
 
   // auto-login
 
@@ -113,7 +114,14 @@ function MainContainer() {
             <SignUp locations={locations} setUser={setUser}/>
           </Route>
           <Route path="/patient-profile" exact>
-            <Profile user={user} appointments={appointments} locations={locations} setUser={setUser}/>
+            <Profile 
+            user={user} 
+            appointments={appointments} 
+            locations={locations} 
+            setUser={setUser}
+            // updateUserData={updateUserData}
+            // setUpdateUserData={setUpdateUserData}
+            />
           </Route>
           <Route path="/newappointment" exact>
             <NewAppiontment

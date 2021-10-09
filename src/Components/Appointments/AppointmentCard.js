@@ -16,9 +16,9 @@ function AppointmentCard({
   
 
   function  filterDoctorName() {
-    let bb=doctors.filter((doc)=> doc.id === card.doctor_id )
-     let fname=bb[0].first_name
-     let lname=bb[0].last_name
+    let filteredDoc=doctors.filter((doc)=> doc.id === card.doctor_id )
+     let fname=filteredDoc[0].first_name
+     let lname=filteredDoc[0].last_name
      return fname +" "+ lname
      
   }
@@ -85,7 +85,7 @@ function AppointmentCard({
                   onChange={handleChange}
                 >
                   {doctors.map((card) => (
-                    <option value={card.id}>
+                    <option value={card.id} key={card.id}>
                       {card.first_name} {card.last_name}
                     </option>
                   ))}

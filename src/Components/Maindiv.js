@@ -119,8 +119,6 @@ function MainContainer() {
             appointments={appointments} 
             locations={locations} 
             setUser={setUser}
-            // updateUserData={updateUserData}
-            // setUpdateUserData={setUpdateUserData}
             />
           </Route>
           <Route path="/newappointment" exact>

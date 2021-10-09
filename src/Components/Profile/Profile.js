@@ -38,41 +38,62 @@ function Profile({ user, appointments, locations, setUser }) {
     return nn[0];
   }
   //Supportive Functions------------------------
-
   function triggerEditWindow(e) {
     e.preventDefault();
     setPopup(!popup);
   }
 
+  function handleChange(e) {
+    e.preventDefault();
+  }
   return (
     <div className="profile">
+       <form>
       <div className="row profileDetails">
         <h5>Your Profile</h5>
         <hr />
+       
         <div className="col col-sm-12 col-md-5">
           <p>
             <b>First Name:</b> {popup ?
             <input value={user.first_name} 
             name="first_name"
+            onChange={handleChange}
             />
             :user.first_name} 
           </p>
           <p>
-            <b>First Name:</b> {popup ?<input  value={user.last_name} name="last_name"/>:user.last_name}
+            <b>First Name:</b> {popup ?<input  value={user.last_name} name="last_name" onChange={handleChange}/>:user.last_name}
           </p>
           <p>
-            <b>User name:</b> {popup ?<input  value={user.username} name="username"/>:user.username}
+            <b>User name:</b> {popup ?<input  value={user.username} name="username" onChange={handleChange}/>:user.username}
           </p>
           <p>
-            <b>Clinic Location:</b> {popup ?<input />:showUserClinicName(user.clinic_location)}
+            <b>Clinic Location:</b> {popup ?
+            <label>
+            <select
+            className="form-select"
+            name="location_id"
+            value={user.location_id}
+            aria-label="Default select example"
+            onChange={handleChange}
+          >
+            {locations.map((card) => (
+              <option value={card.id}>
+                {card.name}
+              </option>
+            ))}
+          </select></label>
+            
+            :showUserClinicName(user.clinic_location)}
           </p>
         </div>
         <div className="col col-sm-12 col-md-5">
           <p>
-            <b>Contact Number:</b> {popup ?<input value={user.contact_number} name="contact_number"/>:user.contact_number}
+            <b>Contact Number:</b> {popup ?<input value={user.contact_number} name="contact_number" onChange={handleChange}/>:user.contact_number}
           </p>
           <p>
-            <b>Email Address:</b> {popup ?<input value={user.email} name="email"/>:user.email}
+            <b>Email Address:</b> {popup ?<input value={user.email} name="email" onChange={handleChange}/>:user.email}
           </p>
         </div>
         <div className="col col-sm-12 col-md-2 editProfileDiv">
@@ -80,7 +101,9 @@ function Profile({ user, appointments, locations, setUser }) {
             {popup ? "Save":"Edit profile"}
           </button>
         </div>
+        
       </div>
+      </form>
       <hr />
       <div className="row profileAppointments">
         <h5>Appointments</h5>

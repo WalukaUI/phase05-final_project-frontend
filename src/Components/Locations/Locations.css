@@ -29,6 +29,13 @@
     justify-content: space-evenly
 }
 .vl{
-    border-left: solid #9e9a9a;
+    border-left: solid #d4cfcf;
     height: 90%;
+}
+.serchLocation{
+  background-color: rgb(216, 211, 205);
+  margin-top: 10px;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }

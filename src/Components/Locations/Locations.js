@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Locations.css"
 
 function Locations({locations}) {
+  const[searchTearm,setSearchTearm]=useState("")
 
+  function activeSearch(e) {
+    e.preventDefault()
+    setSearchTearm(e.target.value)
+  }
 
   return (
     <div>
@@ -13,9 +18,19 @@ function Locations({locations}) {
           </div>
         </div>
         <div className="col col-sm-12 col-md-6 locationInnerDiv">
-        
+        <div className="serchLocation">
+        <form>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search Location by City Name"
+              onChange={activeSearch}
+            />
+          </form>
+        </div>
           {locations
-            ? locations.map((location) => (
+            ? locations.filter((card)=>card.name.toLowerCase().includes(searchTearm.toLowerCase()))
+            .map((location) => (
                 <div key={location.id}>
                <div className="row locationDetails">
                   <div  className="col col-sm-6 col-md-4 locationImage">

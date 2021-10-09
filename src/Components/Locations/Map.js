@@ -1,31 +1,62 @@
-import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-const style = {
-    width: '50%',
-    height: '100%'
-  }
-export class MapContainer extends Component {
+import React, { useState } from "react";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  InfoWindow
+} from "react-google-maps";
+import "./Locations.css";
 
-    
-  render() {
-    return (
-      <Map google={this.props.google} zoom={14}
-      style={style}
+
+//GoogleMap--------------------------------
+function Map() {
+  const[selectedPlace,setSelectedPlace]=useState(null)
+
+  const locate=[{latitude: 38.713894216893614, longitude: -90.30208583616161},
+    {latitude: 38.67118615958442,longitude: -90.21846271745149}]
+  return (
+    <GoogleMap
+      defaultZoom={10}
+      defaultCenter={{ lat: 38.63217176910362, lng: -90.19383204054196 }}
+    >
+      {locate.map((card)=> 
+      
+      <Marker
+      onClick={()=>
+        setSelectedPlace(card)}
+      key={card.id} 
+      icon={{url:'/hospital logo.png',
+      scaledSize: new window.google.maps.Size(25,25)
+    }}
+      position={{lat: card.latitude,lng: card.longitude }}/>)}
+
+      {selectedPlace && (<InfoWindow
+      position={{lat: selectedPlace.latitude,lng: selectedPlace.longitude }}
+      onCloseClick={()=>setSelectedPlace(null)}
       >
- 
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
- 
-        <InfoWindow onClose={this.onInfoWindowClose}>
-            {/* <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div> */}
-        </InfoWindow>
-      </Map>
-    );
-  }
+        <div>
+          <h6>Location Name</h6>
+          <p>Clinic</p></div>
+      </InfoWindow>)}
+    </GoogleMap>
+  );
 }
- 
-export default GoogleApiWrapper({
-  apiKey: (process.env.REACT_APP_GOOGLE_KEY)
-})(MapContainer)
+
+const MapWrapped = withScriptjs(withGoogleMap(Map));
+
+
+export default function Gmap() {
+  return (
+    <div>
+      <MapWrapped
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
+          process.env.REACT_APP_GOOGLE_KEY
+        }`}
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `50%` }} />}
+        mapElement={<div style={{ height: `100%` }} />}
+      />
+    </div>
+  );
+}

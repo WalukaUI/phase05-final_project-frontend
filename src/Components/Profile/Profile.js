@@ -4,8 +4,14 @@ import "./Profile.css";
 
 function Profile({ user, appointments, locations, setUser }) {
   const [popup, setPopup] = useState(false);
+  const [updateUserData,setUpdateUserData]=useState(null)
 
   //PATCH User-------------------------------
+
+ function triggerEdit(e) {
+  e.preventDefault();
+  setPopup(!popup);
+ }
 
   //show user appointments--------------------
 
@@ -45,13 +51,17 @@ function Profile({ user, appointments, locations, setUser }) {
         <hr />
         <div className="col col-sm-12 col-md-5">
           <p>
-            <b>First Name:</b> {popup ?<input />:user.first_name} 
+            <b>First Name:</b> {popup ?
+            <input value={user.first_name} 
+            name="first_name"
+            />
+            :user.first_name} 
           </p>
           <p>
-            <b>First Name:</b> {popup ?<input />:user.last_name}
+            <b>First Name:</b> {popup ?<input  value={user.last_name} name="last_name"/>:user.last_name}
           </p>
           <p>
-            <b>User name:</b> {popup ?<input />:user.username}
+            <b>User name:</b> {popup ?<input  value={user.username} name="username"/>:user.username}
           </p>
           <p>
             <b>Clinic Location:</b> {popup ?<input />:showUserClinicName(user.clinic_location)}
@@ -59,15 +69,15 @@ function Profile({ user, appointments, locations, setUser }) {
         </div>
         <div className="col col-sm-12 col-md-5">
           <p>
-            <b>Contact Number:</b> {popup ?<input />:user.contact_number}
+            <b>Contact Number:</b> {popup ?<input value={user.contact_number} name="contact_number"/>:user.contact_number}
           </p>
           <p>
-            <b>Email Address:</b> {popup ?<input />:user.email}
+            <b>Email Address:</b> {popup ?<input value={user.email} name="email"/>:user.email}
           </p>
         </div>
         <div className="col col-sm-12 col-md-2 editProfileDiv">
-          <button className="btn profileEditBtn" onClick={triggerEditWindow}>
-            Edit profile
+          <button className="btn profileEditBtn" onClick={popup ? triggerEdit:triggerEditWindow}>
+            {popup ? "Save":"Edit profile"}
           </button>
         </div>
       </div>

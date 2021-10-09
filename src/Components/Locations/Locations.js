@@ -1,11 +1,26 @@
 import React, { useState } from "react";
+import { GoogleMap, Marker, withScriptjs, withGoogleMap } from "react-google-maps"
 import "./Locations.css"
 
 function Locations({locations}) {
   const[searchTearm,setSearchTearm]=useState("")
 
+  //GoogleMap--------------------------------
+
+  function maps() {
+    return(
+      <GoogleMap
+      defaultZoom={8}
+      defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    />
+    )
+  }
+
+  const Mapwrapper = withScriptjs(withGoogleMap(maps));
+
+
+
   //supportive functions---------------------
-  
   function activeSearch(e) {
     e.preventDefault()
     setSearchTearm(e.target.value)
@@ -16,7 +31,8 @@ function Locations({locations}) {
       <div className="row locationDiv">
         <div className="col col-sm-12 col-md-6 mapDiv">
           <div>
-            <h3>google Map</h3>
+          
+            <Mapwrapper googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}/>
           </div>
         </div>
         <div className="col col-sm-12 col-md-6 locationInnerDiv">

@@ -7,12 +7,18 @@ import "./SignUp.css";
 function SignUp({ locations, setUser }) {
   const [newPatient, setNewPatient] = useState({});
   const [errors, setErrors] = useState(null);
+  const [confirmationNumber,setConfirmationNumber]=useState("")
+  const [userBeforeConfirm,setUserBeforeConfirm]=useState(null)
 
   const history = useHistory();
   const form = useRef();
 
   function createNewPatient(e) {
     e.preventDefault();
+
+    let emailConfirmationNumber=document.getElementById("confirmEmail").value;
+    setConfirmationNumber(emailConfirmationNumber)
+
     fetch(BASE_URL + `/patients`, {
       method: "POST",
       headers: {
@@ -24,8 +30,9 @@ function SignUp({ locations, setUser }) {
       if (res.ok) {
         res.json().then((user) => {
           console.log(user);
-          setUser(user);
-          history.push(`/`);
+          sendEmail(user,e)
+          //setUserBeforeConfirm(user);
+          //history.push(`/`);
         });
       } else {
         res.json().then((err) => {
@@ -37,17 +44,22 @@ function SignUp({ locations, setUser }) {
   }
 //send email
 
-const sendEmail = (e) => {
-  e.preventDefault();
-  let aa=document.getElementById("dd").value;
-  emailjs.sendForm('service_dchmott', 'template_vq1x7nj', form.current, 'user_lKVMUZPYGwUDtHBAdsLEn')
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
-    e.target.reset()
-};
+function sendEmail(user,e) {
+  console.log(e);
+  console.log(user);
+  // emailjs.sendForm('service_dchmott', 'template_vq1x7nj', form.current, 'user_lKVMUZPYGwUDtHBAdsLEn')
+  // .then((result) => {
+  //     console.log(result.text);
+  // }, (error) => {
+  //     console.log(error.text);
+  // });
+  e.target.reset()
+}  
+
+
+
+  
+
 
 
 
@@ -66,11 +78,11 @@ const sendEmail = (e) => {
   return (
     <div className="signupContainer">
       <h4>Create your account</h4>
-      <form ref={form} onSubmit={sendEmail}>
+      <form ref={form} onSubmit={createNewPatient}>
         
         <div className="row signupInnerContainer">
           <div className="col col-sm-12 col-md-6 signUpformInnerDiv1">
-            <input name="message" id="dd" style={{display: "none"}} value={Math.floor(1000 + Math.random() * 9000)}/>
+            <input name="message" id="confirmEmail" style={{display: "none"}} value={Math.floor(1000 + Math.random() * 9000)}/>
             <label>
               First Name
               <input

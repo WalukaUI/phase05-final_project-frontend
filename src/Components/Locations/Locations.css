@@ -1,6 +1,10 @@
 .locationDiv {
   background-color: rgb(219, 216, 216);
 }
+.locationCard:hover{
+  cursor: pointer;
+  background-color: antiquewhite;
+}
 .mapDiv {
   padding-top: 10px;
   padding-left: 30px;

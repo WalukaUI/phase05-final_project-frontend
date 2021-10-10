@@ -17,18 +17,20 @@ function Locations({ locations }) {
   function Map() {
     return (
       <GoogleMap
-        defaultZoom={10}
-        defaultCenter={{ lat: 38.63217176910362, lng: -90.19383204054196 }}
+        defaultZoom={selectedPlace?17:10}
+        defaultCenter={ selectedPlace ? {lat: selectedPlace.latitude, lng: selectedPlace.longitude} 
+        :{lat: 38.63217176910362, lng: -90.19383204054196} }
       >
         {locations.map((card) => (
           <Marker
-            onClick={() => setSelectedPlace(card)}
             key={card.id}
+            position={{ lat: card.latitude, lng: card.longitude }}
+            onClick={() => setSelectedPlace(card)}
             icon={{
               url: "/hospital logo.png",
               scaledSize: new window.google.maps.Size(25, 25),
             }}
-            position={{ lat: card.latitude, lng: card.longitude }}
+           
           />
         ))}
 
@@ -40,7 +42,7 @@ function Locations({ locations }) {
             }}
             onCloseClick={() => setSelectedPlace(null)}
           >
-            <div>
+            <div style={{height: "70px"}}>
               <h6>{selectedPlace.name}</h6>
               <p>Clinic</p>
             </div>
@@ -54,7 +56,7 @@ function Locations({ locations }) {
 
   //supportive functions---------------------
 
-  function activeSearch(e) {
+  function activateSearch(e) {
     e.preventDefault();
     setSearchTearm(e.target.value);
   }
@@ -79,7 +81,7 @@ function Locations({ locations }) {
                 type="text"
                 className="form-control"
                 placeholder="Search Location by City Name"
-                onChange={activeSearch}
+                onChange={activateSearch}
               />
             </form>
           </div>
@@ -89,7 +91,7 @@ function Locations({ locations }) {
                   card.name.toLowerCase().includes(searchTearm.toLowerCase())
                 )
                 .map((location) => (
-                  <div key={location.id}>
+                  <div key={location.id} onClick={()=>setSelectedPlace(location)} className="locationCard">
                     <div className="row locationDetails">
                       <div className="col col-sm-6 col-md-4 locationImage">
                         <img

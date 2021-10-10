@@ -20,6 +20,7 @@ import Appointments from "./Appointments/Appointments";
 import NewAppiontment from "./Appointments/NewAppointment";
 import SignUp from "./SignUp/SignUp";
 import Profile from "./Profile/Profile"
+import Gmap from "./Locations/Map"
 
 
 function MainContainer() {
@@ -108,6 +109,11 @@ function MainContainer() {
           </Route>
           <Route path="/doctors/:id" exact>
             <DoctorProfile />
+          </Route>
+          <Route path="/map" exact>
+          <Gmap />
+
+   
           </Route>
           <Route path="/patients" exact>
             <Patients />

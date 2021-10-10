@@ -1,14 +1,15 @@
 import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 import "./SignUp.css";
 
 function SignUp({ locations, setUser }) {
   const [newPatient, setNewPatient] = useState({});
   const [errors, setErrors] = useState(null);
-  const [confirmationNumber,setConfirmationNumber]=useState("")
-  const [confirmWindow,setConfirmWindow]=useState(false)
+  const [confirmationNumber, setConfirmationNumber] = useState("");
+  const [confirmWindow, setConfirmWindow] = useState(false);
+  const [userBeforConfirm,setUserBeforConfirm]=useState(null)
 
   const history = useHistory();
   const form = useRef();
@@ -16,8 +17,8 @@ function SignUp({ locations, setUser }) {
   function createNewPatient(e) {
     e.preventDefault();
 
-    let emailConfirmationNumber=document.getElementById("confirmEmail").value;
-    setConfirmationNumber(emailConfirmationNumber)
+    let emailConfirmationNumber = document.getElementById("confirmEmail").value;
+    setConfirmationNumber(emailConfirmationNumber);
 
     fetch(BASE_URL + `/patients`, {
       method: "POST",
@@ -30,7 +31,7 @@ function SignUp({ locations, setUser }) {
       if (res.ok) {
         res.json().then((user) => {
           console.log(user);
-          sendEmail(user,e)
+          sendEmail(user, e);
           //setUserBeforeConfirm(user);
           //history.push(`/`);
         });
@@ -42,19 +43,28 @@ function SignUp({ locations, setUser }) {
       }
     });
   }
-//send email
+  //send email
 
-function sendEmail(user,e) {
-  emailjs.sendForm('service_dchmott', 'template_vq1x7nj', form.current, `${process.env.REACT_APP_EMAIL_KEY}`)
-  .then((result) => {
-      console.log(result.text);
-  }, (error) => {
-      console.log(error.text);
-  });
-  e.target.reset()
-}  
-
-
+  function sendEmail(user, e) {
+    emailjs
+      .sendForm(
+        "service_dchmott",
+        "template_vq1x7nj",
+        form.current,
+        `${process.env.REACT_APP_EMAIL_KEY}`
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setUserBeforConfirm(user)
+          setConfirmWindow(!confirmWindow)
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
+  }
 
   function handleAddPatient(e) {
     e.preventDefault();
@@ -66,15 +76,61 @@ function sendEmail(user,e) {
     setNewPatient(newPatientObj);
   }
 
+  function  handleConfirmation(e) {
+    e.preventDefault();
+    let enteredconfirmationNumber = document.getElementById("confirmNumber").value;
+    let sentNumber=parseInt(confirmationNumber)
+    let enteredNumber=parseInt(enteredconfirmationNumber)
+    if (sentNumber === enteredNumber){
+      setConfirmWindow(!confirmWindow)
+      history.push(`/`);
+    }else{
+      alert("Wrong Number, Please enter confirmation number again")
+    }
+  }
 
-  return (
+  return confirmWindow ? (
+    <>
+      <div className="popupbox">
+        <div className="popupinner">
+          <div className="confirmNumDiv">
+            <form onSubmit={handleConfirmation}>
+              <div className="form-group">
+                <h4>Please confirm your email </h4>
+                <hr/>
+                <small>Please check your emails.<br/>
+                We have sent you a <strong>Confirmation number</strong> to your email address</small><br/><hr/>
+                <label>Enter confirmation number : </label>
+                <input id="confirmNumber"/>
+                <div>
+                  <button type="submit" className="btn btn-success formSubBtn">
+                    Confirm
+                  </button>
+                  <button
+                    className="btn btn-warning formSubBtn"
+                    onClick={() => setConfirmWindow(!confirmWindow)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  ) : (
     <div className="signupContainer">
       <h4>Create your account</h4>
       <form ref={form} onSubmit={createNewPatient}>
-        
         <div className="row signupInnerContainer">
           <div className="col col-sm-12 col-md-6 signUpformInnerDiv1">
-            <input name="message" id="confirmEmail" style={{display: "none"}} value={Math.floor(1000 + Math.random() * 9000)}/>
+            <input
+              name="message"
+              id="confirmEmail"
+              style={{ display: "none" }}
+              value={Math.floor(1000 + Math.random() * 9000)}
+            />
             <label>
               First Name
               <input
@@ -116,7 +172,9 @@ function sendEmail(user,e) {
                 onChange={handleAddPatient}
               >
                 {locations.map((loc) => (
-                  <option value={loc.id} key={loc.id}>{loc.name}</option>
+                  <option value={loc.id} key={loc.id}>
+                    {loc.name}
+                  </option>
                 ))}
               </select>
             </label>

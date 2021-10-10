@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
+import emailjs from 'emailjs-com';
 import "./SignUp.css";
 
 function SignUp({ locations, setUser }) {
@@ -8,6 +9,7 @@ function SignUp({ locations, setUser }) {
   const [errors, setErrors] = useState(null);
 
   const history = useHistory();
+  const form = useRef();
 
   function createNewPatient(e) {
     e.preventDefault();
@@ -33,6 +35,22 @@ function SignUp({ locations, setUser }) {
       }
     });
   }
+//send email
+
+const sendEmail = (e) => {
+  e.preventDefault();
+  let aa=document.getElementById("dd").value;
+  emailjs.sendForm('service_dchmott', 'template_vq1x7nj', form.current, 'user_lKVMUZPYGwUDtHBAdsLEn')
+    .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
+    e.target.reset()
+};
+
+
+
 
   function handleAddPatient(e) {
     e.preventDefault();
@@ -44,12 +62,15 @@ function SignUp({ locations, setUser }) {
     setNewPatient(newPatientObj);
   }
 
+
   return (
     <div className="signupContainer">
       <h4>Create your account</h4>
-      <form onSubmit={createNewPatient}>
+      <form ref={form} onSubmit={sendEmail}>
+        
         <div className="row signupInnerContainer">
           <div className="col col-sm-12 col-md-6 signUpformInnerDiv1">
+            <input name="message" id="dd" style={{display: "none"}} value={Math.floor(1000 + Math.random() * 9000)}/>
             <label>
               First Name
               <input

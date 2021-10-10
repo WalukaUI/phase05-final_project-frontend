@@ -41,7 +41,7 @@ function Locations({ locations }) {
             onCloseClick={() => setSelectedPlace(null)}
           >
             <div>
-              <h6>Location Name</h6>
+              <h6>{selectedPlace.name}</h6>
               <p>Clinic</p>
             </div>
           </InfoWindow>

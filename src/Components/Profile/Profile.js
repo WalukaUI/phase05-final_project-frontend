@@ -85,7 +85,7 @@ function Profile({ user, appointments, locations, setUser }) {
               )}
             </p>
             <p>
-              <b>First Name:</b>{" "}
+              <b>Last Name:</b>{" "}
               {popup ? (
                 <input
                   value={editUser.last_name ? editUser.last_name : ""}

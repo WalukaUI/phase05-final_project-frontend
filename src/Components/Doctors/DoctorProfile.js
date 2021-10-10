@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./DocProfile.css";
 
-function DoctorProfile() {
+function DoctorProfile({user}) {
   const [docProfile, setDocProfile] = useState([]);
   const [docLocations, setDocLocation] = useState([]);
   const params = useParams();
@@ -80,7 +80,7 @@ function DoctorProfile() {
             </div>
           </div>
           <div className="col col-sm-12 col-md-4 appointmentBtnDiv">
-            <Link to="/newappointment">
+            <Link to={user ?"/newappointment":"/"}>
               <button className="btn profileBtn">
                 Schedule an Appointment
               </button>

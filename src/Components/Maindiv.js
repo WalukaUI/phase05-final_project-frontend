@@ -20,7 +20,6 @@ import Appointments from "./Appointments/Appointments";
 import NewAppiontment from "./Appointments/NewAppointment";
 import SignUp from "./SignUp/SignUp";
 import Profile from "./Profile/Profile"
-import Gmap from "./Locations/Map"
 
 
 function MainContainer() {
@@ -100,20 +99,13 @@ function MainContainer() {
             <PatientLogin setUser={setUser} />
           </Route>
           <Route path="/locations" exact>
-        
             <Locations locations={locations} />
-      
           </Route>
           <Route path="/doctors" exact>
             <Doctors doctors={doctors} user={user}/>
           </Route>
           <Route path="/doctors/:id" exact>
-            <DoctorProfile />
-          </Route>
-          <Route path="/map" exact>
-          <Gmap />
-
-   
+            <DoctorProfile user={user}/>
           </Route>
           <Route path="/patients" exact>
             <Patients />

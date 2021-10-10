@@ -78,7 +78,6 @@ function SignUp({ locations, setUser }) {
     setNewPatient(newPatientObj);
   }
 
-
   function  handleConfirmation(e) {
     e.preventDefault();
     let enteredconfirmationNumber = document.getElementById("confirmNumber").value;

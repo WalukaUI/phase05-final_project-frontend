@@ -32,8 +32,6 @@ function SignUp({ locations, setUser }) {
         res.json().then((user) => {
           console.log(user);
           sendEmail(user, e);
-          //setUserBeforeConfirm(user);
-          //history.push(`/`);
         });
       } else {
         res.json().then((err) => {

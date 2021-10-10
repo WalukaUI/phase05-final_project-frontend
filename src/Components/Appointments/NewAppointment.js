@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./NewAppointment.css";
 import BASE_URL from "../../constraints/URL";
 import DatePicker from "react-datepicker";
+import emailjs from "emailjs-com";
 import "react-datepicker/dist/react-datepicker.css";
 
 function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
@@ -12,6 +13,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
   const[searchTearm,setSearchTearm]=useState("")
 
   const history = useHistory();
+  const form = useRef();
 
 //POST Appointment------------------------
 
@@ -27,9 +29,8 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((booking) => {
-            console.log(booking);
-        setAppoinements([...appointments,booking])
-        history.push("/appointments")
+            sendEmail(e)
+            setAppoinements([...appointments,booking])
         });
       } else {
         res.json().then((err) => {
@@ -39,6 +40,29 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
       }
     });
   }
+
+  //Send email------------------------------
+
+  function sendEmail(e) {
+    emailjs
+      .sendForm(
+        "service_dchmott",
+        "template_4tdthof",
+        form.current,
+        `${process.env.REACT_APP_EMAIL_KEY}`
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          history.push("/appointments")
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
+  }
+
 
   //Supportive Functions----------------------
   
@@ -97,7 +121,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
         ))}
       </div>
       <div className="col col-sm-12 col-md-6">
-        <form onSubmit={handleSubmit}>
+        <form ref={form} onSubmit={handleSubmit}>
           <div className="form-group newAppointmentForm">
             <h4>Create a new Appointment</h4>
             <label>Select a Doctor</label>
@@ -110,6 +134,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
                  {doctors.map((card)=> <option value={card.id} key={card.id}>{card.first_name} {card.last_name}</option>)}
 
                   </select>
+                  <input name="last_name" value={user.last_name} style={{display: "none"}}/>
             <label>Select a Date</label>
             <div>
             <DatePicker 

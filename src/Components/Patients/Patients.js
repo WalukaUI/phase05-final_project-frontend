@@ -4,9 +4,11 @@ import PatientCard from "./PatientCard";
 import CardLoadAnimation from "../Doctors/DocCardLoading";
 import "./Patients.css";
 
-function Patients() {
+function Patients({locations}) {
   const [patients, setPatients] = useState(null);
   const [editBtn, setEditBtn] = useState(false)
+  const[searchTearm,setSearchTearm]=useState("")
+  const[clinic,setClinic]=useState(false)
 
   //GET
 
@@ -59,6 +61,19 @@ function Patients() {
           });
       }
 
+      function activateSearch(e) {
+        e.preventDefault()
+        setSearchTearm(e.target.value)
+      }
+      function handleSearch(e) {
+        e.preventDefault();
+        if(e.target.value === "false"){
+          setClinic(null)
+        }else{
+          let value=parseInt(e.target.value)
+          setClinic(value)
+        }
+      }
 
   return (
     <div className="patientMainDiv">
@@ -70,6 +85,7 @@ function Patients() {
                 type="text"
                 className="form-control"
                 placeholder="Last name"
+                onChange={activateSearch}
               />
             </div>
             <div className="col col-sm-12 col-md-3">
@@ -81,16 +97,20 @@ function Patients() {
             <div className="col col-sm-12 col-md-3">
               <ul>
                 <li className="serchTearms">
-                  <label>Clinic Location</label>
-                  <div>
-                    <input type="checkbox" />
-                  </div>
-                </li>
-                <li className="serchTearms">
-                  <label>Video Visits</label>
-                  <div>
-                    <input type="checkbox" />
-                  </div>
+                <label>Search patients by Location
+        <select
+          className="form-select"
+          name="id"
+          aria-label="Default select example"
+          onChange={handleSearch}
+        >
+          <option value={false}>All</option>
+          {locations.map((card) => (
+            <option value={card.id} key={card.id}>
+              {card.name}
+            </option>
+          ))}
+        </select></label>
                 </li>
               </ul>
             </div>
@@ -100,7 +120,10 @@ function Patients() {
           {patients === null ? (
           <CardLoadAnimation />
           ) : (
-          patients.map((card) =>  <PatientCard 
+          
+          patients.filter((patient)=>patient.last_name.toLowerCase().includes(searchTearm.toLocaleLowerCase()))
+          .filter((patient)=>  clinic ? parseInt(patient.clinic_location) === clinic: patient)
+          .map((card) =>  <PatientCard 
           key={card.id} 
           card={card} 
           deletePatient={deletePatient} 

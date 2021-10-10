@@ -8,7 +8,7 @@ function SignUp({ locations, setUser }) {
   const [newPatient, setNewPatient] = useState({});
   const [errors, setErrors] = useState(null);
   const [confirmationNumber,setConfirmationNumber]=useState("")
-  const [userBeforeConfirm,setUserBeforeConfirm]=useState(null)
+  const [confirmWindow,setConfirmWindow]=useState(false)
 
   const history = useHistory();
   const form = useRef();
@@ -45,22 +45,14 @@ function SignUp({ locations, setUser }) {
 //send email
 
 function sendEmail(user,e) {
-  console.log(e);
-  console.log(user);
-  // emailjs.sendForm('service_dchmott', 'template_vq1x7nj', form.current, 'user_lKVMUZPYGwUDtHBAdsLEn')
-  // .then((result) => {
-  //     console.log(result.text);
-  // }, (error) => {
-  //     console.log(error.text);
-  // });
+  emailjs.sendForm('service_dchmott', 'template_vq1x7nj', form.current, `${process.env.REACT_APP_EMAIL_KEY}`)
+  .then((result) => {
+      console.log(result.text);
+  }, (error) => {
+      console.log(error.text);
+  });
   e.target.reset()
 }  
-
-
-
-  
-
-
 
 
 

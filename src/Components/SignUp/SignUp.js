@@ -13,13 +13,13 @@ function SignUp({ locations, setUser }) {
 
   const history = useHistory();
   const form = useRef();
-
+ 
   function createNewPatient(e) {
     e.preventDefault();
-
     let emailConfirmationNumber = document.getElementById("confirmEmail").value;
     setConfirmationNumber(emailConfirmationNumber);
 
+    //POST newpatient-----------------------
     fetch(BASE_URL + `/patients`, {
       method: "POST",
       headers: {
@@ -42,8 +42,8 @@ function SignUp({ locations, setUser }) {
         });
       }
     });
-  }
-  //send email
+   }
+  //Send email------------------------------
 
   function sendEmail(user, e) {
     emailjs
@@ -66,6 +66,8 @@ function SignUp({ locations, setUser }) {
     e.target.reset();
   }
 
+//Supportive functions------------------------------
+
   function handleAddPatient(e) {
     e.preventDefault();
     let newPatientObj = {
@@ -76,13 +78,16 @@ function SignUp({ locations, setUser }) {
     setNewPatient(newPatientObj);
   }
 
+
   function  handleConfirmation(e) {
     e.preventDefault();
     let enteredconfirmationNumber = document.getElementById("confirmNumber").value;
     let sentNumber=parseInt(confirmationNumber)
     let enteredNumber=parseInt(enteredconfirmationNumber)
+   
     if (sentNumber === enteredNumber){
       setConfirmWindow(!confirmWindow)
+      setUser(userBeforConfirm)
       history.push(`/`);
     }else{
       alert("Wrong Number, Please enter confirmation number again")
@@ -98,8 +103,8 @@ function SignUp({ locations, setUser }) {
               <div className="form-group">
                 <h4>Please confirm your email </h4>
                 <hr/>
-                <small>Please check your emails.<br/>
-                We have sent you a <strong>Confirmation number</strong> to your email address</small><br/><hr/>
+                <p>Please check your emails.<br/>
+                We have sent you a <strong>Confirmation number</strong> to your email address</p><br/><hr/>
                 <label>Enter confirmation number : </label>
                 <input id="confirmNumber"/>
                 <div>
@@ -128,6 +133,7 @@ function SignUp({ locations, setUser }) {
             <input
               name="message"
               id="confirmEmail"
+              type="number"
               style={{ display: "none" }}
               value={Math.floor(1000 + Math.random() * 9000)}
             />
@@ -228,7 +234,4 @@ function SignUp({ locations, setUser }) {
     </div>
   );
 }
-
 export default SignUp;
-
-//https://serverless-stack.com/chapters/create-the-signup-form.html

@@ -63,7 +63,6 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     e.target.reset();
   }
 
-
   //Supportive Functions----------------------
   
   function handleNewAppointment(e) {

@@ -29,8 +29,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((booking) => {
-            //sendEmail(e)
-            console.log(booking);
+            sendEmail(e)
             setAppoinements([...appointments,booking])
         });
       } else {

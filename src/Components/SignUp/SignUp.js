@@ -18,8 +18,9 @@ function SignUp({ locations, setUser }) {
     e.preventDefault();
     let emailConfirmationNumber = document.getElementById("confirmEmail").value;
     setConfirmationNumber(emailConfirmationNumber);
-
+ 
     //POST newpatient-----------------------
+
     fetch(BASE_URL + `/patients`, {
       method: "POST",
       headers: {
@@ -81,10 +82,11 @@ function SignUp({ locations, setUser }) {
     let enteredconfirmationNumber = document.getElementById("confirmNumber").value;
     let sentNumber=parseInt(confirmationNumber)
     let enteredNumber=parseInt(enteredconfirmationNumber)
-   
+
     if (sentNumber === enteredNumber){
       setConfirmWindow(!confirmWindow)
       setUser(userBeforConfirm)
+      setConfirmationNumber("")
       history.push(`/`);
     }else{
       alert("Wrong Number, Please enter confirmation number again")
@@ -132,7 +134,7 @@ function SignUp({ locations, setUser }) {
               id="confirmEmail"
               type="number"
               style={{ display: "none" }}
-              value={Math.floor(1000 + Math.random() * 9000)}
+              defaultValue={Math.floor(1000 + Math.random() * 9000)}
             />
             <label>
               First Name
@@ -174,7 +176,7 @@ function SignUp({ locations, setUser }) {
                 aria-label="Default select example"
                 onChange={handleAddPatient}
               >
-                {locations.map((loc) => (
+                {locations?.map((loc) => (
                   <option value={loc.id} key={loc.id}>
                     {loc.name}
                   </option>

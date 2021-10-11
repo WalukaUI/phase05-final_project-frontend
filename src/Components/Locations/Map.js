@@ -1,62 +1,72 @@
-import React, { useState } from "react";
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-  InfoWindow
-} from "react-google-maps";
-import "./Locations.css";
+import React from 'react'
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+
+const containerStyle = {
+  width: "100%",
+  height: "600px"
+};
 
 
-//GoogleMap--------------------------------
-function Map() {
-  const[selectedPlace,setSelectedPlace]=useState(null)
+function MyComponent({locations, selectedPlace, setSelectedPlace}) {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: `${process.env.REACT_APP_GOOGLE_KEY}`
+  })
 
-  const locate=[{latitude: 38.713894216893614, longitude: -90.30208583616161},
-    {latitude: 38.67118615958442,longitude: -90.21846271745149}]
-  return (
-    <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{ lat: 38.63217176910362, lng: -90.19383204054196 }}
-    >
-      {locate.map((card)=> 
-      
-      <Marker
-      onClick={()=>
-        setSelectedPlace(card)}
-      key={card.id} 
-      icon={{url:'/hospital logo.png',
-      scaledSize: new window.google.maps.Size(25,25)
-    }}
-      position={{lat: card.latitude,lng: card.longitude }}/>)}
+  const [map, setMap] = React.useState(null)
 
-      {selectedPlace && (<InfoWindow
-      position={{lat: selectedPlace.latitude,lng: selectedPlace.longitude }}
-      onCloseClick={()=>setSelectedPlace(null)}
+  const onLoad = React.useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds();
+    map.fitBounds(bounds);
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+
+  return isLoaded ? (
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={ selectedPlace ? {lat: selectedPlace.latitude, lng: selectedPlace.longitude} 
+              :{lat: 38.63217176910362, lng: -90.19383204054196} }
+        zoom={10}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
       >
-        <div>
-          <h6>Location Name</h6>
-          <p>Clinic</p></div>
-      </InfoWindow>)}
-    </GoogleMap>
-  );
+        { /* Child components, such as markers, info windows, etc. */ }
+        <>
+        {locations.map((card) => (
+          <Marker
+            key={card.id}
+            position={{ lat: card.latitude, lng: card.longitude }}
+            onClick={() => setSelectedPlace(card)}
+            icon={{
+              url: "/hospital logo.png",
+              scaledSize: new window.google.maps.Size(25, 25),
+            }}
+           
+          />))}
+          {selectedPlace && (
+                    <InfoWindow
+                      position={{
+                        lat: selectedPlace.latitude,
+                        lng: selectedPlace.longitude,
+                      }}
+                      onCloseClick={() => setSelectedPlace(null)}
+                    >
+                      <div style={{height: "70px"}}>
+                        <h6>{selectedPlace.name}</h6>
+                        <p>Clinic</p>
+                      </div>
+                    </InfoWindow>
+                  )}
+        
+
+        
+        </>
+      </GoogleMap>
+  ) : <></>
 }
 
-const MapWrapped = withScriptjs(withGoogleMap(Map()));
-
-
-export default function Gmap() {
-  return (
-    <div style={{height: "500px", width: "600px"}}>
-      <MapWrapped
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
-          process.env.REACT_APP_GOOGLE_KEY
-        }`}
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `100%` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-      />
-    </div>
-  );
-}
+export default React.memo(MyComponent)

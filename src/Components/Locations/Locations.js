@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-  InfoWindow,
-} from "react-google-maps";
+import MyComponent from "./Map"
 import "./Locations.css";
 
 function Locations({ locations }) {
@@ -14,45 +8,45 @@ function Locations({ locations }) {
 
   //GoogleMap--------------------------------
 
-  function Map() {
-    return (
-      <GoogleMap
-        defaultZoom={selectedPlace?17:10}
-        defaultCenter={ selectedPlace ? {lat: selectedPlace.latitude, lng: selectedPlace.longitude} 
-        :{lat: 38.63217176910362, lng: -90.19383204054196} }
-      >
-        {locations.map((card) => (
-          <Marker
-            key={card.id}
-            position={{ lat: card.latitude, lng: card.longitude }}
-            onClick={() => setSelectedPlace(card)}
-            icon={{
-              url: "/hospital logo.png",
-              scaledSize: new window.google.maps.Size(25, 25),
-            }}
+  // function Map() {
+  //   return (
+  //     <GoogleMap
+  //       defaultZoom={selectedPlace?17:10}
+  //       defaultCenter={ selectedPlace ? {lat: selectedPlace.latitude, lng: selectedPlace.longitude} 
+  //       :{lat: 38.63217176910362, lng: -90.19383204054196} }
+  //     >
+  //       {locations.map((card) => (
+  //         <Marker
+  //           key={card.id}
+  //           position={{ lat: card.latitude, lng: card.longitude }}
+  //           onClick={() => setSelectedPlace(card)}
+  //           icon={{
+  //             url: "/hospital logo.png",
+  //             scaledSize: new window.google.maps.Size(25, 25),
+  //           }}
            
-          />
-        ))}
+  //         />
+  //       ))}
 
-        {selectedPlace && (
-          <InfoWindow
-            position={{
-              lat: selectedPlace.latitude,
-              lng: selectedPlace.longitude,
-            }}
-            onCloseClick={() => setSelectedPlace(null)}
-          >
-            <div style={{height: "70px"}}>
-              <h6>{selectedPlace.name}</h6>
-              <p>Clinic</p>
-            </div>
-          </InfoWindow>
-        )}
-      </GoogleMap>
-    );
-  }
+  //       {selectedPlace && (
+  //         <InfoWindow
+  //           position={{
+  //             lat: selectedPlace.latitude,
+  //             lng: selectedPlace.longitude,
+  //           }}
+  //           onCloseClick={() => setSelectedPlace(null)}
+  //         >
+  //           <div style={{height: "70px"}}>
+  //             <h6>{selectedPlace.name}</h6>
+  //             <p>Clinic</p>
+  //           </div>
+  //         </InfoWindow>
+  //       )}
+  //     </GoogleMap>
+  //   );
+  // }
 
-  const WrappedMap = withScriptjs(withGoogleMap(Map));
+  // const WrappedMap = withScriptjs(withGoogleMap(Map));
 
   //supportive functions---------------------
 
@@ -66,12 +60,7 @@ function Locations({ locations }) {
       <div className="row locationDiv">
         <div className="col col-sm-12 col-md-6 mapDiv">
           <div>
-            <WrappedMap
-              googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
-              loadingElement={<div style={{ height: "100%" }} />}
-              containerElement={<div style={{ height: "500px" }} />}
-              mapElement={<div style={{ height: "100%" }} />}
-            />
+          <MyComponent locations={locations} selectedPlace={selectedPlace} setSelectedPlace={setSelectedPlace}/>
           </div>
         </div>
         <div className="col col-sm-12 col-md-6 locationInnerDiv">

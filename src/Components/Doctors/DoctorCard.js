@@ -59,16 +59,6 @@ function Doctor({ user, card }) {
             </h5>
             <p>{card.education}</p>
             <p>{card.speciality}</p>
-            {card.video_vistits ? 
-                        <p>
-                        <img
-                          src="./video.svg"
-                          alt="contact"
-                          style={{ paddingRight: "10px", width:"10%" }}
-                        />
-                        Accept video visits
-                      </p>
-          :""}
           </div>
           <div className="col col-sm-12 col-md-4 doctorMoreDetails">
             <p>
@@ -87,6 +77,16 @@ function Doctor({ user, card }) {
                           style={{ paddingRight: "10px", width:"10%" }}
                         />
                         Accept new Patients
+                      </p>
+          :""}
+                      {card.video_vistits ? 
+                        <p>
+                        <img
+                          src="./video.svg"
+                          alt="contact"
+                          style={{ paddingRight: "10px", width:"10%" }}
+                        />
+                        Accept video visits
                       </p>
           :""}
           </div>

@@ -12,6 +12,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
   const [selecteddate, setSelectedDate]=useState(null)
   const[searchTearm,setSearchTearm]=useState("")
 
+
   const history = useHistory();
   const form = useRef();
 
@@ -44,6 +45,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
   //Send email------------------------------
 
   function sendEmail(e) {
+
     emailjs
       .sendForm(
         "service_dchmott",
@@ -62,6 +64,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
       );
     e.target.reset();
   }
+
 
   //Supportive Functions----------------------
   

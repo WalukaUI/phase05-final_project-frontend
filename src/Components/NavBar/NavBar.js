@@ -29,41 +29,35 @@ function NavBar({logout, user}) {
               </span>
               <ul className="dropdown">
                 <li>
-                  <a href="!#">Curabitur</a>
+                  <a href="/doctors">Doctors</a>
+                </li>
+                <li>
+                  <a href="/locations">Locations</a>
                 </li>
                 <li>
                   <span>
-                    Suspendisse vel <i className="arrow"></i>
+                  Appointments <i className="arrow"></i>
                   </span>
                   <ul className="dropdown">
                     <li>
-                      <a href="!#">Etiam vestibulum</a>
+                      <a href="/appointments">All Apointments</a>
                     </li>
                     <li>
-                      <a href="!#">Integer efficitur</a>
-                    </li>
-                    <li>
-                      <a href="!#">Finibus nibh</a>
+                      <a href="/newappointment">New Appointment</a>
                     </li>
                   </ul>
                 </li>
                 <li>
                   <span>
-                    Eget
+                    Other
                     <i className="arrow"></i>
                   </span>
                   <ul className="dropdown">
                     <li>
-                      <a href="!#">Nam elementum</a>
+                      <a href="/">About us</a>
                     </li>
                     <li>
-                      <a href="!#">Magna pharetra</a>
-                    </li>
-                    <li>
-                      <a href="!#">Pulvinar mi eget</a>
-                    </li>
-                    <li>
-                      <a href="!#">Tincidunt orci</a>
+                      <a href="/">Careers</a>
                     </li>
                   </ul>
                 </li>

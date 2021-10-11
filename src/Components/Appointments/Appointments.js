@@ -103,11 +103,12 @@ function Appointments({ user, appointments, setAppoinements, doctors,setUser }) 
             </li>
           </ul>
         </div>
+        {user?.role === "patient" ?
         <Link to="/newappointment">
           <button className="btn createAppointmentBtn">
             Schedule an Appointment
           </button>
-        </Link>
+        </Link> : ""}
       </div>
       <div className="col col-md-8 col-sm-12 appointmentMainDiv">
         <div className="appointmentCardHead">

@@ -70,7 +70,10 @@ function Profile({ user, appointments, locations, setUser }) {
         <div className="row profileDetails">
           <h5>Your Profile</h5>
           <hr />
+        {editUser?.role === "patient"?
 
+        //patient edit window
+        <>
           <div className="col col-sm-12 col-md-5">
             <p>
               <b>First Name:</b>{" "}
@@ -100,7 +103,7 @@ function Profile({ user, appointments, locations, setUser }) {
               <b>User name:</b>{" "}
               {popup ? (
                 <input
-                  value={editUser.username ? editUser.username : ""}
+                  value={editUser.username ? editUser.username: ""}
                   name="username"
                   onChange={handleChange}
                 />
@@ -138,7 +141,7 @@ function Profile({ user, appointments, locations, setUser }) {
               <b>Contact Number:</b>{" "}
               {popup ? (
                 <input
-                  value={editUser.contact_number ? editUser.contact_number : ""}
+                  value={editUser?.contact_number ? editUser?.contact_number : ""}
                   name="contact_number"
                   onChange={handleChange}
                 />
@@ -150,7 +153,7 @@ function Profile({ user, appointments, locations, setUser }) {
               <b>Email Address:</b>{" "}
               {popup ? (
                 <input
-                  value={editUser.email}
+                  value={editUser?.email}
                   name="email"
                   onChange={handleChange}
                 />
@@ -159,6 +162,98 @@ function Profile({ user, appointments, locations, setUser }) {
               )}
             </p>
           </div>
+          </>
+          :
+          
+          //doctor edit window
+
+          <>
+          <div className="col col-sm-12 col-md-5">
+          <p>
+            <b>First Name:</b>{" "}
+            {popup ? (
+              <input
+                value={editUser?.first_name ? editUser?.first_name : ""}
+                name="first_name"
+                onChange={handleChange}
+              />
+            ) : (
+              user.first_name
+            )}
+          </p>
+          <p>
+            <b>Last Name:</b>{" "}
+            {popup ? (
+              <input
+                value={editUser?.last_name ? editUser?.last_name : ""}
+                name="last_name"
+                onChange={handleChange}
+              />
+            ) : (
+              user.last_name
+            )}
+          </p>
+          <p>
+            <b>Education :</b>
+            {popup ? (
+              <input
+                value={editUser?.education ? editUser?.education: ""}
+                name="education"
+                onChange={handleChange}
+              />
+            ) : editUser?.education}
+          </p>
+          <p>
+          <b>Speciality :</b>
+            {popup ?
+             <select
+                    className="form-select"
+                    name="speciality"
+                    defaultValue={editUser?.speciality? editUser?.speciality:"" }
+                    aria-label="Default select example"
+                    onChange={handleChange}
+                  >
+                    <option value="Dermatology" >Dermatology</option>
+                    <option value="Family medicine" >Family medicine</option>
+                    <option value="Anesthesiology" >Anesthesiology</option>
+                    <option value="Pediatrics" >Pediatrics</option>
+                    <option value="Preventive medicine" >Preventive medicine</option>
+                  </select>
+                  :editUser?.speciality}
+          </p>
+        </div>
+        <div className="col col-sm-12 col-md-5">
+          <p>
+            <b>Username :</b>
+            {popup ? (
+              <input
+                value={editUser?.username ? editUser?.username : ""}
+                name="username"
+                onChange={handleChange}
+              />
+            ) : (
+              editUser?.username ? editUser?.username: "N/A"
+            )}
+          </p>
+          <p>
+            <b>Image URL :</b>
+            {popup ? (
+              <input
+                value={editUser?.image}
+                name="image"
+                onChange={handleChange}
+              />
+            ) : (
+              editUser?.image?"Available":"Not Available"
+            )}
+          </p>
+        </div>
+        </>
+          
+          
+          }
+
+
           <div className="col col-sm-12 col-md-2 editProfileDiv">
             {popup ? (
               <button className="btn profileSaveBtn" type="submit">

@@ -4,7 +4,7 @@ import PatientCard from "./PatientCard";
 import CardLoadAnimation from "../Doctors/DocCardLoading";
 import "./Patients.css";
 
-function Patients({locations}) {
+function Patients({locations, user}) {
   const [patients, setPatients] = useState(null);
   const [editBtn, setEditBtn] = useState(false)
   const[searchTearm,setSearchTearm]=useState("")
@@ -13,7 +13,7 @@ function Patients({locations}) {
   //GET
 
   useEffect(() => {
-    fetch(BASE_URL + `/patients`, {
+    fetch(BASE_URL + `/doctors/${user.id}/patients`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -24,7 +24,7 @@ function Patients({locations}) {
         });
       } 
     });
-  }, []);
+  }, [user?.id]);
 
   //DELETE
 
@@ -92,7 +92,7 @@ function Patients({locations}) {
               <button className="btn btn-primary searchBtn">Search</button>
             </div>
             <div className="col col-sm-12 col-md-3">
-              <h6>Serach Pations </h6>
+              <h6>Serach your patients </h6>
               <h6>⬅ By name or Location ➡ </h6>
 
               

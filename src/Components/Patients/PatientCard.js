@@ -76,7 +76,6 @@ function PatientCard({ card, deletePatient, updatePatient, editBtn, setEditBtn }
             </button>
       :""}
 
-        <button className="btn btn-info">More...</button>
         <p>First Name: {card.first_name}</p>
         <p>Last Name: {card.last_name}</p>
         <p>Clinic: {card.clinic_location}</p>

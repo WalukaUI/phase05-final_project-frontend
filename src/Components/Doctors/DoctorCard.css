@@ -4,6 +4,9 @@
     color: black;
     background-color: rgb(173, 240, 218);
 }
+.doctorCrad:hover{
+    background-color: aquamarine;
+}
 .doctorCrad div{
     padding: 10px;
 }
@@ -11,7 +14,9 @@
     padding: 0px !important;
 }
 .docImage{
-    width: 40%;
+    /* width: 40%; */
+    object-fit: cover;
+    height: 150px;
 }
 .contactIcon{
     width: 20%;

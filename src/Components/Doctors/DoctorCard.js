@@ -48,7 +48,7 @@ function Doctor({ user, card }) {
         <div className="row doctorCrad">
           <div className="col col-sm-12 col-md-4 docImagediv">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPPYSMvGn6iF_kZQs8YyU1jm4VczEPSx2Lpw&usqp=CAU"
+              src={card.image}
               alt="doctor"
               className="docImage"
             />
@@ -59,6 +59,16 @@ function Doctor({ user, card }) {
             </h5>
             <p>{card.education}</p>
             <p>{card.speciality}</p>
+            {card.video_vistits ? 
+                        <p>
+                        <img
+                          src="./video.svg"
+                          alt="contact"
+                          style={{ paddingRight: "10px", width:"10%" }}
+                        />
+                        Accept video visits
+                      </p>
+          :""}
           </div>
           <div className="col col-sm-12 col-md-4 doctorMoreDetails">
             <p>
@@ -69,6 +79,16 @@ function Doctor({ user, card }) {
               />
               {card.email}
             </p>
+            {card.isaccept_newpatients ? 
+                        <p>
+                        <img
+                          src="./accept.svg"
+                          alt="contact"
+                          style={{ paddingRight: "10px", width:"10%" }}
+                        />
+                        Accept new Patients
+                      </p>
+          :""}
           </div>
         </div>
       </Link>

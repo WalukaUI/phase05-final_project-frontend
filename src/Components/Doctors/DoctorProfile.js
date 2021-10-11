@@ -63,8 +63,9 @@ function DoctorProfile({user}) {
         <div className="row profileTopDiv">
           <div className="col col-sm-12 col-md-4 imageContainer">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPPYSMvGn6iF_kZQs8YyU1jm4VczEPSx2Lpw&usqp=CAU"
+              src={docProfile.image}
               alt="doctor"
+              style={{height: "200px", width: "150px",objectFit: "cover"}}
             />
           </div>
           <div className="col col-sm-12 col-md-4 aboutDoctor">
@@ -80,6 +81,26 @@ function DoctorProfile({user}) {
             </div>
           </div>
           <div className="col col-sm-12 col-md-4 appointmentBtnDiv">
+          {docProfile.video_vistits ? 
+                        <p>
+                        <img
+                          src="../video.svg"
+                          alt="contact"
+                          style={{ paddingRight: "10px", width:"10%" }}
+                        />
+                        Accept video visits
+                      </p>
+          :""}
+                      {docProfile.isaccept_newpatients ? 
+                        <p>
+                        <img
+                          src="../accept.svg"
+                          alt="contact"
+                          style={{ paddingRight: "10px", width:"10%" }}
+                        />
+                        Accept new Patients
+                      </p>
+          :""}
             <Link to={user ?"/newappointment":"/"}>
               <button className="btn profileBtn">
                 Schedule an Appointment

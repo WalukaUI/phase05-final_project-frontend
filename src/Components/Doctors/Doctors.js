@@ -5,14 +5,13 @@ import CardLoadAnimation from "./DocCardLoading";
 
 function Doctors({doctors, user}) {
   const[searchTearm,setSearchTearm]=useState("")
-  const[dermatalogist,setDermatalogist]=useState(false)
-  const[familyMd, setFamilyMd]=useState(false)
-  const[anesthesiology,setAnesthesiology]=useState(false)
+  const[docSpeciality,setSpeciality]=useState("")
 
   function activeSearch(e) {
     e.preventDefault()
     setSearchTearm(e.target.value)
   }
+
 
   return (
     <div>
@@ -42,40 +41,23 @@ function Doctors({doctors, user}) {
                   </div>
                 </li>
               </ul>
-              <p>Speciality</p>
-              <ul>
-                <li className="serchTearms">
-                  <label>Dermatalogist</label>
-                  <div>
-                    <input type="checkbox" onChange={()=>setDermatalogist(!dermatalogist)}/>
-
+              <div className="filterBySpeciality">
+              <p><strong>Speciality</strong></p>
+              <label>Select a Doctor by Speciality</label>
+             <select
+                    className="form-select"
+                    name="speciality"
+                    aria-label="Default select example"
+                    onChange={(e)=>setSpeciality(e.target.value)}
+                  >
+                    <option value="All" >All</option>
+                    <option value="Dermatology" >Dermatology</option>
+                    <option value="Family medicine" >Family medicine</option>
+                    <option value="Anesthesiology" >Anesthesiology</option>
+                    <option value="Pediatrics" >Pediatrics</option>
+                    <option value="Preventive medicine" >Preventive medicine</option>
+                  </select>
                   </div>
-                </li>
-                <li className="serchTearms">
-                  <label>Family Medicine</label>
-                  <div>
-                    <input type="checkbox" onChange={()=>setFamilyMd(!familyMd)}/>
-                  </div>
-                </li>
-                <li className="serchTearms">
-                  <label>Anesthesiology</label>
-                  <div>
-                    <input type="checkbox" onChange={()=>setAnesthesiology(!anesthesiology)}/>
-                  </div>
-                </li>
-                <li className="serchTearms">
-                  <label>Internal Medicine</label>
-                  <div>
-                    <input type="checkbox" />
-                  </div>
-                </li>
-                <li className="serchTearms">
-                  <label>Gynecology</label>
-                  <div>
-                    <input type="checkbox" />
-                  </div>
-                </li>
-              </ul>
             </div>
           </form>
         </div>
@@ -85,10 +67,26 @@ function Doctors({doctors, user}) {
           ) : (
 
             doctors.filter((card)=>card.last_name.toLowerCase().includes(searchTearm.toLowerCase()))
-            .filter((card)=> familyMd ? card.speciality === "Family medicine":card)
-            .filter((card)=> dermatalogist ? card.speciality === "Dermatology":card)
-            .filter((card)=>anesthesiology ? card.speciality === "Anesthesiology":card)
-            //.filter((card)=>card.isacceptnewpatients === true)
+            .filter((card)=>{
+              switch (docSpeciality){
+                case "Dermatology": 
+                return card.speciality === "Dermatology";
+               break;
+               case "Family medicine": 
+               return card.speciality === "Family medicine";
+              break;
+                case "Anesthesiology": 
+                 return card.speciality === "Anesthesiology";
+                break;
+                case "Preventive medicine": 
+                  return card.speciality === "Preventive medicine";
+                break;
+                case "Pediatrics": 
+                  return card.speciality === "Pediatrics";
+                break;
+                default: return card
+              }
+            })
             .map((card) => <Doctor key={card.id} card={card} user={user}/>)
           )}
         </div>

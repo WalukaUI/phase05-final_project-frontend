@@ -17,3 +17,8 @@
 .formnput{
     padding-left: 0vh;
 }
+.filterBySpeciality{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

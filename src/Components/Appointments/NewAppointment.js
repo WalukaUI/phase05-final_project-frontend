@@ -29,7 +29,8 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((booking) => {
-            sendEmail(e)
+            //sendEmail(e)
+            console.log(booking);
             setAppoinements([...appointments,booking])
         });
       } else {
@@ -135,6 +136,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
 
                   </select>
                   <input name="last_name" value={user.last_name} style={{display: "none"}}/>
+                  <input name="email" value={user.email} style={{display: "none"}}/>
             <label>Select a Date</label>
             <div>
             <DatePicker 

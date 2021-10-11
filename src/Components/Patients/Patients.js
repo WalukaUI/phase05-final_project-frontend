@@ -79,8 +79,8 @@ function Patients({locations}) {
     <div className="patientMainDiv">
       <div className="patientInnerDiv">
         <form className="patientSearchForm">
-          <div className="row">
-            <div className="col col-sm-12 col-md-3 all">
+          <div className="row serachPatientinnerDiv">
+            <div className="col col-sm-12 col-md-3">
               <input
                 type="text"
                 className="form-control"
@@ -92,7 +92,10 @@ function Patients({locations}) {
               <button className="btn btn-primary searchBtn">Search</button>
             </div>
             <div className="col col-sm-12 col-md-3">
-              <h6>Narrow Your Results</h6>
+              <h6>Serach Pations </h6>
+              <h6>⬅ By name or Location ➡ </h6>
+
+              
             </div>
             <div className="col col-sm-12 col-md-3">
               <ul>

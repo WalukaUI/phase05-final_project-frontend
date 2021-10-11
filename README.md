@@ -1,3 +1,4 @@
+This App is for Bookig appointments for doctors...
 
 😎****MVC****😎
 
@@ -5,18 +6,22 @@ show all doctors, patients , appointments and clinic locations
 
 full CRUD of appointments and patients
 
+Search functionality for all 
+
 Show current COVID status in a page using an open API
 
 🤳****Stretch Features****🤳
 
 display different interfaces to doctor login and patient login
 
-send a confirmation email after creating a account and placing an appointment by a patient
+send a confirmation email with confirmation number after creating a account.
+send a confirmation email after placing an appointment by a patient.
 
 
 🤞 Extra Step
 
 show clinic locations in a google map.
+
 
 
 

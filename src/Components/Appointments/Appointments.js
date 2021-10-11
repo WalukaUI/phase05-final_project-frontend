@@ -4,15 +4,31 @@ import "./Appointments.css";
 import BASE_URL from "../../constraints/URL";
 import AppointmentCard from "./AppointmentCard";
 
-function Appointments({ user, appointments, setAppoinements, doctors }) {
+function Appointments({ user, appointments, setAppoinements, doctors,setUser }) {
   const[serchTearm,setSearchTearm]=useState(null)
 
+
+
+  // useEffect(() => {
+  //   fetch(BASE_URL + `/me`,{
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //     credentials: "include",
+  //   }).then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => {
+  //         setUser(user);
+  //         console.log(user);
+  //       });
+  //     }
+  //   });
+  // }, []);
   //GET Appointments-------------------------
   useEffect(() => {
     fetch(
-      user.role === "patient"
-        ? `${BASE_URL}/patients/${user.id}/appointments`
-        : `${BASE_URL}/appointments`,
+      user?.role === "patient"
+        ? `${BASE_URL}/patients/${user?.id}/appointments`
+        : `${BASE_URL}/doctors/${user?.id}/appointments`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -25,7 +41,7 @@ function Appointments({ user, appointments, setAppoinements, doctors }) {
         });
       }
     });
-  }, [user.role, user.id, setAppoinements]);
+  }, [user?.role, user?.id, setAppoinements]);
 
   //DELETE Appointment-----------------------
 
@@ -110,16 +126,18 @@ function Appointments({ user, appointments, setAppoinements, doctors }) {
       </div>
       <div className="col col-md-8 col-sm-12 appointmentMainDiv">
         <div className="appointmentCardHead">
-          {appointments.length !== 0 ? (
-            <h4>Your All Appointments</h4>
+          {appointments.length !== 0 ? ( 
+             user.role === "patient" ?<h4>Your All Appointments</h4>:<h4>Appointments</h4>
+            
           ) : (
             <div>
-              <h4>You do not have any Appointments</h4>
+              <h4>You do not have any Appointments</h4> 
+              {user.role === "patient" ? 
               <Link to="/newappointment">
                 <button className="btn createAppointmentBtn">
                   Schedule an Appointment
                 </button>
-              </Link>
+              </Link>: ""}
             </div>
           )}
         </div>

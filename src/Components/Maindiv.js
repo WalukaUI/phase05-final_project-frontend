@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -19,23 +19,26 @@ import PatientLogin from "./Login/PatientLogin/PatientLogin";
 import Appointments from "./Appointments/Appointments";
 import NewAppiontment from "./Appointments/NewAppointment";
 import SignUp from "./SignUp/SignUp";
-import Profile from "./Profile/Profile"
-
+import Profile from "./Profile/Profile";
 
 function MainContainer() {
   const [user, setUser] = useState(null);
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
- 
 
   // auto-login
 
   useEffect(() => {
-    fetch(BASE_URL + `/me`, { mode: "no-cors" }).then((r) => {
+    fetch(BASE_URL + `/me`,{
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user);
+          console.log(user);
         });
       }
     });
@@ -102,23 +105,23 @@ function MainContainer() {
             <Locations locations={locations} />
           </Route>
           <Route path="/doctors" exact>
-            <Doctors doctors={doctors} user={user}/>
+            <Doctors doctors={doctors} user={user} />
           </Route>
           <Route path="/doctors/:id" exact>
-            <DoctorProfile user={user}/>
+            <DoctorProfile user={user} />
           </Route>
           <Route path="/patients" exact>
-            <Patients locations={locations}/>
+            <Patients locations={locations} />
           </Route>
-          <Route path="/signup" exact> 
-            <SignUp locations={locations} setUser={setUser}/>
+          <Route path="/signup" exact>
+            <SignUp locations={locations} setUser={setUser} />
           </Route>
           <Route path="/patient-profile" exact>
-            <Profile 
-            user={user} 
-            appointments={appointments} 
-            locations={locations} 
-            setUser={setUser}
+            <Profile
+              user={user}
+              appointments={appointments}
+              locations={locations}
+              setUser={setUser}
             />
           </Route>
           <Route path="/newappointment" exact>
@@ -135,6 +138,7 @@ function MainContainer() {
               setAppoinements={setAppoinements}
               appointments={appointments}
               doctors={doctors}
+              setUser={setUser}
             />
           </Route>
           <Route path="/" exact>

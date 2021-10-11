@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import emailjs from "emailjs-com";
 import "./SignUp.css";
+import "./Spinner.css"
 
 function SignUp({ locations, setUser }) {
   const [newPatient, setNewPatient] = useState({});
@@ -106,6 +107,13 @@ function SignUp({ locations, setUser }) {
                 We have sent you a <strong>Confirmation number</strong> to your email address</p><br/><hr/>
                 <label>Enter confirmation number : </label>
                 <input id="confirmNumber"/>
+
+                <div className="spinner">
+
+                  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div>
+                 </div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                 </div> 
+
                 <div>
                   <button type="submit" className="btn btn-success formSubBtn">
                     Confirm

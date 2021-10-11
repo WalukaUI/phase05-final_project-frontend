@@ -10,6 +10,7 @@ function Home() {
             <h6>How can we help you today?</h6>
           </div>
         </div>
+
                 <div className="row mainLowerSection">
                 <div className="col  col-sm-12 col-md-6  covidInfo">
                   <h4>Covid 19</h4>

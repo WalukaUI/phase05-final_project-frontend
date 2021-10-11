@@ -8,21 +8,6 @@ function Appointments({ user, appointments, setAppoinements, doctors,setUser }) 
   const[serchTearm,setSearchTearm]=useState(null)
 
 
-
-  // useEffect(() => {
-  //   fetch(BASE_URL + `/me`,{
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //     credentials: "include",
-  //   }).then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => {
-  //         setUser(user);
-  //         console.log(user);
-  //       });
-  //     }
-  //   });
-  // }, []);
   //GET Appointments-------------------------
   useEffect(() => {
     fetch(

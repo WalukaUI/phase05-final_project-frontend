@@ -6,48 +6,7 @@ function Locations({ locations }) {
   const [searchTearm, setSearchTearm] = useState("");
   const [selectedPlace, setSelectedPlace] = useState(null);
 
-  //GoogleMap--------------------------------
-
-  // function Map() {
-  //   return (
-  //     <GoogleMap
-  //       defaultZoom={selectedPlace?17:10}
-  //       defaultCenter={ selectedPlace ? {lat: selectedPlace.latitude, lng: selectedPlace.longitude} 
-  //       :{lat: 38.63217176910362, lng: -90.19383204054196} }
-  //     >
-  //       {locations.map((card) => (
-  //         <Marker
-  //           key={card.id}
-  //           position={{ lat: card.latitude, lng: card.longitude }}
-  //           onClick={() => setSelectedPlace(card)}
-  //           icon={{
-  //             url: "/hospital logo.png",
-  //             scaledSize: new window.google.maps.Size(25, 25),
-  //           }}
-           
-  //         />
-  //       ))}
-
-  //       {selectedPlace && (
-  //         <InfoWindow
-  //           position={{
-  //             lat: selectedPlace.latitude,
-  //             lng: selectedPlace.longitude,
-  //           }}
-  //           onCloseClick={() => setSelectedPlace(null)}
-  //         >
-  //           <div style={{height: "70px"}}>
-  //             <h6>{selectedPlace.name}</h6>
-  //             <p>Clinic</p>
-  //           </div>
-  //         </InfoWindow>
-  //       )}
-  //     </GoogleMap>
-  //   );
-  // }
-
-  // const WrappedMap = withScriptjs(withGoogleMap(Map));
-
+  
   //supportive functions---------------------
 
   function activateSearch(e) {

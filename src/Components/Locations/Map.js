@@ -30,7 +30,7 @@ function MyComponent({locations, selectedPlace, setSelectedPlace}) {
         mapContainerStyle={containerStyle}
         center={ selectedPlace ? {lat: selectedPlace.latitude, lng: selectedPlace.longitude} 
               :{lat: 38.63217176910362, lng: -90.19383204054196} }
-        zoom={10}
+        zoom={selectedPlace?17:10}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >

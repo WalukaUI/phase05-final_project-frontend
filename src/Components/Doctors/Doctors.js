@@ -6,6 +6,8 @@ import CardLoadAnimation from "./DocCardLoading";
 function Doctors({doctors, user}) {
   const[searchTearm,setSearchTearm]=useState("")
   const[docSpeciality,setSpeciality]=useState("")
+  const[acceptNewPatients,setAcceptNewPatients]=useState(false)
+  const[videoVisits,setVideoVisits]=useState(false)
 
   function activeSearch(e) {
     e.preventDefault()
@@ -31,13 +33,13 @@ function Doctors({doctors, user}) {
                 <li className="serchTearms">
                   <label>Accepting New Patients</label>
                   <div>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={()=>setAcceptNewPatients(!acceptNewPatients)}/>
                   </div>
                 </li>
                 <li className="serchTearms">
                   <label>Video Visits</label>
                   <div>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={()=>setVideoVisits(!videoVisits)}/>
                   </div>
                 </li>
               </ul>
@@ -67,6 +69,8 @@ function Doctors({doctors, user}) {
           ) : (
 
             doctors.filter((card)=>card.last_name.toLowerCase().includes(searchTearm.toLowerCase()))
+            .filter((card)=>acceptNewPatients ? card.isaccept_newpatients === true: card)
+            .filter((card)=>videoVisits ? card.video_vistits === true: card)
             .filter((card)=>{
               switch (docSpeciality){
                 case "Dermatology": 

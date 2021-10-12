@@ -1,9 +1,11 @@
+
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./Profile.css";
 
-function Profile({ user, appointments, locations, setUser }) {
+function DocProfile({ user, appointments, locations, setUser }) {
   const [popup, setPopup] = useState(false);
   const [updateUserData, setUpdateUserData] = useState(null);
 
@@ -70,24 +72,28 @@ function Profile({ user, appointments, locations, setUser }) {
         <div className="row profileDetails">
           <h5>Your Profile</h5>
           <hr />
+        {editUser?.role === "patient"?
+
+        //patient edit window----------------------------------
+        <>
           <div className="col col-sm-12 col-md-5">
             <p>
               <b>First Name :</b>
               {popup ? (
                 <input
-                  value={editUser.first_name}
+                  value={editUser?.first_name ? editUser?.first_name : ""}
                   name="first_name"
                   onChange={handleChange}
                 />
               ) : (
-                user.first_name
+                editUser.first_name
               )}
             </p>
             <p>
               <b>Last Name :</b>
               {popup ? (
                 <input
-                  value={editUser.last_name }
+                  value={editUser?.last_name ? editUser?.last_name : ""}
                   name="last_name"
                   onChange={handleChange}
                 />
@@ -99,12 +105,12 @@ function Profile({ user, appointments, locations, setUser }) {
               <b>User name :</b>
               {popup ? (
                 <input
-                  value={user.username ? editUser.username : "N/A"}
+                  value={editUser?.username ? editUser?.username: ""}
                   name="username"
                   onChange={handleChange}
                 />
               ) : (
-                user.username ? user.username: "N/A"
+                user.username
               )}
             </p>
             <p>
@@ -115,7 +121,7 @@ function Profile({ user, appointments, locations, setUser }) {
                     className="form-select"
                     name="clinic_location"
                     value={
-                      user.clinic_location ? editUser.clinic_location : "N/A"
+                      editUser?.clinic_location ? editUser?.clinic_location : ""
                     }
                     aria-label="Default select example"
                     onChange={handleChange}
@@ -128,7 +134,7 @@ function Profile({ user, appointments, locations, setUser }) {
                   </select>
                 </label>
               ) : (
-                 user.clinic_location? showUserClinicName(parseInt(user.clinic_location)): "N/A"
+                showUserClinicName(parseInt(user.clinic_location))
               )}
             </p>
           </div>
@@ -137,19 +143,19 @@ function Profile({ user, appointments, locations, setUser }) {
               <b>Contact Number:</b>{" "}
               {popup ? (
                 <input
-                  value={user.contact_number ? editUser.contact_number : "N/A"}
+                  value={editUser?.contact_number ? editUser?.contact_number : ""}
                   name="contact_number"
                   onChange={handleChange}
                 />
               ) : (
-                user.contact_number? user.contact_number:"N/A"
+                user.contact_number
               )}
             </p>
             <p>
               <b>Email Address:</b>{" "}
               {popup ? (
                 <input
-                  value={editUser.email}
+                  value={editUser?.email}
                   name="email"
                   onChange={handleChange}
                 />
@@ -158,6 +164,98 @@ function Profile({ user, appointments, locations, setUser }) {
               )}
             </p>
           </div>
+          </>
+          :
+""
+          //doctor edit window---------------------------------------------
+
+        //   <>
+        //   <div className="col col-sm-12 col-md-5">
+        //   <p>
+        //     <b>First Name:</b>
+        //     {popup ? (
+        //       <input
+        //         value={user.role==="doctor" ? editUser.first_name : ""}
+        //         name="first_name"
+        //         onChange={handleChange}
+        //       />
+        //     ) : (
+        //       user.first_name
+        //     )}
+        //   </p>
+        //   <p>
+        //     <b>Last Name:</b>{" "}
+        //     {popup ? (
+        //       <input
+        //         value={user.role==="doctor" ? editUser.last_name : ""}
+        //         name="last_name"
+        //         onChange={handleChange}
+        //       />
+        //     ) : (
+        //       user.last_name
+        //     )}
+        //   </p>
+        //   <p>
+        //     <b>Education :</b>
+        //     {popup ? (
+        //       <input
+        //         value={user.role==="doctor" ? editUser?.education: ""}
+        //         name="education"
+        //         onChange={handleChange}
+        //       />
+        //     ) : (user.education)}
+        //   </p>
+        //   <p>
+        //   <b>Speciality :</b>
+        //     {popup ?
+        //      <select
+        //             className="form-select"
+        //             name="speciality"
+        //             defaultValue={user.role==="doctor"? user.speciality:"" }
+        //             aria-label="Default select example"
+        //             onChange={handleChange}
+        //           >
+        //             <option value="Dermatology" >Dermatology</option>
+        //             <option value="Family medicine" >Family medicine</option>
+        //             <option value="Anesthesiology" >Anesthesiology</option>
+        //             <option value="Pediatrics" >Pediatrics</option>
+        //             <option value="Preventive medicine" >Preventive medicine</option>
+        //           </select>
+        //           :(editUser.speciality)}
+        //   </p>
+        // </div>
+        // <div className="col col-sm-12 col-md-5">
+        //   <p>
+        //     <b>Username :</b>
+        //     {popup ? (
+        //       <input
+        //         value={user.role==="doctor" ? editUser.username : ""}
+        //         name="username"
+        //         onChange={handleChange}
+        //       />
+        //     ) : (
+        //       user.username 
+        //     )}
+        //   </p>
+        //   <p>
+        //     <b>Image URL :</b>
+        //     {popup ? (
+        //       <input
+        //         value={editUser?.image}
+        //         name="image"
+        //         onChange={handleChange}
+        //       />
+        //     ) : (
+        //       editUser?.image?"Available":"Not Available"
+        //     )}
+        //   </p>
+        // </div>
+        // </>
+          
+          
+          }
+
+
           <div className="col col-sm-12 col-md-2 editProfileDiv">
             {popup ? (
               <button className="btn profileSaveBtn" type="submit">
@@ -199,4 +297,4 @@ function Profile({ user, appointments, locations, setUser }) {
   );
 }
 
-export default Profile;
+export default DocProfile;

@@ -20,7 +20,7 @@ import Appointments from "./Appointments/Appointments";
 import NewAppiontment from "./Appointments/NewAppointment";
 import SignUp from "./SignUp/SignUp";
 import Profile from "./Profile/Profile";
-
+import DocProfile from "./Profile/DocProfile";
 
 function MainContainer() {
   const [user, setUser] = useState(null);
@@ -117,13 +117,22 @@ function MainContainer() {
           <Route path="/signup" exact>
             <SignUp locations={locations} setUser={setUser} />
           </Route>
-          <Route path="/patient-profile" exact>
+          <Route path="/profile" exact>
+            {user?.role === "patient" ? 
             <Profile
-              user={user}
-              appointments={appointments}
-              locations={locations}
-              setUser={setUser}
+            user={user}
+            appointments={appointments}
+            locations={locations}
+            setUser={setUser}
+          />
+            :
+            <DocProfile 
+            user={user}
+            appointments={appointments}
+            locations={locations}
+            setUser={setUser}
             />
+            }
           </Route>
           <Route path="/newappointment" exact>
             <NewAppiontment

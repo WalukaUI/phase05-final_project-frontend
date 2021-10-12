@@ -142,7 +142,7 @@ function SignUp({ locations, setUser }) {
               id="confirmEmail"
               type="number"
               style={{ display: "none" }}
-              defaultValue={Math.floor(1000 + Math.random() * 9000)}
+              value={Math.floor(1000 + Math.random() * 9000)}
             />
             <label>
               First Name

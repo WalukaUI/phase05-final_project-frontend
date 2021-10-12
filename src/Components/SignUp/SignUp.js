@@ -13,13 +13,9 @@ function SignUp({ locations, setUser }) {
   const [userBeforConfirm,setUserBeforConfirm]=useState(null)
 
   const history = useHistory();
-  //const form = useRef();
- 
+
   function createNewPatient(e) {
     e.preventDefault();
-    let emailConfirmationNumber = document.getElementById("confirmEmail").value;
-    console.log(emailConfirmationNumber);
-    setConfirmationNumber(emailConfirmationNumber);
 
     //POST newpatient-----------------------
 
@@ -33,7 +29,6 @@ function SignUp({ locations, setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          console.log("user created");
          sendEmail(user, e);
         });
       } else {
@@ -47,28 +42,25 @@ function SignUp({ locations, setUser }) {
 
   //Send email------------------------------
 
-  function sendEmail(user, e) {
-    console.log("email started")
-    emailjs.sendForm(
+  async function sendEmail(user, e) {
+
+     await emailjs.sendForm(
         "service_dchmott",
         "template_vq1x7nj",
         e.target,
         "user_lKVMUZPYGwUDtHBAdsLEn"
       )
-      .then(
+     .then(
         (result) => {
-          console.log("email sent")
           console.log(result.text);
           setConfirmWindow(!confirmWindow)
           setUserBeforConfirm(user)
           
         },
         (error) => {
-          console.log("email not sent")
           console.log(error.text);
         }
       );
-      console.log("hit end")
     e.target.reset();
   }
 
@@ -76,7 +68,7 @@ function SignUp({ locations, setUser }) {
 
   function handleAddPatient(e) {
     e.preventDefault();
-    console.log(confirmationNumber);
+    setConfirmationNumber(Math.floor(1000 + Math.random() * 9000))
     let newPatientObj = {
       ...newPatient,
       [e.target.name]: e.target.value,
@@ -150,7 +142,7 @@ function SignUp({ locations, setUser }) {
               id="confirmEmail"
               type="number"
               style={{ display: "none" }}
-              value={Math.floor(1000 + Math.random() * 9000)}
+              value={confirmationNumber}
             />
             <label>
               First Name

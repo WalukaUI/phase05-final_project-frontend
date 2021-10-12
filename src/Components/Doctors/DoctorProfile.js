@@ -102,7 +102,6 @@ function DoctorProfile({ user }) {
   function handleUpdateRatin(pct) {
     const newRating = pct * 5;
     setRate(newRating);
-    console.log(rate);
   }
 
   return (

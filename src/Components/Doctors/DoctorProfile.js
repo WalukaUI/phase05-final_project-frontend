@@ -7,6 +7,8 @@ import "./DocProfile.css";
 function DoctorProfile({ user }) {
   const [docProfile, setDocProfile] = useState([]);
   const [docLocations, setDocLocation] = useState([]);
+  const [rate, setRate] = useState();
+
   const params = useParams();
 
   //-----------------GET Doctor----------------
@@ -33,19 +35,44 @@ function DoctorProfile({ user }) {
       .then((data) => setDocLocation(data));
   }, [params.id]);
   //-------------POST a comment-----------------
-function handleNewComment(e) {
-  e.preventDefault()
-  let ss=document.getElementById("commentTextarea").value
-  let obj={
-    "comment": `${ss}`,
-    "doctor_id":parseInt(params.id),
-    "user_id":user.id
+
+  function handleNewComment(e) {
+    e.preventDefault();
+    let ss = document.getElementById("commentTextarea").value;
+    let obj = {
+      comment: `${ss}`,
+      doctor_id: parseInt(params.id),
+      patient_id: user.id,
+      points: rate,
+    };
+
+    fetch(BASE_URL + `/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(obj),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          fetch(BASE_URL + `/doctors/${params.id}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+          })
+            .then((r) => r.json())
+            .then((data) => setDocProfile(data));
+        });
+      } else {
+        res.json().then((err) => {
+          console.log(err.error);
+        });
+      }
+    });
+
+    e.target.reset();
   }
-  console.log(obj);
-
-  e.target.reset()
-}
-
 
   //---------------Rating calculator------------
 
@@ -72,11 +99,10 @@ function handleNewComment(e) {
     return emojis;
   }
 
-  const[aaa,setAa]=useState()
-  function handleUpdateRating(pct) {
+  function handleUpdateRatin(pct) {
     const newRating = pct * 5;
-    setAa(newRating);
-    console.log(aaa);
+    setRate(newRating);
+    console.log(rate);
   }
 
   return (
@@ -145,7 +171,11 @@ function handleNewComment(e) {
             <a href="#patientRatings">Ratings and Comments</a>
           </div>
         </div>
-        <div className="row profileAboutDiv" id="about" style={{minHeight: "150px"}}>
+        <div
+          className="row profileAboutDiv"
+          id="about"
+          style={{ minHeight: "150px" }}
+        >
           <h5>Location and Contact Information</h5>
           <hr />
 
@@ -174,24 +204,20 @@ function handleNewComment(e) {
           ) : (
             <p>N/A</p>
           )}
-          
         </div>
-        <div className="spice-item card">
-      
-      <div className="details">
-        <div>
-          Rating:{" "}
-          <StarRating percentage={aaa ? aaa/5 : 5 / 5} onClick={handleUpdateRating} />
-        </div>
-        
-      </div>
-    </div>
         <div className="row">
           <h5>Write a Comment</h5>
-          <hr/>
+          <hr />
           <div className="form-group">
-
-
+            <div className="details">
+              <div>
+                Rating:{" "}
+                <StarRating
+                  percentage={rate ? rate / 5 : 5 / 5}
+                  onClick={handleUpdateRatin}
+                />
+              </div>
+            </div>
 
             <form onSubmit={handleNewComment}>
               <label>New Comment</label>
@@ -199,12 +225,13 @@ function handleNewComment(e) {
                 className="form-control"
                 id="commentTextarea"
                 rows="3"
-                style={{width: "500px", marginBottom: "10px"}}
+                style={{ width: "500px", marginBottom: "10px" }}
                 maxLength="200"
                 placeholder="Maximum 200 charactors"
-                
               ></textarea>
-              <button type="submit" className="btn btn-primary">Submit</button>
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
             </form>
           </div>
         </div>

@@ -43,7 +43,7 @@ function Locations({ locations }) {
                     <div className="row locationDetails">
                       <div className="col col-sm-6 col-md-4 locationImage">
                         <img
-                          src="https://icon-library.com/images/image-icon/image-icon-16.jpg"
+                          src={location.image}
                           alt="location"
                         />
                         <div className="vl"></div>

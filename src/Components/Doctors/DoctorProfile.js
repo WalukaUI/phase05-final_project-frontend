@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./DocProfile.css";
 
-function DoctorProfile({user}) {
+function DoctorProfile({ user }) {
   const [docProfile, setDocProfile] = useState([]);
   const [docLocations, setDocLocation] = useState([]);
   const params = useParams();
@@ -31,6 +31,14 @@ function DoctorProfile({user}) {
       .then((r) => r.json())
       .then((data) => setDocLocation(data));
   }, [params.id]);
+  //-------------POST a comment-----------------
+function handleNewComment(e) {
+  e.preventDefault()
+  console.log(e.taget.value);
+
+  e.target.reset()
+}
+
 
   //---------------Rating calculator------------
 
@@ -65,7 +73,7 @@ function DoctorProfile({user}) {
             <img
               src={docProfile.image}
               alt="doctor"
-              style={{height: "200px", width: "150px",objectFit: "cover"}}
+              style={{ height: "200px", width: "150px", objectFit: "cover" }}
             />
           </div>
           <div className="col col-sm-12 col-md-4 aboutDoctor">
@@ -76,32 +84,39 @@ function DoctorProfile({user}) {
             <div>
               <h6>Average Ratings: {rating(docProfile.comment)}</h6>
               <p>{ratingStars(rating(docProfile.comment))}</p>
-              <p>{docProfile.comment?.length} {docProfile.comment?.length > 1 ? "comments" : "comment"}</p>
+              <p>
+                {docProfile.comment?.length}{" "}
+                {docProfile.comment?.length > 1 ? "comments" : "comment"}
+              </p>
               <a href="#patientRatings">Comments & Ratings</a>
             </div>
           </div>
           <div className="col col-sm-12 col-md-4 appointmentBtnDiv">
-          {docProfile.video_vistits ? 
-                        <p>
-                        <img
-                          src="../video.svg"
-                          alt="contact"
-                          style={{ paddingRight: "10px", width:"10%" }}
-                        />
-                        Accept video visits
-                      </p>
-          :""}
-                      {docProfile.isaccept_newpatients ? 
-                        <p>
-                        <img
-                          src="../accept.svg"
-                          alt="contact"
-                          style={{ paddingRight: "10px", width:"10%" }}
-                        />
-                        Accept new Patients
-                      </p>
-          :""}
-            <Link to={user ?"/newappointment":"/"}>
+            {docProfile.video_vistits ? (
+              <p>
+                <img
+                  src="../video.svg"
+                  alt="contact"
+                  style={{ paddingRight: "10px", width: "10%" }}
+                />
+                Accept video visits
+              </p>
+            ) : (
+              ""
+            )}
+            {docProfile.isaccept_newpatients ? (
+              <p>
+                <img
+                  src="../accept.svg"
+                  alt="contact"
+                  style={{ paddingRight: "10px", width: "10%" }}
+                />
+                Accept new Patients
+              </p>
+            ) : (
+              ""
+            )}
+            <Link to={user ? "/newappointment" : "/"}>
               <button className="btn profileBtn">
                 Schedule an Appointment
               </button>
@@ -116,48 +131,76 @@ function DoctorProfile({user}) {
             <a href="#patientRatings">Ratings and Comments</a>
           </div>
         </div>
-        <div className="row profileAboutDiv" id="about">
+        <div className="row profileAboutDiv" id="about" style={{minHeight: "150px"}}>
           <h5>Location and Contact Information</h5>
           <hr />
 
-          {docLocations?.length > 0
-            ? docLocations.map((location) => (
-                <div className="row docAddressContactInfo" key={location.id}>
-                  <div className="col col-sm-12 col-md-4">
-                    <p><b>{location.name}</b></p>
-                    <p>{location.address_line_one}</p>
-                    <p>{location.address_line_two}</p>
-                    <p>{location.city}</p>
-                    <p>{location.zipcode}</p>
-                  </div>
-                  <div className="col col-sm-12 col-md-4">
-                    <div className="telephoneNum">
-                    <img src="/telephone.svg" alt="call"/><p>{location.contact_number}</p>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className="col col-sm-12 col-md-4"></div>
+          {docLocations?.length > 0 ? (
+            docLocations.map((location) => (
+              <div className="row docAddressContactInfo" key={location.id}>
+                <div className="col col-sm-12 col-md-4">
+                  <p>
+                    <b>{location.name}</b>
+                  </p>
+                  <p>{location.address_line_one}</p>
+                  <p>{location.address_line_two}</p>
+                  <p>{location.city}</p>
+                  <p>{location.zipcode}</p>
                 </div>
-              ))
-            : <p>N/A</p>}
+                <div className="col col-sm-12 col-md-4">
+                  <div className="telephoneNum">
+                    <img src="/telephone.svg" alt="call" />
+                    <p>{location.contact_number}</p>
+                  </div>
+                </div>
+                <hr />
+                <div className="col col-sm-12 col-md-4"></div>
+              </div>
+            ))
+          ) : (
+            <p>N/A</p>
+          )}
+          
+        </div>
+        
+        <div className="row">
+          <h5>Write a Comment</h5>
+          <hr/>
+          <div className="form-group">
+            <form onSubmit={handleNewComment}>
+              <label>New Comment</label>
+              <textarea
+                className="form-control"
+                id="commentTextarea"
+                rows="3"
+                style={{width: "500px", marginBottom: "10px"}}
+                maxLength="200"
+                placeholder="Maximum 200 charactors"
+                
+              ></textarea>
+              <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
+          </div>
         </div>
         <div className="row" style={{ backgroundColor: "#D6DFC6" }}>
-          <h5 id="patientRatings">Patient Ratings and Comments</h5>
+          <h5 id="patientRatings">Doctor Ratings and Comments</h5>
           <hr />
-          {docProfile.comment?.length > 0
-            ? docProfile.comment.map((card) => (
-                <div key={card.id}>
-                  <div>
-                    <h6>Rating</h6>
-                    <p>{ratingStars(card.points)}</p>
-                  </div>
-                  <div>
-                    <h6>Comment</h6>
-                    <p>{card.comment}</p>
-                  </div>
+          {docProfile.comment?.length > 0 ? (
+            docProfile.comment.map((card) => (
+              <div key={card.id}>
+                <div>
+                  <h6>Rating</h6>
+                  <p>{ratingStars(card.points)}</p>
                 </div>
-              ))
-            : <p>N/A</p>}
+                <div>
+                  <h6>Comment</h6>
+                  <p>{card.comment}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>N/A</p>
+          )}
         </div>
       </div>
     </>

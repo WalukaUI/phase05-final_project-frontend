@@ -6,20 +6,20 @@ import DatePicker from "react-datepicker";
 import emailjs from "emailjs-com";
 import "react-datepicker/dist/react-datepicker.css";
 
-function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
+function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
   const [newAppointment, setNewAppointment] = useState({});
   const [errors, setErrors] = useState(null);
-  const [selecteddate, setSelectedDate]=useState(null)
-  const[searchTearm,setSearchTearm]=useState("")
-
+  const [selecteddate, setSelectedDate] = useState(null);
+  const [searchTearm, setSearchTearm] = useState("");
 
   const history = useHistory();
   const form = useRef();
 
-//POST Appointment------------------------
+  //POST Appointment------------------------
 
   function handleSubmit(e) {
-     e.preventDefault();
+    e.preventDefault();
+
     fetch(BASE_URL + `/appointments`, {
       method: "POST",
       headers: {
@@ -30,12 +30,12 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((booking) => {
-            sendEmail(e)
-            setAppoinements([...appointments,booking])
+          sendEmail(e);
+          setAppoinements([...appointments, booking]);
         });
       } else {
         res.json().then((err) => {
-            console.log(err.errors);
+          console.log(err.errors);
           setErrors(err.errors);
         });
       }
@@ -45,7 +45,6 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
   //Send email------------------------------
 
   function sendEmail(e) {
-
     emailjs
       .sendForm(
         "service_dchmott",
@@ -56,7 +55,7 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
       .then(
         (result) => {
           console.log(result.text);
-          history.push("/appointments")
+          history.push("/appointments");
         },
         (error) => {
           console.log(error.text);
@@ -65,30 +64,31 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
     e.target.reset();
   }
 
-
   //Supportive Functions----------------------
-  
+
   function handleNewAppointment(e) {
     e.preventDefault();
-    let newBooking = { ...newAppointment, 
-        "patient_id": user.id, 
-        "status": "open",
-        "date":selecteddate, 
-        [e.target.name]: e.target.value };
-    
+    let newBooking = {
+      ...newAppointment,
+      patient_id: user.id,
+      status: "open",
+      date: selecteddate,
+      [e.target.name]: e.target.value,
+    };
+
     setNewAppointment(newBooking);
   }
 
   function activeSearch(e) {
-    e.preventDefault()
-    setSearchTearm(e.target.value)
+    e.preventDefault();
+    setSearchTearm(e.target.value);
   }
 
   return (
     <div className="row">
       <div className="col col-sm-12 col-md-6">
         <div className="serchDoctor">
-        <form>
+          <form>
             <input
               type="text"
               className="form-control"
@@ -98,11 +98,14 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
           </form>
         </div>
 
-        {doctors.filter((card)=>card.last_name.toLowerCase().includes(searchTearm.toLowerCase()))
-        .map((doctor) => (
-          <div key={doctor.id}>
-            <div>
-              <div className="row doctorCrad">
+        {doctors
+          .filter((card) =>
+            card.last_name.toLowerCase().includes(searchTearm.toLowerCase())
+          )
+          .map((doctor) => (
+            <div key={doctor.id}>
+              <div>
+                <div className="row doctorCrad">
                   <div className="col col-sm-12 col-md-4 docImage">
                     <img
                       className="doccardImage"
@@ -117,10 +120,10 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
                     <p>{doctor.speciality}</p>
                     <p>{doctor.education}</p>
                   </div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
       <div className="col col-sm-12 col-md-6">
         <form ref={form} onSubmit={handleSubmit}>
@@ -128,46 +131,62 @@ function NewAppiontment({ doctors, user , setAppoinements, appointments}) {
             <h4>Create a new Appointment</h4>
             <label>Select a Doctor</label>
             <select
-                    className="form-select"
-                    name="doctor_id"
-                    aria-label="Default select example"
-                    onChange={handleNewAppointment}
-                  >
-                 {doctors.map((card)=> <option value={card.id} key={card.id}>{card.first_name} {card.last_name}</option>)}
-
-                  </select>
-                  <input name="last_name" value={user.last_name} style={{display: "none"}}/>
-                  <input name="email" value={user.email} style={{display: "none"}}/>
+              className="form-select"
+              name="doctor_id"
+              aria-label="Default select example"
+              onChange={handleNewAppointment}
+            >
+              {doctors.map((card) => (
+                <option value={card.id} key={card.id}>
+                  {card.first_name} {card.last_name}
+                </option>
+              ))}
+            </select>
+            <input
+              name="last_name"
+              defaultValue={user.last_name}
+              style={{ display: "none" }}
+            />
+            <input
+              name="email"
+              defaultValue={user.email}
+              style={{ display: "none" }}
+            />
             <label>Select a Date</label>
             <div>
-            <DatePicker 
-            name="date"
-            className="form-select"
-            selected={selecteddate} 
-            onChange={(date) => setSelectedDate(date)} 
-            dateFormat="dd/MM/yy"
-            filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
-            />
+              <DatePicker
+                name="date"
+                className="form-select"
+                selected={selecteddate}
+                onChange={(date) => setSelectedDate(date)}
+                dateFormat="dd/MM/yy"
+                filterDate={(date) =>
+                  date.getDay() !== 6 && date.getDay() !== 0
+                }
+              />
             </div>
             <label>Time</label>
-                  <select
-                    className="form-select"
-                    name="time"
-                    aria-label="Default select example"
-                    onChange={handleNewAppointment}
-                  >
-                    <option value="0900">9.00 am - 10.00 am</option>
-                    <option value="1000">10.00 am - 11.00 am</option>
-                    <option value="1100">11.00 am - 12.00 pm</option>
-                    <option value="1300">1.00 pm - 2.00 pm</option>
-                  </select>
-                  <button type="submit" className="btn btn-primary formSubBtn">
+            <select
+              className="form-select"
+              name="time"
+              onChange={handleNewAppointment}
+            >
+              <option value="0900">9.00</option>
+              <option value="1000">10.00</option>
+              <option value="1100">11.00 </option>
+              <option value="1300">13.00</option>
+            </select>
+            <button type="submit" className="btn btn-primary formSubBtn">
               Submit
             </button>
           </div>
         </form>
         <div>
-            {errors ? <p style={{ color: "red", marginTop: "10px" }}>Please fill all lines of the form</p>:null }
+          {errors ? (
+            <p style={{ color: "red", marginTop: "10px" }}>
+              Please fill all lines of the form
+            </p>
+          ) : null}
           {/* {errors 
             ? errors.map((e) => (
                 <p style={{ color: "red", marginTop: "10px" }}>{e}</p>

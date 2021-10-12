@@ -36,7 +36,7 @@ function MyComponent({locations, selectedPlace, setSelectedPlace}) {
       >
         { /* Child components, such as markers, info windows, etc. */ }
         <>
-        {locations.map((card) => (
+        {locations?.map((card) => (
           <Marker
             key={card.id}
             position={{ lat: card.latitude, lng: card.longitude }}

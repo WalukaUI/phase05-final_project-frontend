@@ -90,19 +90,14 @@ function Doctors({ doctors, user }) {
                 switch (docSpeciality) {
                   case "Dermatology":
                     return card.speciality === "Dermatology";
-                    break;
                   case "Family medicine":
                     return card.speciality === "Family medicine";
-                    break;
                   case "Anesthesiology":
                     return card.speciality === "Anesthesiology";
-                    break;
                   case "Preventive medicine":
                     return card.speciality === "Preventive medicine";
-                    break;
                   case "Pediatrics":
                     return card.speciality === "Pediatrics";
-                    break;
                   default:
                     return card;
                 }

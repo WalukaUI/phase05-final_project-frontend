@@ -53,7 +53,7 @@ function SignUp({ locations, setUser }) {
         "service_dchmott",
         "template_vq1x7nj",
         e.target,
-        `${process.env.REACT_APP_EMAIL_KEY}`
+        "user_lKVMUZPYGwUDtHBAdsLEn"
       )
       .then(
         (result) => {

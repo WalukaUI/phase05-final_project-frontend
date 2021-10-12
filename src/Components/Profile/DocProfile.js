@@ -8,6 +8,7 @@ import "./Profile.css";
 function DocProfile({ user, appointments, locations, setUser }) {
   const [popup, setPopup] = useState(false);
   const [updateUserData, setUpdateUserData] = useState(null);
+  const [errors,setErrors]=useState(null)
 
   //PATCH User-------------------------------
   
@@ -22,9 +23,17 @@ function DocProfile({ user, appointments, locations, setUser }) {
       },
       credentials: "include",
       body: JSON.stringify(updateUserData),
-    })
-      .then((res) => res.json())
-      .then((patient) => setUser(patient));
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((doc) => {
+          setUser(doc)
+        });
+      } else {
+        res.json().then((err) => {
+          setErrors(err.error);
+        });
+      }
+    });
   }
 
   //show user appointments--------------------
@@ -44,14 +53,8 @@ function DocProfile({ user, appointments, locations, setUser }) {
     );
   }
 
-  // //show users clinic location---------------
-
-  // function showUserClinicName(id) {
-  //   let nn = [];
-  //   locations.map((card) => (card.id === id ? nn.push(card.name) : null));
-  //   return nn[0];
-  // }
   //Supportive Functions------------------------
+
   function triggerEditWindow(e) {
     e.preventDefault();
     setPopup(!popup);
@@ -102,7 +105,7 @@ function DocProfile({ user, appointments, locations, setUser }) {
               {popup ? (
                 <input
                   value={user?.email}
-                  name="username"
+                  name="email"
                   onChange={handleChange}
                 />
               ) : (
@@ -114,7 +117,7 @@ function DocProfile({ user, appointments, locations, setUser }) {
               {popup ? (
                 <input
                   value={user?.education}
-                  name="username"
+                  name="education"
                   onChange={handleChange}
                 />
               ) : (
@@ -125,27 +128,50 @@ function DocProfile({ user, appointments, locations, setUser }) {
           </div>
           <div className="col col-sm-12 col-md-5">
             <p>
-              <b>Contact Number:</b>{" "}
+              <b>Username:</b>{" "}
               {popup ? (
                 <input
-                  value={editUser?.contact_number}
-                  name="contact_number"
+                  value={editUser?.username}
+                  name="username"
                   onChange={handleChange}
                 />
               ) : (
-                user.contact_number? user.contact_number:"N/A"
+                user.username ? user.username :"N/A"
               )}
             </p>
             <p>
-              <b>Email Address:</b>{" "}
+              <b>Speciality:</b>{" "}
+              {popup ? (
+                <select
+                  className="form-select"
+                  name="speciality"
+                  value={editUser?.speciality}
+                  aria-label="Default select example"
+                  onChange={handleChange}
+                >
+                  <option value="All">All</option>
+                  <option value="Dermatology">Dermatology</option>
+                  <option value="Family medicine">Family medicine</option>
+                  <option value="Anesthesiology">Anesthesiology</option>
+                  <option value="Pediatrics">Pediatrics</option>
+                  <option value="Preventive medicine">
+                    Preventive medicine
+                  </option>
+                </select>
+              ) : (
+                user.speciality ? user.speciality: "N/A"
+              )}
+            </p>
+            <p>
+              <b>Profile Image:</b>{" "}
               {popup ? (
                 <input
-                  value={editUser.email}
-                  name="email"
+                  value={editUser?.image}
+                  name="image"
                   onChange={handleChange}
                 />
               ) : (
-                user.email
+                user.image ? user.image: "N/A"
               )}
             </p>
           </div>
@@ -177,7 +203,7 @@ function DocProfile({ user, appointments, locations, setUser }) {
         </div>
       </form>
       <hr />
-      <div>
+      <div style={{width: "100%", height: "200px", backgroundColor: "red"}}>
         {errors
           ? errors.map((e) => (
               <p style={{ color: "red", marginBottom: "10px" }} key={e}>{e}</p>

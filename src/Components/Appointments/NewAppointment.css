@@ -1,5 +1,7 @@
-.doccardImage{
-    width: 60%;
+.doccardImageDiv{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .serchDoctor{
     background-color: bisque;
@@ -15,5 +17,6 @@
     align-items: center;
 }
 .doctorCrad img{
-width: 50%;
+    height: 100px;
+    width: 120px;
 }

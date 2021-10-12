@@ -50,7 +50,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
         "service_dchmott",
         "template_4tdthof",
         form.current,
-        `${process.env.REACT_APP_EMAIL_KEY}`
+        "user_lKVMUZPYGwUDtHBAdsLEn"
       )
       .then(
         (result) => {
@@ -106,10 +106,10 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
             <div key={doctor.id}>
               <div>
                 <div className="row doctorCrad">
-                  <div className="col col-sm-12 col-md-4 docImage">
+                  <div className="col col-sm-12 col-md-4 docImageDiv">
                     <img
                       className="doccardImage"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPPYSMvGn6iF_kZQs8YyU1jm4VczEPSx2Lpw&usqp=CAU"
+                      src={doctor.image}
                       alt="doctor"
                     />
                   </div>
@@ -181,7 +181,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
             </button>
           </div>
         </form>
-        <div>
+        <div style={{textAlign: "center"}}>
           {errors ? (
             <p style={{ color: "red", marginTop: "10px" }}>
               Please fill all lines of the form

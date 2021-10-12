@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./Profile.css";
 
-function Profile({ user, appointments, locations, setUser }) {
+function PatientProfile({ user, appointments, locations, setUser }) {
   const [popup, setPopup] = useState(false);
   const [updateUserData, setUpdateUserData] = useState(null);
+  const [errors, setErrors] = useState(null);
 
   //PATCH User-------------------------------
   
@@ -20,9 +21,17 @@ function Profile({ user, appointments, locations, setUser }) {
       },
       credentials: "include",
       body: JSON.stringify(updateUserData),
-    })
-      .then((res) => res.json())
-      .then((patient) => setUser(patient));
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((patient) => {
+          setUser(patient)
+        });
+      } else {
+        res.json().then((err) => {
+          setErrors(err.error);
+        });
+      }
+    });
   }
 
   //show user appointments--------------------
@@ -137,7 +146,7 @@ function Profile({ user, appointments, locations, setUser }) {
               <b>Contact Number:</b>{" "}
               {popup ? (
                 <input
-                  value={user.contact_number ? editUser.contact_number : "N/A"}
+                  value={editUser?.contact_number}
                   name="contact_number"
                   onChange={handleChange}
                 />
@@ -186,6 +195,13 @@ function Profile({ user, appointments, locations, setUser }) {
         </div>
       </form>
       <hr />
+      <div>
+        {errors
+          ? errors.map((e) => (
+              <p style={{ color: "red", marginBottom: "10px" }} key={e}>{e}</p>
+            ))
+          : null}
+      </div>
       <div className="row profileAppointments">
         <h5>Appointments</h5>
         {showUserAppointments(user?.id)}
@@ -199,4 +215,4 @@ function Profile({ user, appointments, locations, setUser }) {
   );
 }
 
-export default Profile;
+export default PatientProfile;

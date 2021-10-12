@@ -4,11 +4,11 @@ import PatientCard from "./PatientCard";
 import CardLoadAnimation from "../Doctors/DocCardLoading";
 import "./Patients.css";
 
-function Patients({locations, user}) {
+function Patients({ locations, user }) {
   const [patients, setPatients] = useState(null);
-  const [editBtn, setEditBtn] = useState(false)
-  const[searchTearm,setSearchTearm]=useState("")
-  const[clinic,setClinic]=useState(false)
+  const [editBtn, setEditBtn] = useState(false);
+  const [searchTearm, setSearchTearm] = useState("");
+  const [clinic, setClinic] = useState(false);
 
   //GET
 
@@ -22,58 +22,61 @@ function Patients({locations, user}) {
         res.json().then((data) => {
           setPatients(data);
         });
-      } 
+      }
     });
   }, [user?.id]);
 
   //DELETE
 
-  function deletePatient(id){
+  function deletePatient(id) {
     fetch(BASE_URL + `/patients/${id}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
-      const newPatientsList = patients.filter((person) => person.id !== id);
-      setPatients(newPatientsList);
+      method: "DELETE",
+      credentials: "include",
+    });
+    const newPatientsList = patients.filter((person) => person.id !== id);
+    setPatients(newPatientsList);
+  }
+
+  //PATCH
+
+  function updatePatient(patientObject, id) {
+    let data = { ...patientObject, id: id };
+
+    fetch(BASE_URL + `/patients/${id}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(data),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((patient) => {
+          const newPatients = patients.filter((person) => person.id !== id);
+          setPatients([...newPatients, patient]);
+        });
+      } else {
+        res.json().then((err) => {
+          console.log(err.error);
+        });
+      }
+    });
+  }
+
+  function activateSearch(e) {
+    e.preventDefault();
+    setSearchTearm(e.target.value);
+  }
+  function handleSearch(e) {
+    e.preventDefault();
+    if (e.target.value === "false") {
+      setClinic(null);
+    } else {
+      let value = parseInt(e.target.value);
+      setClinic(value);
     }
-
-    //PATCH
-
-    function updatePatient(patientObject, id) {
-        let data = { ...patientObject, "id": id };
-    
-        fetch(BASE_URL + `/patients/${id}`, {
-          method: "PATCH",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify(data),
-        })
-          .then((res) => res.json())
-          .then((patient) => {
-            const newPatients = patients.filter(
-              (person) => person.id !== id
-            );
-    
-            setPatients([...newPatients, patient]);
-          });
-      }
-
-      function activateSearch(e) {
-        e.preventDefault()
-        setSearchTearm(e.target.value)
-      }
-      function handleSearch(e) {
-        e.preventDefault();
-        if(e.target.value === "false"){
-          setClinic(null)
-        }else{
-          let value=parseInt(e.target.value)
-          setClinic(value)
-        }
-      }
+  }
 
   return (
     <div className="patientMainDiv">
@@ -94,26 +97,26 @@ function Patients({locations, user}) {
             <div className="col col-sm-12 col-md-3">
               <h6>Serach your patients </h6>
               <h6>⬅ By name or Location ➡ </h6>
-
-              
             </div>
             <div className="col col-sm-12 col-md-3">
               <ul>
                 <li className="serchTearms">
-                <label>Search patients by Location
-        <select
-          className="form-select"
-          name="id"
-          aria-label="Default select example"
-          onChange={handleSearch}
-        >
-          <option value={false}>All</option>
-          {locations.map((card) => (
-            <option value={card.id} key={card.id + 100}>
-              {card.name}
-            </option>
-          ))}
-        </select></label>
+                  <label>
+                    Search patients by Location
+                    <select
+                      className="form-select"
+                      name="id"
+                      aria-label="Default select example"
+                      onChange={handleSearch}
+                    >
+                      <option value={false}>All</option>
+                      {locations.map((card) => (
+                        <option value={card.id} key={card.id + 100}>
+                          {card.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
                 </li>
               </ul>
             </div>
@@ -121,20 +124,27 @@ function Patients({locations, user}) {
         </form>
         <div className="patientCardDiv grids">
           {patients === null ? (
-          <CardLoadAnimation />
+            <CardLoadAnimation />
           ) : (
-          
-          patients.filter((patient)=>patient.last_name.toLowerCase().includes(searchTearm.toLocaleLowerCase()))
-          .filter((patient)=>  clinic ? parseInt(patient.clinic_location) === clinic: patient)
-          .map((card) =>  <PatientCard 
-          key={card.id + Math.random(10)} 
-          card={card} 
-          deletePatient={deletePatient} 
-          updatePatient={updatePatient}
-          editBtn={editBtn}
-          setEditBtn={setEditBtn}
-          />
-          )
+            patients
+              .filter((patient) =>
+                patient.last_name
+                  .toLowerCase()
+                  .includes(searchTearm.toLocaleLowerCase())
+              )
+              .filter((patient) =>
+                clinic ? parseInt(patient.clinic_location) === clinic : patient
+              )
+              .map((card) => (
+                <PatientCard
+                  key={card.id + Math.random(10)}
+                  card={card}
+                  deletePatient={deletePatient}
+                  updatePatient={updatePatient}
+                  editBtn={editBtn}
+                  setEditBtn={setEditBtn}
+                />
+              ))
           )}
         </div>
       </div>

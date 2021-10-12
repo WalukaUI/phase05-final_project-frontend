@@ -19,7 +19,7 @@ import PatientLogin from "./Login/PatientLogin/PatientLogin";
 import Appointments from "./Appointments/Appointments";
 import NewAppiontment from "./Appointments/NewAppointment";
 import SignUp from "./SignUp/SignUp";
-import Profile from "./Profile/Profile";
+import PatientProfile from "./Profile/PatientProfile";
 import DocProfile from "./Profile/DocProfile";
 
 function MainContainer() {
@@ -118,7 +118,7 @@ function MainContainer() {
           </Route>
           <Route path="/profile" exact>
             {user?.role === "patient" ? 
-            <Profile
+            <PatientProfile
             user={user}
             appointments={appointments}
             locations={locations}

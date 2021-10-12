@@ -33,7 +33,6 @@ function SignUp({ locations, setUser }) {
         });
       } else {
         res.json().then((err) => {
-          console.log(err.error);
           setErrors(err.error);
         });
       }
@@ -133,7 +132,6 @@ function SignUp({ locations, setUser }) {
   ) : (
     <div className="signupContainer">
       <h4>Create your account</h4>
-      {/* ref={form} */}
       <form  onSubmit={createNewPatient}>
         <div className="row signupInnerContainer">
           <div className="col col-sm-12 col-md-6 signUpformInnerDiv1">

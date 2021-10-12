@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
+import StarRating from "./StarRating";
 import "./DocProfile.css";
 
 function DoctorProfile({ user }) {
@@ -34,7 +35,13 @@ function DoctorProfile({ user }) {
   //-------------POST a comment-----------------
 function handleNewComment(e) {
   e.preventDefault()
-  console.log(e.taget.value);
+  let ss=document.getElementById("commentTextarea").value
+  let obj={
+    "comment": `${ss}`,
+    "doctor_id":parseInt(params.id),
+    "user_id":user.id
+  }
+  console.log(obj);
 
   e.target.reset()
 }
@@ -63,6 +70,13 @@ function handleNewComment(e) {
       emojis += emoji;
     }
     return emojis;
+  }
+
+  const[aaa,setAa]=useState()
+  function handleUpdateRating(pct) {
+    const newRating = pct * 5;
+    setAa(newRating);
+    console.log(aaa);
   }
 
   return (
@@ -162,11 +176,23 @@ function handleNewComment(e) {
           )}
           
         </div>
+        <div className="spice-item card">
+      
+      <div className="details">
+        <div>
+          Rating:{" "}
+          <StarRating percentage={aaa ? aaa/5 : 5 / 5} onClick={handleUpdateRating} />
+        </div>
         
+      </div>
+    </div>
         <div className="row">
           <h5>Write a Comment</h5>
           <hr/>
           <div className="form-group">
+
+
+
             <form onSubmit={handleNewComment}>
               <label>New Comment</label>
               <textarea

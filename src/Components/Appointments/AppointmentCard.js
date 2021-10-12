@@ -41,7 +41,7 @@ function AppointmentCard({
   function handleEdit(e) {
     e.preventDefault();
     setDisplay(!display);
-    editAppointment(updatedAppointment)
+    editAppointment({...updatedAppointment, "date":selecteddate})
   }
 
   return display ? (

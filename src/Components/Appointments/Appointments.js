@@ -23,6 +23,7 @@ function Appointments({ user, appointments, setAppoinements, doctors,setUser }) 
       if (res.ok) {
         res.json().then((data) => {
           setAppoinements(data);
+          console.log(data);
         });
       }
     });
@@ -52,13 +53,19 @@ function Appointments({ user, appointments, setAppoinements, doctors,setUser }) 
       },
       credentials: "include",
       body: JSON.stringify(data),
+    }).then((res)=>{
+      if(res.ok){
+        res.json().then((obj)=>{
+          console.log(obj);
+          const newData = appointments.filter((app) => app.id !== data.id);
+          setAppoinements([...newData, obj]);
+        })
+      }else{
+        res.json().then((err) => {
+          console.log(err.error);
+        });
+      }
     })
-      .then((res) => res.json())
-      .then((obj) => {
-        const newData = appointments.filter((app) => app.id !== data.id);
-
-        setAppoinements([...newData, obj]);
-      });
   }
 
   function handleSearch(e) {
@@ -87,7 +94,7 @@ function Appointments({ user, appointments, setAppoinements, doctors,setUser }) 
         >
           <option value={false}>All</option>
           {doctors.map((card) => (
-            <option value={card.id} key={card.id}>
+            <option value={card.id} key={card.id+Math.random(10)}>
               {card.first_name} {card.last_name}
             </option>
           ))}
@@ -131,7 +138,7 @@ function Appointments({ user, appointments, setAppoinements, doctors,setUser }) 
         {appointments.filter((card)=> serchTearm ? card.doctor_id === parseInt(serchTearm): card)
         .map((card) => (
           <AppointmentCard
-            key={card.id}
+            key={card.id+Math.random(10)}
             card={card}
             deleteAppointment={deleteAppointment}
             doctors={doctors}

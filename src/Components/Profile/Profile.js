@@ -72,7 +72,7 @@ function Profile({ user, appointments, locations, setUser }) {
           <hr />
         {editUser?.role === "patient"?
 
-        //patient edit window
+        //patient edit window----------------------------------
         <>
           <div className="col col-sm-12 col-md-5">
             <p>
@@ -100,7 +100,7 @@ function Profile({ user, appointments, locations, setUser }) {
               )}
             </p>
             <p>
-              <b>User name:</b>{" "}
+              <b>User name:</b>{editUser.username}
               {popup ? (
                 <input
                   value={editUser.username ? editUser.username: ""}
@@ -165,20 +165,20 @@ function Profile({ user, appointments, locations, setUser }) {
           </>
           :
           
-          //doctor edit window
+          //doctor edit window---------------------------------------------
 
           <>
           <div className="col col-sm-12 col-md-5">
           <p>
-            <b>First Name:</b>{" "}
+            <b>First Name:</b>
             {popup ? (
               <input
-                value={editUser?.first_name ? editUser?.first_name : ""}
+                value={editUser?.first_name ? editUser.first_name : ""}
                 name="first_name"
                 onChange={handleChange}
               />
             ) : (
-              user.first_name
+              editUser.first_name
             )}
           </p>
           <p>

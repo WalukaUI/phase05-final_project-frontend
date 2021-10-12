@@ -109,7 +109,7 @@ function Patients({locations, user}) {
         >
           <option value={false}>All</option>
           {locations.map((card) => (
-            <option value={card.id} key={card.id}>
+            <option value={card.id} key={card.id + 100}>
               {card.name}
             </option>
           ))}
@@ -127,7 +127,7 @@ function Patients({locations, user}) {
           patients.filter((patient)=>patient.last_name.toLowerCase().includes(searchTearm.toLocaleLowerCase()))
           .filter((patient)=>  clinic ? parseInt(patient.clinic_location) === clinic: patient)
           .map((card) =>  <PatientCard 
-          key={card.id} 
+          key={card.id + Math.random(10)} 
           card={card} 
           deletePatient={deletePatient} 
           updatePatient={updatePatient}

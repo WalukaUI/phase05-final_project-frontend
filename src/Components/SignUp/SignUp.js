@@ -59,8 +59,9 @@ function SignUp({ locations, setUser }) {
         (result) => {
           console.log("email sent")
           console.log(result.text);
-          setUserBeforConfirm(user)
           setConfirmWindow(!confirmWindow)
+          setUserBeforConfirm(user)
+          
         },
         (error) => {
           console.log("email not sent")

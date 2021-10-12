@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import emailjs from "emailjs-com";
@@ -13,13 +13,14 @@ function SignUp({ locations, setUser }) {
   const [userBeforConfirm,setUserBeforConfirm]=useState(null)
 
   const history = useHistory();
-  const form = useRef();
+  //const form = useRef();
  
   function createNewPatient(e) {
     e.preventDefault();
     let emailConfirmationNumber = document.getElementById("confirmEmail").value;
+    console.log(emailConfirmationNumber);
     setConfirmationNumber(emailConfirmationNumber);
- 
+
     //POST newpatient-----------------------
 
     fetch(BASE_URL + `/patients`, {
@@ -32,8 +33,8 @@ function SignUp({ locations, setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          console.log(user);
-          sendEmail(user, e);
+          console.log("user created");
+         sendEmail(user, e);
         });
       } else {
         res.json().then((err) => {
@@ -43,26 +44,30 @@ function SignUp({ locations, setUser }) {
       }
     });
    }
+
   //Send email------------------------------
 
   function sendEmail(user, e) {
-    emailjs
-      .sendForm(
+    console.log("email started")
+    emailjs.sendForm(
         "service_dchmott",
         "template_vq1x7nj",
-        form.current,
+        e.target,
         `${process.env.REACT_APP_EMAIL_KEY}`
       )
       .then(
         (result) => {
+          console.log("email sent")
           console.log(result.text);
           setUserBeforConfirm(user)
           setConfirmWindow(!confirmWindow)
         },
         (error) => {
+          console.log("email not sent")
           console.log(error.text);
         }
       );
+      console.log("hit end")
     e.target.reset();
   }
 
@@ -70,6 +75,7 @@ function SignUp({ locations, setUser }) {
 
   function handleAddPatient(e) {
     e.preventDefault();
+    console.log(confirmationNumber);
     let newPatientObj = {
       ...newPatient,
       [e.target.name]: e.target.value,
@@ -134,7 +140,8 @@ function SignUp({ locations, setUser }) {
   ) : (
     <div className="signupContainer">
       <h4>Create your account</h4>
-      <form ref={form} onSubmit={createNewPatient}>
+      {/* ref={form} */}
+      <form  onSubmit={createNewPatient}>
         <div className="row signupInnerContainer">
           <div className="col col-sm-12 col-md-6 signUpformInnerDiv1">
             <input
@@ -234,7 +241,7 @@ function SignUp({ locations, setUser }) {
       <div>
         {errors
           ? errors.map((e) => (
-              <p style={{ color: "red", marginBottom: "10px" }}>{e}</p>
+              <p style={{ color: "red", marginBottom: "10px" }} key={e}>{e}</p>
             ))
           : null}
       </div>

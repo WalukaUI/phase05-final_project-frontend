@@ -22,7 +22,7 @@
   .star-rating .background {
     display: flex;
   }
-  .card {
+  .commentCard {
     margin: 2rem 0;
     padding: 1rem;
     background-color: white;

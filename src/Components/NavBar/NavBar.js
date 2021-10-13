@@ -4,7 +4,7 @@ import "./NavBar.css";
 import UserLocation from "../Locations/UserLoaction"
 
 
-function NavBar({logout, user}) {
+function NavBar({logout, user, getAddress, setAddress}) {
 
  const history = useHistory()
  function handlelogout(e) {
@@ -93,10 +93,10 @@ function NavBar({logout, user}) {
 
       <div className="loginLogoutDiv">
         <div style={{paddingRight: "10px"}}>
-        <h6>{user ? `You are logged in as ${user.username}`: ""}</h6>
-        <UserLocation/>
+        <h6>{user ? `You are logged in as ${user.first_name}`: ""}</h6>
+        <UserLocation getAddress={getAddress} setAddress={setAddress}/>
         </div>
-        <div>
+        <div style={{textAlign: "center"}}>
         {user ? <Link to="/profile" className="btn btn-light accountSettingsBtn">🔐 Account Settings</Link>: ""}
         </div>
       </div>

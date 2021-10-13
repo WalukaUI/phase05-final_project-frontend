@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-function UserLocation() {
-  const [locate, setLocate] = useState(null);
-  const[getAddress,setAddress]=useState("")
+function UserLocation({getAddress,setAddress}) {
 
-  useEffect(() => {
-    if (navigator.geolocation) {
+
+   useEffect(() => {
+     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, handleLocationError);
       } else {
         alert("Geolocation is not supported by this browser.");
       }
     
-      function showPosition(pars) {
+      async function showPosition(pars) {
 
           let latitude= pars.coords.latitude
           let longitude= pars.coords.longitude
        
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=false&key=${process.env.REACT_APP_GOOGLE_KEY}`)
+        await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=false&key=${process.env.REACT_APP_GOOGLE_KEY}`)
           .then((res) => res.json())
           .then((data) => setAddress(data.results[0].formatted_address));
       }
@@ -44,7 +43,7 @@ function UserLocation() {
     }
   }
 
-  return getAddress? <p>Searching from {getAddress} </p>: <p>Location data stricted by user</p>
+  return getAddress? <p>Searching from {getAddress} </p>: <p></p>
 }
 
 export default UserLocation;

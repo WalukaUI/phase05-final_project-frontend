@@ -27,6 +27,7 @@ function MainContainer() {
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
+  const[getAddress,setAddress]=useState("")
 
   // auto-login
 
@@ -50,7 +51,10 @@ function MainContainer() {
     fetch(BASE_URL + `/logout`, {
       method: "DELETE",
       credentials: "include",
-    }).then((res) => setUser(null));
+    }).then((res) => {
+      setUser(null)
+      setAddress("")
+    });
   }
   //GET Locations
 
@@ -83,7 +87,7 @@ function MainContainer() {
   return (
     <Router>
       <div className="mainDiv">
-        <NavBar logout={logout} user={user} />
+        <NavBar logout={logout} user={user} getAddress={getAddress} setAddress={setAddress}/>
         <div className="covidWarnning">
           <div>
             All Locations are open,{" "}

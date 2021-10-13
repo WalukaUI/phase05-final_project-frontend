@@ -105,7 +105,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
           .map((doctor) => (
             <div key={doctor.id}>
               <div>
-                <div className="row doctorCrad">
+                <div className="row doctorCradDiv">
                   <div className="col col-sm-12 col-md-4 docImageDiv">
                     <img
                       className="doccardImage"

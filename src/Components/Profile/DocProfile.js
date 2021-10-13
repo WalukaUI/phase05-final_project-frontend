@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
@@ -139,14 +137,14 @@ function DocProfile({ user, appointments, locations, setUser }) {
                 user.username ? user.username :"N/A"
               )}
             </p>
-            <p>
-              <b>Speciality:</b>{" "}
+
+            <div className="specialityDiv">
+              <p><b>Speciality :</b></p>
               {popup ? (
                 <select
                   className="form-select"
                   name="speciality"
                   value={editUser?.speciality}
-                  aria-label="Default select example"
                   onChange={handleChange}
                 >
                   <option value="All">All</option>
@@ -161,7 +159,7 @@ function DocProfile({ user, appointments, locations, setUser }) {
               ) : (
                 user.speciality ? user.speciality: "N/A"
               )}
-            </p>
+            </div>
             <p>
               <b>Profile Image:</b>{" "}
               {popup ? (
@@ -171,7 +169,7 @@ function DocProfile({ user, appointments, locations, setUser }) {
                   onChange={handleChange}
                 />
               ) : (
-                user.image ? user.image: "N/A"
+                user.image ? "Available": "N/A"
               )}
             </p>
           </div>
@@ -203,7 +201,7 @@ function DocProfile({ user, appointments, locations, setUser }) {
         </div>
       </form>
       <hr />
-      <div style={{width: "100%", height: "200px", backgroundColor: "red"}}>
+      <div style={{width: "100%", height: "50px"}}>
         {errors
           ? errors.map((e) => (
               <p style={{ color: "red", marginBottom: "10px" }} key={e}>{e}</p>

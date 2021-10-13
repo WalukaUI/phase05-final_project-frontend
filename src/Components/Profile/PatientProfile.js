@@ -195,7 +195,7 @@ function PatientProfile({ user, appointments, locations, setUser }) {
         </div>
       </form>
       <hr />
-      <div>
+      <div style={{width: "100%", height: "50px"}}>
         {errors
           ? errors.map((e) => (
               <p style={{ color: "red", marginBottom: "10px" }} key={e}>{e}</p>

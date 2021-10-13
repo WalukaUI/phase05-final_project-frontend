@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./NavBar.css";
+import UserLocation from "../Locations/UserLoaction"
 
 
 function NavBar({logout, user}) {
@@ -91,10 +92,12 @@ function NavBar({logout, user}) {
       </div>
 
       <div className="loginLogoutDiv">
+        <div style={{paddingRight: "10px"}}>
         <h6>{user ? `You are logged in as ${user.username}`: ""}</h6>
-        <a href="!#">You are serching from</a>
+        <UserLocation/>
+        </div>
         <div>
-        {user ? <Link to="/profile" className="btn btn-light">Account Settings</Link>: ""}
+        {user ? <Link to="/profile" className="btn btn-light accountSettingsBtn">🔐 Account Settings</Link>: ""}
         </div>
       </div>
     </div>

@@ -45,12 +45,12 @@ function Doctor({ user, card }) {
   return (
     <div>
       <Link to={`/doctors/${card.id}`}>
-        <div className="row doctorCrad">
-          <div className="col col-sm-12 col-md-4 docImagediv">
+        <div className="row doctorsCrad">
+          <div className="col col-sm-12 col-md-4 docCardImagediv">
             <img
               src={card.image}
               alt="doctor"
-              className="docImage"
+              className="doctImage"
             />
           </div>
           <div className="col col-sm-12 col-md-4">

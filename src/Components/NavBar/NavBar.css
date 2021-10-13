@@ -25,15 +25,19 @@
   text-decoration: underline;
 }
 .loginLogoutDiv {
+    display: flex;
   width: 25%;
 }
+
 .menuBtn{
   width: 30%;
 }
 .changeDisplay{
     display: none;
 }
-
+.accountSettingsBtn{
+    height: 100%;
+}
 
 /* menubtn */
 

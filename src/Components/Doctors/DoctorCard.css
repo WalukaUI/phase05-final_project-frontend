@@ -1,21 +1,22 @@
-.doctorCrad{
+.doctorsCrad{
     opacity: 0.8;
     margin: 10px 10px 0px 10px;
     color: black;
     background-color: rgb(173, 240, 218);
 }
-.doctorCrad:hover{
+.doctorsCrad:hover{
     background-color: aquamarine;
 }
-.doctorCrad div{
+.doctorsCrad div{
     padding: 10px;
 }
-.docImagediv{
+.docCardImagediv{
     padding: 0px !important;
 }
-.docImage{
+.doctImage{
     object-fit: cover;
     height: 150px;
+    width: 200px;
 }
 .contactIcon{
     width: 20%;

@@ -1,5 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
+import {
+  Link
+ } from "react-router-dom";
 import "./Covid19.css"
 
 function CovidInfoByState() {
@@ -29,6 +32,9 @@ function CovidInfoByState() {
   if (data === null) return null;
   return (
     <>
+    <div style={{paddingTop: "10px", display: "flex", justifyContent: "right"}}>
+      <Link className="btn btn-danger" to="/" style={{width: "150px"}}>Close</Link>
+      </div>
     <div style={{backgroundColor: "#f7e2c8"}}>
       <h5>Global covid Status by Today</h5>
 

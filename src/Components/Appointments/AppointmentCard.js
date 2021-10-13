@@ -49,8 +49,8 @@ function AppointmentCard({
       <div className=" row appointmentCard">
         <div className="col col-md-6 col-sm-12">
           <p><b>Date:</b> {card.date}</p>
-          <p>Time: {card.time}</p>
-          <p> Doctor Name: {filterDoctorName()}</p>
+          <p><strong>Time: </strong>{card.time}</p>
+          <p><strong> Doctor Name:</strong> {filterDoctorName()}</p>
         </div>
         <div className="col col-md-6 col-sm-12">
           <button

@@ -21,6 +21,7 @@ import NewAppiontment from "./Appointments/NewAppointment";
 import SignUp from "./SignUp/SignUp";
 import PatientProfile from "./Profile/PatientProfile";
 import DocProfile from "./Profile/DocProfile";
+import Covid19 from "./Covid19/Covid19";
 
 function MainContainer() {
   const [user, setUser] = useState(null);
@@ -28,6 +29,7 @@ function MainContainer() {
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
   const[getAddress,setAddress]=useState("")
+  const[covidInfoDiv,setCovidInfoDiv]=useState(true)
 
   // auto-login
 
@@ -89,7 +91,7 @@ function MainContainer() {
       <div className="mainDiv">
         <NavBar logout={logout} user={user} getAddress={getAddress} setAddress={setAddress}/>
         <div className="covidWarnning">
-          <div>
+          <div onClick={()=>setCovidInfoDiv(true)}>
             All Locations are open,{" "}
             <a href="!#">
               see covid restrictions
@@ -99,6 +101,9 @@ function MainContainer() {
         </div>
 
         <Switch>
+          <Route path="/covid19" exact>
+            <Covid19 covidInfoDiv={covidInfoDiv} />
+          </Route>
           <Route path="/doctorlogin" exact>
             <DoctorLogin setUser={setUser} />
           </Route>

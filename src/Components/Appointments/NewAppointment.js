@@ -103,9 +103,9 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
             card.last_name.toLowerCase().includes(searchTearm.toLowerCase())
           )
           .map((doctor) => (
-            <div key={doctor.id}>
-              <div>
-                <div className="row doctorCradDiv">
+            <div key={doctor.id} className="docCardMainDiv">
+              <div className="docCardMainInnerDiv">
+                <div className="row doctorCradBox">
                   <div className="col col-sm-12 col-md-4 docImageDiv">
                     <img
                       className="doccardImage"
@@ -113,7 +113,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
                       alt="doctor"
                     />
                   </div>
-                  <div className="col col-md-4">
+                  <div className="col col-md-4" style={{paddingTop: "10px"}}>
                     <h5>
                       {doctor.first_name} {doctor.last_name}
                     </h5>

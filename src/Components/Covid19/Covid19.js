@@ -3,8 +3,9 @@ import "./Covid19.css";
 import CovidHomePage from "./CovidHomePage";
 import CovidInfoByState from "./CovidStatesInfo";
 
-function Covid19({ covidInfoDiv }) {
-  return covidInfoDiv ? (
+function Covid19() {
+  console.log("sdfsfsd");
+  return (
     <div>
       <div className="popup-box">
         <div className="popup-inner">
@@ -48,9 +49,7 @@ function Covid19({ covidInfoDiv }) {
         </div>
       </div>
     </div>
-  ) : (
-    ""
-  );
+  ) 
 }
 
 export default Covid19;

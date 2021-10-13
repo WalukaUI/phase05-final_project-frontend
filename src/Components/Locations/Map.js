@@ -15,6 +15,8 @@ function MyComponent({locations, selectedPlace, setSelectedPlace}) {
 
   const [map, setMap] = React.useState(null)
 
+
+  console.log(map);
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
     map.fitBounds(bounds);
@@ -25,11 +27,13 @@ function MyComponent({locations, selectedPlace, setSelectedPlace}) {
     setMap(null)
   }, [])
 
+
+
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={ selectedPlace ? {lat: selectedPlace.latitude, lng: selectedPlace.longitude} 
-              :{lat: 38.63217176910362, lng: -90.19383204054196} }
+        center={ !selectedPlace ? {lat: 38.63217176910362, lng: -90.19383204054196}:
+        {lat: selectedPlace.latitude, lng: selectedPlace.longitude} }
         zoom={selectedPlace?17:10}
         onLoad={onLoad}
         onUnmount={onUnmount}

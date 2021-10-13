@@ -20,7 +20,7 @@ function UserLocation({getAddress,setAddress}) {
           .then((data) => setAddress(data.results[0].formatted_address));
       }
     
-  }, []);
+  }, [setAddress]);
 
 
 

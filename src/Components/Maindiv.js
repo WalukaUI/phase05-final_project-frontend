@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   Switch,
+  Link
 } from "react-router-dom";
 import "./Maindiv.css";
 import NavBar from "./NavBar/NavBar";
@@ -29,7 +30,7 @@ function MainContainer() {
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
   const[getAddress,setAddress]=useState("")
-  const[covidInfoDiv,setCovidInfoDiv]=useState(true)
+  //const[covidInfoDiv,setCovidInfoDiv]=useState(true)
 
   // auto-login
 
@@ -91,18 +92,17 @@ function MainContainer() {
       <div className="mainDiv">
         <NavBar logout={logout} user={user} getAddress={getAddress} setAddress={setAddress}/>
         <div className="covidWarnning">
-          <div onClick={()=>setCovidInfoDiv(true)}>
-            All Locations are open,{" "}
-            <a href="!#">
+          <Link to="/covid19" style={{color : "black", textDecoration: "none"}}><div>
+            All Clinic Locations are open,{" "}
+            <span href="!#" style={{color : "red", textDecoration: "underline"}}>
               see covid restrictions
-              <img src="../close.png" alt="close" />
-            </a>
-          </div>
+            </span>
+          </div></Link>
         </div>
 
         <Switch>
           <Route path="/covid19" exact>
-            <Covid19 covidInfoDiv={covidInfoDiv} />
+            <Covid19  />
           </Route>
           <Route path="/doctorlogin" exact>
             <DoctorLogin setUser={setUser} />

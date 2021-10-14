@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MyComponent from "./Map"
 import "./Locations.css";
 
+
 function Locations({ locations }) {
   const [searchTearm, setSearchTearm] = useState("");
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -20,7 +21,7 @@ function Locations({ locations }) {
         <div className="col col-sm-12 col-md-6 mapDiv">
           <div>
           <MyComponent locations={locations} selectedPlace={selectedPlace} setSelectedPlace={setSelectedPlace}/>
-          </div>
+         </div>
         </div>
         <div className="col col-sm-12 col-md-6 locationInnerDiv">
           <div className="serchLocation">

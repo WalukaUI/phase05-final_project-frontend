@@ -24,7 +24,7 @@ function NavBar({logout, user, getAddress, setAddress}) {
                 <img
                   src="../menu.png"
                   alt="Logo"
-                  style={{ width: "25%", marginRight: "5px" }}
+                  style={{ width: "30px", marginRight: "5px" }}
                 />
                 Menu<i className="arrow"></i>
               </span>
@@ -70,7 +70,7 @@ function NavBar({logout, user, getAddress, setAddress}) {
         <Link to="/"><img
           src="../hospital logo.png"
           alt="Logo"
-          style={{ width: "70%", marginLeft: "10px" }}
+          style={{ width: "80px", marginLeft: "10px" }}
         /></Link>
       </div>
 

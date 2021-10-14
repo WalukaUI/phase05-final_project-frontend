@@ -1,6 +1,6 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
-
+const envproceess="AIzaSyD5Npx1ZL4X3eJCTBRZ5iY59dqEan-ZgIc"
 const containerStyle = {
   width: "100%",
   height: "600px"
@@ -12,9 +12,9 @@ function MyComponent({locations, selectedPlace, setSelectedPlace}) {
   console.log(map);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: `${process.env.REACT_APP_GOOGLE_KEY}`
+    googleMapsApiKey: envproceess
   })
-
+//`${process.env.REACT_APP_GOOGLE_KEY}`
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
     map.fitBounds(bounds);

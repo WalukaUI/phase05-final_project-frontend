@@ -92,12 +92,12 @@ function NavBar({logout, user, getAddress, setAddress}) {
       </div>
 
       <div className="loginLogoutDiv">
-        <div style={{paddingRight: "10px"}}>
+        <div className="loggedUsername">
         <h6>{user ? `You are logged in as ${user.first_name}`: ""}</h6>
         <UserLocation getAddress={getAddress} setAddress={setAddress}/>
         </div>
-        <div style={{textAlign: "center"}}>
-        {user ? <Link to="/profile" className="btn btn-light accountSettingsBtn">🔐 Account Settings</Link>: ""}
+        <div style={{textAlign: "center"}} className="accountSettingsDiv">
+        {user ? <Link to="/profile" className="btn">🔐 Account Settings</Link>: ""}
         </div>
       </div>
     </div>

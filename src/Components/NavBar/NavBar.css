@@ -46,20 +46,27 @@
 display: flex;
 width: 25%;
 justify-content: center;
-
-
 }
-
+.loggedUsername{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-right: 10px;
+}
 .menuBtn{
   width: 30%;
 }
 .changeDisplay{
     display: none;
 }
-.accountSettingsBtn{
-    height: 100%;
-}
 
+.accountSettingsDiv{
+    background-color: rgb(213, 226, 226);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
 /* menubtn */
 
 

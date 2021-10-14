@@ -13,7 +13,7 @@ function Patients({ locations, user }) {
   //GET
 
   useEffect(() => {
-    fetch(BASE_URL + `/doctors/${user.id}/patients`, {
+    fetch(BASE_URL + `/doctors/${user?.id}/patients`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -39,21 +39,21 @@ function Patients({ locations, user }) {
 
   //PATCH
 
-  function updatePatient(patientObject, id) {
-    let data = { ...patientObject, id: id };
+  function updatePatient(patientObject) {
+    //let data = { ...patientObject, id: id };
 
-    fetch(BASE_URL + `/patients/${id}`, {
+    fetch(BASE_URL + `/patients/${patientObject.id}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify(data),
+      body: JSON.stringify(patientObject),
     }).then((res) => {
       if (res.ok) {
         res.json().then((patient) => {
-          const newPatients = patients.filter((person) => person.id !== id);
+          const newPatients = patients.filter((person) => person.id !== patientObject.id);
           setPatients([...newPatients, patient]);
         });
       } else {
@@ -110,7 +110,7 @@ function Patients({ locations, user }) {
                       onChange={handleSearch}
                     >
                       <option value={false}>All</option>
-                      {locations.map((card) => (
+                      {locations?.map((card) => (
                         <option value={card.id} key={card.id + 100}>
                           {card.name}
                         </option>

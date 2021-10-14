@@ -36,7 +36,7 @@ function CovidInfoByState() {
       <Link className="btn btn-danger" to="/" style={{width: "150px"}}>Close</Link>
       </div>
     <div style={{backgroundColor: "#f7e2c8"}}>
-      <h5>Global covid Status by Today</h5>
+      <h5 className="covidh5">Global covid Status by Today</h5>
 
       <div>
         <table className="table">
@@ -60,8 +60,8 @@ function CovidInfoByState() {
       </div>
       </div>
     <div style={{backgroundColor: "#faebd7"}}>
-      <h5>Check Current covid status by Country </h5>
-      <label>Select Country
+      <h5 className="covidh5">Check Current covid status by Country </h5>
+      <label style={{margin: "5vh"}}>Select Country
       <select
         className="form-select"
         name="country"

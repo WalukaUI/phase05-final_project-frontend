@@ -4,15 +4,13 @@ import "./Appointments.css";
 import BASE_URL from "../../constraints/URL";
 import AppointmentCard from "./AppointmentCard";
 
-function Appointments({ user, appointments, setAppoinements, doctors,setUser }) {
+function Appointments({ user, appointments, setAppoinements, doctors}) {
   const[serchTearm,setSearchTearm]=useState(null)
 
 
   //GET Appointments-------------------------
   useEffect(() => {
-    fetch(
-      user?.role === "patient"
-        ? `${BASE_URL}/patients/${user?.id}/appointments`
+    fetch(user?.role === "patient"? `${BASE_URL}/patients/${user?.id}/appointments`
         : `${BASE_URL}/doctors/${user?.id}/appointments`,
       {
         method: "GET",
@@ -117,13 +115,13 @@ function Appointments({ user, appointments, setAppoinements, doctors,setUser }) 
       </div>
       <div className="col col-md-8 col-sm-12 appointmentMainDiv">
         <div className="appointmentCardHead">
-          {appointments.length !== 0 ? ( 
-             user.role === "patient" ?<h4>Your All Appointments</h4>:<h4>Appointments</h4>
+          {appointments?.length !== 0 ? ( 
+             user?.role === "patient" ?<h4>Your All Appointments</h4>:<h4>Appointments</h4>
             
           ) : (
             <div>
               <h4>You do not have any Appointments</h4> 
-              {user.role === "patient" ? 
+              {user?.role === "patient" ? 
               <Link to="/newappointment">
                 <button className="btn createAppointmentBtn">
                   Schedule an Appointment
@@ -133,7 +131,7 @@ function Appointments({ user, appointments, setAppoinements, doctors,setUser }) 
           )}
         </div>
 
-        {appointments.filter((card)=> serchTearm ? card.doctor_id === parseInt(serchTearm): card)
+        {appointments?.filter((card)=> serchTearm ? card.doctor_id === parseInt(serchTearm): card)
         .map((card) => (
           <AppointmentCard
             key={card.id+Math.random(10)}

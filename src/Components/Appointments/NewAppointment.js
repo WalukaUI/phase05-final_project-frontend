@@ -17,10 +17,10 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
 
   //POST Appointment------------------------
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(BASE_URL + `/appointments`, {
+   await fetch(BASE_URL + `/appointments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,9 +44,8 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
 
   //Send email------------------------------
 
-  function sendEmail(e) {
-    emailjs
-      .sendForm(
+  async function sendEmail(e) {
+   await emailjs.sendForm(
         "service_dchmott",
         "template_4tdthof",
         form.current,
@@ -98,8 +97,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
           </form>
         </div>
 
-        {doctors
-          .filter((card) =>
+        {doctors.filter((card) =>
             card.last_name.toLowerCase().includes(searchTearm.toLowerCase())
           )
           .map((doctor) => (

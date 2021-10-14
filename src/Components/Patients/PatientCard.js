@@ -1,80 +1,33 @@
 import React, { useState } from "react";
 import "./PatientCard.css";
+import EditPatient from "./EditPatient"
 
-function PatientCard({ card, deletePatient, updatePatient, editBtn, setEditBtn }) {
- const [editPanel, setEditPanel] = useState(false);
- const [updateData, setUpdateData] = useState(null);
+function PatientCard({
+  card,
+  deletePatient,
+  updatePatient,
+}) {
+
+  const [display, setDisplay] = useState(false);
+  const [updateData, setUpdateData] = useState(null);
 
   function handleDelete(e) {
     e.preventDefault();
     deletePatient(card.id);
   }
 
-  function handelEdit(e) {
+  function toggleDisplay(e) {
     e.preventDefault();
-    setEditBtn(!editBtn)
     setUpdateData(card)
-    setEditPanel(!editPanel);
-  }
-  function handleCancel(e){
-    e.preventDefault();
-    setEditBtn(!editBtn)
-    setEditPanel(!editPanel)
-  }
-  function triggerEdit(e) {
-    e.preventDefault();
-    updatePatient(updateData, card.id);
-    setEditBtn(!editBtn)
-    setEditPanel(!editPanel)
+    setDisplay(!display);
   }
 
-  function handleChangeData(e) {
-    e.preventDefault();
-    let newData = { ...updateData, [e.target.name]: e.target.value };
-    setUpdateData(newData);
-  }
-
-  const editPatient = updateData;
-  
-
-  return editPanel ? (
-    <div className="personsCard patientForm">
-      <form>
-        <div>
-          <p>First Name</p>
-          <input name="first_name" value={editPatient.first_name} onChange={handleChangeData}/>
-          <p>Last Name</p>
-          <input name="last_name"  value={editPatient.last_name} onChange={handleChangeData}/>
-          <p>Clinic</p>
-          <input name="clinic_location" value={editPatient.clinic_location} onChange={handleChangeData}/>
-        </div>
-        <div>
-          <h6>Contact Details</h6>
-          <p>Email</p>
-          <input name="email" value={editPatient.email} onChange={handleChangeData}/>
-          <p>Telephone</p>
-          <input name="contact_number" value={editPatient.contact_number} onChange={handleChangeData}/>
-        </div>
-
-        <br />
-        <button className="btn btn-success" type="submit" onClick={triggerEdit} >
-          Save
-        </button>
-        <button
-        className="btn btn-warning"
-        onClick={handleCancel}
-      >
-        Cancel
-      </button>
-      </form>
-    </div>
-  ) : (
+  return ( !display ?
     <div className="personsCard">
-      <div>{editBtn === false ?
-              <button className="btn btn-primary" onClick={handelEdit}>
-              Edit
-            </button>
-      :""}
+      <div>
+        <button className="btn btn-primary" onClick={toggleDisplay}>
+          Edit
+        </button>
 
         <p>First Name: {card.first_name}</p>
         <p>Last Name: {card.last_name}</p>
@@ -90,8 +43,9 @@ function PatientCard({ card, deletePatient, updatePatient, editBtn, setEditBtn }
       <button className="btn btn-danger" onClick={handleDelete}>
         Delete
       </button>
-    </div>
-  );
+    </div>:
+    <EditPatient  display={display} setDisplay={setDisplay} updatePatient={updatePatient} updateData={updateData} setUpdateData={setUpdateData}/>
+  )
 }
 
 export default PatientCard;

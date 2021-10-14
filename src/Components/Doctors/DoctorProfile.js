@@ -223,6 +223,7 @@ function DoctorProfile({ user }) {
               <textarea
                 className="form-control"
                 id="commentTextarea"
+                name="comment"
                 rows="3"
                 style={{ width: "500px", marginBottom: "10px" }}
                 maxLength="200"

@@ -4,24 +4,24 @@
   background-color: rgb(226, 240, 240);
   display: flex;
 }
-@media only screen and (max-width: 600px) {
+ @media only screen and (max-width: 600px) { 
     .navBarMainDiv {
-        /* display: inline-block; */
-        height: auto;
+         display: inline-block; 
+         height: auto;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: center; 
 
-    }
-    .mainLinksDiv{
+     } 
+     .mainLinksDiv{
         display: flex;
         flex-direction: row;
         width: auto;
-    }
+    } 
     .logoDiv{
         justify-content: space-evenly;
-    }
-  }
+    } 
+   } 
 
 .logoDiv {
   align-items: center;

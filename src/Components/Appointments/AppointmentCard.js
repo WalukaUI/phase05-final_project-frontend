@@ -13,14 +13,12 @@ function AppointmentCard({
   const [updatedAppointment, setUpdatedAppointment] = useState(null);
   const [display, setDisplay] = useState(true);
   const [selecteddate, setSelectedDate] = useState(null);
-  
 
-  function  filterDoctorName() {
-    let filteredDoc=doctors.filter((doc)=> doc.id === card.doctor_id )
-     let fname=filteredDoc[0].first_name
-     let lname=filteredDoc[0].last_name
-     return fname +" "+ lname
-     
+  function filterDoctorName() {
+    let filteredDoc = doctors.filter((doc) => doc.id === card.doctor_id);
+    let fname = filteredDoc[0].first_name;
+    let lname = filteredDoc[0].last_name;
+    return fname + " " + lname;
   }
   function handleDelete(e) {
     e.preventDefault();
@@ -41,28 +39,41 @@ function AppointmentCard({
   function handleEdit(e) {
     e.preventDefault();
     setDisplay(!display);
-    editAppointment({...updatedAppointment, "date":selecteddate})
+    editAppointment({ ...updatedAppointment, date: selecteddate });
+  }
+
+  function timeManager() {
+    let ff = card.time;
+    var last = ff.toString().slice(-2);
+    let first = ff.toString().split("");
+    let dd = [];
+    dd.push(first[0]);
+    dd.push(first[1]);
+    let jj=dd.join("")
+
+    return `${jj}.${last} ${jj > 11? "pm": "am"}`
   }
 
   return display ? (
     <div>
       <div className=" row appointmentCard">
         <div className="col col-md-6 col-sm-12">
-          <p><b>Date:</b> {card.date}</p>
-          <p><strong>Time: </strong>{card.time}</p>
-          <p><strong> Doctor Name:</strong> {filterDoctorName()}</p>
+          <p>
+            <b>Date:</b> {card.date}
+          </p>
+          <p>
+            <strong>Time: </strong>
+            {timeManager()}
+          </p>
+          <p>
+            <strong> Doctor Name:</strong> {filterDoctorName()}
+          </p>
         </div>
         <div className="col col-md-6 col-sm-12">
-          <button
-            className="btn chnageAppBtn"
-            onClick={handleEditAppointment}
-          >
+          <button className="btn chnageAppBtn" onClick={handleEditAppointment}>
             Change Appointment
           </button>
-          <button
-            className="btn deleteAppBtn"
-            onClick={handleDelete}
-          >
+          <button className="btn deleteAppBtn" onClick={handleDelete}>
             Delete
           </button>
         </div>

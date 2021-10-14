@@ -169,10 +169,10 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
               name="time"
               onChange={handleNewAppointment}
             >
-              <option value="0900">9.00</option>
-              <option value="1000">10.00</option>
-              <option value="1100">11.00 </option>
-              <option value="1300">13.00</option>
+              <option value="1000">10.00 am</option>
+              <option value="1030">10.30 am</option>
+              <option value="1100">11.00 am</option>
+              <option value="1300">01.00 pm</option>
             </select>
             <button type="submit" className="btn btn-primary formSubBtn">
               Submit

@@ -93,7 +93,7 @@ function NavBar({logout, user, getAddress, setAddress}) {
 
       <div className="loginLogoutDiv">
         <div className="loggedUsername">
-        <h6>{user ? `You are logged in as ${user.first_name}`: ""}</h6>
+        <h6>{user ? `You are logged in as ${user.first_name}`: "🔑 Login to make an Appointment"}</h6>
         <UserLocation getAddress={getAddress} setAddress={setAddress}/>
         </div>
         <div style={{textAlign: "center"}} className="accountSettingsDiv">

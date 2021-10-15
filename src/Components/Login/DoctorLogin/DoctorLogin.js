@@ -53,7 +53,7 @@ function DoctorLogin({ setUser }) {
             Doctor
             <br /> Login Page
           </h2>
-          <p>Login or register from here to access.</p>
+          <p>Login here to access.This login is only for Doctors.</p>
         </div>
       </div>
       <div className="main col col-md-6 col-sm-12">

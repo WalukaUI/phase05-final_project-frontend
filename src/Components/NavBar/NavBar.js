@@ -45,7 +45,7 @@ function NavBar({logout, user, getAddress, setAddress}) {
                      <Link to="/appointments">All Apointments</Link>
                     </li>
                     <li>
-                    <Link to="/newappointment">New Appointment</Link>
+                    {user.role === "patient"?<Link to="/newappointment">New Appointment</Link>:"" } 
                     </li>
                   </ul>
                 </li>:""}

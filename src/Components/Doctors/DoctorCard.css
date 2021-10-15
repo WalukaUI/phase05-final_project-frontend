@@ -39,10 +39,12 @@
     align-items: center;
 }
 .commentRow p{
-    line-height: 0.5;
+    line-height: 0.2;
+    padding-top: 10px;
 }
 .commentRowDiv2{
     padding-right: 0vw;
     display: flex;
     justify-content: right;
+
 }

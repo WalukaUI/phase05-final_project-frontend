@@ -155,11 +155,12 @@ function DoctorProfile({ user }) {
             ) : (
               ""
             )}
+            {user.role === "patient"?
             <Link to={user ? "/newappointment" : "/"}>
               <button className="btn profileBtn">
                 Schedule an Appointment
               </button>
-            </Link>
+            </Link>:""}
           </div>
         </div>
         <div className="row profileLinksDiv">
@@ -204,6 +205,7 @@ function DoctorProfile({ user }) {
             <p>N/A</p>
           )}
         </div>
+        {user.role === "patient"?
         <div className="row">
           <h5>Write a Comment</h5>
           <hr />
@@ -234,7 +236,7 @@ function DoctorProfile({ user }) {
               </button>
             </form>
           </div>
-        </div>
+        </div>:""}
         <div className="row" style={{ backgroundColor: "#D6DFC6" }}>
           <h5 id="patientRatings">Doctor Ratings and Comments</h5>
           <hr />

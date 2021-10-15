@@ -40,7 +40,7 @@ function Patients({ locations, user }) {
   //PATCH
 
   function updatePatient(patientObject) {
-    //let data = { ...patientObject, id: id };
+
 
     fetch(BASE_URL + `/patients/${patientObject.id}`, {
       method: "PATCH",
@@ -73,8 +73,8 @@ function Patients({ locations, user }) {
     if (e.target.value === "false") {
       setClinic(null);
     } else {
-      let value = parseInt(e.target.value);
-      setClinic(value);
+      let valu = parseInt(e.target.value);
+      setClinic(valu);
     }
   }
 
@@ -110,7 +110,7 @@ function Patients({ locations, user }) {
                       onChange={handleSearch}
                     >
                       <option value={false}>All</option>
-                      {locations?.map((card) => (
+                      {locations.map((card) => (
                         <option value={card.id} key={card.id + 100}>
                           {card.name}
                         </option>
@@ -137,7 +137,7 @@ function Patients({ locations, user }) {
               )
               .map((card) => (
                 <PatientCard
-                  key={card.id + Math.random(10)}
+                  key={card.id + 200}
                   card={card}
                   deletePatient={deletePatient}
                   updatePatient={updatePatient}

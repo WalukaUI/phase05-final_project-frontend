@@ -90,11 +90,12 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
         >
            <option value="All">All </option>
           {doctors.map((card) => (
-            <option value={card.id} key={card.id+Math.random(10)}>
+            <option value={card.id} key={card.id+66}>
               {card.first_name} {card.last_name}
             </option>
           ))}
         </select></label>
+
         <div className="serchFilter" style={{marginTop: "20px"}}>
           <h6>More</h6>
           <ul>
@@ -134,7 +135,7 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
         {appointments?.filter((card)=> serchTearm !== null ? card.doctor_id === parseInt(serchTearm): card)
         .map((card) => (
           <AppointmentCard
-            key={card.id+Math.random(10)}
+            key={card.id+85}
             card={card}
             deleteAppointment={deleteAppointment}
             doctors={doctors}

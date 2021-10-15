@@ -98,9 +98,10 @@ function Doctor({ user, card }) {
           <p>{ratingStars(rating(comment))}</p>
         </div>
         <div className="col col-sm-12 col-md-6 commentRowDiv2">
+          {user.role ==="patient"?
           <Link to={user?"/newappointment":"/patientlogin"}>
             <button className="btn docCardBtn">Schedule an Appointment</button>
-          </Link>
+          </Link>:""}
         </div>
       </div>
     </div>

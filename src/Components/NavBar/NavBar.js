@@ -35,6 +35,7 @@ function NavBar({logout, user, getAddress, setAddress}) {
                 <li>
                   <a href="/locations">Locations</a>
                 </li>
+                {user?
                 <li>
                   <span>
                   Appointments <i className="arrow"></i>
@@ -47,7 +48,7 @@ function NavBar({logout, user, getAddress, setAddress}) {
                       <a href="/newappointment">New Appointment</a>
                     </li>
                   </ul>
-                </li>
+                </li>:""}
                 <li>
                   <span>
                     Other

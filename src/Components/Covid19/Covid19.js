@@ -4,7 +4,6 @@ import CovidHomePage from "./CovidHomePage";
 import CovidInfoByState from "./CovidStatesInfo";
 
 function Covid19() {
-  console.log("sdfsfsd");
   return (
     <div>
       <div className="popup-box">

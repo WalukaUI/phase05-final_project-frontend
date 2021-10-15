@@ -3,7 +3,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="row footerMainDiv">
+    <div className="footerMainDiv">
       <div className="col col-sm-12 col-md-4 footerDiv1">
         <img
           src="../hospital logo.png"

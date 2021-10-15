@@ -29,7 +29,7 @@ function MainContainer() {
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
-  const[getAddress,setAddress]=useState("")
+  const [getAddress,setAddress]=useState("")
 
 
   // auto-login----------------------

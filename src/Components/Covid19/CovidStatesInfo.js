@@ -13,7 +13,6 @@ function CovidInfoByState() {
     fetch("https://api.covid19api.com/summary").then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          console.log(data);
           setData(data);
         });
       } else {
@@ -90,7 +89,7 @@ function CovidInfoByState() {
           </thead>
           <tbody>
           {data.Countries.filter((card)=> country !== null ? card.Country === country: card ).map((card)=>{
-              return <> <tr>
+              return  <tr key ={card.id}>
               <th style={{textAlign: "left", paddingLeft: "20px"}}>{card.Country}</th>
               <td>{card.date}</td>
               <td>{card.NewConfirmed}</td>
@@ -98,7 +97,6 @@ function CovidInfoByState() {
               <td>{card.NewDeaths}</td>
               <td>{card.TotalDeaths}</td>
             </tr>
-            <hr/></>
             })}
           </tbody>
         </table>

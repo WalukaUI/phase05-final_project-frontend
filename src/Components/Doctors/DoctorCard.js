@@ -44,7 +44,7 @@ function Doctor({ user, card }) {
 
   return (
     <div>
-      <Link to={`/doctors/${card.id}`}>
+      <Link to={`/doctors/${card.id}`} style={{textDecoration: "none"}}>
         <div className="row doctorsCrad">
           <div className="col col-sm-12 col-md-4 docCardImagediv">
             <img

@@ -14,10 +14,10 @@ function SignUp({ locations, setUser }) {
 
   const history = useHistory();
 
+//POST newpatient-----------------------
+
   function createNewPatient(e) {
     e.preventDefault();
-
-    //POST newpatient-----------------------
 
     fetch(BASE_URL + `/patients`, {
       method: "POST",

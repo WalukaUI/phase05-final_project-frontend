@@ -42,21 +42,21 @@ function Locations({ locations }) {
                 .map((location) => (
                   <div key={location.id} onClick={()=>setSelectedPlace(location)} className="locationCard">
                     <div className="row locationDetails">
-                      <div className="col col-sm-6 col-md-4 locationImage">
+                      <div className="col col-sm-12 col-md-4 locationImage">
                         <img
                           src={location.image}
                           alt="location"
                         />
                         <div className="vl"></div>
                       </div>
-                      <div className="col col-sm-12 col-md-4 locationAddress">
+                      <div className="col col-sm-6 col-md-4 locationAddress">
                         <h6>{location.name}</h6>
                         <p>{location.address_line_one}</p>
                         <p>{location.address_line_two}</p>
                         <span>{location.city} ,</span>
                         <span>{location.zipcode}</span>
                       </div>
-                      <div className="col col-sm-12 col-md-4 locationContactDetls">
+                      <div className="col col-sm-6 col-md-4 locationContactDetls">
                         <p>Tel. : {location.contact_number}</p>
                       </div>
                     </div>

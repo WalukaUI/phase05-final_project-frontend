@@ -1,9 +1,9 @@
-import React from "react";
-import { useEffect, useState } from "react/cjs/react.development";
+import React , { useEffect, useState }from "react";
 import {
   Link
  } from "react-router-dom";
 import "./Covid19.css"
+
 
 function CovidInfoByState() {
   const [data, setData] = useState(null);

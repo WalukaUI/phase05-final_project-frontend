@@ -30,10 +30,10 @@ function NavBar({logout, user, getAddress, setAddress}) {
               </span>
               <ul className="dropdown">
                 <li>
-                  <a href="/doctors">Doctors</a>
+                <Link to="/doctors">Doctors</Link>
                 </li>
                 <li>
-                  <a href="/locations">Locations</a>
+                  <Link to="/locations">Locations</Link>
                 </li>
                 {user?
                 <li>
@@ -42,10 +42,10 @@ function NavBar({logout, user, getAddress, setAddress}) {
                   </span>
                   <ul className="dropdown">
                     <li>
-                      <a href="/appointments">All Apointments</a>
+                     <Link to="/appointments">All Apointments</Link>
                     </li>
                     <li>
-                      <a href="/newappointment">New Appointment</a>
+                    <Link to="/newappointment">New Appointment</Link>
                     </li>
                   </ul>
                 </li>:""}
@@ -56,10 +56,10 @@ function NavBar({logout, user, getAddress, setAddress}) {
                   </span>
                   <ul className="dropdown">
                     <li>
-                      <a href="/">About us</a>
+                    <Link to="/">About us</Link>
                     </li>
                     <li>
-                      <a href="/">Careers</a>
+                    <Link to="/">Careers</Link>
                     </li>
                   </ul>
                 </li>

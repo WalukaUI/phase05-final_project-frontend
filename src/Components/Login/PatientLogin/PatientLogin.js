@@ -35,6 +35,7 @@ function PatientLogin({ setUser }) {
           setPatientEmail("")
           setPassword("")
           setErrors(null)
+          localStorage.setItem("role","patient")
           history.push("/");
         });
       } else {

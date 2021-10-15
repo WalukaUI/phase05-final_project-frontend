@@ -14,7 +14,7 @@ function Doctor({ user, card }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          setComment(data.comment);
+          setComment(data?.comment);
         });
       }
     });
@@ -23,7 +23,7 @@ function Doctor({ user, card }) {
   function rating(array) {
     let points = [];
     if (array !== null) {
-      array.forEach((e) => points.push(e.points));
+      array?.forEach((e) => points.push(e.points));
       let pointSum = points.reduce((a, b) => a + b, 0);
       let pointaverage = (pointSum / points.length).toFixed(2);
       let roundNum = Math.floor(pointaverage);

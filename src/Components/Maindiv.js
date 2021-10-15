@@ -35,7 +35,8 @@ function MainContainer() {
   // auto-login----------------------
 
   useEffect(() => {
-    fetch(BASE_URL + `/me`,{
+    let userRole=localStorage.getItem("role")
+    fetch( userRole === "patient" ? BASE_URL + `/me` : BASE_URL + `/doc`,{
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

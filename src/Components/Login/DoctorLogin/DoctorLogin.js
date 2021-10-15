@@ -34,6 +34,7 @@ function DoctorLogin({ setUser }) {
           setDocEmail("")
           setPassword("")
           setErrors(null)
+          localStorage.setItem("role","doctor")
           history.push("/");
         });
       } else {

@@ -66,7 +66,7 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
 
   function handleSearch(e) {
     e.preventDefault();
-    if(e.target.value === "false"){
+    if(e.target.value === "All"){
       setSearchTearm(null)
     }else{
       let value=parseInt(e.target.value)
@@ -88,7 +88,7 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
           aria-label="Default select example"
           onChange={handleSearch}
         >
-          <option value={false}>All</option>
+           <option value="All">All </option>
           {doctors.map((card) => (
             <option value={card.id} key={card.id+Math.random(10)}>
               {card.first_name} {card.last_name}
@@ -131,7 +131,7 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
           )}
         </div>
 
-        {appointments?.filter((card)=> serchTearm ? card.doctor_id === parseInt(serchTearm): card)
+        {appointments?.filter((card)=> serchTearm !== null ? card.doctor_id === parseInt(serchTearm): card)
         .map((card) => (
           <AppointmentCard
             key={card.id+Math.random(10)}

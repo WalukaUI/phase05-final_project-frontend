@@ -175,7 +175,7 @@ function SignUp({ locations, setUser }) {
               />
             </label>
             <label>
-              Location
+              Select a Clinic Location
               <select
                 className="form-select"
                 name="clinic_location"

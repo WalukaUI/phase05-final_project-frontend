@@ -136,7 +136,7 @@ function NavBar({ logout, user, getAddress, setAddress }) {
               ? `You are logged in as ${user.first_name}`
               : "🔑 Login to make an Appointment"}
           </h6>
-          {/* <UserLocation getAddress={getAddress} setAddress={setAddress} /> */}
+           <UserLocation getAddress={getAddress} setAddress={setAddress} /> 
         </div>
         <div style={{ textAlign: "center" }} className="accountSettingsDiv">
           {user ? (

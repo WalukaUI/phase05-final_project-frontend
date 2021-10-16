@@ -74,10 +74,11 @@ function DocProfile({ user, appointments, locations, setUser }) {
           <h5>Your Profile</h5>
           <hr />
           <div className="col col-sm-12 col-md-5">
-            <p>
-              <b>First Name :</b>
+            <div style={{display: "flex"}}>           
+              <p><b>First Name :</b></p> <label>
               {popup ? (
                 <input
+                class="form-control"
                   value={editUser.first_name}
                   name="first_name"
                   onChange={handleChange}
@@ -85,59 +86,70 @@ function DocProfile({ user, appointments, locations, setUser }) {
               ) : (
                 user.first_name
               )}
-            </p>
+            </label></div>
+            <div style={{display: "flex"}}>
             <p>
-              <b>Last Name :</b>
+              <b>Last Name :</b></p>
               {popup ? (
+                <label>
                 <input
+                class="form-control"
                   value={editUser.last_name }
                   name="last_name"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.last_name
               )}
-            </p>
+            </div>
+            <div style={{display: "flex"}}>
             <p>
-              <b>Email Address :</b>
+              <b>Email Address :</b></p>
               {popup ? (
+                <label>
                 <input
+                class="form-control"
                   value={user?.email}
                   name="email"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.email ? user.email: "N/A"
               )}
-            </p>
+            
+            </div>
+            <div style={{display: "flex"}}>
             <p>
-              <b>Education :</b>
+              <b>Education :</b></p>
               {popup ? (
-                <input
+                <label><input
+                class="form-control"
                   value={user?.education}
                   name="education"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.education ? user.education: "N/A"
               )}
-            </p>
-
+            
+           </div>
           </div>
           <div className="col col-sm-12 col-md-5">
+          <div style={{display: "flex"}}>
             <p>
-              <b>Username:</b>{" "}
+              <b>Username:</b>{" "}</p>
               {popup ? (
-                <input
+                <label><input
+                class="form-control"
                   value={editUser?.username}
                   name="username"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.username ? user.username :"N/A"
               )}
-            </p>
-
+            
+            </div>
             <div className="specialityDiv">
               <p><b>Speciality :</b></p>
               {popup ? (
@@ -160,18 +172,20 @@ function DocProfile({ user, appointments, locations, setUser }) {
                 user.speciality ? user.speciality: "N/A"
               )}
             </div>
+            <div style={{display: "flex"}}>
             <p>
-              <b>Profile Image:</b>{" "}
+              <b>Profile Image:</b>{" "}</p>
               {popup ? (
-                <input
+                <label><input
+                class="form-control"
                   value={editUser?.image}
                   name="image"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.image ? "Available": "N/A"
               )}
-            </p>
+            </div>
           </div>
           <div className="col col-sm-12 col-md-2 editProfileDiv">
             {popup ? (

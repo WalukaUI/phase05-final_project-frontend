@@ -16,7 +16,7 @@ function Home() {
                   <h4>Covid 19</h4>
                   <p>
                     Our Hospital is offering first and second dose COVID-19 appointments to
-                    anyone age 12 and older in most of the communities we serve. Mercy
+                    anyone age 12 and older in most of the communities we serve. we are
                     is also offering third dose COVID-19 vaccine appointments for
                     moderately to severely immunocompromised individuals, individuals
                     over the age of 65, individuals 18-64 with chronic conditions and

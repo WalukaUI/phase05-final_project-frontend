@@ -80,42 +80,49 @@ function PatientProfile({ user, appointments, locations, setUser }) {
           <h5>Your Profile</h5>
           <hr />
           <div className="col col-sm-12 col-md-5">
+            <div style={{display: "flex"}}>
             <p>
-              <b>First Name :</b>
+              <b>First Name :</b></p>
               {popup ? (
-                <input
+                <label><input
+                class="form-control"
                   value={editUser.first_name}
                   name="first_name"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.first_name
               )}
-            </p>
+            </div>
+            <div style={{display: "flex"}}>
             <p>
-              <b>Last Name :</b>
+              <b>Last Name :</b></p>
               {popup ? (
-                <input
+                <label><input
+                class="form-control"
                   value={editUser.last_name }
                   name="last_name"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.last_name
               )}
-            </p>
+            
+            </div>
+            <div style={{display: "flex"}}>
             <p>
-              <b>User name :</b>
+              <b>User name :</b></p>
               {popup ? (
-                <input
+                <label><input
+                class="form-control"
                   value={user.username ? editUser.username : "N/A"}
                   name="username"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.username ? user.username: "N/A"
               )}
-            </p>
+            </div>
             <p>
               <b>Clinic Location :</b>
               {popup ? (
@@ -142,30 +149,34 @@ function PatientProfile({ user, appointments, locations, setUser }) {
             </p>
           </div>
           <div className="col col-sm-12 col-md-5">
+          <div style={{display: "flex"}}>
             <p>
-              <b>Contact Number:</b>{" "}
+              <b>Contact Number:</b>{" "}</p>
               {popup ? (
-                <input
+                <label><input
+                class="form-control"
                   value={editUser?.contact_number}
                   name="contact_number"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.contact_number? user.contact_number:"N/A"
               )}
-            </p>
+            </div>
+            <div style={{display: "flex"}}>
             <p>
-              <b>Email Address:</b>{" "}
+              <b>Email Address:</b>{" "}</p>
               {popup ? (
-                <input
+                <label><input
+                class="form-control"
                   value={editUser.email}
                   name="email"
                   onChange={handleChange}
-                />
+                /></label>
               ) : (
                 user.email
               )}
-            </p>
+            </div>
           </div>
           <div className="col col-sm-12 col-md-2 editProfileDiv">
             {popup ? (

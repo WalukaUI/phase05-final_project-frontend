@@ -13,14 +13,16 @@ function DoctorProfile({ user }) {
 
   //-----------------GET Doctor----------------
 
-  useEffect(() => {
-    fetch(BASE_URL + `/doctors/${params.id}`, {
+     useEffect(() => {
+     fetch(BASE_URL + `/doctors/${params.id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
       .then((r) => r.json())
-      .then((data) => setDocProfile(data));
+      .then((data) => {
+        console.log(data);
+        setDocProfile(data)});
   }, [params.id]);
 
   //------------------GET Locations-------------

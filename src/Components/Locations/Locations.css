@@ -1,5 +1,6 @@
 .locationDiv {
   background-color: rgb(219, 216, 216);
+  margin-right: 0;
 }
 .locationCard:hover{
   cursor: pointer;
@@ -10,6 +11,12 @@
   padding-left: 30px;
   text-align: center;
 }
+@media only screen and (max-width: 600px) { 
+  .locationDiv{
+   display: flex;
+   flex-direction: column;
+  }
+ }
 .locationDetails {
   padding: 20px;
   color: rgb(41, 35, 12);

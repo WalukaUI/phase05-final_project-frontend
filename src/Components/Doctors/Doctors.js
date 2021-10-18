@@ -16,7 +16,7 @@ function Doctors({ doctors, user }) {
 
   return (
     <div>
-      <div className="row doctorMainDiv">
+      <div className="row doctorMainDiv" style={{marginRight: "0"}}>
         <div className="col col-sm-12 col-md-3 docSearchDiv">
           <form>
             <input

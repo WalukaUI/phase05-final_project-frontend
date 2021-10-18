@@ -11,21 +11,35 @@
         flex-direction: column;
         justify-content: center;
         align-items: center; 
-
      } 
-     .mainLinksDiv{
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        width: auto;
-    } 
-    .logoDiv{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-content: center; 
+     .mainLinksDiv, .logoDiv, .loginLogoutDiv{
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-evenly;
     } 
    } 
+   @media only screen and (max-width: 980px) { 
+    .navBarMainDiv {
+         display: flex; 
+         height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+     } 
+     .mainLinksDiv{
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-evenly;
+    } 
+    .logoDiv{
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-evenly;
+    } 
+    .loginLogoutDiv{
+        width: auto !important;
+    }
+   }
 
 .logoDiv {
   align-items: center;

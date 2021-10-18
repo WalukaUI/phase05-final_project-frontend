@@ -13,6 +13,11 @@
     height: 50px;
     background-color: rgb(172, 201, 201);
 }
+@media only screen and (max-width: 600px) { 
+    .profileLinksDiv{
+        height: auto;
+    }
+   } 
 .profileAboutDiv h5{
     margin-top: 2vh;
 }

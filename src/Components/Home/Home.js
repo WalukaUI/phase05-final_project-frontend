@@ -17,19 +17,19 @@ function Home() {
                   <p>
                     Our Hospital is offering first and second dose COVID-19 appointments to
                     anyone age 12 and older in most of the communities we serve. we are
-                    is also offering third dose COVID-19 vaccine appointments for
+                    also offering third dose COVID-19 vaccine appointments for
                     moderately to severely immunocompromised individuals, individuals
                     over the age of 65, individuals 18-64 with chronic conditions and
                     individuals 18-64 who are considered high risk due to their
                     occupation.
                     <br />
                     We encourage you to schedule a COVID-19 vaccine appointment at the
-                    location nearest you. Patients ages 12-17 should only schedule
+                    location nearest you(go to Locations page). Patients ages 12-17 should only schedule
                     appointments at locations providing the Pfizer vaccine and must
                     have a parent or guardian present to be vaccinated.
                     <br />
-                    Want to learn more about getting a COVID-19 vaccination? Read our
-                    FAQs.
+                    Want to learn more about getting a COVID-19 vaccination or restrictions Read our
+                    covid 19 guidlines.
                   </p>
                 </div>
                 <div className="col  col-sm-12 col-md-6 infoCards">

@@ -45,6 +45,7 @@
 .mainLowerSection {
   padding: 50px;
   opacity: 0.8;
+  margin-right: 0;
 }
 .covidInfo {
   background-color: #E0EEF3;

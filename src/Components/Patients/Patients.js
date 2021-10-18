@@ -10,7 +10,7 @@ function Patients({ locations, user }) {
   const [searchTearm, setSearchTearm] = useState("");
   const [clinic, setClinic] = useState(false);
 
-  //GET
+  //GET---------------------------------
 
   useEffect(() => {
     fetch(BASE_URL + `/doctors/${user?.id}/patients`, {
@@ -26,7 +26,7 @@ function Patients({ locations, user }) {
     });
   }, [user?.id]);
 
-  //DELETE
+  //DELETE----------------------------
 
   function deletePatient(id) {
     fetch(BASE_URL + `/patients/${id}`, {
@@ -37,7 +37,7 @@ function Patients({ locations, user }) {
     setPatients(newPatientsList);
   }
 
-  //PATCH
+  //PATCH--------------------------------
 
   function updatePatient(patientObject) {
 

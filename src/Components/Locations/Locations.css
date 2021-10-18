@@ -52,8 +52,24 @@
   margin-right: 10px;
 }
 @media only screen and (max-width: 600px) { 
+  .locationDetails{
+    padding:10px;
+    margin:5px;
+  }
 
   .locationDetails div{
     margin-top: 20px;
+  }
+  .locationInnerDiv{
+    padding-right: 0;
+  }
+  .locationDetails p{
+    line-height: 1;
+    margin-bottom: 0;
+  }
+  .locationDetails img{
+    height: 70%;
+    margin-top: 30%;
+    width: 90%;
   }
 }

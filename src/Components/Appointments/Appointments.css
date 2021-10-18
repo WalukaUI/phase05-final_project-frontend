@@ -15,6 +15,12 @@
 .appointmentMainDiv{
     padding-left: 0;
 }
+@media only screen and (max-width: 600px) { 
+  .appointmentMainDiv{
+    padding-right: 0;
+    padding-left: 10px;
+  }
+}
 .appointmentCard{
     background-color: #E2F0F0;
     margin: 10px;

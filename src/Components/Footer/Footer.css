@@ -13,22 +13,25 @@
   padding-bottom: 20px;
 }
 
-.footerDiv2 H6{
-    padding-bottom: 15px;
-    text-decoration: underline;
+.footerDiv2 H6 {
+  padding-bottom: 15px;
+  text-decoration: underline;
+}
+.footerDiv3 h6 {
+  padding-bottom: 15px;
+  text-decoration: underline;
+}
+@media only screen and (max-width: 800px) {
+  .footerMainDiv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
-.footerDiv3 h6{
-    padding-bottom: 15px;
-    text-decoration: underline;
+  .footerMainDiv div {
+    padding-left: 0;
   }
-
-  @media only screen and (max-width: 600px) { 
-
-    .footerMainDiv {
-      line-height: 1;
-    }
-  }
-  .iconCredits{
-    padding-left: 0px !important;
-    line-height: 1;
-  }
+}
+.iconCredits {
+  padding-left: 0px !important;
+  line-height: 1;
+}

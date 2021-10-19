@@ -1,5 +1,7 @@
 This App is for Bookig appointments for doctors...
 
+https://doctor-appointment-creator.netlify.app/
+
 😎****MVC****😎
 
 Show all doctors, patients , appointments and clinic locations
@@ -9,6 +11,18 @@ full CRUD of appointments and patients
 Search functionality for all 
 
 Show current COVID status in a page using an open API
+
+
+<<<Doctors login>>>
+
+Doctors will be able to see their's patients and appointments
+
+<<<Patient login>>>
+
+Patients will be able to Make, edit or delete an appointment 
+
+Comment on doctors
+
 
 🤳****Stretch Features****🤳
 

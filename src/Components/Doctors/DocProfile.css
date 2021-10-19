@@ -1,6 +1,7 @@
 .profile{
     margin: 30px 30px ;
     padding: 30px;
+    padding-right: 10px;
     opacity: 0.9;
     background-color: rgb(189, 226, 228);
 }
@@ -19,6 +20,7 @@
     }
     .profile{
         margin: 5px 5px;
+        padding-right: 5px;
     }
    } 
 .profileAboutDiv h5{
@@ -43,6 +45,7 @@
 }
 .profileAboutDiv{
     background-color: #C6DFE0;
+    padding-right: 0;
 }
 .profileAboutDiv p{
  line-height: 0.5;

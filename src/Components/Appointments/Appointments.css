@@ -20,6 +20,13 @@
     padding-right: 0;
     padding-left: 10px;
   }
+  .mainAppointmentContainer{
+    display: flex;
+    flex-direction: column;
+  }
+  .appointmentCard p{
+    line-height: 1.2 !important;
+    }
 }
 .appointmentCard{
     background-color: #E2F0F0;

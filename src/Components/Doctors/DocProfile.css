@@ -17,6 +17,9 @@
     .profileLinksDiv{
         height: auto;
     }
+    .profile{
+        margin: 5px 5px;
+    }
    } 
 .profileAboutDiv h5{
     margin-top: 2vh;

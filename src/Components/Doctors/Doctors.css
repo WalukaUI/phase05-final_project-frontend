@@ -1,4 +1,7 @@
 .docSearchDiv{
+    position: sticky;
+    top: 0;
+    left: 0;
     padding: 30px;
     min-height: 500px;
     max-height: 600px;
@@ -8,6 +11,7 @@
 }
 @media only screen and (max-width: 600px) { 
     .docSearchDiv{
+        position:initial;
         min-height: auto;
         max-height: auto;
     }

@@ -19,7 +19,7 @@ function Locations({ locations }) {
     <div>
       <div className="row locationDiv">
         <div className="col col-sm-12 col-md-6 mapDiv">
-          <div>
+          <div style={{position: "sticky", top: "0"}}>
           <MyComponent locations={locations} selectedPlace={selectedPlace} setSelectedPlace={setSelectedPlace}/>
          </div>
         </div>
@@ -40,7 +40,7 @@ function Locations({ locations }) {
                   card.name.toLowerCase().includes(searchTearm.toLowerCase())
                 )
                 .map((location) => (
-                  <div key={location.id} onClick={()=>setSelectedPlace(location)} className="locationCard">
+                  <div key={location.id} onMouseOver={()=>setSelectedPlace(location)} className="locationCard">
                     <div className="row locationDetails">
                       <div className="col col-sm-12 col-md-4 locationImage">
                         <img

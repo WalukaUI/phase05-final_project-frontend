@@ -29,7 +29,7 @@ console.log(map);
         mapContainerStyle={containerStyle}
         defaultCenter={ !selectedPlace ? {lat: 38.63217176910362, lng: -90.19383204054196}:
         {lat: selectedPlace.latitude, lng: selectedPlace.longitude} }
-        zoom={selectedPlace?17:10}
+        zoom={selectedPlace?11:10}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >

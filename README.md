@@ -23,9 +23,9 @@ send a confirmation email after placing an appointment by a patient.
 show clinic locations in a google map.
 
 
+![Alt text](relative/path/to/appointment.jpg?raw=true "Title")
 
-
-
+![Alt text](./appointment.jpg?raw=true "Title")
 
 
 

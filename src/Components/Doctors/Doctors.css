@@ -4,7 +4,7 @@
     left: 0;
     padding: 30px;
     min-height: 500px;
-    max-height: 600px;
+    max-height: 650px;
     background-color: cornsilk;
     opacity: 0.8;
     text-align: center;
@@ -31,7 +31,8 @@
     justify-content: space-between;
 }
 .formnput{
-    padding-left: 0vh;
+    padding-left: 12px;
+    padding-right: 0;
 }
 .filterBySpeciality{
     display: flex;

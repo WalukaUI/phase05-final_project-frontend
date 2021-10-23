@@ -10,14 +10,12 @@ function SignUp({ locations, setUser }) {
   const [errors, setErrors] = useState(null);
   const [confirmationNumber, setConfirmationNumber] = useState("");
   const [confirmWindow, setConfirmWindow] = useState(false);
-  const [userBeforConfirm,setUserBeforConfirm]=useState(null)
 
   const history = useHistory();
 
 //POST newpatient-----------------------
 
-  function createNewPatient(e) {
-    e.preventDefault();
+  function createNewPatient() {
 
     fetch(BASE_URL + `/patients`, {
       method: "POST",
@@ -29,7 +27,7 @@ function SignUp({ locations, setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-         sendEmail(user, e);
+           setUser(user)
         });
       } else {
         res.json().then((err) => {
@@ -41,8 +39,8 @@ function SignUp({ locations, setUser }) {
 
   //Send email------------------------------
 
-  async function sendEmail(user, e) {
-
+    async function sendEmail(e) {
+      e.preventDefault();
      await emailjs.sendForm(
         "service_dchmott",
         "template_vq1x7nj",
@@ -53,8 +51,6 @@ function SignUp({ locations, setUser }) {
         (result) => {
           console.log(result.text);
           setConfirmWindow(!confirmWindow)
-          setUserBeforConfirm(user)
-          
         },
         (error) => {
           console.log(error.text);
@@ -62,7 +58,6 @@ function SignUp({ locations, setUser }) {
       );
     e.target.reset();
   }
-
 //Supportive functions------------------------------
 
   function handleAddPatient(e) {
@@ -84,8 +79,8 @@ function SignUp({ locations, setUser }) {
 
     if (sentNumber === enteredNumber){
       setConfirmWindow(!confirmWindow)
-      setUser(userBeforConfirm)
       setConfirmationNumber("")
+      createNewPatient()
       history.push(`/`);
     }else{
       alert("Wrong Number, Please enter confirmation number again")
@@ -132,7 +127,7 @@ function SignUp({ locations, setUser }) {
   ) : (
     <div className="signupContainer">
       <h4>Create your account</h4>
-      <form  onSubmit={createNewPatient}>
+      <form  onSubmit={sendEmail}>
         <div className="row signupInnerContainer">
           <div className="col col-sm-12 col-md-6 signUpformInnerDiv1">
             <input
@@ -141,6 +136,7 @@ function SignUp({ locations, setUser }) {
               type="number"
               style={{ display: "none" }}
               value={confirmationNumber}
+              onChange={handleAddPatient}
             />
             <label>
               First Name

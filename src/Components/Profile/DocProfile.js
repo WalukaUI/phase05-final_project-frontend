@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./Profile.css";
 
-function DocProfile({ user, appointments, locations, setUser }) {
+function DocProfile({ user, appointments, setUser }) {
   const [popup, setPopup] = useState(false);
   const [updateUserData, setUpdateUserData] = useState(null);
   const [errors,setErrors]=useState(null)

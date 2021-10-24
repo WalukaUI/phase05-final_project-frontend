@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -24,7 +24,9 @@ import PatientProfile from "./Profile/PatientProfile";
 import DocProfile from "./Profile/DocProfile";
 import Covid19 from "./Covid19/Covid19";
 
+export const UserContext=createContext()
 function MainContainer() {
+ 
   const [user, setUser] = useState(null);
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
@@ -89,9 +91,11 @@ function MainContainer() {
   }, []);
 
   return (
+    
     <Router>
-      <div className="mainDiv">
-        <NavBar logout={logout} user={user} getAddress={getAddress} setAddress={setAddress}/>
+        <div className="mainDiv">
+        <UserContext.Provider value={user}>
+        <NavBar logout={logout} getAddress={getAddress} setAddress={setAddress}/>
         <div className="covidWarnning">
           <Link to="/covid19" style={{color : "black", textDecoration: "none"}}><div>
             All Clinic Locations are open,{" "}
@@ -166,7 +170,8 @@ function MainContainer() {
           <Redirect to="/" />
         </Switch>
         <Footer />
-      </div>
+        </UserContext.Provider>
+        </div>
     </Router>
   );
 }

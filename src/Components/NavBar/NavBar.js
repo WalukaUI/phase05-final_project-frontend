@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./NavBar.css";
 import UserLocation from "../Locations/UserLoaction";
+import { UserContext } from "../Maindiv";
 
-function NavBar({ logout, user, getAddress, setAddress }) {
+function NavBar({ logout, getAddress, setAddress }) {
   const history = useHistory();
+  const user=useContext(UserContext)
+
   function handlelogout(e) {
     e.preventDefault();
     logout();

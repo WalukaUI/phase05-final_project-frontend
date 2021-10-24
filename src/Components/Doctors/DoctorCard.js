@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./DoctorCard.css";
+import { UserContext } from "../Maindiv";
 
-function Doctor({ user, card }) {
+function Doctor({ card }) {
+  const user=useContext(UserContext)
   const [comment, setComment] = useState(null);
 
   useEffect(() => {

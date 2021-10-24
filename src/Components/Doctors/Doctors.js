@@ -102,7 +102,7 @@ function Doctors({ doctors, user }) {
                     return card;
                 }
               })
-              .map((card) => <Doctor key={card.id} card={card} user={user} />)
+              .map((card) => <Doctor key={card.id} card={card}/>)
           )}
         </div>
       </div>

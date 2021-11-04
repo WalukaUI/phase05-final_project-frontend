@@ -40,11 +40,16 @@ position: relative;
   width: 100%;
   background: #222222;
   opacity: 0.5;
-  
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 250ms ease-in;
 }
-.styled-button:hover{
-  
+.styled-button:hover::after{
+  transform: scaleX(1);
+  transform-origin: left;
 }
+
+
 
 @media only screen and (max-width: 600px) {
   .navBarMainDiv {

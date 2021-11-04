@@ -87,10 +87,10 @@ function NavBar({ logout, getAddress, setAddress }) {
       </div>
       <div className="mainLinksDiv">
         <div>
-          <Link to="/doctors">Doctors</Link>
+          <Link to="/doctors" className="nav-bar-links">Doctors</Link>
         </div>
         <div>
-          <Link to="/locations">Locations</Link>
+          <Link to="/locations" className="nav-bar-links">Locations</Link>
         </div>
         {user ? (
           user.role === "doctor" ? (

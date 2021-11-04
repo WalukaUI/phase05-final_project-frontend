@@ -120,12 +120,12 @@ function NavBar({ logout, getAddress, setAddress }) {
             Log Out
           </Link>
         ) : (
-          <Link className="btn btn-outline-primary" to="/doctorlogin">
+          <Link className="btn btn-outline-primary styled-button" to="/doctorlogin">
             Doctor Log in
           </Link>
         )}
         <Link
-          className={user ? "changeDisplay" : "btn btn-primary"}
+          className={user ? "changeDisplay" : "btn btn-primary styled-button"}
           to="/patientlogin"
         >
           Patient Log in

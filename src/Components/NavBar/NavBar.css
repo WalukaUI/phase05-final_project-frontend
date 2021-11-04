@@ -4,6 +4,7 @@
   background-color: rgb(226, 240, 240);
   display: flex;
 }
+/* nav link underline effect --------------------------*/
 .nav-bar-links{
   text-decoration: none;
   position: relative;
@@ -23,6 +24,26 @@
 .nav-bar-links:hover::after{
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* nav bar button animation------------------------------ */
+
+.styled-button{
+position: relative;
+}
+.styled-button::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background: #222222;
+  opacity: 0.5;
+  
+}
+.styled-button:hover{
+  
 }
 
 @media only screen and (max-width: 600px) {

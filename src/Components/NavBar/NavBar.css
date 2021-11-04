@@ -17,11 +17,12 @@
   height: 2px;
   background: #77a6f7;
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: right;
+  transition: transform 250ms ease-in;
 }
 .nav-bar-links:hover::after{
   transform: scaleX(1);
-  transition: 250ms
+  transform-origin: left;
 }
 
 @media only screen and (max-width: 600px) {

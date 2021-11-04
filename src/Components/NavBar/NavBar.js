@@ -96,15 +96,15 @@ function NavBar({ logout, getAddress, setAddress }) {
           user.role === "doctor" ? (
             <>
               <div>
-                <Link to="/appointments">Appointments</Link>
+                <Link to="/appointments" className="nav-bar-links">Appointments</Link>
               </div>
               <div>
-                <Link to="/patients">Patients</Link>
+                <Link to="/patients" className="nav-bar-links">Patients</Link>
               </div>
             </>
           ) : (
             <div>
-              <Link to="/appointments">Appointments</Link>
+              <Link to="/appointments" className="nav-bar-links">Appointments</Link>
             </div>
           )
         ) : (

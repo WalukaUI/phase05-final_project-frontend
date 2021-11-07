@@ -9,7 +9,7 @@ create a account and use email address as username for login page
 
 ***doctor-login***
 
-username= doctor email address
+username= doctor email address,
 password= 123456
 
 😎****MVC****😎

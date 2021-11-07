@@ -4,10 +4,10 @@ https://doctor-appointment-creator.netlify.app/
 
 video demostration= https://www.loom.com/share/ac31449e05a94c6fbd1915e595fdc0c4?sharedAppSource=personal_library
 
-<<user-login>> 
+***user-login***
 create a account and use email address as username for login page
 
-<<doctor-login>>
+***doctor-login***
 
 username= doctor email address
 password= 123456

@@ -57,7 +57,7 @@ function PatientLogin({ setUser }) {
           <p>Login or register from here to access.</p>
         </div>
       </div>
-      <div className="main col col-md-4 col-sm-12">
+      <div className="main col col-md-4 col-sm-12 patienLoginForm">
         {
           <div>
             {errors ? (

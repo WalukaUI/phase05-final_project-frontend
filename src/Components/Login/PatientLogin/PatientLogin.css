@@ -1,82 +1,37 @@
-.docloginMain{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.docloginMain {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .sidenavbar {
-    min-height: 400px;
-    background-color: rgb(31, 39, 68);
-    padding-top: 20px;
-    color: lavender;
+  min-height: 400px;
+  background-color: rgb(31, 39, 68);
+  padding-top: 20px;
+  color: lavender;
 }
-.signupBar{
-    background-color: #526a9c;
-    min-height: 400px;
-    color: lavender;
+.signupBar {
+  background-color: #526a9c;
+  min-height: 400px;
+  color: lavender;
 }
-.login-main-text{
-    padding-top: 20%;
-    padding-left: 20%;
+.login-main-text {
+  padding-top: 20%;
+  padding-left: 20%;
 }
 .main {
-    padding: 0px 10px;
+  padding: 0px 10px;
 }
-.main input{
-    width: 400px;
+.main input {
+  width: 400px;
 }
-.main button{
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-/* @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
+.main button {
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
-@media screen and (max-width: 450px) {
-    .login-form{
-        margin-top: 10%;
-    }
-
-    .register-form{
-        margin-top: 10%;
-    }
+@media screen and (max-width: 768px) {
+  .patienLoginForm {
+    padding: 5% !important;
+  }
 }
-
-
-.login-main-text{
-    margin-top: 20%;
-    padding: 60px;
-    color: #fff;
-}
-
-.login-main-text h2{
-    font-weight: 300;
-}
-
-.btn-black{
-    background-color: #000 !important;
-    color: #fff;
-} */
-
-/* @media screen and (min-width: 768px){
-    .main{
-        margin-left: 40%; 
-    }
-
-    .sidenav{
-        width: 40%;
-        z-index: 1;
-        top: 0;
-        left: 0;
-    }
-
-    .login-form{
-        margin-top: 80%;
-    }
-
-    .register-form{
-        margin-top: 20%;
-    }
-} */

@@ -1,41 +1,41 @@
-.docSearchDiv{
-    position: sticky;
-    top: 0;
-    left: 0;
-    padding: 30px;
-    min-height: 500px;
-    max-height: 650px;
-    background-color: cornsilk;
-    opacity: 0.8;
-    text-align: center;
+.docSearchDiv {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 30px;
+  min-height: 500px;
+  max-height: 650px;
+  background-color: cornsilk;
+  opacity: 0.8;
+  text-align: center;
 }
-@media only screen and (max-width: 600px) { 
-    .docSearchDiv{
-        position:initial;
-        min-height: auto;
-        max-height: auto;
-    }
-    .formnput{
-        padding-right: 0;
-    }
-    .doctorMainDiv{
-        margin-left: 0;
-    }
-   } 
-.searchBtn{
-    margin: 1vh;
+.searchBtn {
+  margin: 1vh;
 }
-.serchTearms{
-    display: flex;
-    padding: 5px;
-    justify-content: space-between;
+.serchTearms {
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
 }
-.formnput{
-    padding-left: 12px;
+.formnput {
+  padding-left: 12px;
+  padding-right: 0;
+}
+.filterBySpeciality {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media only screen and (max-width: 600px) {
+  .docSearchDiv {
+    position: initial;
+    min-height: auto;
+    max-height: auto;
+  }
+  .formnput {
     padding-right: 0;
-}
-.filterBySpeciality{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  }
+  .doctorMainDiv {
+    margin-left: 0;
+  }
 }

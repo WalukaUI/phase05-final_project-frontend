@@ -56,7 +56,7 @@ function DoctorLogin({ setUser }) {
           <p>Login here to access.This login is only for Doctors.</p>
         </div>
       </div>
-      <div className="main col col-md-6 col-sm-12">
+      <div className="main col col-md-6 col-sm-12 docInputFields">
         {
           <div>
             {errors ? (

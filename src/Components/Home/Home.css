@@ -1,0 +1,4 @@
+.mainLowerSection{
+    display: flex;
+    flex-direction: column;
+}

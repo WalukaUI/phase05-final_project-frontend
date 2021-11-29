@@ -7,8 +7,7 @@ function AppointmentCard({
   card,
   deleteAppointment,
   editAppointment,
-  doctors,
-  bookingtime
+  doctors
 }) {
   const [updatedAppointment, setUpdatedAppointment] = useState(null);
   const [display, setDisplay] = useState(true);
@@ -51,7 +50,7 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: </strong>
-            {bookingtime} {bookingtime > 1200?"pm":"am"}
+             {card.time > 1200?`${card.time} pm`:`${card.time} am`}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

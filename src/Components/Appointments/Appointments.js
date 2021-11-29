@@ -144,12 +144,11 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
             let aa=output.reverse().slice(-2).join('')
             let bb=output.slice(0,2).join('')
             let dd=parseInt(bb)
-            let bookingtime=`${bb}.${aa} ${dd > 11? "pm": "am"}`
+            //let bookingtime=`${bb}.${aa} ${dd > 11? "pm": "am"}`
 
           return <AppointmentCard
             key={card.id+85}
             card={card}
-            bookingtime={card.time}
             deleteAppointment={deleteAppointment}
             doctors={doctors}
             editAppointment={editAppointment}

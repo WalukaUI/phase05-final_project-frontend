@@ -41,22 +41,17 @@ function AppointmentCard({
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
 
-  // function timeManager() {
-  //   if (card !== null){
-  //     let ff = card.time;
-  //     var last = ff.toString().slice(-2);
-  //     let first = ff.toString().split("");
-  //     let dd = [];
-  //     dd.push(first[0]);
-  //     dd.push(first[1]);
-  //     let jj=dd.join("")
+  function timeManager() {
+    if (card !== null){
+      let aa=card.time.toString().split("").slice(-2).join("")
+      let bb=card.time.toString().split("").slice(0,2).join("")
   
-  //     return `${jj}.${last} ${jj > 11? "pm": "am"}`
-  //   }else{
-  //     return card.time
-  //   }
+      return`${bb}.${aa} ${bb > 11? "pm": "am"}`
+      }else{
+       return card.time
+    }
 
-  // }
+  }
 
   return display ? (
     <div>
@@ -67,8 +62,7 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: </strong>
-            {card.time}
-            {/* {timeManager()} */}
+            {timeManager()}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

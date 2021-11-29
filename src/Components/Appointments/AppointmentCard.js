@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./Appointments.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Loading from "../Doctors/DocCardLoading"
 
 function AppointmentCard({
   card,
+  bookingtime,
   deleteAppointment,
   editAppointment,
   doctors
@@ -40,7 +42,7 @@ function AppointmentCard({
     setDisplay(!display);
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
-
+  if (card === null) return <Loading/> 
   return display ? (
     <div>
       <div className=" row appointmentCard">
@@ -49,8 +51,8 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            <strong>Time: </strong>
-             {card.time > 1200?`${card.time} pm`:`${card.time} am`}
+            <strong>Time: {bookingtime}</strong>
+             {/* {card.time > 1200?`${card.time} pm`:`${card.time} am`} */}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

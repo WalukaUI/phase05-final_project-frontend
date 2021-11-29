@@ -30,8 +30,9 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((booking) => {
-          sendEmail(e);
+          //sendEmail(e);
           setAppoinements([...appointments, booking]);
+          history.push("/appointments");
         });
       } else {
         res.json().then((err) => {
@@ -44,24 +45,24 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
 
   //Send email------------------------------
 
-  async function sendEmail(e) {
-   await emailjs.sendForm(
-        "service_dchmott",
-        "template_4tdthof",
-        form.current,
-        "user_lKVMUZPYGwUDtHBAdsLEn"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          history.push("/appointments");
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-    e.target.reset();
-  }
+  // async function sendEmail(e) {
+  //  await emailjs.sendForm(
+  //       "service_dchmott",
+  //       "template_4tdthof",
+  //       form.current,
+  //       "user_lKVMUZPYGwUDtHBAdsLEn"
+  //     )
+  //     .then(
+  //       (result) => {
+  //         console.log(result.text);
+  //         history.push("/appointments");
+  //       },
+  //       (error) => {
+  //         console.log(error.text);
+  //       }
+  //     );
+  //   e.target.reset();
+  // }
 
   //Supportive Functions----------------------
 

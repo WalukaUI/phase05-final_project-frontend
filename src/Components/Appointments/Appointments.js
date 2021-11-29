@@ -7,7 +7,6 @@ import AppointmentCard from "./AppointmentCard";
 function Appointments({ user, appointments, setAppoinements, doctors}) {
   const[serchTearm,setSearchTearm]=useState(null)
 
-
   //GET Appointments-------------------------
   useEffect(() => {
     fetch(user?.role === "patient"? `${BASE_URL}/patients/${user?.id}/appointments`

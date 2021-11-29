@@ -41,12 +41,14 @@ function AppointmentCard({
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
 
-  function timeManager() {
+  async function timeManager() {
     //if (card.time !== null){
       let aa=card.time.toString().split("").slice(-2).join("")
       let bb=card.time.toString().split("").slice(0,2).join("")
-  
-      return`${bb}.${aa} ${bb > 11? "pm": "am"}`
+      let bookingTime=`${bb}.${aa} ${bb > 11? pm: am}`
+      console.log(bookingTime);
+      return "222"
+      //return bookingTime
     //   }else{
     //    return card.time
     // }

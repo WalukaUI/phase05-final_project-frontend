@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./NewAppointment.css";
 import BASE_URL from "../../constraints/URL";
 import DatePicker from "react-datepicker";
-import emailjs from "emailjs-com";
+//import emailjs from "emailjs-com";
 import "react-datepicker/dist/react-datepicker.css";
 
 function NewAppiontment({ doctors, user, setAppoinements, appointments }) {

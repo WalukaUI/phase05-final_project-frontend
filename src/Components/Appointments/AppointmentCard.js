@@ -51,7 +51,7 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            <strong>Time: {bookingtime}</strong>
+            <strong>Time: {bookingtime.toString()}</strong>
              {/* {card.time > 1200?`${card.time} pm`:`${card.time} am`} */}
           </p>
           <p>

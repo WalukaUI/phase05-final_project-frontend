@@ -42,7 +42,7 @@ function AppointmentCard({
   }
 
   function timeManager() {
-    if (card !== null){
+    if (card.time !== null){
       let aa=card.time.toString().split("").slice(-2).join("")
       let bb=card.time.toString().split("").slice(0,2).join("")
   

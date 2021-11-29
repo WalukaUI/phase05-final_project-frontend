@@ -147,7 +147,9 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
         
             let aa=output.reverse().slice(-2).join('')
             let bb=output.slice(0,2).join('')
-            let bookingtime=`${bb}.${aa} ${bb > 11? "pm": "am"}`
+            let cc=parseInt(aa)
+            let dd=parseInt(bb)
+            let bookingtime=`${dd}.${cc} ${dd > 11? "pm": "am"}`
             console.log(bookingtime);
              
         

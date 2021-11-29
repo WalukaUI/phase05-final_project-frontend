@@ -51,7 +51,7 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: </strong>
-            {bookingtime}
+            {bookingtime} {bookingtime > 1200?"pm":"am"}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

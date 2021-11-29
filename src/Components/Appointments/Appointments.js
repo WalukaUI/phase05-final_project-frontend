@@ -141,10 +141,10 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
               number = Math.floor(number/10);
              }
 
-            let aa=output.reverse().slice(-2).join('')
-            let bb=output.slice(0,2).join('')
-            let dd=parseInt(bb)
-            let bookingtime=`${bb}.${aa} ${dd > 11? "pm": "am"}`
+            let lasttwoNums=output.reverse().slice(-2).join('')
+            let firstTwoNums=output.slice(0,2).join('')
+            let hours=parseInt(firstTwoNums)
+            let bookingtime=`${firstTwoNums}.${lasttwoNums} ${hours > 11? "pm": "am"}`
 
           return <AppointmentCard
             key={card.id+85}

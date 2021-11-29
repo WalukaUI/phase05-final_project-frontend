@@ -8,6 +8,7 @@ function AppointmentCard({
   deleteAppointment,
   editAppointment,
   doctors,
+  bookingtime
 }) {
   const [updatedAppointment, setUpdatedAppointment] = useState(null);
   const [display, setDisplay] = useState(true);
@@ -41,20 +42,6 @@ function AppointmentCard({
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
 
-  async function timeManager() {
-    //if (card.time !== null){
-      let aa=card.time.toString().split("").slice(-2).join("")
-      let bb=card.time.toString().split("").slice(0,2).join("")
-      let bookingTime=`${bb}.${aa} ${bb > 11? "pm": "am"}`
-      console.log(bookingTime);
-      return "222"
-      //return bookingTime
-    //   }else{
-    //    return card.time
-    // }
-
-  }
-
   return display ? (
     <div>
       <div className=" row appointmentCard">
@@ -64,7 +51,7 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: </strong>
-            {timeManager()}
+            {bookingtime}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

@@ -52,6 +52,7 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: {bookingtime.toString()}</strong>
+            {card.time}
              {/* {card.time > 1200?`${card.time} pm`:`${card.time} am`} */}
           </p>
           <p>

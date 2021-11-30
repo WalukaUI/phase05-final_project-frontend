@@ -3,7 +3,7 @@ import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
 
-function Doctors({ doctors, user }) {
+function Doctors({ doctors }) {
   const [searchTearm, setSearchTearm] = useState("");
   const [docSpeciality, setSpeciality] = useState("");
   const [acceptNewPatients, setAcceptNewPatients] = useState(false);

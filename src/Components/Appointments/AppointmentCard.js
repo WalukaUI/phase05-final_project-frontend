@@ -45,11 +45,26 @@ function AppointmentCard({
   if (card === null) return <Loading/> 
   function taketime() {
     if(card.time){
-      let ac=card.time.toString().split('').slice(-2).join('')
-      let aw=card.time.toString().split('').slice(0,2).join('')
+      let ac=(card.time).toString().split('').slice(-2).join('')
+      let aw=(card.time).toString().split('').slice(0,2).join('')
       let as=parseInt(aw)>12?"pm":"am"
       return `${aw}.${ac} ${as}`
     }
+  }
+
+  function taketime2(){
+    var number= card.time
+    var output = [];
+    while (number) {
+     output.push(number % 10);
+     number = Math.floor(number/10);
+    }
+
+   let lasttwoNums=output.reverse().slice(-2).join('')
+   let firstTwoNums=output.slice(0,2).join('')
+   let hours=parseInt(firstTwoNums)
+   let bookedtime=`${firstTwoNums}.${lasttwoNums} ${hours > 11? "pm": "am"}`
+   return bookedtime
   }
 
   return display ? (
@@ -60,8 +75,9 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            <strong>Time: {bookingtime.toString()}</strong>
+            <strong>Time: {bookingtime}</strong>
             {taketime()}
+            {taketime2()}
              {/* {card.time > 1200?`${card.time} pm`:`${card.time} am`} */}
           </p>
           <p>

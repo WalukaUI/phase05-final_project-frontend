@@ -43,6 +43,13 @@ function AppointmentCard({
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
   if (card === null) return <Loading/> 
+  function taketime() {
+    let ac=card.time.toString().split('').slice(-2).join('')
+    let aw=card.time.toString().split('').slice(0,2).join('')
+    let as=parseInt(aw)>12?"pm":"am"
+    return `${aw}.${ac} ${as}`
+  }
+
   return display ? (
     <div>
       <div className=" row appointmentCard">
@@ -52,7 +59,7 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: {bookingtime.toString()}</strong>
-            {card.time}
+            {taketime()}
              {/* {card.time > 1200?`${card.time} pm`:`${card.time} am`} */}
           </p>
           <p>

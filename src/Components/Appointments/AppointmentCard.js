@@ -44,10 +44,12 @@ function AppointmentCard({
   }
   if (card === null) return <Loading/> 
   function taketime() {
-    let ac=card.time.toString().split('').slice(-2).join('')
-    let aw=card.time.toString().split('').slice(0,2).join('')
-    let as=parseInt(aw)>12?"pm":"am"
-    return `${aw}.${ac} ${as}`
+    if(card.time){
+      let ac=card.time.toString().split('').slice(-2).join('')
+      let aw=card.time.toString().split('').slice(0,2).join('')
+      let as=parseInt(aw)>12?"pm":"am"
+      return `${aw}.${ac} ${as}`
+    }
   }
 
   return display ? (

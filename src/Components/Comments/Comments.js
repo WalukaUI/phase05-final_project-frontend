@@ -1,7 +1,7 @@
 import React from "react";
 import "./Comments.css"
 
-function Comments({comment}) {
+function Comments() {
 
   return (
     <div>

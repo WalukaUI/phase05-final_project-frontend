@@ -78,7 +78,7 @@ function AppointmentCard({
             <strong>Time: {bookingtime}</strong>
             {taketime()}
             {taketime2()}
-             {/* {card.time > 1200?`${card.time} pm`:`${card.time} am`} */}
+            ppsddsd
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

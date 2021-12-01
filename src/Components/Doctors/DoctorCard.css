@@ -25,7 +25,7 @@
     background-color: #155B7F;
     border-radius: 0;
     color: cornsilk;
-    height: 10vh;
+    min-height: 4vw;
     z-index: 1;
 }
 .doctorMoreDetails{

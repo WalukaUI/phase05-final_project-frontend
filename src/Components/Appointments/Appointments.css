@@ -15,19 +15,7 @@
 .appointmentMainDiv{
     padding-left: 0;
 }
-@media only screen and (max-width: 600px) { 
-  .appointmentMainDiv{
-    padding-right: 0;
-    padding-left: 10px;
-  }
-  .mainAppointmentContainer{
-    display: flex;
-    flex-direction: column;
-  }
-  .appointmentCard p{
-    line-height: 1.2 !important;
-    }
-}
+
 .appointmentCard{
     background-color: #E2F0F0;
     margin: 10px;
@@ -66,6 +54,31 @@ line-height: 0.6;
 }
 .formSubBtn{
     margin-top: 20px;
+}
+.appointmentCard p{
+  line-height: 1.2 !important;
+}
+
+@media only screen and (max-width: 600px) { 
+  .appointmentMainDiv{
+    padding-right: 0;
+    padding-left: 10px;
+  }
+  .mainAppointmentContainer{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+@media only screen and (max-width: 968px) { 
+  .deleteAppBtn{
+    width:177px;
+  }
+}
+@media only screen and (max-width: 1100px) { 
+  .appointmentCard{
+    min-height: 180px;
+  }
 }
 /* -----------Popup Update window settings------------ */
 

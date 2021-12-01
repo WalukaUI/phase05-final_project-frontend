@@ -43,6 +43,9 @@ function AppointmentCard({
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
   if (card === null) return <Loading/> 
+
+  //working on to fix card time using time() and time2() func's
+
   function taketime() {
     if(card.time){
       let ac=(card.time).toString().split('').slice(-2).join('')
@@ -51,7 +54,7 @@ function AppointmentCard({
       return `${aw}.${ac} ${as}`
     }
   }
-
+  //---------------------------------
   function taketime2(){
     var number= card.time
     var output = [];
@@ -59,6 +62,7 @@ function AppointmentCard({
      output.push(number % 10);
      number = Math.floor(number/10);
     }
+  //-----------------------------------------
 
    let lasttwoNums=output.reverse().slice(-2).join('')
    let firstTwoNums=output.slice(0,2).join('')
@@ -76,9 +80,12 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: {bookingtime}</strong>
+          
+
             {taketime()}
             {taketime2()}
-            ppsddsd
+            
+            
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

@@ -47,7 +47,7 @@ function DoctorProfile({ user }) {
       patient_id: user.id,
       points: rate,
     };
-    console.log(obj);
+
     fetch(BASE_URL + `/comments`, {
       method: "POST",
       headers: {
@@ -64,9 +64,8 @@ function DoctorProfile({ user }) {
             credentials: "include",
           })
             .then((r) => r.json())
-            .then((data) =>{ 
-              console.log(data);
-              setDocProfile(data)});
+            .then((data) =>
+              setDocProfile(data));
         });
       } else {
         res.json().then((err) => {

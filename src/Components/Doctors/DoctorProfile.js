@@ -124,7 +124,10 @@ function DoctorProfile({ user }) {
           <p>Speciality: {docProfile.speciality}</p>
           <div>
             <h6>Average Ratings: {rating(docProfile.comment)}</h6>
-            <p>{ratingStars(rating(docProfile.comment))}</p>
+            <StarRating
+                  percentage={docProfile.comment ? rating(docProfile.comment) / 5 : 5 / 5}
+                />
+            {/* <p>{ratingStars(rating(docProfile.comment))}</p> */}
             <p>
               {docProfile.comment?.length}{" "}
               {docProfile.comment?.length > 1 ? "comments" : "comment"}
@@ -258,7 +261,12 @@ function DoctorProfile({ user }) {
             <div key={card.id}>
               <div>
                 <h6>Rating</h6>
-                <p>{ratingStars(card.points)}</p>
+                <StarRating
+                  percentage={card.points ? card.points/5 : 5 / 5}
+                
+
+                />
+                {/* <p>{ratingStars(card.points)}</p> */}
               </div>
               <div>
                 <h6>Comment</h6>

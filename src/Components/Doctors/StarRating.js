@@ -2,9 +2,10 @@ import { useRef } from "react";
 import "./Rating.css"
 
 function StarRating({ percentage, onClick }) {
+  console.log(percentage);
   const widthPct = `${percentage * 100}%`;
   const elementRef = useRef();
-
+ 
   function handleClick(e) {
     onClick(
       e.nativeEvent.offsetX / elementRef.current.getBoundingClientRect().width

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import "./DoctorCard.css";
+import StarRating from "./StarRating";
 import { UserContext } from "../Maindiv";
 
 function Doctor({ card }) {
@@ -28,21 +29,12 @@ function Doctor({ card }) {
       array?.forEach((e) => points.push(e.points));
       let pointSum = points.reduce((a, b) => a + b, 0);
       let pointaverage = (pointSum / points.length).toFixed(2);
-      let roundNum = Math.floor(pointaverage);
-      return roundNum;
+      return pointaverage
     } else {
       return "N/A";
     }
   }
 
-  function ratingStars(rate) {
-    const emoji = "⭐";
-    let emojis = "";
-    for (let i = 0; i < rate; i++) {
-      emojis += emoji;
-    }
-    return emojis;
-  }
 
   return (
     <div>
@@ -97,7 +89,9 @@ function Doctor({ card }) {
       <div className="row commentRow">
         <div className="col col-sm-12 col-md-6">
           <p>Ratings: {rating(comment)}</p>
-          <p>{ratingStars(rating(comment))}</p>
+          <StarRating
+                  percentage={comment ? rating(comment) / 5 : 5 / 5}
+                />
         </div>
         <div className="col col-sm-12 col-md-6 commentRowDiv2">
           {user?.role ==="patient"?

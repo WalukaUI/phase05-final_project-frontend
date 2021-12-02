@@ -21,7 +21,6 @@ function DoctorProfile({ user }) {
     })
       .then((r) => r.json())
       .then((data) => {
-        console.log(data);
         setDocProfile(data);
       });
   }, [params.id]);
@@ -48,7 +47,7 @@ function DoctorProfile({ user }) {
       patient_id: user.id,
       points: rate,
     };
-
+    console.log(obj);
     fetch(BASE_URL + `/comments`, {
       method: "POST",
       headers: {
@@ -65,7 +64,9 @@ function DoctorProfile({ user }) {
             credentials: "include",
           })
             .then((r) => r.json())
-            .then((data) => setDocProfile(data));
+            .then((data) =>{ 
+              console.log(data);
+              setDocProfile(data)});
         });
       } else {
         res.json().then((err) => {
@@ -85,21 +86,10 @@ function DoctorProfile({ user }) {
       array.forEach((e) => points.push(e.points));
       let pointSum = points.reduce((a, b) => a + b, 0);
       let pointaverage = (pointSum / points.length).toFixed(2);
-      let roundNum = Math.floor(pointaverage);
-      return roundNum;
+      return pointaverage
     } else {
       return "N/A";
     }
-  }
-
-  //-------------------emoji--------------------
-  function ratingStars(rate) {
-    let emoji = "⭐";
-    let emojis = "";
-    for (let i = 0; i < rate; i++) {
-      emojis += emoji;
-    }
-    return emojis;
   }
 
   function handleUpdateRatin(pct) {
@@ -127,7 +117,6 @@ function DoctorProfile({ user }) {
             <StarRating
                   percentage={docProfile.comment ? rating(docProfile.comment) / 5 : 5 / 5}
                 />
-            {/* <p>{ratingStars(rating(docProfile.comment))}</p> */}
             <p>
               {docProfile.comment?.length}{" "}
               {docProfile.comment?.length > 1 ? "comments" : "comment"}

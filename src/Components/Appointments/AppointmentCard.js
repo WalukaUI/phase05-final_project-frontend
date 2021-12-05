@@ -43,7 +43,7 @@ function AppointmentCard({
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
 
-  function time() {
+  function timec() {
     alert(time);
     console.log(time);
   }
@@ -58,7 +58,7 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            <strong>Time:{time()}</strong>{typeof(card.time)}
+            <strong>Time:{timec()}</strong>{typeof(card.time)}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

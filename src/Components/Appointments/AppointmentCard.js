@@ -6,7 +6,7 @@ import Loading from "../Doctors/DocCardLoading"
 
 function AppointmentCard({
   card,
-  bookingtime,
+  //bookingtime,
   deleteAppointment,
   editAppointment,
   doctors
@@ -46,28 +46,28 @@ function AppointmentCard({
 
   //working on to fix card time using time() and time2() func's
 
-  function taketime() {
-    if(card.time){
-      let ac=(card.time).toString().split('').slice(-2).join('')
-      let aw=(card.time).toString().split('').slice(0,2).join('')
-      let as=parseInt(aw)>12?"pm":"am"
-      return `${aw}.${ac} ${as}`
-    }
-  }
+  // function taketime() {
+  //   if(card.time){
+  //     let ac=(card.time).toString().split('').slice(-2).join('')
+  //     let aw=(card.time).toString().split('').slice(0,2).join('')
+  //     let as=parseInt(aw)>12?"pm":"am"
+  //     return `${aw}.${ac} ${as}`
+  //   }
+  // }
   //---------------------------------
-  function taketime2(){
-    var number= card.time
-    var output = [];
-    while (number) {
-     output.push(number % 10);
-     number = Math.floor(number/10);
-    }
-   let lasttwoNums=output.reverse().slice(-2).join('')
-   let firstTwoNums=output.slice(0,2).join('')
-   let hours=parseInt(firstTwoNums)
-   let bookedtime=`${firstTwoNums}.${lasttwoNums} ${hours > 11? "pm": "am"}`
-   return bookedtime
-  }
+  // function taketime2(){
+  //   var number= card.time
+  //   var output = [];
+  //   while (number) {
+  //    output.push(number % 10);
+  //    number = Math.floor(number/10);
+  //   }
+  //  let lasttwoNums=output.reverse().slice(-2).join('')
+  //  let firstTwoNums=output.slice(0,2).join('')
+  //  let hours=parseInt(firstTwoNums)
+  //  let bookedtime=`${firstTwoNums}.${lasttwoNums} ${hours > 11? "pm": "am"}`
+  //  return bookedtime
+  // }
 
   return display ? (
     <div>

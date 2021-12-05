@@ -46,28 +46,28 @@ function AppointmentCard({
 
   //working on to fix card time using time() and time2() func's
 
-  // function taketime() {
-  //   if(card.time){
-  //     let minutes=(card.time).toString().split('').slice(-2).join('')
-  //     let hours=(card.time).toString().split('').slice(0,2).join('')
-  //     let time_mode=parseInt(hours)>12?"pm":"am"
-  //     return `${hours}.${minutes} ${time_mode}`
-  //   }
-  // }
+  function taketime() {
+    if(card.time){
+      let minutes=(card.time).toString().split('').slice(-2).join('')
+      let hours=(card.time).toString().split('').slice(0,2).join('')
+      let time_mode=parseInt(hours)>12?"pm":"am"
+      return `${hours}.${minutes} ${time_mode}`
+    }
+  }
   //---------------------------------
-  // function taketime2(){
-  //   var number= card.time
-  //   var output = [];
-  //   while (number) {
-  //    output.push(number % 10);
-  //    number = Math.floor(number/10);
-  //   }
-  //  let lasttwoNums=output.reverse().slice(-2).join('')
-  //  let firstTwoNums=output.slice(0,2).join('')
-  //  let hours=parseInt(firstTwoNums)
-  //  let bookedtime=`${firstTwoNums}.${lasttwoNums} ${hours > 11? "pm": "am"}`
-  //  return bookedtime
-  // }
+  function taketime2(){
+    var number= card.time
+    var output = [];
+    while (number) {
+     output.push(number % 10);
+     number = Math.floor(number/10);
+    }
+   let lasttwoNums=output.reverse().slice(-2).join('')
+   let firstTwoNums=output.slice(0,2).join('')
+   let hours=parseInt(firstTwoNums)
+   let bookedtime=`${firstTwoNums}.${lasttwoNums} ${hours > 11? "pm": "am"}`
+   return bookedtime
+  }
 
   return display ? (
     <div>
@@ -80,23 +80,10 @@ function AppointmentCard({
             <strong>Time: {card.time} am</strong>
             {typeof(card.time)}
             {bookingtime}
-            {  function taketime() {
-                    console.log(typeof(card));
-                    console.log(card);
-                    console.log(typeof(card.time));
-                    console.log(card.time);
-    if(card.time){
-
-      let mints=(card.time).toString().split('').slice(-2).join('')
-      let hrs=(card.time).toString().split('').slice(0,2).join('')
-      let timeType=parseInt(hrs)>12?"pm":"am"
-      return `${hrs}.${mints} ${timeType}`
-    }
-  }}
-{/*         
+        
             {taketime()}
             {taketime2()}
-            {card.time}{card.time > 1159? " pm":" am"} */}
+            {card.time}{card.time > 1159? " pm":" am"}
          
             
             

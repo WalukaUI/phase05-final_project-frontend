@@ -135,6 +135,7 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
         .map((card) => {
           return <AppointmentCard
             key={card.id+85}
+            time={card.time}
             card={card}
             deleteAppointment={deleteAppointment}
             doctors={doctors}

@@ -172,8 +172,8 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
               <option value="10.00">10.00 am</option>
               <option value="10.30">10.30 am</option>
               <option value="11.00">11.00 am</option>
-              <option value="13.00">01.00 pm</option>
-              <option value="13.30">01.30 pm</option>
+              <option value={1300}>01.00 pm</option>
+              <option value="1330">01.30 pm</option>
             </select>
             <button type="submit" className="btn btn-primary formSubBtn">
               Submit

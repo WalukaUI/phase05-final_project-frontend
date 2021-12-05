@@ -58,7 +58,7 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            <strong>Time:{timec()}</strong>{typeof(card.time)}
+            <strong>Time:{card.time}</strong>{time}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

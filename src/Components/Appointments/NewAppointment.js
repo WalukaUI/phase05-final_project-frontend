@@ -19,6 +19,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(newAppointment);
    await fetch(BASE_URL + `/appointments`, {
       method: "POST",
       headers: {
@@ -67,15 +68,19 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
 
   function handleNewAppointment(e) {
     e.preventDefault();
-    let newBooking = {
-      ...newAppointment,
-      patient_id: user.id,
-      status: "open",
-      date: selecteddate,
-      [e.target.name]: e.target.value,
-    };
-
-    setNewAppointment(newBooking);
+    if(e.target.name=== "time"){
+      let newBook = {...newAppointment, time: parseInt(e.target.value)}
+      setNewAppointment(newBook);
+    }else{
+      let newBooking = {
+        ...newAppointment,
+        patient_id: user.id,
+        status: "open",
+        date: selecteddate,
+        [e.target.name]: e.target.value,
+      };
+      setNewAppointment(newBooking);
+    }
   }
 
   function activeSearch(e) {
@@ -169,10 +174,10 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
               name="time"
               onChange={handleNewAppointment}
             >
-              <option value="10.00">10.00 am</option>
-              <option value="10.30">10.30 am</option>
-              <option value="11.00">11.00 am</option>
-              <option value={1300}>01.00 pm</option>
+              <option value="1000">10.00 am</option>
+              <option value="1030">10.30 am</option>
+              <option value="1100">11.00 am</option>
+              <option value="1300">01.00 pm</option>
               <option value="1330">01.30 pm</option>
             </select>
             <button type="submit" className="btn btn-primary formSubBtn">

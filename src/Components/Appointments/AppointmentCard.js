@@ -42,6 +42,11 @@ function AppointmentCard({
     setDisplay(!display);
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
+
+  function time() {
+    alert(time);
+    console.log(time);
+  }
   if (card === null) return <Loading/> 
 
 
@@ -53,7 +58,7 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            <strong>Time:{time}</strong>{typeof(card.time)}
+            <strong>Time:{time()}</strong>{typeof(card.time)}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}

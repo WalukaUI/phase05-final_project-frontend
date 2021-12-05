@@ -48,10 +48,10 @@ function AppointmentCard({
 
   // function taketime() {
   //   if(card.time){
-  //     let ac=(card.time).toString().split('').slice(-2).join('')
-  //     let aw=(card.time).toString().split('').slice(0,2).join('')
-  //     let as=parseInt(aw)>12?"pm":"am"
-  //     return `${aw}.${ac} ${as}`
+  //     let minutes=(card.time).toString().split('').slice(-2).join('')
+  //     let hours=(card.time).toString().split('').slice(0,2).join('')
+  //     let time_mode=parseInt(hours)>12?"pm":"am"
+  //     return `${hours}.${minutes} ${time_mode}`
   //   }
   // }
   //---------------------------------
@@ -82,10 +82,10 @@ function AppointmentCard({
             {bookingtime}
             {  function taketime() {
     if(card.time){
-      let ac=(card.time).toString().split('').slice(-2).join('')
-      let aw=(card.time).toString().split('').slice(0,2).join('')
-      let as=parseInt(aw)>12?"pm":"am"
-      return `${aw}.${ac} ${as}`
+      let mints=(card.time).toString().split('').slice(-2).join('')
+      let hrs=(card.time).toString().split('').slice(0,2).join('')
+      let timeType=parseInt(hrs)>12?"pm":"am"
+      return `${hrs}.${mints} ${timeType}`
     }
   }}
 {/*         

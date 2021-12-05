@@ -46,14 +46,14 @@ function AppointmentCard({
 
   //working on to fix card time using time() and time2() func's
 
-  function taketime() {
-    if(card.time){
-      let ac=(card.time).toString().split('').slice(-2).join('')
-      let aw=(card.time).toString().split('').slice(0,2).join('')
-      let as=parseInt(aw)>12?"pm":"am"
-      return `${aw}.${ac} ${as}`
-    }
-  }
+  // function taketime() {
+  //   if(card.time){
+  //     let ac=(card.time).toString().split('').slice(-2).join('')
+  //     let aw=(card.time).toString().split('').slice(0,2).join('')
+  //     let as=parseInt(aw)>12?"pm":"am"
+  //     return `${aw}.${ac} ${as}`
+  //   }
+  // }
   //---------------------------------
   // function taketime2(){
   //   var number= card.time
@@ -80,7 +80,14 @@ function AppointmentCard({
             <strong>Time: {card.time} am</strong>
             {typeof(card.time)}
             {bookingtime}
-            {setTimeout(taketime,1000)}
+            {  function taketime() {
+    if(card.time){
+      let ac=(card.time).toString().split('').slice(-2).join('')
+      let aw=(card.time).toString().split('').slice(0,2).join('')
+      let as=parseInt(aw)>12?"pm":"am"
+      return `${aw}.${ac} ${as}`
+    }
+  }}
 {/*         
             {taketime()}
             {taketime2()}

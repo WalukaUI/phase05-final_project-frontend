@@ -45,7 +45,7 @@ function AppointmentCard({
   if (card === null) return <Loading/> 
 
   //working on to fix card time using time() and time2() func's
-setTimeout(
+
   function taketime() {
     if(card.time){
       let ac=(card.time).toString().split('').slice(-2).join('')
@@ -53,7 +53,7 @@ setTimeout(
       let as=parseInt(aw)>12?"pm":"am"
       return `${aw}.${ac} ${as}`
     }
-  },1000)
+  }
   //---------------------------------
   // function taketime2(){
   //   var number= card.time
@@ -80,7 +80,7 @@ setTimeout(
             <strong>Time: {card.time} am</strong>
             {typeof(card.time)}
             {bookingtime}
-            {taketime()}
+            {setTimeout(taketime,1000)}
 {/*         
             {taketime()}
             {taketime2()}

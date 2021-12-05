@@ -45,15 +45,15 @@ function AppointmentCard({
   if (card === null) return <Loading/> 
 
   //working on to fix card time using time() and time2() func's
-
-  // function taketime() {
-  //   if(card.time){
-  //     let ac=(card.time).toString().split('').slice(-2).join('')
-  //     let aw=(card.time).toString().split('').slice(0,2).join('')
-  //     let as=parseInt(aw)>12?"pm":"am"
-  //     return `${aw}.${ac} ${as}`
-  //   }
-  // }
+setTimeout(
+  function taketime() {
+    if(card.time){
+      let ac=(card.time).toString().split('').slice(-2).join('')
+      let aw=(card.time).toString().split('').slice(0,2).join('')
+      let as=parseInt(aw)>12?"pm":"am"
+      return `${aw}.${ac} ${as}`
+    }
+  },1000)
   //---------------------------------
   // function taketime2(){
   //   var number= card.time
@@ -69,11 +69,6 @@ function AppointmentCard({
   //  return bookedtime
   // }
 
-  function  alerted() {
-    alert(card)
-    alert(card.time)
-  }
-
   return display ? (
     <div>
       <div className=" row appointmentCard">
@@ -84,8 +79,8 @@ function AppointmentCard({
           <p>
             <strong>Time: {card.time} am</strong>
             {typeof(card.time)}
-            {alerted()}
             {bookingtime}
+            {taketime()}
 {/*         
             {taketime()}
             {taketime2()}

@@ -78,7 +78,8 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: {card.time} am</strong>
-            {card.time}
+            {Number.isInteger(card.time)}
+            {typeof(card.time)}
             {bookingtime}
 {/* 
             {taketime()}

@@ -43,10 +43,6 @@ function AppointmentCard({
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
 
-  function timec() {
-    alert(time);
-    console.log(time);
-  }
   if (card === null) return <Loading/> 
 
 

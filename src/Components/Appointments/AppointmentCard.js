@@ -42,10 +42,19 @@ function AppointmentCard({
     setDisplay(!display);
     editAppointment({ ...updatedAppointment, date: selecteddate });
   }
-  function timelog() {
-    alert(time)
-    console.log(card);
-    console.log(card.time);
+
+  function taketime2(){
+    var number= card.time
+    var output = [];
+    while (number) {
+     output.push(number % 10);
+     number = Math.floor(number/10);
+    }
+   let lasttwoNums=output.reverse().slice(-2).join('')
+   let firstTwoNums=output.slice(0,2).join('')
+   let hours=parseInt(firstTwoNums)
+   let bookedtime=`${firstTwoNums}.${lasttwoNums} ${hours > 11? "pm": "am"}`
+   return bookedtime
   }
   if (card === null) return <Loading/> 
 
@@ -58,10 +67,8 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            Time:{card.time}{time}
-            {timelog()}
+            Time:{taketime2()}
           </p>
-          <p>{typeof(card.time)}</p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}
           </p>

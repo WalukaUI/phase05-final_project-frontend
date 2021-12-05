@@ -76,20 +76,19 @@ function AppointmentCard({
           <p>
             <b>Date:</b> {card.date}
           </p>
-          {taketime()}
           <p>
-            <strong>Time: {bookingtime}</strong>
-          
-
+            {/* <strong>Time: {bookingtime}</strong> */}
+            {card.time}
+{/* 
             {taketime()}
             {taketime2()}
-            {card.time}{card.time > 1159? " pm":" am"}
-
+            {card.time}{card.time > 1159? " pm":" am"} */}
+         
             
             
           </p>
           <p>
-            <strong> Doctor Name:</strong> {filterDoctorName()} {taketime()}
+            <strong> Doctor Name:</strong> {filterDoctorName()}
           </p>
         </div>
         <div className="col col-md-6 col-sm-12">

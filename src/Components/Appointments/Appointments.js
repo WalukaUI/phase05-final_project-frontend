@@ -133,22 +133,8 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
 
         {appointments?.filter((card)=> serchTearm !== null ? card.doctor_id === parseInt(serchTearm): card)
         .map((card) => {
-
-             var number= card.time
-             var output = [];
-             while (number) {
-              output.push(number % 10);
-              number = Math.floor(number/10);
-             }
-
-            let lasttwoNums=output.reverse().slice(-2).join('')
-            let firstTwoNums=output.slice(0,2).join('')
-            let hours=parseInt(firstTwoNums)
-            let bookingtime=`${firstTwoNums}.${lasttwoNums} ${hours > 11? "pm": "am"}`
-
           return <AppointmentCard
             key={card.id+85}
-            bookingtime={bookingtime}
             card={card}
             deleteAppointment={deleteAppointment}
             doctors={doctors}

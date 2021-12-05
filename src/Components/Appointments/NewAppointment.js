@@ -68,10 +68,6 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
 
   function handleNewAppointment(e) {
     e.preventDefault();
-    // if(e.target.name=== "time"){
-    //   let newBook = {...newAppointment, time: parseInt(e.target.value)}
-    //   setNewAppointment(newBook);
-    // }else{
       let newBooking = {
         ...newAppointment,
         patient_id: user.id,
@@ -80,7 +76,6 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
         [e.target.name]: e.target.value,
       };
       setNewAppointment(newBooking);
-    
   }
 
   function activeSearch(e) {

@@ -81,7 +81,12 @@ function AppointmentCard({
             {typeof(card.time)}
             {bookingtime}
             {  function taketime() {
+                    console.log(typeof(card));
+                    console.log(card);
+                    console.log(typeof(card.time));
+                    console.log(card.time);
     if(card.time){
+
       let mints=(card.time).toString().split('').slice(-2).join('')
       let hrs=(card.time).toString().split('').slice(0,2).join('')
       let timeType=parseInt(hrs)>12?"pm":"am"

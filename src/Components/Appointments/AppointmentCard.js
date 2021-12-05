@@ -69,6 +69,11 @@ function AppointmentCard({
   //  return bookedtime
   // }
 
+  function  alerted() {
+    alert(card)
+    alert(card.time)
+  }
+
   return display ? (
     <div>
       <div className=" row appointmentCard">
@@ -78,10 +83,10 @@ function AppointmentCard({
           </p>
           <p>
             <strong>Time: {card.time} am</strong>
-            {Number.isInteger(card.time)}
             {typeof(card.time)}
+            {alerted()}
             {bookingtime}
-{/* 
+{/*         
             {taketime()}
             {taketime2()}
             {card.time}{card.time > 1159? " pm":" am"} */}

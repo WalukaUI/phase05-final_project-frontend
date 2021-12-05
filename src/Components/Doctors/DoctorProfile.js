@@ -251,10 +251,7 @@ function DoctorProfile({ user }) {
                 <h6>Rating</h6>
                 <StarRating
                   percentage={card.points ? card.points/5 : 5 / 5}
-                
-
                 />
-                {/* <p>{ratingStars(card.points)}</p> */}
               </div>
               <div>
                 <h6>Comment</h6>

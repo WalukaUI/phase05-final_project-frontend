@@ -6,7 +6,7 @@ import Loading from "../Doctors/DocCardLoading"
 
 function AppointmentCard({
   card,
-  //bookingtime,
+  bookingtime,
   deleteAppointment,
   editAppointment,
   doctors
@@ -77,8 +77,9 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            {/* <strong>Time: {bookingtime}</strong> */}
+            <strong>Time: {card.time} am</strong>
             {card.time}
+            {bookingtime}
 {/* 
             {taketime()}
             {taketime2()}

@@ -6,6 +6,7 @@ import "./Locations.css";
 function Locations({ locations }) {
   const [searchTearm, setSearchTearm] = useState("");
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [mapdiv,setmapdiv]=useState(false)
 
   
   //supportive functions---------------------
@@ -15,12 +16,20 @@ function Locations({ locations }) {
     setSearchTearm(e.target.value);
   }
 
+  function mouseOverAction(e){
+    setSelectedPlace(e)
+    if(mapdiv!==true){
+      setmapdiv(true)
+    }  
+  }
+
   return (
     <div>
       <div className="row locationDiv">
         <div className="col col-sm-12 col-md-6 mapDiv">
           <div style={{position: "sticky", top: "0"}}>
-          <MyComponent locations={locations} selectedPlace={selectedPlace} setSelectedPlace={setSelectedPlace}/>
+          {mapdiv?<MyComponent locations={locations} selectedPlace={selectedPlace} setSelectedPlace={setSelectedPlace}/>
+          :<p>corousel</p>}
          </div>
         </div>
         <div className="col col-sm-12 col-md-6 locationInnerDiv">
@@ -40,7 +49,7 @@ function Locations({ locations }) {
                   card.name.toLowerCase().includes(searchTearm.toLowerCase())
                 )
                 .map((location) => (
-                  <div key={location.id} onMouseOver={()=>setSelectedPlace(location)} className="locationCard">
+                  <div key={location.id} onMouseOver={()=>mouseOverAction(location)} className="locationCard">
                     <div className="row locationDetails">
                       <div className="col col-sm-12 col-md-4 locationImage">
                         <img

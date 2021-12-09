@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MyComponent from "./Map"
+import Carousel from "./Carousel"
 import "./Locations.css";
 
 
@@ -29,7 +30,7 @@ function Locations({ locations }) {
         <div className="col col-sm-12 col-md-6 mapDiv">
           <div style={{position: "sticky", top: "0"}}>
           {mapdiv?<MyComponent locations={locations} selectedPlace={selectedPlace} setSelectedPlace={setSelectedPlace}/>
-          :<p>corousel</p>}
+          :<Carousel/>}
          </div>
         </div>
         <div className="col col-sm-12 col-md-6 locationInnerDiv">

@@ -73,3 +73,9 @@
     width: 90%;
   }
 }
+
+/* ----------Carousel---------------- */
+
+#carouselExampleIndicators span{
+  color: rgb(247, 248, 252);
+}

@@ -80,3 +80,9 @@
 #carouselExampleIndicators span {
   color: rgb(247, 248, 252);
 }
+.carousel-item a {
+  font-size: 0.5rem;
+}
+.carousel-item p {
+  font-size: 0.5rem;
+}

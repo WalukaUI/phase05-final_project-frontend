@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import MyComponent from "./Map"
-import Carousel from "./Carousel"
+import MyComponent from "./Map";
+import Carousel from "./Carousel";
 import "./Locations.css";
-
 
 function Locations({ locations }) {
   const [searchTearm, setSearchTearm] = useState("");
   const [selectedPlace, setSelectedPlace] = useState(null);
-  const [mapdiv,setmapdiv]=useState(false)
+  const [mapdiv, setmapdiv] = useState(false);
 
-  
   //supportive functions---------------------
 
   function activateSearch(e) {
@@ -17,21 +15,28 @@ function Locations({ locations }) {
     setSearchTearm(e.target.value);
   }
 
-  function mouseOverAction(e){
-    setSelectedPlace(e)
-    if(mapdiv!==true){
-      setmapdiv(true)
-    }  
+  function mouseOverAction(e) {
+    setSelectedPlace(e);
+    if (mapdiv !== true) {
+      setmapdiv(true);
+    }
   }
 
   return (
     <div>
       <div className="row locationDiv">
         <div className="col col-sm-12 col-md-6 mapDiv">
-          <div style={{position: "sticky", top: "0"}}>
-          {mapdiv?<MyComponent locations={locations} selectedPlace={selectedPlace} setSelectedPlace={setSelectedPlace}/>
-          :<Carousel/>}
-         </div>
+          <div style={{ position: "sticky", top: "0" }}>
+            {mapdiv ? (
+              <MyComponent
+                locations={locations}
+                selectedPlace={selectedPlace}
+                setSelectedPlace={setSelectedPlace}
+              />
+            ) : (
+              <Carousel />
+            )}
+          </div>
         </div>
         <div className="col col-sm-12 col-md-6 locationInnerDiv">
           <div className="serchLocation">
@@ -50,13 +55,14 @@ function Locations({ locations }) {
                   card.name.toLowerCase().includes(searchTearm.toLowerCase())
                 )
                 .map((location) => (
-                  <div key={location.id} onMouseOver={()=>mouseOverAction(location)} className="locationCard">
+                  <div
+                    key={location.id}
+                    onMouseOver={() => mouseOverAction(location)}
+                    className="locationCard"
+                  >
                     <div className="row locationDetails">
                       <div className="col col-sm-12 col-md-4 locationImage">
-                        <img
-                          src={location.image}
-                          alt="location"
-                        />
+                        <img src={location.image} alt="location" />
                         <div className="vl"></div>
                       </div>
                       <div className="col col-sm-6 col-md-4 locationAddress">
@@ -68,6 +74,13 @@ function Locations({ locations }) {
                       </div>
                       <div className="col col-sm-6 col-md-4 locationContactDetls">
                         <p>Tel. : {location.contact_number}</p>
+                        {!mapdiv ? (
+                          <img
+                            src="./taphere.gif"
+                            alt="touch"
+                            style={{ width: "40%" }}
+                          />
+                        ) : null}
                       </div>
                     </div>
                   </div>

@@ -12,6 +12,8 @@ function SignUp({ locations, setUser }) {
   const [confirmWindow, setConfirmWindow] = useState(false);
 
   const history = useHistory();
+  let allInputs = document.querySelectorAll(".newData");
+  let messageTags = document.querySelectorAll(".messageTag");
 
   //POST newpatient-----------------------
 
@@ -54,6 +56,9 @@ function SignUp({ locations, setUser }) {
         },
         (error) => {
           console.log(error.text);
+          for (let i = 0; i < messageTags.length; i++) {
+            messageTags[i].innerHTML = "";
+          }
         }
       );
     e.target.reset();
@@ -87,7 +92,7 @@ function SignUp({ locations, setUser }) {
       alert("Wrong Number, Please enter confirmation number again");
     }
   }
-  //form validation-----------------------
+  //form validation----------------------------------------------------------
 
   const validateEmail = (email) => {
     return String(email)
@@ -99,21 +104,44 @@ function SignUp({ locations, setUser }) {
 
   function handleValidity(e) {
     e.preventDefault();
-    let allInputs = document.querySelectorAll(".newData");
-    let messageTags = document.querySelectorAll(".messageTag");
 
     for (let i = 0; i < allInputs.length; i++) {
       allInputs[i].addEventListener("input", (h) => {
         let str = h.target.value;
         let regex = /\d/; //check numbers in the input value
 
-        if (h.target.checkValidity() && !regex.test(str)) {
-          handleAddPatient(e);
-          messageTags[i].innerHTML = "Accepted";
-          messageTags[i].style.color = "green";
+        if (h.target.name === "email") {
+          if (h.target.checkValidity() && validateEmail(h.target.value)) {
+            handleAddPatient(e);
+            messageTags[i].innerHTML = "Email Address Accepted";
+            messageTags[i].style.color = "green";
+          } else {
+            if (str.length > 0) {
+              messageTags[i].innerHTML = "Please enter a valied email address";
+              messageTags[i].style.color = "#d926cc";
+            } else {
+              messageTags[i].innerHTML = h.target.validationMessage;
+              messageTags[i].style.color = "red";
+            }
+          }
+        } else if (h.target.name === "username") {
+          if (h.target.checkValidity()) {
+            handleAddPatient(e);
+            messageTags[i].innerHTML = "Accepted";
+            messageTags[i].style.color = "green";
+          } else {
+            messageTags[i].innerHTML = h.target.validationMessage;
+            messageTags[i].style.color = "red";
+          }
         } else {
-          messageTags[i].innerHTML = h.target.validationMessage;
-          messageTags[i].style.color = "red";
+          if (h.target.checkValidity() && !regex.test(str)) {
+            handleAddPatient(e);
+            messageTags[i].innerHTML = "Accepted";
+            messageTags[i].style.color = "green";
+          } else {
+            messageTags[i].innerHTML = h.target.validationMessage;
+            messageTags[i].style.color = "red";
+          }
         }
       });
     }
@@ -196,12 +224,12 @@ function SignUp({ locations, setUser }) {
                 className="form-control form-control-sm newData"
                 type="text"
                 name="first_name"
-                maxlength="10"
+                maxLength="20"
                 placeholder="First Name"
                 onChange={handleValidity}
                 required
               />
-              <p className="messageTag" style={{ color: "red" }}></p>
+              <p className="messageTag"></p>
             </label>
 
             <label>
@@ -210,30 +238,41 @@ function SignUp({ locations, setUser }) {
                 className="form-control form-control-sm newData"
                 type="text"
                 name="last_name"
+                maxLength="20"
                 placeholder="Last Name"
                 onChange={handleValidity}
                 required
               />
-              <p className="messageTag" style={{ color: "red" }}></p>
+              <p className="messageTag"></p>
             </label>
             <label>
               Email
               <input
-                className="form-control form-control-sm"
+                className="form-control form-control-sm newData"
                 type="text"
                 name="email"
+                maxLength="50"
                 placeholder="Email"
-                onChange={handleAddPatient}
+                onChange={handleValidity}
                 required
               />
+              <p className="messageTag"></p>
             </label>
             <label>
               Select a Clinic Location
               <select
                 className="form-select"
+                id="clinicSelection"
                 name="clinic_location"
                 aria-label="Default select example"
-                onChange={handleAddPatient}
+                onChange={(e) => {
+                  handleAddPatient(e);
+                  let clinicmessage =
+                    document.getElementById("clinicTagMesssage");
+                  clinicmessage.innerHTML = "Clinc Selected";
+                  clinicmessage.style.color = "green";
+                }}
+                required
               >
                 {locations?.map((loc) => (
                   <option value={loc.id} key={loc.id}>
@@ -241,6 +280,9 @@ function SignUp({ locations, setUser }) {
                   </option>
                 ))}
               </select>
+              <p id="clinicTagMesssage" style={{ color: "red" }}>
+                Please select a clinic location
+              </p>
             </label>
           </div>
 
@@ -248,11 +290,14 @@ function SignUp({ locations, setUser }) {
             <label>
               Username
               <input
-                className="form-control form-control-sm"
+                className="form-control form-control-sm newData"
                 name="username"
+                maxLength="30"
                 placeholder="Username"
-                onChange={handleAddPatient}
+                onChange={handleValidity}
+                required
               />
+              <p className="messageTag"></p>
             </label>
             <label>
               Password
@@ -260,9 +305,12 @@ function SignUp({ locations, setUser }) {
                 type="password"
                 name="password"
                 autoComplete="on"
+                maxLength="50"
+                minLength="3"
                 className="form-control"
                 onChange={handleAddPatient}
                 placeholder="Password"
+                required
               />
             </label>
             <label>
@@ -271,9 +319,12 @@ function SignUp({ locations, setUser }) {
                 type="password"
                 name="password_confirmation"
                 autoComplete="on"
+                maxLength="50"
+                minLength="3"
                 className="form-control"
                 onChange={handleAddPatient}
                 placeholder="Re-enter your Password"
+                required
               />
             </label>
             <button className=" btn btn-success createPatientBtn" type="submit">

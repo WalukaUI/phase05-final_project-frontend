@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import emailjs from "emailjs-com";
 import "./SignUp.css";
-import "./Spinner.css"
+import "./Spinner.css";
 
 function SignUp({ locations, setUser }) {
   const [newPatient, setNewPatient] = useState({});
@@ -13,10 +13,9 @@ function SignUp({ locations, setUser }) {
 
   const history = useHistory();
 
-//POST newpatient-----------------------
+  //POST newpatient-----------------------
 
   function createNewPatient() {
-
     fetch(BASE_URL + `/patients`, {
       method: "POST",
       headers: {
@@ -27,7 +26,7 @@ function SignUp({ locations, setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-           setUser(user)
+          setUser(user);
         });
       } else {
         res.json().then((err) => {
@@ -35,22 +34,23 @@ function SignUp({ locations, setUser }) {
         });
       }
     });
-   }
+  }
 
   //Send email------------------------------
 
-    async function sendEmail(e) {
-      e.preventDefault();
-     await emailjs.sendForm(
+  async function sendEmail(e) {
+    e.preventDefault();
+    await emailjs
+      .sendForm(
         "service_dchmott",
         "template_vq1x7nj",
         e.target,
         "user_lKVMUZPYGwUDtHBAdsLEn"
       )
-     .then(
+      .then(
         (result) => {
           console.log(result.text);
-          setConfirmWindow(!confirmWindow)
+          setConfirmWindow(!confirmWindow);
         },
         (error) => {
           console.log(error.text);
@@ -58,11 +58,11 @@ function SignUp({ locations, setUser }) {
       );
     e.target.reset();
   }
-//Supportive functions------------------------------
+  //Supportive functions------------------------------
 
   function handleAddPatient(e) {
     e.preventDefault();
-    setConfirmationNumber(Math.floor(1000 + Math.random() * 9000))
+    setConfirmationNumber(Math.floor(1000 + Math.random() * 9000));
     let newPatientObj = {
       ...newPatient,
       [e.target.name]: e.target.value,
@@ -71,21 +71,46 @@ function SignUp({ locations, setUser }) {
     setNewPatient(newPatientObj);
   }
 
-  function  handleConfirmation(e) {
+  function handleConfirmation(e) {
     e.preventDefault();
-    let enteredconfirmationNumber = document.getElementById("confirmNumber").value;
-    let sentNumber=parseInt(confirmationNumber)
-    let enteredNumber=parseInt(enteredconfirmationNumber)
+    let enteredconfirmationNumber =
+      document.getElementById("confirmNumber").value;
+    let sentNumber = parseInt(confirmationNumber);
+    let enteredNumber = parseInt(enteredconfirmationNumber);
 
-    if (sentNumber === enteredNumber){
-      setConfirmWindow(!confirmWindow)
-      setConfirmationNumber("")
-      createNewPatient()
+    if (sentNumber === enteredNumber) {
+      setConfirmWindow(!confirmWindow);
+      setConfirmationNumber("");
+      createNewPatient();
       history.push(`/`);
-    }else{
-      alert("Wrong Number, Please enter confirmation number again")
+    } else {
+      alert("Wrong Number, Please enter confirmation number again");
     }
   }
+  //form validation-----------------------
+
+  function handleValidity(e) {
+    e.preventDefault();
+    let ff = document.querySelectorAll(".newData");
+    let gg = document.querySelectorAll(".demo");
+
+    for (let i = 0; i < ff.length; i++) {
+      ff[i].addEventListener("input", (h) => {
+        let str = h.target.value;
+        let regex = /\d/;
+        if (h.target.checkValidity() && !regex.test(str)) {
+          handleAddPatient(e);
+          gg[i].innerHTML = "Accepted";
+          gg[i].style.color = "green";
+        } else {
+          gg[i].innerHTML = h.target.validationMessage;
+          gg[i].style.color = "red";
+        }
+      });
+    }
+  }
+
+  //--------------------------------------------------
 
   return confirmWindow ? (
     <>
@@ -95,17 +120,34 @@ function SignUp({ locations, setUser }) {
             <form onSubmit={handleConfirmation}>
               <div className="form-group">
                 <h4>Please confirm your email </h4>
-                <hr/>
-                <p>Please check your emails.<br/>
-                We have sent you a <strong>Confirmation number</strong> to your email address</p><br/><hr/>
+                <hr />
+                <p>
+                  Please check your emails.
+                  <br />
+                  We have sent you a <strong>Confirmation number</strong> to
+                  your email address
+                </p>
+                <br />
+                <hr />
                 <label>Enter confirmation number : </label>
-                <input id="confirmNumber"/>
+                <input id="confirmNumber" />
 
                 <div className="spinner">
-
-                  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div>
-                 </div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                 </div> 
+                  <div class="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
 
                 <div>
                   <button type="submit" className="btn btn-success formSubBtn">
@@ -127,7 +169,7 @@ function SignUp({ locations, setUser }) {
   ) : (
     <div className="signupContainer">
       <h4>Create your account</h4>
-      <form  onSubmit={sendEmail}>
+      <form onSubmit={sendEmail}>
         <div className="row signupInnerContainer">
           <div className="col col-sm-12 col-md-6 signUpformInnerDiv1">
             <input
@@ -138,26 +180,33 @@ function SignUp({ locations, setUser }) {
               value={confirmationNumber}
               onChange={handleAddPatient}
             />
+
             <label>
               First Name
               <input
-                className="form-control form-control-sm"
+                className="form-control form-control-sm newData"
                 type="text"
                 name="first_name"
                 placeholder="First Name"
-                onChange={handleAddPatient}
+                onChange={handleValidity}
+                //onChange={handleAddPatient}
+                required
               />
+              <p className="demo" style={{ color: "red" }}></p>
             </label>
+
             <label>
               Last Name
               <input
-                className="form-control form-control-sm"
+                className="form-control form-control-sm newData"
                 type="text"
                 name="last_name"
                 placeholder="Last Name"
-                onChange={handleAddPatient}
+                onChange={handleValidity}
+                //onChange={handleAddPatient}
                 required
               />
+              <p className="demo" style={{ color: "red" }}></p>
             </label>
             <label>
               Email
@@ -165,7 +214,7 @@ function SignUp({ locations, setUser }) {
                 className="form-control form-control-sm"
                 type="text"
                 name="email"
-                placeholder="Name"
+                placeholder="Email"
                 onChange={handleAddPatient}
                 required
               />
@@ -228,7 +277,9 @@ function SignUp({ locations, setUser }) {
       <div>
         {errors
           ? errors.map((e) => (
-              <p style={{ color: "red", marginBottom: "10px" }} key={e}>{e}</p>
+              <p style={{ color: "red", marginBottom: "10px" }} key={e}>
+                {e}
+              </p>
             ))
           : null}
       </div>

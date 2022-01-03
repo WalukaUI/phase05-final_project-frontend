@@ -89,22 +89,31 @@ function SignUp({ locations, setUser }) {
   }
   //form validation-----------------------
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   function handleValidity(e) {
     e.preventDefault();
-    let ff = document.querySelectorAll(".newData");
-    let gg = document.querySelectorAll(".demo");
+    let allInputs = document.querySelectorAll(".newData");
+    let messageTags = document.querySelectorAll(".messageTag");
 
-    for (let i = 0; i < ff.length; i++) {
-      ff[i].addEventListener("input", (h) => {
+    for (let i = 0; i < allInputs.length; i++) {
+      allInputs[i].addEventListener("input", (h) => {
         let str = h.target.value;
-        let regex = /\d/;
+        let regex = /\d/; //check numbers in the input value
+
         if (h.target.checkValidity() && !regex.test(str)) {
           handleAddPatient(e);
-          gg[i].innerHTML = "Accepted";
-          gg[i].style.color = "green";
+          messageTags[i].innerHTML = "Accepted";
+          messageTags[i].style.color = "green";
         } else {
-          gg[i].innerHTML = h.target.validationMessage;
-          gg[i].style.color = "red";
+          messageTags[i].innerHTML = h.target.validationMessage;
+          messageTags[i].style.color = "red";
         }
       });
     }
@@ -187,12 +196,12 @@ function SignUp({ locations, setUser }) {
                 className="form-control form-control-sm newData"
                 type="text"
                 name="first_name"
+                maxlength="10"
                 placeholder="First Name"
                 onChange={handleValidity}
-                //onChange={handleAddPatient}
                 required
               />
-              <p className="demo" style={{ color: "red" }}></p>
+              <p className="messageTag" style={{ color: "red" }}></p>
             </label>
 
             <label>
@@ -203,10 +212,9 @@ function SignUp({ locations, setUser }) {
                 name="last_name"
                 placeholder="Last Name"
                 onChange={handleValidity}
-                //onChange={handleAddPatient}
                 required
               />
-              <p className="demo" style={{ color: "red" }}></p>
+              <p className="messageTag" style={{ color: "red" }}></p>
             </label>
             <label>
               Email

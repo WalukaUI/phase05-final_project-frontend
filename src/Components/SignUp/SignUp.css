@@ -28,15 +28,18 @@
   margin-top: 20px;
   width: 20%;
 }
+.firstPageInput {
+  justify-content: center;
+}
 /* -----------Popup Confirm window settings------------ */
 
-.display{
+.display {
   display: flex;
   width: 25%;
   margin-bottom: 20px;
 }
-.hidden{
- display: none;
+.hidden {
+  display: none;
 }
 .popupbox {
   color: black;
@@ -51,7 +54,7 @@
   align-items: center;
   z-index: 1;
 }
- 
+
 .popupinner {
   position: relative;
   width: 50%;
@@ -63,14 +66,15 @@
   border: 1px solid #999;
   overflow: auto;
 }
-.formSubBtn{
-margin-left: 10px;
+.formSubBtn {
+  margin-left: 10px;
 }
 @media only screen and (max-width: 768px) {
-  .signupInnerContainer{
+  .signupInnerContainer {
     flex-direction: column;
   }
-  .signUpformInnerDiv1, .signUpformInnerDiv2 {
+  .signUpformInnerDiv1,
+  .signUpformInnerDiv2 {
     padding-left: 5%;
   }
 }

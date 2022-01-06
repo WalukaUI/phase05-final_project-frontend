@@ -42,6 +42,7 @@ function SignUp({ locations, setUser }) {
 
   async function sendEmail(e) {
     e.preventDefault();
+    console.log(newPatient);
     await emailjs
       .sendForm(
         "service_dchmott",
@@ -219,6 +220,33 @@ function SignUp({ locations, setUser }) {
             />
 
             <label>
+              Select a Clinic Location
+              <select
+                className="form-select"
+                id="clinicSelection"
+                name="clinic_location"
+                aria-label="Default select example"
+                onChange={(e) => {
+                  handleAddPatient(e);
+                  let clinicmessage =
+                    document.getElementById("clinicTagMesssage");
+                  clinicmessage.innerHTML = "Clinc Selected";
+                  clinicmessage.style.color = "green";
+                }}
+                required
+              >
+                {locations?.map((loc) => (
+                  <option value={loc.id} key={loc.id}>
+                    {loc.name}
+                  </option>
+                ))}
+              </select>
+              <p id="clinicTagMesssage" style={{ color: "red" }}>
+                Please select a clinic location
+              </p>
+            </label>
+
+            <label>
               First Name
               <input
                 className="form-control form-control-sm newData"
@@ -257,32 +285,6 @@ function SignUp({ locations, setUser }) {
                 required
               />
               <p className="messageTag"></p>
-            </label>
-            <label>
-              Select a Clinic Location
-              <select
-                className="form-select"
-                id="clinicSelection"
-                name="clinic_location"
-                aria-label="Default select example"
-                onChange={(e) => {
-                  handleAddPatient(e);
-                  let clinicmessage =
-                    document.getElementById("clinicTagMesssage");
-                  clinicmessage.innerHTML = "Clinc Selected";
-                  clinicmessage.style.color = "green";
-                }}
-                required
-              >
-                {locations?.map((loc) => (
-                  <option value={loc.id} key={loc.id}>
-                    {loc.name}
-                  </option>
-                ))}
-              </select>
-              <p id="clinicTagMesssage" style={{ color: "red" }}>
-                Please select a clinic location
-              </p>
             </label>
           </div>
 

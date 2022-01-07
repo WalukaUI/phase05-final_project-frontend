@@ -116,34 +116,38 @@ function SignUp({ locations, setUser }) {
         if (h.target.name === "email") {
           if (h.target.checkValidity() && validateEmail(h.target.value)) {
             handleAddPatient(e);
-            messageTags[i].innerHTML = "Email Address Accepted";
+            messageTags[i].textContent = "Email Address Accepted";
             messageTags[i].style.color = "green";
           } else {
             if (str.length > 0) {
-              messageTags[i].innerHTML = "Please enter a valied email address";
+              messageTags[i].textContent =
+                "Please enter a valied email address";
               messageTags[i].style.color = "#d926cc";
             } else {
-              messageTags[i].innerHTML = h.target.validationMessage;
+              messageTags[i].textContent = h.target.validationMessage;
               messageTags[i].style.color = "red";
             }
           }
         } else if (h.target.name === "username") {
           if (h.target.checkValidity()) {
             handleAddPatient(e);
-            messageTags[i].innerHTML = "Accepted";
+            messageTags[i].textContent = "Accepted";
             messageTags[i].style.color = "green";
           } else {
-            messageTags[i].innerHTML = h.target.validationMessage;
+            messageTags[i].textContent = h.target.validationMessage;
             messageTags[i].style.color = "red";
           }
         } else {
-          if (h.target.checkValidity() && !regex.test(str)) {
-            handleAddPatient(e);
-            messageTags[i].innerHTML = "Accepted";
-            messageTags[i].style.color = "green";
-          } else {
-            messageTags[i].innerHTML = h.target.validationMessage;
+          // if (h.target.checkValidity() && !regex.test(str)) {
+          //   messageTags[i].textContent = h.target.validationMessage;
+
+          if (!/^[a-zA-Z]*$/g.test(h.target.value)) {
+            messageTags[i].textContent = "Invalid characters";
             messageTags[i].style.color = "red";
+          } else {
+            handleAddPatient(e);
+            messageTags[i].textContent = "Accepted";
+            messageTags[i].style.color = "green";
           }
         }
       });

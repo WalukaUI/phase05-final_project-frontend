@@ -138,9 +138,6 @@ function SignUp({ locations, setUser }) {
             messageTags[i].style.color = "red";
           }
         } else {
-          // if (h.target.checkValidity() && !regex.test(str)) {
-          //   messageTags[i].textContent = h.target.validationMessage;
-
           if (!/^[a-zA-Z]*$/g.test(h.target.value)) {
             messageTags[i].textContent = "Invalid characters";
             messageTags[i].style.color = "red";

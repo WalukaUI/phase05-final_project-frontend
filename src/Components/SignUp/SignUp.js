@@ -12,6 +12,7 @@ function SignUp({ locations, setUser }) {
   const [errors, setErrors] = useState(null);
   const [confirmationNumber, setConfirmationNumber] = useState("");
   const [confirmWindow, setConfirmWindow] = useState(false);
+  const [isValiedEmail, setIsValiedEmail] = useState(false);
 
   const history = useHistory();
   let allInputs = document.querySelectorAll(".newData");
@@ -44,7 +45,7 @@ function SignUp({ locations, setUser }) {
 
   async function sendEmail(e) {
     e.preventDefault();
-    console.log(newPatient);
+    if (!isValiedEmail) return requiredField();
     await emailjs
       .sendForm(
         "service_dchmott",
@@ -96,6 +97,9 @@ function SignUp({ locations, setUser }) {
     }
   }
   //form validation----------------------------------------------------------
+  function requiredField() {
+    prompt("jhdfshfj");
+  }
 
   const validateEmail = (email) => {
     return String(email)
@@ -118,14 +122,17 @@ function SignUp({ locations, setUser }) {
             handleAddPatient(e);
             messageTags[i].textContent = "Email Address Accepted";
             messageTags[i].style.color = "green";
+            setIsValiedEmail(true);
           } else {
             if (str.length > 0) {
               messageTags[i].textContent =
                 "Please enter a valied email address";
               messageTags[i].style.color = "#d926cc";
+              setIsValiedEmail(false);
             } else {
               messageTags[i].textContent = h.target.validationMessage;
               messageTags[i].style.color = "red";
+              setIsValiedEmail(false);
             }
           }
         } else if (h.target.name === "username") {
@@ -167,6 +174,7 @@ function SignUp({ locations, setUser }) {
       sendEmail={sendEmail}
       confirmationNumber={confirmationNumber}
       locations={locations}
+      isValiedEmail={isValiedEmail}
     />
   );
 }

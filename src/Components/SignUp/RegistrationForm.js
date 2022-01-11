@@ -7,6 +7,7 @@ function RegistrationForm({
   sendEmail,
   confirmationNumber,
   locations,
+  isValiedEmail,
 }) {
   return (
     <div className="signupContainer">
@@ -133,9 +134,16 @@ function RegistrationForm({
                 required
               />
             </label>
-            <button className=" btn btn-success createPatientBtn" type="submit">
-              Submit
-            </button>
+            {isValiedEmail ? (
+              <button
+                className=" btn btn-success createPatientBtn"
+                type="submit"
+              >
+                Submit
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </form>

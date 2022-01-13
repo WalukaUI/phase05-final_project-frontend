@@ -148,6 +148,9 @@ function SignUp({ locations, setUser }) {
           if (!/^[a-zA-Z]*$/g.test(h.target.value)) {
             messageTags[i].textContent = "Invalid characters";
             messageTags[i].style.color = "red";
+          } else if (str.length === 0) {
+            messageTags[i].textContent = h.target.validationMessage;
+            messageTags[i].style.color = "red";
           } else {
             handleAddPatient(e);
             messageTags[i].textContent = "Accepted";

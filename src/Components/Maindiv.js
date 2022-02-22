@@ -1,11 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-  Link
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./Maindiv.css";
 import NavBar from "./NavBar/NavBar";
 import Footer from "./Footer/Footer";
@@ -23,22 +17,21 @@ import SignUp from "./SignUp/SignUp";
 import PatientProfile from "./Profile/PatientProfile";
 import DocProfile from "./Profile/DocProfile";
 import Covid19 from "./Covid19/Covid19";
+import ClinicGidlines from "./Covid19/ClinicGuidlines";
 
-export const UserContext=createContext()
+export const UserContext = createContext();
 function MainContainer() {
- 
   const [user, setUser] = useState(null);
   const [appointments, setAppoinements] = useState(null);
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
-  const [getAddress,setAddress]=useState("")
-
+  const [getAddress, setAddress] = useState("");
 
   // auto-login----------------------
 
   useEffect(() => {
-    let userRole=localStorage.getItem("role")
-    fetch( userRole === "patient" ? BASE_URL + `/me` : BASE_URL + `/doc`,{
+    let userRole = localStorage.getItem("role");
+    fetch(userRole === "patient" ? BASE_URL + `/me` : BASE_URL + `/doc`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -58,8 +51,8 @@ function MainContainer() {
       method: "DELETE",
       credentials: "include",
     }).then((res) => {
-      setUser(null)
-      setAddress("")
+      setUser(null);
+      setAddress("");
     });
   }
   //GET Locations-------------------
@@ -91,88 +84,92 @@ function MainContainer() {
   }, []);
 
   return (
-    
-    <Router>
-        <div className="mainDiv">
-        <UserContext.Provider value={user}>
-        <NavBar logout={logout} getAddress={getAddress} setAddress={setAddress}/>
+    <div className="mainDiv">
+      <UserContext.Provider value={user}>
+        <NavBar
+          logout={logout}
+          getAddress={getAddress}
+          setAddress={setAddress}
+        />
         <div className="covidWarnning">
-          <Link to="/covid19" style={{color : "black", textDecoration: "none"}}><div>
-            All Clinic Locations are open,{" "}
-            <span href="!#" style={{color : "red", textDecoration: "underline"}}>
-              see covid restrictions
-            </span>
-          </div></Link>
+          <ClinicGidlines />
         </div>
 
-        <Switch>
-          <Route path="/covid19" exact>
-            <Covid19  />
-          </Route>
-          <Route path="/doctorlogin" exact>
-            <DoctorLogin setUser={setUser} />
-          </Route>
-          <Route path="/patientlogin" exact>
-            <PatientLogin setUser={setUser} />
-          </Route>
-          <Route path="/locations" exact>
-            <Locations locations={locations} />
-          </Route>
-          <Route path="/doctors" exact>
-            <Doctors doctors={doctors} user={user} />
-          </Route>
-          <Route path="/doctors/:id" exact>
-            <DoctorProfile user={user} />
-          </Route>
-          <Route path="/patients" exact>
-            <Patients locations={locations} user={user}/>
-          </Route>
-          <Route path="/signup" exact>
-            <SignUp locations={locations} setUser={setUser} />
-          </Route>
-          <Route path="/profile" exact>
-            {user?.role === "patient" ? 
-            <PatientProfile
-            user={user}
-            appointments={appointments}
-            locations={locations}
-            setUser={setUser}
+        <Routes>
+          <Route path="/covid19" element={<Covid19 />} />
+          <Route
+            path="/doctorlogin"
+            element={<DoctorLogin setUser={setUser} />}
           />
-            :
-            <DocProfile 
-            user={user}
-            appointments={appointments}
-            locations={locations}
-            setUser={setUser}
-            />
+          <Route
+            path="/patientlogin"
+            element={<PatientLogin setUser={setUser} />}
+          />
+          <Route
+            path="/locations"
+            element={<Locations locations={locations} />}
+          />
+          <Route
+            path="/doctors"
+            element={<Doctors doctors={doctors} user={user} />}
+          />
+          <Route path="/doctors/:id" element={<DoctorProfile user={user} />} />
+          <Route
+            path="/patients"
+            element={<Patients locations={locations} user={user} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUp locations={locations} setUser={setUser} />}
+          />
+          <Route
+            path="/profile"
+            element={
+              user?.role === "patient" ? (
+                <PatientProfile
+                  user={user}
+                  appointments={appointments}
+                  locations={locations}
+                  setUser={setUser}
+                />
+              ) : (
+                <DocProfile
+                  user={user}
+                  appointments={appointments}
+                  locations={locations}
+                  setUser={setUser}
+                />
+              )
             }
-          </Route>
-          <Route path="/newappointment" exact>
-            <NewAppiontment
-              doctors={doctors}
-              user={user}
-              setAppoinements={setAppoinements}
-              appointments={appointments}
-            />
-          </Route>
-          <Route path="/appointments" exact>
-            <Appointments
-              user={user}
-              setAppoinements={setAppoinements}
-              appointments={appointments}
-              doctors={doctors}
-              setUser={setUser}
-            />
-          </Route>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Redirect to="/" />
-        </Switch>
+          />
+          <Route
+            path="/newappointment"
+            element={
+              <NewAppiontment
+                doctors={doctors}
+                user={user}
+                setAppoinements={setAppoinements}
+                appointments={appointments}
+              />
+            }
+          />
+          <Route
+            path="/appointments"
+            element={
+              <Appointments
+                user={user}
+                setAppoinements={setAppoinements}
+                appointments={appointments}
+                doctors={doctors}
+                setUser={setUser}
+              />
+            }
+          />
+          <Route path="/" element={<Home />} />
+        </Routes>
         <Footer />
-        </UserContext.Provider>
-        </div>
-    </Router>
+      </UserContext.Provider>
+    </div>
   );
 }
 export default MainContainer;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./PatientLogin.css";
 import BASE_URL from "../../../constraints/URL";
 
@@ -8,12 +8,11 @@ function PatientLogin({ setUser }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState(null);
 
-  const history = useHistory();
-  
+  const history = useNavigate();
+
   function handleSubmit(e) {
-    
     e.preventDefault();
-    
+
     //login
 
     fetch(BASE_URL + `/login`, {
@@ -25,18 +24,17 @@ function PatientLogin({ setUser }) {
       body: JSON.stringify({
         email: patientEmail,
         password: password,
-        patient: true
+        patient: true,
       }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-
           setUser(user);
-          setPatientEmail("")
-          setPassword("")
-          setErrors(null)
-          localStorage.setItem("role","patient")
-          history.push("/");
+          setPatientEmail("");
+          setPassword("");
+          setErrors(null);
+          localStorage.setItem("role", "patient");
+          history("/");
         });
       } else {
         res.json().then((err) => {
@@ -98,7 +96,9 @@ function PatientLogin({ setUser }) {
             <br /> First visit
           </h2>
           <h6>Click below button to Register Now</h6>
-          <Link to="/signup" className="btn btn-warning">Register</Link>
+          <Link to="/signup" className="btn btn-warning">
+            Register
+          </Link>
         </div>
       </div>
     </div>

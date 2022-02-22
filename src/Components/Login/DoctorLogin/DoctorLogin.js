@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./DocLogin.css";
 import BASE_URL from "../../../constraints/URL";
 
@@ -8,12 +8,11 @@ function DoctorLogin({ setUser }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState(null);
 
-  const history = useHistory();
-  
+  const history = useNavigate();
+
   function handleSubmit(e) {
-    
     e.preventDefault();
-    
+
     //login
 
     fetch(BASE_URL + `/login`, {
@@ -25,17 +24,17 @@ function DoctorLogin({ setUser }) {
       body: JSON.stringify({
         email: docEmail,
         password: password,
-        doctor: true
+        doctor: true,
       }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
           setUser(user);
-          setDocEmail("")
-          setPassword("")
-          setErrors(null)
-          localStorage.setItem("role","doctor")
-          history.push("/");
+          setDocEmail("");
+          setPassword("");
+          setErrors(null);
+          localStorage.setItem("role", "doctor");
+          history("/");
         });
       } else {
         res.json().then((err) => {

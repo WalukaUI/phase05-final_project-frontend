@@ -1,9 +1,8 @@
 import React, { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./NewAppointment.css";
 import BASE_URL from "../../constraints/URL";
 import DatePicker from "react-datepicker";
-//import emailjs from "emailjs-com";
 import "react-datepicker/dist/react-datepicker.css";
 
 function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
@@ -12,7 +11,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
   const [selecteddate, setSelectedDate] = useState(null);
   const [searchTearm, setSearchTearm] = useState("");
 
-  const history = useHistory();
+  const history = useNavigate();
   const form = useRef();
 
   //POST Appointment------------------------
@@ -20,7 +19,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(newAppointment);
-   await fetch(BASE_URL + `/appointments`, {
+    await fetch(BASE_URL + `/appointments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,9 +29,8 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((booking) => {
-          //sendEmail(e);
           setAppoinements([...appointments, booking]);
-          history.push("/appointments");
+          history("/appointments");
         });
       } else {
         res.json().then((err) => {
@@ -43,39 +41,18 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
     });
   }
 
-  //Send email------------------------------
-
-  // async function sendEmail(e) {
-  //  await emailjs.sendForm(
-  //       "service_dchmott",
-  //       "template_4tdthof",
-  //       form.current,
-  //       "user_lKVMUZPYGwUDtHBAdsLEn"
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //         history.push("/appointments");
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //       }
-  //     );
-  //   e.target.reset();
-  // }
-
   //Supportive Functions----------------------
 
   function handleNewAppointment(e) {
     e.preventDefault();
-      let newBooking = {
-        ...newAppointment,
-        patient_id: user.id,
-        status: "open",
-        date: selecteddate,
-        [e.target.name]: e.target.value,
-      };
-      setNewAppointment(newBooking);
+    let newBooking = {
+      ...newAppointment,
+      patient_id: user.id,
+      status: "open",
+      date: selecteddate,
+      [e.target.name]: e.target.value,
+    };
+    setNewAppointment(newBooking);
   }
 
   function activeSearch(e) {
@@ -97,7 +74,8 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
           </form>
         </div>
 
-        {doctors.filter((card) =>
+        {doctors
+          .filter((card) =>
             card.last_name.toLowerCase().includes(searchTearm.toLowerCase())
           )
           .map((doctor) => (
@@ -111,7 +89,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
                       alt="doctor"
                     />
                   </div>
-                  <div className="col col-md-4" style={{paddingTop: "10px"}}>
+                  <div className="col col-md-4" style={{ paddingTop: "10px" }}>
                     <h5>
                       {doctor.first_name} {doctor.last_name}
                     </h5>
@@ -180,7 +158,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
             </button>
           </div>
         </form>
-        <div style={{textAlign: "center"}}>
+        <div style={{ textAlign: "center" }}>
           {errors ? (
             <p style={{ color: "red", marginTop: "10px" }}>
               Please fill all lines of the form

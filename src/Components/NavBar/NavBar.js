@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import UserLocation from "../Locations/UserLoaction";
 import { UserContext } from "../Maindiv";
 
 function NavBar({ logout, getAddress, setAddress }) {
-  const history = useHistory();
-  const user=useContext(UserContext)
+  const history = useNavigate();
+  const user = useContext(UserContext);
 
   function handlelogout(e) {
     e.preventDefault();
     logout();
     localStorage.clear();
-    history.push("/login");
+    history("/login");
   }
 
   return (
@@ -87,24 +87,34 @@ function NavBar({ logout, getAddress, setAddress }) {
       </div>
       <div className="mainLinksDiv">
         <div>
-          <Link to="/doctors" className="nav-bar-links">Doctors</Link>
+          <Link to="/doctors" className="nav-bar-links">
+            Doctors
+          </Link>
         </div>
         <div>
-          <Link to="/locations" className="nav-bar-links">Locations</Link>
+          <Link to="/locations" className="nav-bar-links">
+            Locations
+          </Link>
         </div>
         {user ? (
           user.role === "doctor" ? (
             <>
               <div>
-                <Link to="/appointments" className="nav-bar-links">Appointments</Link>
+                <Link to="/appointments" className="nav-bar-links">
+                  Appointments
+                </Link>
               </div>
               <div>
-                <Link to="/patients" className="nav-bar-links">Patients</Link>
+                <Link to="/patients" className="nav-bar-links">
+                  Patients
+                </Link>
               </div>
             </>
           ) : (
             <div>
-              <Link to="/appointments" className="nav-bar-links">Appointments</Link>
+              <Link to="/appointments" className="nav-bar-links">
+                Appointments
+              </Link>
             </div>
           )
         ) : (
@@ -120,7 +130,10 @@ function NavBar({ logout, getAddress, setAddress }) {
             Log Out
           </Link>
         ) : (
-          <Link className="btn btn-outline-primary styled-button" to="/doctorlogin">
+          <Link
+            className="btn btn-outline-primary styled-button"
+            to="/doctorlogin"
+          >
             Doctor Log in
           </Link>
         )}
@@ -139,7 +152,7 @@ function NavBar({ logout, getAddress, setAddress }) {
               ? `You are logged in as ${user.first_name}`
               : "🔑 Login to make an Appointment"}
           </h6>
-           <UserLocation getAddress={getAddress} setAddress={setAddress} /> 
+          <UserLocation getAddress={getAddress} setAddress={setAddress} />
         </div>
         <div style={{ textAlign: "center" }} className="accountSettingsDiv">
           {user ? (

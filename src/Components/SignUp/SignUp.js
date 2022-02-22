@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import EmailVerificationWindow from "./VerificationWindow";
 import RegistrationForm from "./RegistrationForm";
@@ -14,7 +14,7 @@ function SignUp({ locations, setUser }) {
   const [confirmWindow, setConfirmWindow] = useState(false);
   const [isValiedEmail, setIsValiedEmail] = useState(false);
 
-  const history = useHistory();
+  const history = useNavigate();
   let allInputs = document.querySelectorAll(".newData");
   let messageTags = document.querySelectorAll(".messageTag");
 
@@ -91,7 +91,7 @@ function SignUp({ locations, setUser }) {
       setConfirmWindow(!confirmWindow);
       setConfirmationNumber("");
       createNewPatient();
-      history.push(`/`);
+      history(`/`);
     } else {
       alert("Wrong Number, Please enter confirmation number again");
     }

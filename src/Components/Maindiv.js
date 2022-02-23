@@ -44,7 +44,7 @@ function MainContainer() {
     });
   }, []);
 
-  //LOGOUT-----------------------
+  // LOGOUT-----------------------
 
   function logout() {
     fetch(BASE_URL + `/logout`, {
@@ -55,7 +55,7 @@ function MainContainer() {
       setAddress("");
     });
   }
-  //GET Locations-------------------
+  // GET Locations-------------------
 
   useEffect(() => {
     fetch(BASE_URL + "/locations", {
@@ -67,7 +67,7 @@ function MainContainer() {
       .then((data) => setLocations(data));
   }, []);
 
-  //GET Doctors------------------------
+  // GET Doctors------------------------
 
   useEffect(() => {
     fetch(BASE_URL + `/doctors`, {

@@ -98,7 +98,7 @@ function SignUp({ locations, setUser }) {
   }
   //form validation----------------------------------------------------------
   function requiredField() {
-    prompt("jhdfshfj");
+    prompt("Please Enter a Valied email Address");
   }
 
   const validateEmail = (email) => {

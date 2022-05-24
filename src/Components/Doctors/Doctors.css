@@ -4,7 +4,7 @@
   left: 0;
   padding: 30px;
   min-height: 500px;
-  max-height: 650px;
+  max-height: calc(100vh);
   background-color: cornsilk;
   opacity: 0.8;
   text-align: center;

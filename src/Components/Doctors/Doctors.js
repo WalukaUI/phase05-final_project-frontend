@@ -3,7 +3,7 @@ import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
 
-function Doctors({ doctors, user }) {
+function Doctors({ doctors }) {
   const [searchTearm, setSearchTearm] = useState("");
   const [docSpeciality, setSpeciality] = useState("");
   const [acceptNewPatients, setAcceptNewPatients] = useState(false);
@@ -16,7 +16,7 @@ function Doctors({ doctors, user }) {
 
   return (
     <div>
-      <div className="row doctorMainDiv" style={{marginRight: "0"}}>
+      <div className="row doctorMainDiv" style={{ marginRight: "0" }}>
         <div className="col col-sm-12 col-md-3 docSearchDiv">
           <form>
             <input
@@ -102,7 +102,7 @@ function Doctors({ doctors, user }) {
                     return card;
                 }
               })
-              .map((card) => <Doctor key={card.id} card={card}/>)
+              .map((card) => <Doctor key={card.id} card={card} />)
           )}
         </div>
       </div>

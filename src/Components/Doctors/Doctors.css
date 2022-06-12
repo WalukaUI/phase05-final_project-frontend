@@ -17,6 +17,9 @@
   padding: 5px;
   justify-content: space-between;
 }
+input:focus {
+  outline: none;
+}
 .formnput {
   padding-left: 12px;
   padding-right: 0;
@@ -31,9 +34,6 @@
     position:relative;
     min-height: auto;
     max-height: auto;
-  }
-  .formnput {
-    padding-right: 0;
   }
   .doctorMainDiv {
     margin-left: 0;

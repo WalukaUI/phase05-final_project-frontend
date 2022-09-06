@@ -8,6 +8,7 @@ function RegistrationForm({
   confirmationNumber,
   locations,
   isValiedEmail,
+  passwordValidation,
 }) {
   return (
     <div className="signupContainer">
@@ -113,7 +114,7 @@ function RegistrationForm({
                 name="password"
                 autoComplete="on"
                 maxLength="50"
-                minLength="3"
+                minLength="6"
                 className="form-control"
                 onChange={handleAddPatient}
                 placeholder="Password"
@@ -127,12 +128,13 @@ function RegistrationForm({
                 name="password_confirmation"
                 autoComplete="on"
                 maxLength="50"
-                minLength="3"
+                minLength="6"
                 className="form-control"
-                onChange={handleAddPatient}
+                onChange={passwordValidation}
                 placeholder="Re-enter your Password"
                 required
               />
+              <p className="pwmessageTag"></p>
             </label>
             {isValiedEmail ? (
               <button

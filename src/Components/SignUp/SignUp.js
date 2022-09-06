@@ -17,6 +17,7 @@ function SignUp({ locations, setUser }) {
   const history = useNavigate();
   let allInputs = document.querySelectorAll(".newData");
   let messageTags = document.querySelectorAll(".messageTag");
+  let pwmessageTags = document.querySelectorAll(".pwmessageTag");
 
   //POST newpatient-----------------------
 
@@ -79,7 +80,7 @@ function SignUp({ locations, setUser }) {
     };
     setNewPatient(newPatientObj);
   }
-  //handle submit virification
+  //handle submit verification
   function handleConfirmation(e) {
     e.preventDefault();
     let enteredconfirmationNumber =
@@ -105,6 +106,18 @@ function SignUp({ locations, setUser }) {
   //-----------form validation-------------------------------------------
   function requiredField() {
     prompt("Please Enter a Valied email Address");
+  }
+
+  function passwordValidation(e) {
+    e.preventDefault();
+    if (newPatient.password !== e.target.value) {
+      pwmessageTags[0].textContent = "Password does not match";
+      pwmessageTags[0].style.color = "red";
+    } else {
+      pwmessageTags[0].textContent = "Password Match";
+      pwmessageTags[0].style.color = "green";
+      handleAddPatient(e);
+    }
   }
 
   const validateEmail = (email) => {
@@ -183,6 +196,7 @@ function SignUp({ locations, setUser }) {
       confirmationNumber={confirmationNumber}
       locations={locations}
       isValiedEmail={isValiedEmail}
+      passwordValidation={passwordValidation}
     />
   );
 }

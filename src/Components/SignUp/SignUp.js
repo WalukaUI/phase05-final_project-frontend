@@ -115,7 +115,7 @@ function SignUp({ locations, setUser }) {
     for (let i = 0; i < allInputs.length; i++) {
       allInputs[i].addEventListener("input", (h) => {
         let str = h.target.value;
-        // let regex = /\d/; //check numbers in the input value
+        // let regex = /\d/; //check numbers in the input value...
 
         if (h.target.name === "email") {
           if (h.target.checkValidity() && validateEmail(h.target.value)) {

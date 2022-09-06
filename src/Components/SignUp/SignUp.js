@@ -67,7 +67,7 @@ function SignUp({ locations, setUser }) {
       );
     e.target.reset();
   }
-  //Supportive functions------------------------------
+  //-----------Supportive functions------------------------------
 
   function handleAddPatient(e) {
     e.preventDefault();
@@ -79,7 +79,7 @@ function SignUp({ locations, setUser }) {
     };
     setNewPatient(newPatientObj);
   }
-
+  //handle submit virification
   function handleConfirmation(e) {
     e.preventDefault();
     let enteredconfirmationNumber =
@@ -96,7 +96,13 @@ function SignUp({ locations, setUser }) {
       alert("Wrong Number, Please enter confirmation number again");
     }
   }
-  //form validation----------------------------------------------------------
+  //handle cancle virification
+  function handleCancle(e) {
+    e.preventDefault();
+    setConfirmWindow(!confirmWindow);
+    window.location.reload();
+  }
+  //-----------form validation-------------------------------------------
   function requiredField() {
     prompt("Please Enter a Valied email Address");
   }
@@ -166,8 +172,7 @@ function SignUp({ locations, setUser }) {
   return confirmWindow ? (
     <EmailVerificationWindow
       handleConfirmation={handleConfirmation}
-      setConfirmWindow={setConfirmWindow}
-      confirmWindow={confirmWindow}
+      handleCancle={handleCancle}
     />
   ) : (
     <RegistrationForm

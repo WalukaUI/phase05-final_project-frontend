@@ -4,8 +4,7 @@ import "./Spinner.css";
 
 export default function EmailVerificationWindow({
   handleConfirmation,
-  setConfirmWindow,
-  confirmWindow,
+  handleCancle,
 }) {
   return (
     <div className="popupbox">
@@ -49,7 +48,7 @@ export default function EmailVerificationWindow({
                 </button>
                 <button
                   className="btn btn-warning formSubBtn"
-                  onClick={() => setConfirmWindow(!confirmWindow)}
+                  onClick={handleCancle}
                 >
                   Cancel
                 </button>

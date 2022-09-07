@@ -8,7 +8,6 @@ function RegistrationForm({
   confirmationNumber,
   locations,
   isValiedEmail,
-  passwordValidation,
 }) {
   return (
     <div className="signupContainer">
@@ -130,7 +129,7 @@ function RegistrationForm({
                 maxLength="50"
                 minLength="6"
                 className="form-control"
-                onChange={passwordValidation}
+                onChange={handleAddPatient}
                 placeholder="Re-enter your Password"
                 required
               />

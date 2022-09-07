@@ -47,6 +47,11 @@ function SignUp({ locations, setUser }) {
   async function sendEmail(e) {
     e.preventDefault();
     if (!isValiedEmail) return requiredField();
+    if (newPatient.password !== newPatient.password_confirmation) {
+      pwmessageTags[0].textContent = "Password does not match";
+      pwmessageTags[0].style.color = "red";
+      return;
+    }
     await emailjs
       .sendForm(
         "service_dchmott",
@@ -72,6 +77,9 @@ function SignUp({ locations, setUser }) {
 
   function handleAddPatient(e) {
     e.preventDefault();
+    if (e.target.name === "password_confirmation") {
+      pwmessageTags[0].textContent = "";
+    }
     setConfirmationNumber(Math.floor(1000 + Math.random() * 9000));
     let newPatientObj = {
       ...newPatient,
@@ -106,18 +114,6 @@ function SignUp({ locations, setUser }) {
   //-----------form validation-------------------------------------------
   function requiredField() {
     prompt("Please Enter a Valied email Address");
-  }
-
-  function passwordValidation(e) {
-    e.preventDefault();
-    if (newPatient.password !== e.target.value) {
-      pwmessageTags[0].textContent = "Password does not match";
-      pwmessageTags[0].style.color = "red";
-    } else {
-      pwmessageTags[0].textContent = "Password Match";
-      pwmessageTags[0].style.color = "green";
-      handleAddPatient(e);
-    }
   }
 
   const validateEmail = (email) => {
@@ -196,7 +192,6 @@ function SignUp({ locations, setUser }) {
       confirmationNumber={confirmationNumber}
       locations={locations}
       isValiedEmail={isValiedEmail}
-      passwordValidation={passwordValidation}
     />
   );
 }

@@ -66,7 +66,7 @@ function RegistrationForm({
             <label>
               First Name
               <input
-                className="form-control form-control-sm newData disabledAttr"
+                className="form-control form-control-sm newData"
                 disabled={doNotshowInput}
                 type="text"
                 name="first_name"
@@ -81,7 +81,7 @@ function RegistrationForm({
             <label>
               Last Name
               <input
-                className="form-control form-control-sm newData disabledAttr"
+                className="form-control form-control-sm newData"
                 disabled={doNotshowInput}
                 type="text"
                 name="last_name"
@@ -95,7 +95,7 @@ function RegistrationForm({
             <label>
               Email
               <input
-                className="form-control form-control-sm newData disabledAttr"
+                className="form-control form-control-sm newData"
                 disabled={doNotshowInput}
                 type="text"
                 name="email"
@@ -112,7 +112,7 @@ function RegistrationForm({
             <label>
               Username
               <input
-                className="form-control form-control-sm newData disabledAttr"
+                className="form-control form-control-sm newData"
                 disabled={doNotshowInput}
                 name="username"
                 maxLength="30"
@@ -131,7 +131,7 @@ function RegistrationForm({
                 autoComplete="on"
                 maxLength="50"
                 minLength="6"
-                className="form-control disabledAttr"
+                className="form-control"
                 onChange={handleAddPatient}
                 placeholder="Password"
                 required
@@ -146,7 +146,7 @@ function RegistrationForm({
                 autoComplete="on"
                 maxLength="50"
                 minLength="6"
-                className="form-control disabledAttr"
+                className="form-control"
                 onChange={handleAddPatient}
                 placeholder="Re-enter your Password"
                 required

@@ -12,7 +12,7 @@ function RegistrationForm({
   const [doNotshowInput, setDoNotshowInput] = useState(true);
 
   function enableInputs(e) {
-    if (e.target.value == "none") {
+    if (e.target.value === "none") {
       setDoNotshowInput(true);
     } else {
       setDoNotshowInput(false);

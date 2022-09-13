@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function RegistrationForm({
   handleValidity,
@@ -9,6 +9,16 @@ function RegistrationForm({
   locations,
   isValiedEmail,
 }) {
+  const [doNotshowInput, setDoNotshowInput] = useState(true);
+
+  function enableInputs(e) {
+    if (e.target.value == "none") {
+      setDoNotshowInput(true);
+    } else {
+      setDoNotshowInput(false);
+    }
+  }
+
   return (
     <div className="signupContainer">
       <h4>Create your account</h4>
@@ -35,11 +45,13 @@ function RegistrationForm({
                   handleAddPatient(e);
                   let clinicmessage =
                     document.getElementById("clinicTagMesssage");
-                  clinicmessage.innerHTML = "Clinc Selected";
+                  clinicmessage.innerHTML = "Clinic Selected";
                   clinicmessage.style.color = "green";
+                  enableInputs(e);
                 }}
                 required
               >
+                <option value="none">Select a Location</option>
                 {locations?.map((loc) => (
                   <option value={loc.id} key={loc.id}>
                     {loc.name}
@@ -54,7 +66,8 @@ function RegistrationForm({
             <label>
               First Name
               <input
-                className="form-control form-control-sm newData"
+                className="form-control form-control-sm newData disabledAttr"
+                disabled={doNotshowInput}
                 type="text"
                 name="first_name"
                 maxLength="20"
@@ -68,7 +81,8 @@ function RegistrationForm({
             <label>
               Last Name
               <input
-                className="form-control form-control-sm newData"
+                className="form-control form-control-sm newData disabledAttr"
+                disabled={doNotshowInput}
                 type="text"
                 name="last_name"
                 maxLength="20"
@@ -81,7 +95,8 @@ function RegistrationForm({
             <label>
               Email
               <input
-                className="form-control form-control-sm newData"
+                className="form-control form-control-sm newData disabledAttr"
+                disabled={doNotshowInput}
                 type="text"
                 name="email"
                 maxLength="50"
@@ -97,7 +112,8 @@ function RegistrationForm({
             <label>
               Username
               <input
-                className="form-control form-control-sm newData"
+                className="form-control form-control-sm newData disabledAttr"
+                disabled={doNotshowInput}
                 name="username"
                 maxLength="30"
                 placeholder="Username"
@@ -109,12 +125,13 @@ function RegistrationForm({
             <label>
               Password
               <input
+                disabled={doNotshowInput}
                 type="password"
                 name="password"
                 autoComplete="on"
                 maxLength="50"
                 minLength="6"
-                className="form-control"
+                className="form-control disabledAttr"
                 onChange={handleAddPatient}
                 placeholder="Password"
                 required
@@ -123,12 +140,13 @@ function RegistrationForm({
             <label>
               Password Verification
               <input
+                disabled={doNotshowInput}
                 type="password"
                 name="password_confirmation"
                 autoComplete="on"
                 maxLength="50"
                 minLength="6"
-                className="form-control"
+                className="form-control disabledAttr"
                 onChange={handleAddPatient}
                 placeholder="Re-enter your Password"
                 required

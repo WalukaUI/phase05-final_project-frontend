@@ -25,7 +25,7 @@ export default function EmailVerificationWindow({
               <hr />
               <label>
                 Enter confirmation number :
-                <input id="confirmNumber" />
+                <input id="confirmNumber" defaultValue="" />
               </label>
 
               <div className="spinner">

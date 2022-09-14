@@ -108,6 +108,7 @@ function SignUp({ locations, setUser }) {
       window.location.reload();
     } else {
       setShowErrormsg(true);
+      e.target.reset();
       alert("Wrong Number, Please enter confirmation number again");
       attempts.current = attempts.current - 1;
       attemptsRemaining.innerText = attempts.current;

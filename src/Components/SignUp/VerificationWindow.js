@@ -5,6 +5,7 @@ import "./Spinner.css";
 export default function EmailVerificationWindow({
   handleConfirmation,
   handleCancle,
+  showErrormsg,
 }) {
   return (
     <div className="popupbox">
@@ -22,8 +23,10 @@ export default function EmailVerificationWindow({
               </p>
               <br />
               <hr />
-              <label>Enter confirmation number : </label>
-              <input id="confirmNumber" />
+              <label>
+                Enter confirmation number :
+                <input id="confirmNumber" />
+              </label>
 
               <div className="spinner">
                 <div class="lds-spinner">
@@ -43,6 +46,16 @@ export default function EmailVerificationWindow({
               </div>
 
               <div>
+                <p>
+                  You have{" "}
+                  <span
+                    id="attemptsRemaining"
+                    style={{ fontSize: "1.5rem", color: "red" }}
+                  >
+                    3
+                  </span>{" "}
+                  attempts to enter correct number.
+                </p>
                 <button type="submit" className="btn btn-success formSubBtn">
                   Confirm
                 </button>
@@ -56,6 +69,13 @@ export default function EmailVerificationWindow({
             </div>
           </form>
         </div>
+        {showErrormsg ? (
+          <div style={{ textAlign: "center", marginTop: "5%", color: "red" }}>
+            <p>Invalied cofimation Number.</p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

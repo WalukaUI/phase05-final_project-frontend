@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import BASE_URL from "../../constraints/URL";
 import EmailVerificationWindow from "./VerificationWindow";
@@ -13,6 +13,8 @@ function SignUp({ locations, setUser }) {
   const [confirmationNumber, setConfirmationNumber] = useState("");
   const [confirmWindow, setConfirmWindow] = useState(false);
   const [isValiedEmail, setIsValiedEmail] = useState(false);
+  const [showErrormsg, setShowErrormsg] = useState(false);
+  const attempts = useRef(3);
 
   const history = useNavigate();
   let allInputs = document.querySelectorAll(".newData");
@@ -95,14 +97,20 @@ function SignUp({ locations, setUser }) {
       document.getElementById("confirmNumber").value;
     let sentNumber = parseInt(confirmationNumber);
     let enteredNumber = parseInt(enteredconfirmationNumber);
-
+    let attemptsRemaining = document.getElementById("attemptsRemaining");
     if (sentNumber === enteredNumber) {
       setConfirmWindow(!confirmWindow);
       setConfirmationNumber("");
       createNewPatient();
       history(`/`);
+    } else if (attempts.current === 1) {
+      setConfirmWindow(!confirmWindow);
+      window.location.reload();
     } else {
+      setShowErrormsg(true);
       alert("Wrong Number, Please enter confirmation number again");
+      attempts.current = attempts.current - 1;
+      attemptsRemaining.innerText = attempts.current;
     }
   }
   //handle cancle virification
@@ -182,6 +190,7 @@ function SignUp({ locations, setUser }) {
     <EmailVerificationWindow
       handleConfirmation={handleConfirmation}
       handleCancle={handleCancle}
+      showErrormsg={showErrormsg}
     />
   ) : (
     <RegistrationForm

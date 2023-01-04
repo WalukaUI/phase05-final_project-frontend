@@ -28,3 +28,6 @@
     text-align: center;
     flex-direction: column;
   }
+  .errorPage{
+    background-color: rgb(240, 131, 176);
+  }

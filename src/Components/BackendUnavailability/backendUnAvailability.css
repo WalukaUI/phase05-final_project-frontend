@@ -1,0 +1,31 @@
+.errorPopupbox {
+    color: black;
+    position: fixed;
+    background: #25131350;
+    width: fit-content;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin: 2.5%;
+
+  }
+  
+  .errorPopupinner {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    height: 70%;
+    background: rgb(226, 219, 219);
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: auto;
+  }
+  .errorContent{
+    color: brown;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+  }

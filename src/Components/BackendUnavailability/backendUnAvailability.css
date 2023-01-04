@@ -29,5 +29,6 @@
     flex-direction: column;
   }
   .errorPage{
+    padding-top: 1%;
     background-color: rgb(240, 131, 176);
   }

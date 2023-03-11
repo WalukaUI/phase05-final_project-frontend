@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import MyComponent from "./Map";
 import Carousel from "./Carousel";
 import "./Locations.css";
-import BackendUnAvailability from "../BackendUnavailability/BackendUnAvailability";
 
 function Locations({ locations }) {
   const [searchTearm, setSearchTearm] = useState("");
@@ -49,7 +48,6 @@ function Locations({ locations }) {
                 onChange={activateSearch}
               />
             </form>
-            <BackendUnAvailability/>
           </div>
           {locations
             ? locations

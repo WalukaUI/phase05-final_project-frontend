@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
-import  BackendUnAvailability  from "../BackendUnavailability/BackendUnAvailability";
 
 function Doctors({ doctors }) {
   const [searchTearm, setSearchTearm] = useState("");
@@ -76,7 +75,6 @@ function Doctors({ doctors }) {
         <div className="col col-sm-12 col-md-9 formnput">
           {doctors === null ? (
             <div>
-             <BackendUnAvailability/>
             <CardLoadAnimation />
             </div>
           ) : (

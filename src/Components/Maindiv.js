@@ -18,7 +18,6 @@ import PatientProfile from "./Profile/PatientProfile";
 import DocProfile from "./Profile/DocProfile";
 import Covid19 from "./Covid19/Covid19";
 import ClinicGidlines from "./Covid19/ClinicGuidlines";
-import BackendUnavailabilityMainPage from "./BackendUnavailability/BackendUnavailabilityMainPage.js"
 
 export const UserContext = createContext();
 function MainContainer() {
@@ -94,7 +93,6 @@ function MainContainer() {
         />
         <div className="covidWarnning">
           <ClinicGidlines />
-          <BackendUnavailabilityMainPage/>
         </div>
 
         <Routes>

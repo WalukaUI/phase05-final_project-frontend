@@ -90,11 +90,11 @@ function AppointmentCard({
   ) : (
     <>
       <div className="popup-box">
-        <div className="popup-inner">
-          <div className="formDiv div1">
+        <div className="popup-innerBox">
+          <div className="formDiv">
             <form onSubmit={handleEdit}>
               <div className="form-group newAppointmentForm">
-                <h4>Update Appointment</h4>
+                <h4 style={{ color: "#00235B", paddingBottom: "20px" }}>Update Appointment</h4>
                 <label>Select a Doctor</label>
                 <select
                   className="form-select"

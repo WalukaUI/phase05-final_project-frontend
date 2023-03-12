@@ -11,7 +11,7 @@ function CardLoadAnimation() {
           </div>
           <div className="lodetextDiv">
             <h2 className="cardH2">{}</h2>
-            <p className="cardP"></p>
+            <p className="cardP">Card is loading. It will take max 40sec to load</p>
           </div>
         </div>
       </div>

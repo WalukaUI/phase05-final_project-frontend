@@ -102,9 +102,10 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
           ))}
       </div>
       <div className="col col-sm-12 col-md-6">
+      <div className="newAppointmentFormContainer">
         <form ref={form} onSubmit={handleSubmit}>
           <div className="form-group newAppointmentForm">
-            <h4>Create a new Appointment</h4>
+            <h4 style={{ color: "#00235B", paddingBottom: "20px" }} >Create a new Appointment</h4>
             <label>Select a Doctor</label>
             <select
               className="form-select"
@@ -169,6 +170,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
                 <p style={{ color: "red", marginTop: "10px" }}>{e}</p>
               ))
             : null} */}
+        </div>
         </div>
       </div>
     </div>

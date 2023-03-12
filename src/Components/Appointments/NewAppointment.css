@@ -1,3 +1,17 @@
+
+.newAppointmentFormContainer{
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: rgb(186, 202, 202);
+    opacity: 0.8;
+    margin-top: 10px;
+    margin-right: 30px;
+    margin-bottom: 50px;
+    padding: 15%;
+    height: auto;
+}
+
 .doccardImageDiv{
     display: flex;
     justify-content: center;
@@ -28,4 +42,10 @@
     position:static;
     height: 120px;
     width: 120px;
+}
+@media only screen and (max-width: 968px) { 
+    .newAppointmentFormContainer{
+      margin: 10px;
+    }
+
 }

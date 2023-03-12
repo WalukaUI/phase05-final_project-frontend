@@ -73,13 +73,17 @@ function AppointmentCard({
             <strong> Doctor Name:</strong> {filterDoctorName()}
           </p>
         </div>
-        <div className="col col-md-6 col-sm-12">
-          <button className="btn chnageAppBtn" onClick={handleEditAppointment}>
+        <div className="col col-md-6 col-sm-12 appointmentBtnsContainer">
+          <div>
+          <button className="btn chnageAppBtn appointmentPageBtns" onClick={handleEditAppointment}>
             Change Appointment
           </button>
-          <button className="btn deleteAppBtn" onClick={handleDelete}>
-            Delete
+          </div>
+          <div>
+          <button className="btn deleteAppBtn appointmentPageBtns" onClick={handleDelete}>
+            Delete Appointment
           </button>
+          </div>
         </div>
       </div>
     </div>

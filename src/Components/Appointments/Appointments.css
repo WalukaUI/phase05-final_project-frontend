@@ -13,13 +13,13 @@
   margin-bottom: 10px;
 }
 .appointmentMainDiv{
-    padding-left: 0;
+    padding-left: 10;
 }
 
 .appointmentCard{
     background-color: #E2F0F0;
-    margin: 10px;
-    padding: 15px 10px 0px 10px;
+    margin: 10px 0px 10px 10px;
+    padding: 15px 10px 15px 10px;
 }
 .appointmentCard p{
 line-height: 0.6;
@@ -30,20 +30,45 @@ line-height: 0.6;
     color: cornsilk;
     height: 10vh;
 }
-.chnageAppBtn{
-  background-color: #155B7F;
-  border-radius: 0;
-  color: cornsilk;
-  margin-left: 10px;
-  height: 10vh;
+.appointmentBtnsContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
 }
-.deleteAppBtn{
-  background-color: #f7105d;
-  border-radius: 0;
-  color: cornsilk;
-  height: 10vh;
-  margin-left: 10px;
+.appointmentPageBtns{
+	border-radius:3px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+  margin: 5px;
 }
+
+.chnageAppBtn {
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+}
+.chnageAppBtn:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+
+.deleteAppBtn {
+	box-shadow:inset 0px 1px 0px 0px #fbafe3;
+	background:linear-gradient(to bottom, #ff5bb0 5%, #ef027d 100%);
+	background-color:#ff5bb0;
+}
+.deleteAppBtn:hover {
+	background:linear-gradient(to bottom, #ef027d 5%, #ff5bb0 100%);
+	background-color:#ef027d;
+}
+
 .createAppointmentBtn{
     background-color: #218838;
     height: 50px;
@@ -69,10 +94,21 @@ line-height: 0.6;
     flex-direction: column;
   }
 
+
 }
 @media only screen and (max-width: 968px) { 
   .deleteAppBtn{
     width:177px;
+  }
+  .chnageAppBtn {
+    margin-bottom: 10px;
+  }
+
+  .appointmentBtnsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
   }
 }
 @media only screen and (max-width: 1100px) { 

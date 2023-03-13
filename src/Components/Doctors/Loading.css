@@ -37,5 +37,7 @@
     height: 30px;
   }
   .cardP{
-    height: 50px; 
+    height: 50px;
+    font-weight: 500;
+    color: #9b9494;
   }

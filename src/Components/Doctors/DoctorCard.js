@@ -57,7 +57,7 @@ function Doctor({ card }) {
           <div className="col col-sm-12 col-md-4 doctorMoreDetails">
             <p>
               <img
-                src="./contact.svg"
+                src="./contact.gif"
                 alt="contact"
                 style={{ paddingRight: "10px", width:"10%" }}
               />
@@ -66,7 +66,7 @@ function Doctor({ card }) {
             {card.isaccept_newpatients ? 
                         <p>
                         <img
-                          src="./accept.svg"
+                          src="./acceptNewPatients.png"
                           alt="contact"
                           style={{ paddingRight: "10px", width:"10%" }}
                         />
@@ -76,7 +76,7 @@ function Doctor({ card }) {
                       {card.video_vistits ? 
                         <p>
                         <img
-                          src="./video.svg"
+                          src="./vedioVisits.png"
                           alt="contact"
                           style={{ paddingRight: "10px", width:"10%" }}
                         />

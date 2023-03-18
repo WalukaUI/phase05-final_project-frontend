@@ -77,7 +77,11 @@ function PatientProfile({ user, appointments, locations, setUser }) {
     <div className="profile">
       <form onSubmit={triggerEdit}>
         <div className="row profileDetails">
-          <h5>Your Profile</h5>
+          <h5><span><img
+                          src="./settings.png"
+                          alt="contact"
+                          style={{ paddingRight: "10px" }}
+                        /></span>Your Profile</h5>
           <hr />
           <div className="col col-sm-12 col-md-5">
             <div style={{display: "flex"}}>
@@ -214,7 +218,16 @@ function PatientProfile({ user, appointments, locations, setUser }) {
           : null}
       </div>
       <div className="row profileAppointments">
-        <h5>Appointments</h5>
+        <h5><span><img
+                          src="./smallCalender.png"
+                          alt="contact"
+                          style={{ paddingRight: "10px" }}
+                        /></span>Appointments</h5>
+        <span><img
+                          src="./appointments.png"
+                          alt="contact"
+                          style={{ paddingRight: "10px" }}
+                        /></span>
         {showUserAppointments(user?.id)}
         <Link to="/appointments">
           <button className="btn profileNewAppointmentBtn btn-info">

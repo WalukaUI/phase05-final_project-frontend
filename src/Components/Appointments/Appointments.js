@@ -107,11 +107,25 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
           </ul>
         </div>
         {user?.role === "patient" ?
+        <div className="doccardImageDiv" style={{alignItems: "center"}}>
         <Link to="/newappointment">
-          <button className="btn createAppointmentBtn">
+          <button className="btn createAppointmentBtn"><span><img
+                          src="./smallCalender.png"
+                          alt="contact"
+                          style={{ paddingRight: "10px" }}
+                        /></span>
             Schedule an Appointment
           </button>
-        </Link> : ""}
+
+        </Link> 
+        <img
+                          src="./appointments.png"
+                          alt="contact"
+
+                          style={{width: "30%", alignItems: "center"}}
+                        />
+        </div>: ""}
+
       </div>
       <div className="col col-md-8 col-sm-12 appointmentMainDiv">
         <div className="appointmentCardHead">
@@ -123,7 +137,11 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
               <h4>You do not have any Appointments</h4> 
               {user?.role === "patient" ? 
               <Link to="/newappointment">
-                <button className="btn createAppointmentBtn">
+                <button className="btn createAppointmentBtn"><span><img
+                          src="./smallCalender.png"
+                          alt="contact"
+                          style={{ paddingRight: "10px" }}
+                        /></span>
                   Schedule an Appointment
                 </button>
               </Link>: ""}

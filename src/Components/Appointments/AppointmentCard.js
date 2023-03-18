@@ -67,7 +67,7 @@ function AppointmentCard({
             <b>Date:</b> {card.date}
           </p>
           <p>
-            Time:{taketime2()}
+            <b>Time:</b>{taketime2()}
           </p>
           <p>
             <strong> Doctor Name:</strong> {filterDoctorName()}
@@ -75,12 +75,20 @@ function AppointmentCard({
         </div>
         <div className="col col-md-6 col-sm-12 appointmentBtnsContainer">
           <div>
-          <button className="btn chnageAppBtn appointmentPageBtns" onClick={handleEditAppointment}>
+          <button className="btn chnageAppBtn appointmentPageBtns" onClick={handleEditAppointment}><span><img
+                          src="./changeApointment.gif"
+                          alt="contact"
+                          style={{ paddingRight: "10px" }}
+                        /></span>
             Change Appointment
           </button>
           </div>
           <div>
-          <button className="btn deleteAppBtn appointmentPageBtns" onClick={handleDelete}>
+          <button className="btn deleteAppBtn appointmentPageBtns" onClick={handleDelete}><span><img
+                          src="./trash.gif"
+                          alt="contact"
+                          style={{ paddingRight: "10px" }}
+                        /></span>
             Delete Appointment
           </button>
           </div>

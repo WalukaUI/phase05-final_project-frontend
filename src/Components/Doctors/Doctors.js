@@ -23,7 +23,7 @@ function Doctors({ doctors }) {
               type="text"
               onChange={activeSearch}
               className="form-control"
-              placeholder="Last name"
+              placeholder="Doctor name"
             />
             <button className="btn btn-primary searchBtn">Search</button>
             <div className="serchFilter">
@@ -80,7 +80,7 @@ function Doctors({ doctors }) {
           ) : (
             doctors
               .filter((card) =>
-                card.last_name.toLowerCase().includes(searchTearm.toLowerCase())
+                card.last_name.toLowerCase().includes(searchTearm.toLowerCase()) || card.first_name.toLowerCase().includes(searchTearm.toLowerCase())
               )
               .filter((card) =>
                 acceptNewPatients ? card.isaccept_newpatients === true : card

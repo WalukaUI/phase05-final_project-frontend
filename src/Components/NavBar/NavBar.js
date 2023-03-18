@@ -34,7 +34,7 @@ function NavBar({ logout, getAddress, setAddress }) {
                   <Link to="/doctors">Doctors</Link>
                 </li>
                 <li>
-                  <Link to="/locations">Locations</Link>
+                  <Link to="/locations"></Link>
                 </li>
                 {user ? (
                   <li>
@@ -87,13 +87,19 @@ function NavBar({ logout, getAddress, setAddress }) {
       </div>
       <div className="mainLinksDiv">
         <div>
-          <Link to="/doctors" className="nav-bar-links">
-            Doctors
+          <Link to="/doctors" className="nav-bar-links"><span><img
+                          src="./doctors.png"
+                          alt="contact"
+                          style={{ paddingRight: "10px", marginBottom: "10px" }}
+                        />Doctors</span>
           </Link>
         </div>
         <div>
-          <Link to="/locations" className="nav-bar-links">
-            Locations
+          <Link to="/locations" className="nav-bar-links"><span><img
+                          src="./location.png"
+                          alt="contact"
+                          style={{ paddingRight: "10px", marginBottom: "15px" }}
+                        />Locations</span>
           </Link>
         </div>
         {user ? (
@@ -101,7 +107,7 @@ function NavBar({ logout, getAddress, setAddress }) {
             <>
               <div>
                 <Link to="/appointments" className="nav-bar-links">
-                  Appointments
+                        Appointments
                 </Link>
               </div>
               <div>
@@ -113,7 +119,11 @@ function NavBar({ logout, getAddress, setAddress }) {
           ) : (
             <div>
               <Link to="/appointments" className="nav-bar-links">
-                Appointments
+              <span><img
+                          src="./apointmentsGray.png"
+                          alt="contact"
+                          style={{ paddingRight: "10px", marginBottom: "10px" }}
+                        />Appointments</span>
               </Link>
             </div>
           )
@@ -127,7 +137,7 @@ function NavBar({ logout, getAddress, setAddress }) {
             to="/doctorlogin"
             onClick={handlelogout}
           >
-            Log Out
+           🔐 Log Out
           </Link>
         ) : (
           <Link
@@ -156,8 +166,12 @@ function NavBar({ logout, getAddress, setAddress }) {
         </div>
         <div style={{ textAlign: "center" }} className="accountSettingsDiv">
           {user ? (
-            <Link to="/profile" className="btn">
-              🔐 Account Settings
+            <Link to="/profile" className="btn"><span><img
+            src="./settings.png"
+            alt="contact"
+            style={{ paddingRight: "10px", marginBottom: "10px" }}
+          />Account Settings</span>
+              
             </Link>
           ) : (
             ""

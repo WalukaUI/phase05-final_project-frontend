@@ -78,7 +78,7 @@ function PatientProfile({ user, appointments, locations, setUser }) {
       <form onSubmit={triggerEdit}>
         <div className="row profileDetails">
           <h5><span><img
-                          src="./settings.png"
+                          src="./profile.png"
                           alt="contact"
                           style={{ paddingRight: "10px" }}
                         /></span>Your Profile</h5>

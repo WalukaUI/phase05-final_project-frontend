@@ -43,7 +43,11 @@ function UserLocation({getAddress,setAddress}) {
     }
   }
 
-  return getAddress? <p>Searching from {getAddress} </p>: <p></p>
+  return getAddress? <p><span><img
+  src="./redLocation.png"
+  alt="contact"
+  style={{ paddingRight: "10px", width: "8%" }}
+/></span>Searching from {getAddress} </p>: <p></p>
 }
 
 export default UserLocation;

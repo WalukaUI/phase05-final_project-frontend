@@ -1,5 +1,6 @@
 import "./Locations.css";
 
+
 function Carousel() {
   return (
     <>

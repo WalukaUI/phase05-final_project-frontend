@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import MyComponent from "./Map";
 import Carousel from "./Carousel";
 import "./Locations.css";
+import CardLoadAnimation from "../Doctors/DocCardLoading";
+
 
 function Locations({ locations }) {
   const [searchTearm, setSearchTearm] = useState("");
@@ -85,7 +87,7 @@ function Locations({ locations }) {
                     </div>
                   </div>
                 ))
-            : ""}
+            : <CardLoadAnimation/>}
         </div>
       </div>
     </div>

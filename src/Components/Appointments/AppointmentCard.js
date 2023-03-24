@@ -28,6 +28,9 @@ function AppointmentCard({
 
   function handleEditAppointment(e) {
     e.preventDefault();
+    let cc={...card};
+    delete cc['patient']
+    delete cc['patientname']
     setDisplay(!display);
     setUpdatedAppointment(card);
   }

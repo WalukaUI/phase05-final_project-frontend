@@ -74,7 +74,7 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
   }
  
   function getNamesOfPatients() {
-    return appointments.map(e => <option>{e.patient.first_name + " " + e.patient.last_name}</option>
+    return appointments.map(e => <option value={e.patient.id} key={e.patient.id+21}>{e.patient.first_name + " " + e.patient.last_name}</option>
     );
   }
   
@@ -156,11 +156,15 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
           )}
         </div>
 
-        {appointments?.filter((card)=> serchTearm !== null ? card.doctor_id === parseInt(serchTearm): card)
+        {appointments?.filter((card)=> serchTearm !== null ? 
+        
+        user?.role === "patient"? card.doctor_id === parseInt(serchTearm):card.patient.id=== parseInt(serchTearm)
+        : card)
         .map((card) => {
           return <AppointmentCard
             key={card.id+85}
             time={card.time}
+            user={user}
             card={card}
             deleteAppointment={deleteAppointment}
             doctors={doctors}

@@ -6,7 +6,7 @@ import Loading from "../Doctors/DocCardLoading"
 
 function AppointmentCard({
   card,
-  time,
+  user,
   deleteAppointment,
   editAppointment,
   doctors
@@ -70,7 +70,7 @@ function AppointmentCard({
             <b>Time:</b>{taketime2()}
           </p>
           <p>
-            <strong> Doctor Name:</strong> {filterDoctorName()}
+          <strong> {user?.role === "patient" ? "Doctor Name:":"Patient Name:"}</strong> {user?.role === "patient" ? filterDoctorName():card.patient.first_name + " "+card.patient.last_name}
           </p>
         </div>
         <div className="col col-md-6 col-sm-12 appointmentBtnsContainer">

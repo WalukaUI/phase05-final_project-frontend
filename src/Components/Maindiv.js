@@ -45,7 +45,7 @@ function MainContainer() {
         });
       }
     });
-  }, []);
+  });
 
   // LOGOUT-----------------------
 

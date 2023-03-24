@@ -72,15 +72,19 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
       setSearchTearm(value)
     }
   }
-
+ 
+  function getNamesOfPatients() {
+    return appointments.map(e => <option>{e.patient.first_name + " " + e.patient.last_name}</option>
+    );
+  }
   
   if (!appointments) return null;
 
   return (
     <div className="row mainAppointmentContainer">
       <div className="col col-md-4 col-sm-12 docSearchDiv">
-        <h6>Search appointments by Doctor name</h6>
-             <label>Select a Doctor
+        <h6>Search appointments by {user?.role === "patient" ?"Doctor":"Patient"} name</h6>
+             <label>Select a {user?.role === "patient" ?"Doctor":"Patient"}
         <select
           className="form-select"
           name="doctor_id"
@@ -88,11 +92,14 @@ function Appointments({ user, appointments, setAppoinements, doctors}) {
           onChange={handleSearch}
         >
            <option value="All">All </option>
-          {doctors.map((card) => (
+          
+           {user?.role === "patient" ? doctors.map((card) => (
             <option value={card.id} key={card.id+66}>
               {card.first_name} {card.last_name}
             </option>
-          ))}
+          )):  
+          getNamesOfPatients()
+          }
         </select></label>
 
         <div className="serchFilter" style={{marginTop: "20px"}}>

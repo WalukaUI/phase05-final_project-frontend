@@ -26,11 +26,14 @@ function MainContainer() {
   const [doctors, setDoctors] = useState(null);
   const [locations, setLocations] = useState(null);
   const [getAddress, setAddress] = useState("");
+  const userRole = localStorage.getItem("role");
+  
 
   // auto-login----------------------
+  
 
   useEffect(() => {
-    let userRole = localStorage.getItem("role");
+
     fetch(userRole === "patient" ? BASE_URL + `/me` : BASE_URL + `/doc`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },

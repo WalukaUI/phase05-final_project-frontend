@@ -147,6 +147,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
               className="form-select"
               name="time"
               onChange={handleNewAppointment}
+              disabled={!selecteddate}
             >
               <option value={1000}>10.00 am</option>
               <option value={1030}>10.30 am</option>
@@ -154,7 +155,7 @@ function NewAppiontment({ doctors, user, setAppoinements, appointments }) {
               <option value={1300}>01.00 pm</option>
               <option value={1330}>01.30 pm</option>
             </select>
-            <button type="submit" className="btn btn-primary formSubBtn">
+            <button type="submit" className="btn btn-primary formSubBtn" disabled={!selecteddate}>
               Submit
             </button>
           </div>

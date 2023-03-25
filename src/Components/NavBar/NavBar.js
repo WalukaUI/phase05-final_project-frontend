@@ -12,7 +12,7 @@ function NavBar({ logout, getAddress, setAddress }) {
     e.preventDefault();
     logout();
     localStorage.clear();
-    history("/login");
+    history("/LogoutLandingPage");
   }
 
   return (

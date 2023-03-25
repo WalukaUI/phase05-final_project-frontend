@@ -18,6 +18,7 @@ import PatientProfile from "./Profile/PatientProfile";
 import DocProfile from "./Profile/DocProfile";
 import Covid19 from "./Covid19/Covid19";
 import ClinicGidlines from "./Covid19/ClinicGuidlines";
+import LogoutLandingPage from "./Login/LogOutPage";
 
 export const UserContext = createContext();
 function MainContainer() {
@@ -107,6 +108,10 @@ function MainContainer() {
           <Route
             path="/patientlogin"
             element={<PatientLogin setUser={setUser} />}
+          />
+          <Route
+            path="/LogoutLandingPage"
+            element={<LogoutLandingPage/>}
           />
           <Route
             path="/locations"

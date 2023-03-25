@@ -28,9 +28,9 @@ function AppointmentCard({
 
   function handleEditAppointment(e) {
     e.preventDefault();
-    let cc={...card};
-    delete cc['patient']
-    delete cc['patientname']
+    let newCard={...card};
+    delete newCard['patient']
+    delete newCard['patientname']
     setDisplay(!display);
     setUpdatedAppointment(card);
   }
@@ -139,6 +139,7 @@ function AppointmentCard({
                   name="time"
                   aria-label="Default select example"
                   onChange={handleChange}
+                  disabled={!selecteddate}
                 >
                   <option value="0900">9.00 am - 10.00 am</option>
                   <option value="1000">10.00 am - 11.00 am</option>
@@ -146,7 +147,7 @@ function AppointmentCard({
                   <option value="1300">1.00 pm - 2.00 pm</option>
                 </select>
                 <div>
-                  <button type="submit" className="btn btn-success formSubBtn">
+                  <button type="submit" className="btn btn-success formSubBtn" disabled={!selecteddate}>
                     Update
                   </button>
                   <button

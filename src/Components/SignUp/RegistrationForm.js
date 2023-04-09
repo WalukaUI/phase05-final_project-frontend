@@ -52,11 +52,11 @@ function RegistrationForm({
                 required
               >
                 <option value="none">Select a Location</option>
-                {locations?.map((loc) => (
+                {locations? locations.map((loc) => (
                   <option value={loc.id} key={loc.id}>
                     {loc.name}
                   </option>
-                ))}
+                )):<option>Please wait, Locations are loading</option>}
               </select>
               <p id="clinicTagMesssage" style={{ color: "red" }}>
                 Please select a clinic location

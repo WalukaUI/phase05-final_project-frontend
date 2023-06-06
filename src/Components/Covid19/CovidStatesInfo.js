@@ -10,10 +10,13 @@ function CovidInfoByState() {
   const [country, setCountry]=useState(null)
 
   useEffect(() => {
-    fetch("https://api.covid19api.com/summary").then((res) => {
+    //https://api.covid19api.com/summary
+    
+    fetch("https://api.covidtracking.com/v1/states/current.json").then((res) => {
       if (res.ok) {
         res.json().then((data) => {
           setData(data);
+          console.log(data);
         });
       } else {
         alert("fetching failed");
@@ -49,10 +52,10 @@ function CovidInfoByState() {
           </thead>
           <tbody>
             <tr>
-              <th scope="row">{data.Global.NewConfirmed}</th>
+              {/* <th scope="row">{data.Global.NewConfirmed}</th>
               <td>{data?.Global.TotalConfirmed}</td>
               <td>{data?.Global.NewDeaths}</td>
-              <td>{data?.Global.TotalDeaths}</td>
+              <td>{data?.Global.TotalDeaths}</td> */}
             </tr>
           </tbody>
         </table>
@@ -88,7 +91,7 @@ function CovidInfoByState() {
             </tr>
           </thead>
           <tbody>
-          {data.Countries.filter((card)=> country !== null ? card.Country === country: card ).map((card)=>{
+          {/* {data.Countries.filter((card)=> country !== null ? card.Country === country: card ).map((card)=>{
               return  <tr key ={card.id}>
               <th style={{textAlign: "left", paddingLeft: "20px"}}>{card.Country}</th>
               <td>{card.date}</td>
@@ -97,7 +100,7 @@ function CovidInfoByState() {
               <td>{card.NewDeaths}</td>
               <td>{card.TotalDeaths}</td>
             </tr>
-            })}
+            })} */}
           </tbody>
         </table>
       </div>

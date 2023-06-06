@@ -16,7 +16,6 @@ function CovidInfoByState() {
       if (res.ok) {
         res.json().then((data) => {
           setData(data);
-          console.log(data);
         });
       } else {
         alert("fetching failed");

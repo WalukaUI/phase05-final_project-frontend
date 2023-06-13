@@ -16,6 +16,7 @@ function CovidInfoByState() {
       if (res.ok) {
         res.json().then((data) => {
           setData(data);
+          console.log(data);
         });
       } else {
         alert("fetching failed");
@@ -37,7 +38,7 @@ function CovidInfoByState() {
       <Link className="btn btn-danger" to="/" style={{width: "150px"}}>Close</Link>
       </div>
     <div style={{backgroundColor: "#f7e2c8"}}>
-      <h5 className="covidh5">Global covid Status by Today</h5>
+      <h5 className="covidh5">USA covid Status by State</h5>
 
       <div>
         <table className="table">
@@ -50,12 +51,12 @@ function CovidInfoByState() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              {/* <th scope="row">{data.Global.NewConfirmed}</th>
+            {/* <tr>
+              <th scope="row">{data.Global.NewConfirmed}</th>
               <td>{data?.Global.TotalConfirmed}</td>
               <td>{data?.Global.NewDeaths}</td>
-              <td>{data?.Global.TotalDeaths}</td> */}
-            </tr>
+              <td>{data?.Global.TotalDeaths}</td>
+            </tr> */}
           </tbody>
         </table>
       </div>
@@ -81,25 +82,26 @@ function CovidInfoByState() {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Country</th>
-              <th scope="col">By Date</th>
-              <th scope="col">New Confirmed</th>
-              <th scope="col">Total Confirmed</th>
-              <th scope="col">New Deaths</th>
+              <th scope="col">State</th>
+              <th scope="col">Total Tests</th>
+              <th scope="col">Negative Results</th>
+              <th scope="col">Positive Results</th>
+              <th scope="col">Total Hospitalized</th>
               <th scope="col">Total Deaths</th>
             </tr>
           </thead>
           <tbody>
-          {/* {data.Countries.filter((card)=> country !== null ? card.Country === country: card ).map((card)=>{
-              return  <tr key ={card.id}>
-              <th style={{textAlign: "left", paddingLeft: "20px"}}>{card.Country}</th>
-              <td>{card.date}</td>
-              <td>{card.NewConfirmed}</td>
-              <td>{card.TotalConfirmed}</td>
-              <td>{card.NewDeaths}</td>
-              <td>{card.TotalDeaths}</td>
+          {/* States.filter((card)=> state !== null ? card.state === state: card ) */}
+          {data.map((card)=>{
+              return  <tr key ={card.hash}>
+              <th style={{textAlign: "left", paddingLeft: "20px"}}>{card.state}</th>
+              <td>{card.totalTestResults}</td>
+              <td>{card.negativeTestsViral}</td>
+              <td>{card.positive}</td>
+              <td>{card.hospitalized}</td>
+              <td>{card.death}</td>
             </tr>
-            })} */}
+            })}
           </tbody>
         </table>
       </div>

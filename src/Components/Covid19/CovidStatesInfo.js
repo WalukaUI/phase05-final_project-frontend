@@ -46,7 +46,7 @@ function CovidInfoByState() {
       >
          <option value="All">All </option>
         {data.map((card) => (
-          <option value={card.state} key={card.id}>
+          <option value={card.state} key={card.hash}>
             {card.state}
           </option>
         ))}

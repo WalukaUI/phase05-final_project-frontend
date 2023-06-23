@@ -56,7 +56,7 @@ function RegistrationForm({
                   <option value={loc.id} key={loc.id}>
                     {loc.name}
                   </option>
-                )):<option>Please wait, Locations are loading</option>}
+                )):<option value="none">Please wait, Locations are loading</option>}
               </select>
               <p id="clinicTagMesssage" style={{ color: "red" }}>
                 Please select a clinic location

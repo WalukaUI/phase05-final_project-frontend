@@ -4,7 +4,6 @@ import {
  } from "react-router-dom";
 import "./Covid19.css"
 
-
 function CovidInfoByState() {
   const [data, setData] = useState(null);
   const [state, setState]=useState(null)
@@ -20,7 +19,6 @@ function CovidInfoByState() {
       }
     });
   }, []);
-
 
   function handleState(e) {
     e.preventDefault()
@@ -44,7 +42,7 @@ function CovidInfoByState() {
         aria-label="Default select example"
         onChange={handleState}
       >
-         <option value="All">All </option>
+         <option value="All">All States</option>
         {data.map((card) => (
           <option value={card.state} key={card.hash}>
             {card.state}

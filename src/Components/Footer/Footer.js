@@ -63,7 +63,8 @@ function Footer() {
           from{" "}
           <a href="https://www.flaticon.com/" title="Flaticon">
             www.flaticon.com
-          </a>
+          </a><br></br>
+          <a href="https://www.flaticon.com/free-icons/arrows" title="arrows icons">Arrows icons created by th studio - Flaticon</a>
         </div>
       </div>
     </div>

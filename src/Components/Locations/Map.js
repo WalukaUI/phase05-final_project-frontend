@@ -28,6 +28,7 @@ function MyComponent({ locations, selectedPlace, setSelectedPlace }) {
     setMap(null);
   }, []);
 
+
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}

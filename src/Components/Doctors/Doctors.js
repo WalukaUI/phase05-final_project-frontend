@@ -8,14 +8,35 @@ function Doctors({ doctors }) {
   const [docSpeciality, setSpeciality] = useState("");
   const [acceptNewPatients, setAcceptNewPatients] = useState(false);
   const [videoVisits, setVideoVisits] = useState(false);
+  const [dragger,setDragger]=useState(false)
 
   function activeSearch(e) {
     e.preventDefault();
     setSearchTearm(e.target.value);
   }
 
-  const containers=document.querySelectorAll(".container");
+const containers=document.querySelectorAll(".container");
 const draggables=document.querySelectorAll(".draggable");
+const maindraggableDiv=document.getElementById("dragAndDropMainDiv");
+
+if(dragger){
+  maindraggableDiv.addEventListener("mouseover", (e) => {
+    let innetTxt=document.querySelector('.blankContainer').textContent
+    if(innetTxt===""){
+       setAcceptNewPatients(false)
+       setVideoVisits(false)
+    }else if(innetTxt==="Accepting Video Visits"){
+      setVideoVisits(true)
+      setAcceptNewPatients(false)
+    }else if(innetTxt==="Accepting New Patients"){
+      setVideoVisits(false)
+      setAcceptNewPatients(true)
+    }else{
+      setVideoVisits(true)
+      setAcceptNewPatients(true)
+    }
+   })
+ }
 
 draggables.forEach(draggable=> {
     draggable.addEventListener("dragstart", ()=>{
@@ -47,18 +68,16 @@ containers.forEach(container =>{
             <button className="btn btn-primary searchBtn">Search</button>
             <div className="serchFilter">
               <h6>Narrow Your Results</h6>
-              <div className="dragAndDropMainDiv">
+              <div className="dragAndDropMainDiv" id="dragAndDropMainDiv" onMouseDown={()=>setDragger(true)}>
                 <div className="container">
                   <p className="draggable btn btn-light" draggable="true">Accepting New Patients</p>
                   <p className="draggable btn btn-light" draggable="true">Accepting Video Visits</p>
                 </div>
                 <div className="excahngeIconDiv">
-                <img className="excahngeIcon" src="exchange.png" />
+                <img className="excahngeIcon" src="exchange.png" alt="arrow"/>
                 </div>
-                <div className="container blankContainer" data-text="Drag and drop filters">
-                
+                <div className="container blankContainer" id="blankContainer" data-text="Drag and drop filters">
                 </div>
-                
               </div>
               {/* <ul>
                 <li className="serchTearms">

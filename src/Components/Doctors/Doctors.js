@@ -37,7 +37,6 @@ if(dragger){
     }
    })
  }
-
 draggables.forEach(draggable=> {
     draggable.addEventListener("dragstart", ()=>{
         draggable.classList.add("dragging")

@@ -38,16 +38,16 @@ if(dragger){
    })
  }
 draggables.forEach(draggable=> {
-    draggable.addEventListener("dragstart", ()=>{
+    draggable.addEventListener("dragstart" || "touchstart", ()=>{
         draggable.classList.add("dragging")
     })
-    draggable.addEventListener("dragend", ()=>{
+    draggable.addEventListener("dragend" || "touchend", ()=>{
         draggable.classList.remove("dragging")
     })
 })
 
 containers.forEach(container =>{
-    container.addEventListener("dragover",(e)=>{
+    container.addEventListener("dragover" || "touchmove",(e)=>{
         e.preventDefault()
         let draggable=document.querySelector(".dragging")
         container.appendChild(draggable)
@@ -91,7 +91,7 @@ containers.forEach(container =>{
               <br></br>
               <h6>Narrow Your Results</h6>
               <p>Drag and drop filters to blank area</p>
-              <div className="dragAndDropMainDiv" id="dragAndDropMainDiv" onMouseDown={()=>setDragger(true)} ontouchmove={()=>setDragger(true)}>
+              <div className="dragAndDropMainDiv" id="dragAndDropMainDiv" onMouseDown={()=>setDragger(true)} onTouchStart={()=>setDragger(true)}>
                 <div className="container">
                   <p className="draggable btn btn-light" draggable="true" >Accepting New Patients</p>
                   <p className="draggable btn btn-light" draggable="true">Accepting Video Visits</p>

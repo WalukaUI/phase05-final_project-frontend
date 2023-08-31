@@ -51,7 +51,7 @@ function MainContainer() {
   // LOGOUT-----------------------
 
   function logout() {
-    fetch(BASE_URL + `/logout`, {
+    fetch(userRole === "patient" ? BASE_URL + `/me/logout` : BASE_URL + `/doc/logout`, {
       method: "DELETE",
       credentials: "include",
     }).then((res) => {

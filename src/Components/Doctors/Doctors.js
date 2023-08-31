@@ -91,13 +91,13 @@ containers.forEach(container =>{
               <br></br>
               <h6>Narrow Your Results</h6>
               <p>Drag and drop filters to blank area</p>
-              <div className="dragAndDropMainDiv" id="dragAndDropMainDiv" onMouseDown={()=>setDragger(true)} onTouchStart={()=>setDragger(true)}>
+              <div className="dragAndDropMainDiv" id="dragAndDropMainDiv" onMouseDown={()=>setDragger(true)} >
                 <div className="container">
-                  <p className="draggable btn btn-light" draggable="true" >Accepting New Patients</p>
-                  <p className="draggable btn btn-light" draggable="true">Accepting Video Visits</p>
+                  <p className="draggable btn btn-light" draggable="true" onTouchStart={()=>setDragger(true)}>Accepting New Patients</p>
+                  <p className="draggable btn btn-light" draggable="true" onTouchStart={()=>setDragger(true)}>Accepting Video Visits</p>
                 </div>
                 <div className="excahngeIconDiv">
-                <img className="excahngeIcon" src="exchange.png" alt="arrow"/>
+                <img className="excahngeIcon" src="exchange.png" alt="arrow" />
                 </div>
                 <div className="container blankContainer" id="blankContainer" data-text="Drag and drop filters">
                 </div>

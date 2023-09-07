@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./PatientLogin.css";
+import "../DocLogin&PatientLogin.css";
 import BASE_URL from "../../../constraints/URL";
 
 function PatientLogin({ setUser }) {

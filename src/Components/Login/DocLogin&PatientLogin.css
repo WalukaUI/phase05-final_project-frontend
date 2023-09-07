@@ -3,12 +3,23 @@
   justify-content: space-evenly;
   align-items: center;
   margin-right: 0;
+  min-height: 50vh;
 }
-
 .sidenav {
-  min-height: 400px;
+  min-height: 480px;
   background-color: rgb(72, 92, 160);
   padding-top: 20px;
+}
+.sidenavbar {
+  min-height: 480px;
+  background-color: rgb(31, 39, 68);
+  padding-top: 20px;
+  color: lavender;
+}
+.signupBar {
+  background-color: #526a9c;
+  min-height: 480px;
+  color: lavender;
 }
 .login-main-text {
   padding-top: 20%;
@@ -24,9 +35,12 @@
   margin-right: 10px;
   margin-top: 10px;
 }
-
 @media screen and (max-width: 768px) {
-  .docInputFields {
+  .sidenavbar, .signupBar, .sidenav{
+    min-height: auto;
+  }
+  .docInputFields, .login-main-text, .patienLoginForm {
     padding: 5% !important;
   }
 }
+

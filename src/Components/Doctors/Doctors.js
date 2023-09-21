@@ -22,7 +22,7 @@ function Doctors({ doctors }) {
   // setSearchTearm(e.target.value);
     setValues("searchTearm",e.target.value)
   }
-  
+
   function setValues(keys,values){
     setSearchparams(prev=>{prev.set(keys,values)
     return prev
@@ -36,22 +36,30 @@ const maindraggableDiv=document.getElementById("dragAndDropMainDiv");
 
 if(dragger){
   maindraggableDiv.addEventListener("mouseover", (e) => {
-    let innetTxt=document.querySelector('.blankContainer').textContent
-    if(innetTxt===""){
-       setAcceptNewPatients(false)
-       setVideoVisits(false)
-    }else if(innetTxt==="Accepting Video Visits"){
-      setVideoVisits(true)
-      setAcceptNewPatients(false)
-    }else if(innetTxt==="Accepting New Patients"){
-      setVideoVisits(false)
-      setAcceptNewPatients(true)
-    }else{
-      setVideoVisits(true)
-      setAcceptNewPatients(true)
+   let innetTxt=document.querySelector('.blankContainer').textContent
+   if(innetTxt===""){
+        //  setAcceptNewPatients(false)
+        //  setVideoVisits(false)
+    setValues("acceptNewPatients",false)
+    setValues("videoVisits",false)
+   }else if(innetTxt==="Accepting Video Visits"){
+        // setVideoVisits(true)
+        // setAcceptNewPatients(false)
+    setValues("acceptNewPatients",false)
+    setValues("videoVisits",true)
+   }else if(innetTxt==="Accepting New Patients"){
+        // setVideoVisits(false)
+        // setAcceptNewPatients(true)
+    setValues("acceptNewPatients",true)
+    setValues("videoVisits",false)
+   }else{
+        // setVideoVisits(true)
+        // setAcceptNewPatients(true)
+    setValues("acceptNewPatients",true)
+    setValues("videoVisits",true)
     }
    })
- }
+  }
 draggables.forEach(draggable=> {
     draggable.addEventListener("dragstart" || "touchstart", ()=>{
         draggable.classList.add("dragging")
@@ -91,7 +99,7 @@ containers.forEach(container =>{
                   name="speciality"
                   aria-label="Default select example"
                   // onChange={(e) => setSpeciality(e.target.value)}
-                  
+                  onChange={(e) => setValues("docSpeciality",e.target.value)}
                 >
                   <option value="All">All</option>
                   <option value="Dermatology">Dermatology</option>

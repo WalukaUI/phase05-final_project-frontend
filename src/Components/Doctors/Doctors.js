@@ -19,7 +19,14 @@ function Doctors({ doctors }) {
 
   function activeSearch(e) {
     e.preventDefault();
-    setSearchTearm(e.target.value);
+  // setSearchTearm(e.target.value);
+    setValues("searchTearm",e.target.value)
+  }
+  
+  function setValues(keys,values){
+    setSearchparams(prev=>{prev.set(keys,values)
+    return prev
+    }, {replace: true})
   }
 
 

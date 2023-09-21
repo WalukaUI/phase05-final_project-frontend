@@ -5,13 +5,17 @@ import CardLoadAnimation from "./DocCardLoading";
 import { useSearchParams } from "react-router-dom";
 
 function Doctors({ doctors }) {
-  const [searchTearm, setSearchTearm] = useState("");
-  const [docSpeciality, setSpeciality] = useState("");
-  const [acceptNewPatients, setAcceptNewPatients] = useState(false);
-  const [videoVisits, setVideoVisits] = useState(false);
+  // const [searchTearm, setSearchTearm] = useState("");
+  // const [docSpeciality, setSpeciality] = useState("");
+  // const [acceptNewPatients, setAcceptNewPatients] = useState(false);
+  // const [videoVisits, setVideoVisits] = useState(false);
   const [dragger,setDragger]=useState(false)
 
-
+  const [serachParams, setSearchparams]=useSearchParams({searchTearm: "",docSpeciality: "",acceptNewPatients: false, videoVisits: false })
+  const searchTearm=serachParams.get("searchTearm")
+  const docSpeciality=serachParams.get("docSpeciality")
+  const acceptNewPatients=serachParams.get("acceptNewPatients")==="true"
+  const videoVisits=serachParams.get("acceptNewPatients")==="true"
 
   function activeSearch(e) {
     e.preventDefault();
@@ -79,8 +83,8 @@ containers.forEach(container =>{
                   className="form-select"
                   name="speciality"
                   aria-label="Default select example"
-                  onChange={(e) => setSpeciality(e.target.value)}
-              
+                  // onChange={(e) => setSpeciality(e.target.value)}
+                  
                 >
                   <option value="All">All</option>
                   <option value="Dermatology">Dermatology</option>

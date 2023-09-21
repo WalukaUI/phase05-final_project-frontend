@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
+import { useSearchParams } from "react-router-dom";
 
 function Doctors({ doctors }) {
   const [searchTearm, setSearchTearm] = useState("");
@@ -10,10 +11,13 @@ function Doctors({ doctors }) {
   const [videoVisits, setVideoVisits] = useState(false);
   const [dragger,setDragger]=useState(false)
 
+
+
   function activeSearch(e) {
     e.preventDefault();
     setSearchTearm(e.target.value);
   }
+
 
 const containers=document.querySelectorAll(".container");
 const draggables=document.querySelectorAll(".draggable");
@@ -76,6 +80,7 @@ containers.forEach(container =>{
                   name="speciality"
                   aria-label="Default select example"
                   onChange={(e) => setSpeciality(e.target.value)}
+              
                 >
                   <option value="All">All</option>
                   <option value="Dermatology">Dermatology</option>

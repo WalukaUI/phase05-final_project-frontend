@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
-import { useSearchParams } from "react-router-dom";
 
 function Doctors({ doctors }) {
   const [searchTearm, setSearchTearm] = useState("");

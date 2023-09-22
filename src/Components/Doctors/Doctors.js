@@ -1,32 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import "./Doctors.css";
 import Doctor from "./DoctorCard";
 import CardLoadAnimation from "./DocCardLoading";
-import { useSearchParams } from "react-router-dom";
+
 
 function Doctors({ doctors }) {
-  // const [searchTearm, setSearchTearm] = useState("");
-  // const [docSpeciality, setSpeciality] = useState("");
-  // const [acceptNewPatients, setAcceptNewPatients] = useState(false);
-  // const [videoVisits, setVideoVisits] = useState(false);
+
+  const [searchParams, setSearchParams]=useSearchParams({searchTearm: '',docSpeciality: '',acceptNewPatients: false, videoVisits: false })
   const [dragger,setDragger]=useState(false)
 
-  const [serachParams, setSearchparams]=useSearchParams({searchTearm: "",docSpeciality: "",acceptNewPatients: false, videoVisits: false })
-  const searchTearm=serachParams.get("searchTearm")
-  const docSpeciality=serachParams.get("docSpeciality")
-  const acceptNewPatients=serachParams.get("acceptNewPatients")==="true"
-  const videoVisits=serachParams.get("acceptNewPatients")==="true"
+
+
+  
+  const searchTerm=searchParams.get("searchTerm")
+  const speciality=searchParams.get("speciality")
+  const acceptNewPatients=false
+  const videoVisits=false
+
 
   function activeSearch(e) {
     e.preventDefault();
-  // setSearchTearm(e.target.value);
-    setValues("searchTearm",e.target.value)
+    setSearchParams(prev=>{ prev.set("searchTerm", e.target.value)
+    return prev
+    }, {replace: true})
   }
 
   function setValues(keys,values){
-    setSearchparams(prev=>{prev.set(keys,values)
-    return prev
-    }, {replace: true})
+    // setSearchParams(prev=>{
+    //   prev.set(keys,values)
+    //   return prev
+    // }, {replace: true})
   }
 
 
@@ -38,23 +42,19 @@ if(dragger){
   maindraggableDiv.addEventListener("mouseover", (e) => {
    let innetTxt=document.querySelector('.blankContainer').textContent
    if(innetTxt===""){
-        //  setAcceptNewPatients(false)
-        //  setVideoVisits(false)
+
     setValues("acceptNewPatients",false)
     setValues("videoVisits",false)
    }else if(innetTxt==="Accepting Video Visits"){
-        // setVideoVisits(true)
-        // setAcceptNewPatients(false)
+
     setValues("acceptNewPatients",false)
     setValues("videoVisits",true)
    }else if(innetTxt==="Accepting New Patients"){
-        // setVideoVisits(false)
-        // setAcceptNewPatients(true)
+
     setValues("acceptNewPatients",true)
     setValues("videoVisits",false)
    }else{
-        // setVideoVisits(true)
-        // setAcceptNewPatients(true)
+
     setValues("acceptNewPatients",true)
     setValues("videoVisits",true)
     }
@@ -98,8 +98,10 @@ containers.forEach(container =>{
                   className="form-select"
                   name="speciality"
                   aria-label="Default select example"
-                  // onChange={(e) => setSpeciality(e.target.value)}
-                  onChange={(e) => setValues("docSpeciality",e.target.value)}
+                  onChange={e=>setSearchParams(prev=>{prev.set("docSpeciality",e.target.value)
+                  return prev
+                  }, {replace: true})
+                 }
                 >
                   <option value="All">All</option>
                   <option value="Dermatology">Dermatology</option>
@@ -138,7 +140,7 @@ containers.forEach(container =>{
           ) : (
             doctors
               .filter((card) =>
-                card.last_name.toLowerCase().includes(searchTearm.toLowerCase()) || card.first_name.toLowerCase().includes(searchTearm.toLowerCase())
+                card.last_name.toLowerCase().includes(searchTerm?searchTerm.toLowerCase():"") || card.first_name.toLowerCase().includes(searchTerm?searchTerm.toLowerCase():"")
               )
               .filter((card) =>
                 acceptNewPatients ? card.isaccept_newpatients === true : card
@@ -147,7 +149,7 @@ containers.forEach(container =>{
                 videoVisits ? card.video_vistits === true : card
               )
               .filter((card) => {
-                switch (docSpeciality) {
+                switch (speciality) {
                   case "Dermatology":
                     return card.speciality === "Dermatology";
                   case "Family medicine":

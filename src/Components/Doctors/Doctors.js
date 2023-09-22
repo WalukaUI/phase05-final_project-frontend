@@ -106,7 +106,6 @@ containers.forEach(container =>{
                 <div className="container blankContainer" id="blankContainer" data-text="Drag and drop filters">
                 </div>
               </div>
-
             </div>
           </form>
         </div>

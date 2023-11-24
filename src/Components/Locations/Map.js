@@ -32,6 +32,7 @@ function MyComponent({ locations, selectedPlace, setSelectedPlace }) {
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
+      //defaultCenter={{ lat: 38.63217176910362, lng: -90.19383204054196 }}
       defaultCenter={
         !selectedPlace
           ? { lat: 38.63217176910362, lng: -90.19383204054196 }

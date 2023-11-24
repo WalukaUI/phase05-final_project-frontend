@@ -87,6 +87,7 @@ function MainContainer() {
     });
   }, []);
 
+
   return (
     <div className="mainDiv">
       <UserContext.Provider value={user}>
@@ -115,7 +116,7 @@ function MainContainer() {
           />
           <Route
             path="/locations"
-            element={<Locations locations={locations} />}
+            element={<Locations locations={locations?.filter ((card)=>card.name !== "Club Hills")} />}
           />
           <Route
             path="/doctors"

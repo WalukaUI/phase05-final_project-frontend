@@ -52,6 +52,7 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
 @media only screen and (max-width: 600px) {
   .locationDetails {
     padding: 10px;

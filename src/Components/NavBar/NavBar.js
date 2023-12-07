@@ -34,7 +34,7 @@ function NavBar({ logout, getAddress, setAddress }) {
                   <Link to="/doctors">Doctors</Link>
                 </li>
                 <li>
-                  <Link to="/locations"></Link>
+                  <Link to="/locations">Locations</Link>
                 </li>
                 {user ? (
                   <li>
@@ -94,6 +94,7 @@ function NavBar({ logout, getAddress, setAddress }) {
                         />Doctors</span>
           </Link>
         </div>
+
         <div>
           <Link to="/locations" className="nav-bar-links"><span><img
                           src="./location.png"

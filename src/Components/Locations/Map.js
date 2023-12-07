@@ -63,7 +63,8 @@ function MyComponent({ locations, selectedPlace, setSelectedPlace }) {
             }}
             onCloseClick={() => setSelectedPlace(null)}
           >
-            <div style={{ height: "70px", paddingTop: "20px" }}>
+          
+            <div style={{ height: "70px", paddingTop: "20px"}}>
               <h6>{selectedPlace.name}</h6>
               <p>Clinic</p>
             </div>

@@ -32,6 +32,10 @@ Patients will be able to Make, edit or delete an appointment
 
 Comment on doctors
 
+<<<App Flow Chart>>>
+
+![Alt text](./Doc_App_flow_chart.png?raw=true "Title")
+
 🤳\***\*Stretch Features\*\***🤳
 
 Display different interfaces to doctor login and patient login

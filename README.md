@@ -34,6 +34,8 @@ Comment on doctors
 
 <<<App Flow Chart>>>
 
+🤳\***\*App Flow Chart\*\***🤳
+
 ![Alt text](./Doc_App_flow_chart.png?raw=true "Title")
 
 🤳\***\*Stretch Features\*\***🤳

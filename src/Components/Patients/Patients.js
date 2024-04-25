@@ -14,8 +14,8 @@ function Patients({ locations, user }) {
 
   useEffect(() => {
     fetch(BASE_URL + `/doctors/${user?.id}/patients`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
       credentials: "include",
     }).then((res) => {
       if (res.ok) {

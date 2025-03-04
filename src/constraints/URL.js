@@ -1,8 +1,13 @@
 
+// const BASE_URL=
+// process.env.NODE_ENV === "development"
+// ?"http://localhost:3000"
+// :"https://twodbsin1bkend.onrender.com"
+
 const BASE_URL=
 process.env.NODE_ENV === "development"
 ?"http://localhost:3000"
-:"https://twodbsin1bkend.onrender.com"
+:"http://rails-api-balancer-456754264.us-east-2.elb.amazonaws.com"
 
 export default BASE_URL
 

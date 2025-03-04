@@ -2,6 +2,7 @@
   "name": "doctor-booking-app",
   "version": "0.1.0",
   "private": true,
+  "proxy":"https://myappsbackend.com",
   "dependencies": {
     "@react-google-maps/api": "^2.4.1",
     "@testing-library/jest-dom": "^5.14.1",

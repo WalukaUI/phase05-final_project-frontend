@@ -7,7 +7,7 @@
 const BASE_URL=
 process.env.NODE_ENV === "development"
 ?"http://localhost:3000"
-:"http://rails-api-balancer-456754264.us-east-2.elb.amazonaws.com"
+:"https://myappsbackend.com"
 
 export default BASE_URL
 

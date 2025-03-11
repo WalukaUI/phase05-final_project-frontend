@@ -71,6 +71,7 @@ function RegistrationForm({
                 type="text"
                 name="first_name"
                 maxLength="20"
+                minLength="6"
                 placeholder="First Name"
                 onChange={handleValidity}
                 required
@@ -86,6 +87,7 @@ function RegistrationForm({
                 type="text"
                 name="last_name"
                 maxLength="20"
+                minLength="6"
                 placeholder="Last Name"
                 onChange={handleValidity}
                 required
@@ -100,6 +102,7 @@ function RegistrationForm({
                 type="text"
                 name="email"
                 maxLength="50"
+                minLength="6"
                 placeholder="Email"
                 onChange={handleValidity}
                 required
@@ -116,6 +119,7 @@ function RegistrationForm({
                 disabled={doNotshowInput}
                 name="username"
                 maxLength="30"
+                minLength="6"
                 placeholder="Username"
                 onChange={handleValidity}
                 required

@@ -4,10 +4,10 @@
 // ?"http://localhost:3000"
 // :"https://twodbsin1bkend.onrender.com"
 
-const BASE_URL=
-process.env.NODE_ENV === "development"
-?"http://localhost:3000"
-:"https://myappsbackend.com"
+const BASE_URL= "http://ec2-3-145-46-117.us-east-2.compute.amazonaws.com"
+// process.env.NODE_ENV === "development"
+// ?"http://localhost:3000"
+// :"http://rails-api-balancer-456754264.us-east-2.elb.amazonaws.com"
 
 export default BASE_URL
 
